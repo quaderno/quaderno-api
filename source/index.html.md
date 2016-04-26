@@ -37,7 +37,7 @@ If you have any suggestions, tips, or questions that you feel aren't answered he
 https://ACCOUNT-NAME.quadernoapp.com/api/v1/
 ```
 
-All URLs start with the root `https://ACCOUNT-NAME.quadernoapp.com/api/v1/`. 
+All URLs start with the root `https://ACCOUNT-NAME.quadernoapp.com/api/v1/`.
 
 - `ACCOUNT-NAME` is different for each user, and is used as the identifier for which user to affect with an API call. You can see this in the URL bar when logging into your Quaderno account.
 - Note that the API version is also included in the root of every call. This ensures that updates to the API will not break older code, but when you are ready to make the switch (and when we have a new version) you can do so by updating this root.
@@ -51,23 +51,23 @@ The resource in question will follow, like so:
 > A basic GET for a user's contacts looks like this:
 
 ```
-curl -u API-KEY:x 
+curl -u API-KEY:x
      -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 > A POST with a new contact looks like this:
 
 ```
-curl -u API-KEY:x 
-     -H 'Content-Type: application/json' 
-     -X POST 
+curl -u API-KEY:x
+     -H 'Content-Type: application/json'
+     -X POST
      -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"}
      'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST` and `PUT`.
 
-Every request involves JSON (even in error cases), and we only support JSON for serialisation of data. 
+Every request involves JSON (even in error cases), and we only support JSON for serialisation of data.
 
 Our format is to have:
 
@@ -85,33 +85,42 @@ All API URLs end in `.json` to indicate that they accept and return JSON.
 > To authorize, use this code:
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+Quaderno::Base.configure do |config|
+    config.auth_token = 'YOUR_API_KEY'
+    config.url = 'YOUR_API_URL'
+end
 ```
 
-```python
-import kittn
+```php
+require_once 'quaderno_load.php';
 
-api = kittn.authorize('meowmeowmeow')
+QuadernoBase::init('YOUR_API_KEY',
+                   'YOUR_API_URL');
+```
+
+```swift
+let client = Quaderno.Client(baseURL: "YOUR_API_URL",
+							 authenticationToken: "YOUR_API_KEY")
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# With shell, you can just pass the API_KEY with each request
+curl -u API-KEY:YOUR_API_KEY
+     -X GET
+     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `YOUR_API_KEY` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Quaderno expects the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`API_KEY:YOUR_API_KEY`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace `YOUR_API_KEY` with your personal API key.
+No password is required.
 </aside>
 
 # Kittens
@@ -221,4 +230,3 @@ This endpoint retrieves a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
-

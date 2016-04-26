@@ -37,21 +37,48 @@ If you have any suggestions, tips, or questions that you feel aren't answered he
 https://ACCOUNT-NAME.quadernoapp.com/api/v1/
 ```
 
-> A basic GET looks like this:
+All URLs start with the root `https://ACCOUNT-NAME.quadernoapp.com/api/v1/`. 
+
+- `ACCOUNT-NAME` is different for each user, and is used as the identifier for which user to affect with an API call. You can see this in the URL bar when logging into your Quaderno account.
+- Note that the API version is also included in the root of every call. This ensures that updates to the API will not break older code, but when you are ready to make the switch (and when we have a new version) you can do so by updating this root.
+
+The resource in question will follow, like so:
+
+`https://ACCOUNT-NAME.quadernoapp.com/api/v1/RESOURCE.json`
+
+# Making a request
+
+> A basic GET for a user's contacts looks like this:
 
 ```
 curl -u API-KEY:x 
      -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
-All URLs start with the root `https://ACCOUNT-NAME.quadernoapp.com/api/v1/`. 
+> A POST with a new contact looks like this:
 
-- `ACCOUNT-NAME` is different for each user, and is used as the identifier for which user to affect with an API call. 
-- Note that the API version is also included in the root of every call. This ensures that updates to the API will not break older code, but when you are ready to make the switch (and when we have a new version) you can do so by updating this root.
+```
+curl -u API-KEY:x 
+     -H 'Content-Type: application/json' 
+     -X POST 
+     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"}
+     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+```
 
-The resource in question will follow, ending in `.json` to signify that it returns and accepts JSON, like so:
+As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST` and `PUT`.
 
-`https://ACCOUNT-NAME.quadernoapp.com/api/v1/RESOURCE.json`
+Every request involves JSON (even in error cases), and we only support JSON for serialisation of data. 
+
+Our format is to have:
+
+- No root element
+- `snake_case` to describe attribute keys
+
+When sending JSON (in `PUT` or `POST` requests), you must specify `Content-Type: application/json;` as the header of the HTTP request.
+
+<aside class="notice">
+All API URLs end in `.json` to indicate that they accept and return JSON.
+</aside>
 
 # Authentication
 

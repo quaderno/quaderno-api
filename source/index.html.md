@@ -2,7 +2,7 @@
 title: Quaderno API Reference
 
 language_tabs:
-  - shell
+  - curl
   - ruby
   - php
   - swift
@@ -51,14 +51,15 @@ The resource in question will follow, like so:
 > A basic GET for a user's contacts looks like this:
 
 ```
-curl -u API-KEY:x
+# :x stops cURL from prompting for a password
+curl -u YOUR_API_KEY:x
      -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 > A POST with a new contact looks like this:
 
 ```
-curl -u API-KEY:x
+curl -u YOUR_API_KEY:x
      -H 'Content-Type: application/json'
      -X POST
      -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"}
@@ -103,20 +104,20 @@ let client = Quaderno.Client(baseURL: "YOUR_API_URL",
 							 authenticationToken: "YOUR_API_KEY")
 ```
 
-```shell
-# With shell, you can just pass the API_KEY with each request
-curl -u API-KEY:YOUR_API_KEY
+```curl
+# With curl, you can pass the API key as a header with each request
+curl -u YOUR_API_KEY:x
      -X GET
      'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
 > Make sure to replace `YOUR_API_KEY` with your API key.
 
-Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL.
+Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL. For more info on finding your API key, check [here](http://support.quaderno.io/article/101-how-do-i-get-my-api-key).
 
 Quaderno expects the API key to be included in all API requests to the server in a header that looks like the following:
 
-`API_KEY:YOUR_API_KEY`
+`YOUR_API_KEY:x`
 
 <aside class="notice">
 You must replace `YOUR_API_KEY` with your personal API key.
@@ -141,7 +142,7 @@ api = kittn.authorize('meowmeowmeow')
 api.kittens.get()
 ```
 
-```shell
+```curl
 curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
 ```
@@ -200,7 +201,7 @@ api = kittn.authorize('meowmeowmeow')
 api.kittens.get(2)
 ```
 
-```shell
+```curl
 curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
 ```

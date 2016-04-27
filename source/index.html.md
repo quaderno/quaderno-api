@@ -2,7 +2,7 @@
 title: Quaderno API Reference
 
 language_tabs:
-  - curl
+  - shell
   - ruby
   - php
   - swift
@@ -46,24 +46,181 @@ The resource in question will follow, like so:
 
 `https://ACCOUNT-NAME.quadernoapp.com/api/v1/RESOURCE.json`
 
+# Authentication
+
+> To authorize, use this code:
+
+```ruby
+Quaderno::Base.configure do |config|
+    config.auth_token = 'YOUR_API_KEY'
+    config.url = 'YOUR_API_URL'
+end
+```
+
+```php?start_inline=1
+require_once 'quaderno_load.php';
+
+QuadernoBase::init('YOUR_API_KEY',
+                   'YOUR_API_URL');
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(baseURL: "YOUR_API_URL",
+							 authenticationToken: "YOUR_API_KEY")
+```
+
+```shell
+# With curl, you can pass the API key as a header with each request
+curl -u YOUR_API_KEY:x \
+     -X GET \
+     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
+```
+
+> You can `ping` to check if the service is up, your credentials are correct, or to know your remaining requests without doing an actual request:
+
+```ruby
+Quaderno::Base.ping #=> Boolean
+```
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET \
+     'https://quadernoapp.com/api/v1/ping.json'
+```
+
+```php?start_inline=1
+QuadernoBase::ping();   // Returns true (success) or false (error)
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+client.ping { success in
+  // success will be true if the service is available.
+}
+```
+
+Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL. For more info on finding your API key, check [here](http://support.quaderno.io/article/101-how-do-i-get-my-api-key).
+
+Quaderno expects the API key to be included via HTTP Basic Auth in all API requests to the server, in a header that looks like the following:
+
+`-u YOUR_API_KEY:x`
+
+<aside class="notice">
+You must replace `YOUR_API_KEY` with your personal API key.
+No password is required.
+</aside>
+
+<aside class="warning">
+Remember that anyone who has your Private Key can see and change everything that you have access to. Make sure to keep it, and your password, safe.
+</aside>
+
+## Authorization
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET \
+     'https://quadernoapp.com/api/v1/authorization.json'
+```
+
+```ruby
+Quaderno::Base.authorization 'my_authenticate_token', environment
+# environment is an optional argument. By passing :sandbox,
+# you will retrieve your credentials for the sandbox
+# environment and not for production.
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+client.account { credentials in
+  // credentials will contain the account credentials.
+}
+```
+
+```php?start_inline=1
+// Erk, TODO!
+```
+
+> Returns:
+
+```json
+{
+    "id": "999",
+    "name": "Sheldon Cooper",
+    "email": "s.cooperphd@yahoo.com",
+    "href": "http://nippur-999.quadernoapp.com/api/v1/"
+}
+```
+
+If you don't know the `ACCOUNT-NAME` for your target account, you can get it with the `authorization` API call.
+
+This returns the following as a JSON payload:
+
+**Attribute** | **Description**
+--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+`id`          | An identity, which is *not* used for determining who this user is within Quaderno. The `id` field should therefore *not* be used for submitting data within Quaderno's API.
+`name`        | The user's full name.
+`email`       | The user's email address.
+`href`        | The custom API endpoint URL for the user, providing the sought-after `ACCOUNT-NAME` between `http://` and `.quadernoapp...`.
+
 # Making a request
 
 > A basic GET for a user's contacts looks like this:
 
-```
+```shell
 # :x stops cURL from prompting for a password
-curl -u YOUR_API_KEY:x
+curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+```
+
+```php?start_inline=1
+// Returns an array of QuadernoContact
+$contacts = QuadernoContact::find();  
+```
+
+```ruby
+Quaderno::Contact.all() #=> Array
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let readContact = Contact.read()
+client.request(readContact) { response in
+  // response will contain the result of the request.
+}
 ```
 
 > A POST with a new contact looks like this:
 
-```
-curl -u YOUR_API_KEY:x
-     -H 'Content-Type: application/json'
-     -X POST
-     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"}
+```shell
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"} \
      'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+```
+
+```php?start_inline=1
+$contact = new QuadernoContact(array(
+                                 'first_name' => 'Tony',
+                                 'kind' => 'person',
+                                 'contact_name' => 'Stark'));
+
+$contact->save(); // Returns true (success) or false (error)
+```
+
+```ruby
+# Using new hash syntax
+params = {
+    first_name: 'Tony',
+    kind: 'person',
+    contact_name: 'Stark'
+}
+Quaderno::Contact.create(params) #=> Quaderno::Contact
+```
+
+```swift?start_inline=1
+TODO!
 ```
 
 As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST` and `PUT`.
@@ -81,47 +238,89 @@ When sending JSON (in `PUT` or `POST` requests), you must specify `Content-Type:
 All API URLs end in `.json` to indicate that they accept and return JSON.
 </aside>
 
-# Authentication
+# Rate Limiting
 
-> To authorize, use this code:
+> To make it easier to determine if your application is being rate-limited, or is approaching that level, we have the following HTTP headers on our successful responses:
+
+```
+X-RateLimit-Reset
+X-RateLimit-Remaining
+```
 
 ```ruby
-Quaderno::Base.configure do |config|
-    config.auth_token = 'YOUR_API_KEY'
-    config.url = 'YOUR_API_URL'
-end
+Quaderno::Base.rate_limit_info #=>  {:reset=>4, :remaining=>0}
 ```
 
-```php
-require_once 'quaderno_load.php';
-
-QuadernoBase::init('YOUR_API_KEY',
-                   'YOUR_API_URL');
+```swift?start_inline=1
+// You can check the entitlements for using the service (e.g. the rate
+// limit) by inspecting the `entitlements` property of `Client`.
+// See the quaderno/quaderno-swift docs for more.
 ```
 
-```swift
-let client = Quaderno.Client(baseURL: "YOUR_API_URL",
-							 authenticationToken: "YOUR_API_KEY")
+There is a limit of **100 API calls per 15 seconds**.
+
+We reserve the right to tune the limitations, but we promise to keep them high enough to allow a well-behaving interactive app to do it's job.
+
+If you exceed the limit you will receive a `HTTP 503 (Service Unavailable)`.
+
+# Pagination
+
+> These HTTP headers inform you about the page context:
+
+```
+X-Pages-CurrentPage
+X-Pages-TotalPages
 ```
 
-```curl
-# With curl, you can pass the API key as a header with each request
-curl -u YOUR_API_KEY:x
-     -X GET
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
+> A call with the `page` parameter set:
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET \
+     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json?page=2'
 ```
 
-> Make sure to replace `YOUR_API_KEY` with your API key.
+```php?start_inline=1
+// Returns an array of QuadernoContact
+$contacts = QuadernoContact::find(array('page' => 2));  
+```
 
-Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL. For more info on finding your API key, check [here](http://support.quaderno.io/article/101-how-do-i-get-my-api-key).
+```ruby
+Quaderno::Contact.all(page: 1) #=> Array
+```
 
-Quaderno expects the API key to be included in all API requests to the server in a header that looks like the following:
+```swift?start_inline=1
+// TODO!
+```
 
-`YOUR_API_KEY:x`
+Bear in mind that Quaderno paginates `GET` index results, providing **25 results per page**.
+
+You can change the page by passing the `page` parameter, defaulting to `1`.
+
+# Application Errors
+
+If the app is having trouble, you might see a `5xx` error. These are rare, but just in case, here's some info:
+
+`500` means that the app is completely down.
+
+You could also see:
+
+- `502 Bad Gateway`
+- `503 Service Unavailable`
+- `504 Gateway Timeout`
+
+It is your responsibility in all cases to retry your request later.
 
 <aside class="notice">
-You must replace `YOUR_API_KEY` with your personal API key.
-No password is required.
+If an error occurs on a call where the service is not down, we will return a JSON response and error code that we hope will point you to the problem with your call.
+</aside>
+
+# Versioning
+
+When we make breaking changes to our API, we release a new version number which you can change in your calls.
+
+<aside class="notice">
+The current version is **v1**.
 </aside>
 
 # Kittens
@@ -142,7 +341,7 @@ api = kittn.authorize('meowmeowmeow')
 api.kittens.get()
 ```
 
-```curl
+```shell
 curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
 ```
@@ -201,7 +400,7 @@ api = kittn.authorize('meowmeowmeow')
 api.kittens.get(2)
 ```
 
-```curl
+```shell
 curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
 ```

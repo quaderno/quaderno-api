@@ -15,6 +15,7 @@ includes:
   - intro
   - setup
   - contacts
+  - invoices
   - errors
 
 search: true

@@ -19,7 +19,6 @@ $contact = new QuadernoContact(array(
                                  'first_name' => 'Tony',
                                  'kind' => 'person',
                                  'contact_name' => 'Stark'));
-
 $contact->save(); // Returns true (success) or false (error)
 ```
 
@@ -136,25 +135,25 @@ TODO: Example of this with real query
 
 ## Read: Get a single contact
 
-> `GET /contacts/1.json`
+> `GET /contacts/CONTACT_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/1.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
 ```
 
 ```ruby
-Quaderno::Contact.find(id) #=> Quaderno::Contact
+Quaderno::Contact.find(CONTACT_ID) #=> Quaderno::Contact
 ```
 
 ```php?start_inline=1
-$contact = QuadernoContact::find('IDTOFIND'); // Returns a QuadernoContact
+$contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
 ```
 
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readContact = Contact.read()
+let readContact = Contact.read(1)
 client.request(readContact) { response in
   // response will contain the result of the request.
 }
@@ -196,22 +195,22 @@ If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STR
 
 ## Update
 
-> `PUT /contacts/1.json`
+> `PUT /contacts/CONTACT_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d {"first_name":"Anthony"} \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/1.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
 ```
 
 ```ruby
-Quaderno::Contact.update(id, params) #=> Quaderno::Contact
+Quaderno::Contact.update(CONTACT_ID, params) #=> Quaderno::Contact
 ```
 
 ```php?start_inline=1
-$contact->first_name = 'Joey';
+$contact->first_name = 'Anthony';
 $contact->save();
 ```
 
@@ -225,15 +224,15 @@ This will return `200 OK` and a JSON representation of the contact if successful
 
 ## Delete
 
-> `DELETE /contacts/1.json`
+> `DELETE /contacts/CONTACT_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/1.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
 ```
 
 ```ruby
-Quaderno::Contact.delete(id) #=> Boolean
+Quaderno::Contact.delete(CONTACT_ID) #=> Boolean
 ```
 
 ```php?start_inline=1

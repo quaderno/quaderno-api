@@ -30,20 +30,38 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```php?start_inline=1
-$contact = new QuadernoInvoice(array(
-                                 'first_name' => 'Tony',
-                                 'kind' => 'person',
-                                 'contact_name' => 'Stark'));
+$invoice = new QuadernoInvoice(array(
+                                 'po_number' => '',
+                                 'currency' => 'USD',
+                                 'tag_list' => 'playboy, businessman'));
+$item = new QuadernoDocumentItem(array(
+                               'description' => 'Pizza bagles',
+                               'unit_price' => 9.99,
+                               'quantity' => 20));
+$contact = QuadernoContact::find('5059bdbf2f412e0901000024');
 
-$contact->save(); // Returns true (success) or false (error)
+$invoice->addItem($item);
+$invoice->addContact($contact);
+
+$invoice->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
-# Using new hash syntax
 params = {
-    first_name: 'Tony',
-    kind: 'person',
-    contact_name: 'Stark'
+ contact_id: '5059bdbf2f412e0901000024',
+ contact_name: 'STARK',
+ po_number: '',
+ currency: 'USD',
+ tag_list: 'playboy, businessman',
+ items_attributes: [
+   {
+     description: 'Whiskey',
+     quantity: '1.0',
+     unit_price: '20.0',
+     discount_rate: '0.0',
+     reference: 'item_code_X'
+   }
+ ]
 }
 Quaderno::Invoice.create(params) #=> Quaderno::Invoice
 ```
@@ -51,6 +69,63 @@ Quaderno::Invoice.create(params) #=> Quaderno::Invoice
 ```swift?start_inline=1
 TODO!
 ```
+
+`POST`ing to `/invoices.json` will create a new contact from the parameters passed.
+
+This will return `201 Created` and the current JSON representation of the invoice if the creation was a success, along with the location of the new invoice in the `url` field.
+
+### Mandatory Fields
+
+Key          | Description
+-------------|------------------------------------------------------------------------------------------
+`contact_id` / `contact`       | Either the ID of an existing contact or the JSON object for an existing/new contact.
+`items_attributes` | An array of hashes which contains the `description`, `quantity`, `unit_price` and `discount_rate` of each item. If you want to have stock tracking, also pass the item code as the `reference` attribute. You may also add items to an invoice by passing the `reference` of a pre-existing item.
+
+<aside class="notice">
+If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new invoice will be created for the existing contact.<br /><br />
+
+<p>Please note that you can pass <strong>either</strong> contact_id or contact, but if you pass both then results may not be what you expect.</p>
+
+<p>Allowed contact fields are the same as when creating a contact via the dedicated [Contact API](#contacts).</p>
+</aside>
+
+### Invoice States
+
+Possible invoice states are:
+
+- `draft`
+- `sent`
+- `partial`
+- `paid`
+- `late`
+- `archived`
+
+You can set the invoice state by passing the `state` attribute, but bear the following considerations in mind:
+
+- The `paid` state is only reachable by adding a `payment` to the invoice and is also final, so **cannot be overwritten unless the payment is removed from the invoice**.
+- The `sent` state can only overwrite the state `draft`.
+
+### Create an attachment during invoice creation
+
+```json
+{
+  "attachment":{
+    "data":"aBaSe64EnCoDeDFiLe",
+    "filename":"the_filename.png"
+  }
+}
+```
+
+Optionally, you can pass an attachment hash along with the rest of the parameters.
+
+Fields:
+
+Field      | Description
+-----------|------------------------------------------------------------
+`data`     | Contains a Base64 encoded string which represents the file.
+`filename` | The attachment file name.
+
+Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will make stop invoice creation and return a `422 Unprocessable Entity` error.
 
 ## Read: Get and filter all invoices
 
@@ -66,7 +141,7 @@ Quaderno::Invoice.all() #=> Array
 ```
 
 ```php?start_inline=1
-$contacts = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
+$invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
 ```
 
 ```swift
@@ -188,21 +263,31 @@ client.request(readInvoice) { response in
 ]
 ```
 
+`GET`ting from `/invoices.json` will return all the user's invoices.
+
+You can filter the results in a few ways:
+
+- By `number`, `contact_name` or `po_number` by passing the `q` parameter in the url like `?q=KEYWORD`.
+- By date range, passing the `date` parameter in the url like `?date=DATE1,DATE2`.
+- By state, passing the `state` parameter like `?state=STATE`.
+- By contact, passing the contact ID in the `contact` parameter, like `?contact=3231`.
+- By `exchange_rate`, if the invoice currency differs from your account currency.
+
 ## Read: Get a single invoice
 
-> `GET /invoices/1.json`
+> `GET /invoices/INVOICE_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/1.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID.json'
 ```
 
 ```ruby
-Quaderno::Invoice.find(id) #=> Quaderno::Invoice
+Quaderno::Invoice.find(INVOICE_ID) #=> Quaderno::Invoice
 ```
 
 ```php?start_inline=1
-$contact = QuadernoInvoice::find('IDTOFIND'); // Returns a QuadernoInvoice
+$invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
 ```
 
 ```swift
@@ -265,48 +350,67 @@ client.request(readInvoice) { response in
 }
 ```
 
+`GET`ting from `/invoices/INVOICE_ID.json` will return that specific invoice.
+
+If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STRIPE_CHARGE_ID.json` to get the Quaderno invoice for a Stripe charge.
+
 ## Update
 
-> `PUT /invoices/1.json`
+> `PUT /invoices/INVOICE_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d {"first_name":"Anthony"} \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/1.json'
+     -d {"notes":"You better pay this time, Tony."} \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID.json'
 ```
 
 ```ruby
-Quaderno::Invoice.update(id, params) #=> Quaderno::Invoice
+params = {
+    notes: 'You better pay this time, Tony.'
+}
+Quaderno::Invoice.update(INVOICE_ID, params) #=> Quaderno::Invoice
 ```
 
 ```php?start_inline=1
-$contact->first_name = 'Joey';
-$contact->save();
+$invoice->notes = 'You better pay this time, Tony.';
+$invoice->save();
 ```
 
 ```swift?start_inline=1
 // TODO
 ```
+
+`PUT`ting to `/invoices/INVOICE_ID.json` will update the invoice with the passed parameters.
+
+This will return `200 OK` along with the current JSON representation of the invoice if successful.
 
 ## Delete
 
-> `DELETE /invoices/1.json` returns `204 No Content` if successful.
+> `DELETE /invoices/INVOICE_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/1.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID.json'
 ```
 
 ```ruby
-Quaderno::Invoice.delete(id) #=> Boolean
+Quaderno::Invoice.delete(INVOICE_ID) #=> Boolean
 ```
 
 ```php?start_inline=1
-$contact->delete();
+$invoice->delete();
 ```
 
 ```swift?start_inline=1
 // TODO
 ```
+
+`DELETE`ing to `/invoice/INVOICE_ID.json` will delete the specified contact and returns `204 No Content` if successful.
+
+## Deliver (Send) invoice
+
+`GET`ting `/invoices/INVOICE_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
+
+If the destination contact does not have an email address you will receive a `422 Unprocessable Entity` error.

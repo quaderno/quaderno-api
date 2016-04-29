@@ -52,9 +52,7 @@ Quaderno::Invoice.create(params) #=> Quaderno::Invoice
 TODO!
 ```
 
-## Read
-
-### Get and filter all contacts
+## Read: Get and filter all invoices
 
 > `GET /invoices.json`
 
@@ -190,7 +188,7 @@ client.request(readInvoice) { response in
 ]
 ```
 
-### Get a single contact
+## Read: Get a single invoice
 
 > `GET /invoices/1.json`
 

@@ -2,10 +2,6 @@
 
 A contact is any client, customer or vendor who appears on your invoices or expenses.
 
-<aside class="notice">
-Note that in all cases, if the user does not have permission to create a new contact, you'll get a 401 Unauthorized error.
-</aside>
-
 ## Create
 
 > `POST /contacts.json`

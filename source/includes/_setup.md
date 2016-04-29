@@ -84,7 +84,7 @@ No password is required.
 Remember that anyone who has your Private Key can see and change everything that you have access to. Make sure to keep it, and your password, safe.
 </aside>
 
-### Authorization
+## Authorization
 
 ```shell
 curl -u YOUR_API_KEY:x \
@@ -131,6 +131,10 @@ This returns the following as a JSON payload:
 `name`        | The user's full name.
 `email`       | The user's email address.
 `href`        | The custom API endpoint URL for the user, providing the sought-after `ACCOUNT_NAME` between `http://` and `.quadernoapp...`.
+
+<aside class="notice">
+Note that in all cases, if the user does not have permission to do something, you'll get a 401 Unauthorized error.
+</aside>
 
 ## Making a request
 
@@ -205,7 +209,7 @@ Our format is to have:
 When sending JSON (in `PUT` or `POST` requests), you must specify `Content-Type: application/json;` as the header of the HTTP request.
 
 <aside class="notice">
-All API URLs end in `.json` to indicate that they accept and return JSON.
+All API URLs end in .json to indicate that they accept and return JSON.
 </aside>
 
 ## Rate Limiting

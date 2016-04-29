@@ -4,17 +4,17 @@
 > API Endpoint
 
 ```
-https://ACCOUNT-NAME.quadernoapp.com/api/v1/
+https://ACCOUNT_NAME.quadernoapp.com/api/v1/
 ```
 
-All URLs start with the root `https://ACCOUNT-NAME.quadernoapp.com/api/v1/`.
+All URLs start with the root `https://ACCOUNT_NAME.quadernoapp.com/api/v1/`.
 
-- `ACCOUNT-NAME` is different for each user, and is used as the identifier for which user to affect with an API call. You can see this in the URL bar when logging into your Quaderno account.
+- `ACCOUNT_NAME` is different for each user, and is used as the identifier for which user to affect with an API call. You can see this in the URL bar when logging into your Quaderno account.
 - Note that the API version is also included in the root of every call. This ensures that updates to the API will not break older code, but when you are ready to make the switch (and when we have a new version) you can do so by updating this root.
 
 The resource in question will follow, like so:
 
-`https://ACCOUNT-NAME.quadernoapp.com/api/v1/RESOURCE.json`
+`https://ACCOUNT_NAME.quadernoapp.com/api/v1/RESOURCE.json`
 
 ## Authentication
 
@@ -43,7 +43,7 @@ let client = Quaderno.Client(baseURL: "YOUR_API_URL",
 # With curl, you can pass the API key as a header with each request
 curl -u YOUR_API_KEY:x \
      -X GET \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
 > You can `ping` to check if the service is up, your credentials are correct, or to know your remaining requests without doing an actual request:
@@ -76,7 +76,7 @@ Quaderno expects the API key to be included via HTTP Basic Auth in all API reque
 `-u YOUR_API_KEY:x`
 
 <aside class="notice">
-You must replace `YOUR_API_KEY` with your personal API key.
+You must replace YOUR_API_KEY with your personal API key.
 No password is required.
 </aside>
 
@@ -121,7 +121,7 @@ client.account { credentials in
 }
 ```
 
-If you don't know the `ACCOUNT-NAME` for your target account, you can get it with the `authorization` API call.
+If you don't know the `ACCOUNT_NAME` for your target account, you can get it with the `authorization` API call.
 
 This returns the following as a JSON payload:
 
@@ -130,7 +130,7 @@ This returns the following as a JSON payload:
 `id`          | An identity, which is *not* used for determining who this user is within Quaderno. The `id` field should therefore *not* be used for submitting data within Quaderno's API.
 `name`        | The user's full name.
 `email`       | The user's email address.
-`href`        | The custom API endpoint URL for the user, providing the sought-after `ACCOUNT-NAME` between `http://` and `.quadernoapp...`.
+`href`        | The custom API endpoint URL for the user, providing the sought-after `ACCOUNT_NAME` between `http://` and `.quadernoapp...`.
 
 ## Making a request
 
@@ -139,7 +139,7 @@ This returns the following as a JSON payload:
 ```shell
 # :x stops cURL from prompting for a password
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 ```php?start_inline=1
@@ -167,7 +167,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"} \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 ```php?start_inline=1
@@ -247,7 +247,7 @@ X-Pages-TotalPages
 ```shell
 curl -u YOUR_API_KEY:x \
      -X GET \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json?page=2'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json?page=2'
 ```
 
 ```php?start_inline=1
@@ -267,28 +267,10 @@ Bear in mind that Quaderno paginates `GET` index results, providing **25 results
 
 You can change the page by passing the `page` parameter, defaulting to `1`.
 
-## Application Errors
-
-If the app is having trouble, you might see a `5xx` error. These are rare, but just in case, here's some info:
-
-`500` means that the app is completely down.
-
-You could also see:
-
-- `502 Bad Gateway`
-- `503 Service Unavailable`
-- `504 Gateway Timeout`
-
-It is your responsibility in all cases to retry your request later.
-
-<aside class="notice">
-If an error occurs on a call where the service is not down, we will return a JSON response and error code that we hope will point you to the problem with your call.
-</aside>
-
 ## Versioning
 
 When we make breaking changes to our API, we release a new version number which you can change in your calls.
 
 <aside class="notice">
-The current version is **v1**.
+The current version is <strong>v1</strong>.
 </aside>

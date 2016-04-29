@@ -1,6 +1,6 @@
 # Invoices
 
-A contact is any client, customer or vendor who appears on your invoices or expenses.
+An invoice is a detailed list of goods shipped or services rendered, with an account of all costs.
 
 ## Create
 
@@ -10,8 +10,23 @@ A contact is any client, customer or vendor who appears on your invoices or expe
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"} \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
+     -d { \
+          "contact_id":"5059bdbf2f412e0901000024", \
+          "contact_name":"STARK", \
+          "po_number":"", \
+          "currency":"USD", \
+          "tag_list":"playboy, businessman", \
+          "items_attributes":[ \
+            { \
+              "description":"Whiskey", \
+              "quantity":"1.0", \
+              "unit_price":"20.0", \
+              "discount_rate":"0.0", \
+              "reference":"item_code_X" \
+            } \
+          ], \
+        } \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
 ```php?start_inline=1
@@ -44,9 +59,8 @@ TODO!
 > `GET /invoices.json`
 
 ```shell
-# :x stops cURL from prompting for a password
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
 ```ruby
@@ -69,53 +83,110 @@ client.request(readInvoice) { response in
 ```json
 [
   {
-    "id":"456987213",
-    "kind":"person",
-    "first_name":"Sheldon",
-    "last_name":"Cooper",
-    "full_name":"Sheldon Cooper",
-    "street_line_1":"2311 N. Los Robles Avenue",
+    "id":"507693322f412e0e2e00000f",
+    "number":"0000047",
+    "issue_date":"2012-10-11",
+    "contact":{
+      "id":"5073f9c22f412e02d0000032",
+      "full_name":"Garfield"
+    },
+    "street_line_1":"Street 23",
     "street_line_2":"",
-    "postal_code":"91104",
-    "city":"Pasadena",
-    "region":"CA",
-    "country":"US",
-    "phone_1":"",
-    "phone_2":"",
-    "fax":"",
-    "email":"s.cooperphd@yahoo.com",
-    "web":"",
-    "discount":null,
-    "tax_id":"",
-    "language":"EN",
+    "city":"New York",
+    "region":"New York",
+    "postal_code":"10203",
+    "po_number":null,
+    "due_date":null,
+    "currency":"USD",
+    "exchange_rate":"0.680309",
+    "items":[
+      {
+        "id":"48151623429",
+        "description":"lasagna",
+        "quantity":"25.0",
+        "unit_price":"3.75",
+        "discount_rate":"0.0",
+        "tax_1_name":"",
+        "tax_1_rate":"",
+        "tax_2_name":"",
+        "tax_2_rate":"",
+        "reference":"Awesome!",
+        "subtotal":"$93.75",
+        "discount":"$0.00",
+        "gross_amount":"$93.75"
+      }
+    ],
+    "subtotal":"$93.75",
+    "discount":"$0.00",
+    "taxes":[],
+    "total":"$93.75",
+    "payments":[
+      {
+        "id":"50aca7d92f412eda5200002c",
+        "date":"2012-11-21",
+        "payment_method":"credit_card",
+        "amount":"\u20ac93.75",
+        "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/507693322f412e0e2e00000f/payments/50aca7d92f412eda5200002c.json"
+      },
+    ],
+    "payment_details":"Ask Jon",
     "notes":"",
-    "secure_id":"th3p3rm4l1nk",
-    "permalink":"https:///my-account.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/invoices/456987213"
+    "state":"paid",
+    "tag_list":["lasagna", "cat"],
+    "secure_id":"7hef1rs7p3rm4l1nk",
+    "permalink":"https://quadernoapp.com/invoice/7hef1rs7p3rm4l1nk",
+    "pdf":"https://quadernoapp.com/invoice/7hef1rs7p3rm4l1nk.pdf",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/507693322f412e0e2e00000f"
   },
+
   {
-    "id":"456982365",
-    "kind":"company",
-    "full_name":"Apple Inc.",
-    "street_line_1":"1 Infinite Loop",
+    "id":"507693322f412e0e2e0000da",
+    "number":"0000047",
+    "issue_date":"2012-10-11",
+    "contact":{
+      "id":"5073f9c22f412e02d00004cf",
+      "full_name":"Teenage Mutant Ninja Turtles"
+    },
+    "street_line_1":"Melrose Ave, Sewer #3",
     "street_line_2":"",
-    "postal_code":"95014",
-    "city":"Cupertino",
-    "region":"CA",
-    "country":"US",
-    "phone_1":"",
-    "phone_2":"",
-    "fax":"",
-    "email":"info@apple.com",
-    "web":"http://apple.com",
-    "discount":null,
-    "tax_id":"",
-    "language":"EN",
+    "city":"New York",
+    "region":"New York",
+    "postal_code":"",
+    "po_number":null,
+    "due_date":null,
+    "currency":"USD",
+    "exchange_rate":"0.680309",
+    "items":[
+      {
+        "id":"481516234291",
+        "description":"pizza",
+        "quantity":"15.0",
+        "unit_price":"60.0",
+        "discount_rate":"0.0",
+        "tax_1_name":"",
+        "tax_1_rate":"",
+        "tax_2_name":"",
+        "tax_2_rate":"",
+        "reference":"Even the bad ones taste good!",
+        "subtotal":"$60.00",
+        "discount":"$0.00",
+        "gross_amount":"$60.00"
+      }
+    ],
+    "subtotal":"$60.00",
+    "discount":"$0.00",
+    "taxes":[],
+    "total":"$60.00",
+    "payments":[],
+    "payment_details":"",
     "notes":"",
-    "secure_id":"4n0th3rp3rm4l1nk",
-    "permalink":"https:///my-account.quadernoapp.com/billing/4n0th3rp3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/invoices/456982365"
-  }
+    "state":"draft",
+    "tag_list":["pizza", "turtles"],
+    "secure_id":"7hes3c0ndp3rm4l1nk",
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hes3c0ndp3rm4l1nk",
+    "pdf":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hes3c0ndp3rm4l1nk.pdf",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/507693322f412e0e2e0000da"
+  },
 ]
 ```
 
@@ -125,7 +196,7 @@ client.request(readInvoice) { response in
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices/1.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/1.json'
 ```
 
 ```ruby
@@ -147,29 +218,52 @@ client.request(readInvoice) { response in
 
 ```json
 {
-    "id":"456987213",
-    "kind":"person",
-    "first_name":"Sheldon",
-    "last_name":"Cooper",
-    "full_name":"Sheldon Cooper",
-    "street_line_1":"2311 N. Los Robles Avenue",
-    "street_line_2":"",
-    "postal_code":"91104",
-    "city":"Pasadena",
-    "region":"CA",
-    "country":"US",
-    "phone_1":"",
-    "phone_2":"",
-    "fax":"",
-    "email":"s.cooperphd@yahoo.com",
-    "web":"",
-    "discount":null,
-    "tax_id":"",
-    "language":"EN",
-    "notes":"",
-    "secure_id":"th3p3rm4l1nk",
-    "permalink":"https:///my-account.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/invoices/456987213"
+  "id":"507693322f412e0e2e0000da",
+  "number":"0000047",
+  "issue_date":"2012-10-11",
+  "contact":{
+    "id":"5073f9c22f412e02d00004cf",
+    "full_name":"Teenage Mutant Ninja Turtles"
+  },
+  "street_line_1":"Melrose Ave, Sewer #3",
+  "street_line_2":"",
+  "city":"New York",
+  "region":"New York",
+  "postal_code":"",
+  "po_number":null,
+  "due_date":null,
+  "currency":"USD",
+  "exchange_rate":"0.680309",
+  "items":[
+    {
+      "id":"48151623429",
+      "description":"pizza",
+      "quantity":"15.0",
+      "unit_price":"60.0",
+      "discount_rate":"0.0",
+      "tax_1_name":"",
+      "tax_1_rate":"",
+      "tax_2_name":"",
+      "tax_2_rate":"",
+      "reference":"Even the bad ones taste good!",
+      "subtotal":"$60.00",
+      "discount":"$0.00",
+      "gross_amount":"$60.00"
+    }
+  ],
+  "subtotal":"$60.00",
+  "discount":"$0.00",
+  "taxes":[],
+  "total":"$60.00",
+  "payments":[],
+  "payment_details":"",
+  "notes":"",
+  "state":"draft",
+  "tag_list":["lasagna", "cat"],
+  "secure_id":"7hef1rs7p3rm4l1nk",
+  "permalink":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hef1rs7p3rm4l1nk",
+  "pdf":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hef1rs7p3rm4l1nk.pdf",
+  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/507693322f412e0e2e0000da"
 }
 ```
 
@@ -182,7 +276,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d {"first_name":"Anthony"} \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices/1.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/1.json'
 ```
 
 ```ruby
@@ -204,7 +298,7 @@ $contact->save();
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/invoices/1.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/1.json'
 ```
 
 ```ruby

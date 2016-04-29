@@ -2,6 +2,10 @@
 
 A contact is any client, customer or vendor who appears on your invoices or expenses.
 
+<aside class="notice">
+Note that in all cases, if the user does not have permission to create a new contact, you'll get a 401 Unauthorized error.
+</aside>
+
 ## Create
 
 > `POST /contacts.json`
@@ -11,7 +15,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"} \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 ```php?start_inline=1
@@ -37,16 +41,25 @@ Quaderno::Contact.create(params) #=> Quaderno::Contact
 TODO!
 ```
 
-## Read
+`POST`ing to `/contacts.json` will create a new contact from the parameters passed.
 
-### Get and filter all contacts
+This will return `201 Created` and the current JSON representation of the contact if the creation was a success, along with the location of the new contact in the `url` field.
+
+### Mandatory Fields
+
+Key          | Description
+-------------|------------------------------------------------------------------------------------------
+`kind`       | Indicates if the contact is a `person` or a `company`.
+`first_name` | The first name of the contact.
+`bic`        | *If sending a bank_account (in electronic IBAN format)*. Must be 11 characters in length.
+
+## Read: Get and filter all contacts
 
 > `GET /contacts.json`
 
 ```shell
-# :x stops cURL from prompting for a password
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
 ```ruby
@@ -90,8 +103,8 @@ client.request(readContact) { response in
     "language":"EN",
     "notes":"",
     "secure_id":"th3p3rm4l1nk",
-    "permalink":"https:///my-account.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/contacts/456987213"
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/456987213"
   },
   {
     "id":"456982365",
@@ -113,19 +126,25 @@ client.request(readContact) { response in
     "language":"EN",
     "notes":"",
     "secure_id":"4n0th3rp3rm4l1nk",
-    "permalink":"https:///my-account.quadernoapp.com/billing/4n0th3rp3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/contacts/456982365"
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/4n0th3rp3rm4l1nk",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/456982365"
   }
 ]
 ```
 
-### Get a single contact
+`GET`ting from `/contacts.json` will return all the user's contacts.
+
+You can filter the results by full name, email or tax ID by passing the `q` parameter in the URL as a query string, like `?q=KEYWORD`.
+
+TODO: Example of this with real query
+
+## Read: Get a single contact
 
 > `GET /contacts/1.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts/1.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/1.json'
 ```
 
 ```ruby
@@ -168,10 +187,16 @@ client.request(readContact) { response in
     "language":"EN",
     "notes":"",
     "secure_id":"th3p3rm4l1nk",
-    "permalink":"https:///my-account.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/contacts/456987213"
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/456987213"
 }
 ```
+
+`GET`ting from `/contacts/CONTACT_ID.json` will get you that specific contact.
+
+<aside class="notice">
+If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STRIPE_CUSTOMER_ID.json` to get the Quaderno contact for a Stripe customer.
+</aside>
 
 ## Update
 
@@ -182,7 +207,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d {"first_name":"Anthony"} \
-     'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts/1.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/1.json'
 ```
 
 ```ruby
@@ -198,13 +223,17 @@ $contact->save();
 // TODO
 ```
 
+`PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the contact if successful.
+
 ## Delete
 
-> `DELETE /contacts/1.json` returns `204 No Content` if successful.
+> `DELETE /contacts/1.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT-NAME.quadernoapp.com/api/v1/contacts/1.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/1.json'
 ```
 
 ```ruby
@@ -218,3 +247,5 @@ $contact->delete();
 ```swift?start_inline=1
 // TODO
 ```
+
+`DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.

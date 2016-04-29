@@ -86,7 +86,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the first and
 
 <p>Please note that you can pass <strong>either</strong> contact_id or contact, but if you pass both then results may not be what you expect.</p>
 
-<p>Allowed contact fields are the same as when creating a contact via the dedicated [Contact API](#contacts).</p>
+<p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#contacts">Contacts API</a>.</p>
 </aside>
 
 ### Invoice States
@@ -125,7 +125,7 @@ Field      | Description
 `data`     | Contains a Base64 encoded string which represents the file.
 `filename` | The attachment file name.
 
-Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will make stop invoice creation and return a `422 Unprocessable Entity` error.
+Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop invoice creation and return a `422 Unprocessable Entity` error.
 
 ## Read: Get and filter all invoices
 

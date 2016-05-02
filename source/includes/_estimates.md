@@ -2,7 +2,7 @@
 
 An estimate is an offer that you give a client in order to get a specific job. With time, estimates are usually turned into issued invoices.
 
-## Create
+## Create an estimate
 
 > `POST /estimates.json`
 
@@ -143,7 +143,7 @@ Field      | Description
 
 Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop estimate creation and return a `422 Unprocessable Entity` error.
 
-## Read: Get and filter all estimates
+## Retrieve: Get and filter all estimates
 
 > `GET /estimates.json`
 
@@ -268,7 +268,7 @@ You can filter the results in a few ways:
 - By contact, passing the contact ID in the `contact` parameter, like `?contact=3231`.
 - By `exchange_rate`, if the estimate currency differs from your account currency.
 
-## Read: Get a single estimate
+## Retrieve: Get a single estimate
 
 > `GET /estimates/ESTIMATE_ID.json`
 
@@ -343,7 +343,7 @@ client.request(readEstimate) { response in
 
 If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STRIPE_CHARGE_ID.json` to get the Quaderno estimate for a Stripe charge.
 
-## Update
+## Update an estimate
 
 > `PUT /estimates/ESTIMATE_ID.json`
 
@@ -380,7 +380,7 @@ $estimate->save();
 
 This will return `200 OK` along with the current JSON representation of the estimate if successful.
 
-## Delete
+## Delete an estimate
 
 > `DELETE /estimates/ESTIMATE_ID.json`
 
@@ -403,7 +403,7 @@ $estimate->delete();
 
 `DELETE`ing to `/estimate/ESTIMATE_ID.json` will delete the specified estimate and returns `204 No Content` if successful.
 
-## Deliver (Send) estimate
+## Deliver (Send) an estimate
 
 `GET`ting `/estimates/ESTIMATE_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
 

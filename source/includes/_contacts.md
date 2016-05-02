@@ -2,7 +2,7 @@
 
 A contact is any client, customer or vendor who appears on your invoices or expenses.
 
-## Create
+## Create a contact
 
 > `POST /contacts.json`
 
@@ -48,7 +48,7 @@ Key          | Description
 `first_name` | The first name of the contact.
 `bic`        | *If sending a bank_account (in electronic IBAN format)*. Must be 11 characters in length.
 
-## Read: Get and filter all contacts
+## Retrieve: Get and filter all contacts
 
 > `GET /contacts.json`
 
@@ -133,7 +133,7 @@ You can filter the results by full name, email or tax ID by passing the `q` para
 
 TODO: Example of this with real query
 
-## Read: Get a single contact
+## Retrieve: Get a single contact
 
 > `GET /contacts/CONTACT_ID.json`
 
@@ -193,7 +193,7 @@ client.request(readContact) { response in
 If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STRIPE_CUSTOMER_ID.json` to get the Quaderno contact for a Stripe customer.
 </aside>
 
-## Update
+## Update a contact
 
 > `PUT /contacts/CONTACT_ID.json`
 
@@ -222,7 +222,7 @@ $contact->save();
 
 This will return `200 OK` and a JSON representation of the contact if successful.
 
-## Delete
+## Delete a contact
 
 > `DELETE /contacts/CONTACT_ID.json`
 

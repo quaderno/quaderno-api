@@ -2,7 +2,7 @@
 
 An invoice is a detailed list of goods shipped or services rendered, with an account of all costs.
 
-## Create
+## Create an invoice
 
 > `POST /invoices.json`
 
@@ -127,7 +127,7 @@ Field      | Description
 
 Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop invoice creation and return a `422 Unprocessable Entity` error.
 
-## Read: Get and filter all invoices
+## Retrieve: Get and filter all invoices
 
 > `GET /invoices.json`
 
@@ -273,7 +273,7 @@ You can filter the results in a few ways:
 - By contact, passing the contact ID in the `contact` parameter, like `?contact=3231`.
 - By `exchange_rate`, if the invoice currency differs from your account currency.
 
-## Read: Get a single invoice
+## Retrieve: Get a single invoice
 
 > `GET /invoices/INVOICE_ID.json`
 
@@ -354,7 +354,7 @@ client.request(readInvoice) { response in
 
 If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STRIPE_CHARGE_ID.json` to get the Quaderno invoice for a Stripe charge.
 
-## Update
+## Update an invoice
 
 > `PUT /invoices/INVOICE_ID.json`
 
@@ -386,7 +386,7 @@ $invoice->save();
 
 This will return `200 OK` along with the current JSON representation of the invoice if successful.
 
-## Delete
+## Delete an invoice
 
 > `DELETE /invoices/INVOICE_ID.json`
 
@@ -409,7 +409,7 @@ $invoice->delete();
 
 `DELETE`ing to `/invoice/INVOICE_ID.json` will delete the specified invoice and returns `204 No Content` if successful.
 
-## Deliver (Send) invoice
+## Deliver (Send) an invoice
 
 `GET`ting `/invoices/INVOICE_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
 

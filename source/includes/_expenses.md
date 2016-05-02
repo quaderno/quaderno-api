@@ -2,7 +2,7 @@
 
 An expense is a detailed list of goods shipped or services rendered, with an account of all costs.
 
-## Create
+## Create an expense
 
 > `POST /expenses.json`
 
@@ -121,7 +121,7 @@ Field      | Description
 
 Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop expense creation and return a `422 Unprocessable Entity` error.
 
-## Read: Get and filter all expenses
+## Retrieve: Get and filter all expenses
 
 > `GET /expenses.json`
 
@@ -244,7 +244,7 @@ You can filter the results in a few ways:
 - By specific vendor, passing the vendor ID in the `contact` parameter, like `?contact=3231`.
 - By `exchange_rate`, if the expense currency differs from your account currency.
 
-## Read: Get a single expense
+## Retrieve: Get a single expense
 
 > `GET /expenses/EXPENSE_ID.json`
 
@@ -315,7 +315,7 @@ client.request(readExpense) { response in
 
 `GET`ting from `/expenses/EXPENSE_ID.json` will return that specific expense.
 
-## Update
+## Update an expense
 
 > `PUT /expenses/EXPENSE_ID.json`
 
@@ -361,7 +361,7 @@ This will return `201 Created`, with the current JSON representation of the expe
 
 If the user does not have access to create new expenses, you'll see `401 Unauthorized` or a `422` if the permalink is invalid or the invoice is not suitable to be saved.
 
-## Delete
+## Delete an expense
 
 > `DELETE /expenses/EXPENSE_ID.json`
 

@@ -10,7 +10,7 @@ An invoice is a detailed list of goods shipped or services rendered, with an acc
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d { \
+     -d '{ \
           "contact_id":"5059bdbf2f412e0901000024", \
           "contact_name":"STARK", \
           "po_number":"", \
@@ -25,7 +25,7 @@ curl -u YOUR_API_KEY:x \
               "reference":"item_code_X" \
             } \
           ], \
-        } \
+        }' \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
@@ -35,7 +35,7 @@ $invoice = new QuadernoInvoice(array(
                                  'currency' => 'USD',
                                  'tag_list' => 'playboy, businessman'));
 $item = new QuadernoDocumentItem(array(
-                               'description' => 'Pizza bagles',
+                               'description' => 'Pizza bagels',
                                'unit_price' => 9.99,
                                'quantity' => 20));
 $contact = QuadernoContact::find('5059bdbf2f412e0901000024');
@@ -362,7 +362,7 @@ If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STR
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d {"notes":"You better pay this time, Tony."} \
+     -d '{"notes":"You better pay this time, Tony."}' \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID.json'
 ```
 
@@ -407,7 +407,7 @@ $invoice->delete();
 // TODO
 ```
 
-`DELETE`ing to `/invoice/INVOICE_ID.json` will delete the specified contact and returns `204 No Content` if successful.
+`DELETE`ing to `/invoice/INVOICE_ID.json` will delete the specified invoice and returns `204 No Content` if successful.
 
 ## Deliver (Send) invoice
 

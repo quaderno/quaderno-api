@@ -17,6 +17,7 @@ includes:
   - setup
   - contacts
   - invoices
+  - expenses
   - errors
 
 search: true

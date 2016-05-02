@@ -10,7 +10,7 @@ A contact is any client, customer or vendor who appears on your invoices or expe
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"} \
+     -d '{"first_name":"Tony", "kind":"person", "contact_name":"Stark"}' \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 
@@ -201,7 +201,7 @@ If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STR
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d {"first_name":"Anthony"} \
+     -d '{"first_name":"Anthony"}' \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
 ```
 

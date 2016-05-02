@@ -18,6 +18,7 @@ includes:
   - contacts
   - invoices
   - expenses
+  - estimates
   - errors
 
 search: true

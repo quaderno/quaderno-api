@@ -20,6 +20,7 @@ includes:
   - expenses
   - estimates
   - credits
+  - items
   - errors
 
 search: true

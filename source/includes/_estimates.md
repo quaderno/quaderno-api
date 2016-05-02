@@ -341,8 +341,6 @@ client.request(readEstimate) { response in
 
 `GET`ting from `/estimates/ESTIMATE_ID.json` will return that specific estimate.
 
-If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STRIPE_CHARGE_ID.json` to get the Quaderno estimate for a Stripe charge.
-
 ## Update an estimate
 
 > `PUT /estimates/ESTIMATE_ID.json`

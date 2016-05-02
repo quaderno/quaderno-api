@@ -19,6 +19,7 @@ includes:
   - invoices
   - expenses
   - estimates
+  - credits
   - errors
 
 search: true

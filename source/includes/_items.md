@@ -2,6 +2,12 @@
 
 The items are those products or services that you sell to your customers.
 
+Items are their own object in Quaderno, but they can be referenced, in an array, by a few types of record:
+
+- Invoices and sales receipts
+- Expenses
+- Credit notes
+
 ## Create an item
 
 > `POST /items.json`

@@ -21,6 +21,7 @@ includes:
   - estimates
   - credits
   - items
+  - payments
   - errors
 
 search: true

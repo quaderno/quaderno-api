@@ -1,6 +1,6 @@
 # Credits
 
-An credit is an offer that you give a client in order to get a specific job. With time, credits are usually turned into issued invoices.
+An credit is a detailed list of goods shipped or services rendered, with an account of all costs.
 
 ## Create a credit
 
@@ -10,21 +10,21 @@ An credit is an offer that you give a client in order to get a specific job. Wit
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{
-          "contact_id":"5059bdbf2f412e0901000024",
-          "contact_name":"STARK",
-          "po_number":"",
-          "currency":"USD",
-          "tag_list":"playboy, businessman",
-          "items_attributes":[
-            {
-              "description":"Whiskey",
-              "quantity":"1.0",
-              "unit_price":"20.0",
-              "discount_rate":"0.0",
-              "reference":"item_code_X"
-            }
-          ],
+     -d '{ \
+          "contact_id":"5059bdbf2f412e0901000024", \
+          "contact_name":"STARK", \
+          "po_number":"", \
+          "currency":"USD", \
+          "tag_list":"playboy, businessman", \
+          "items_attributes":[ \
+            { \
+              "description":"Whiskey", \
+              "quantity":"1.0", \
+              "unit_price":"20.0", \
+              "discount_rate":"0.0", \
+              "reference":"item_code_X" \
+            } \
+          ], \
         }' \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits.json'
 ```
@@ -79,11 +79,11 @@ This will return `201 Created` and the current JSON representation of the credit
 
 Key          | Description
 -------------|------------------------------------------------------------------------------------------
-`credit_id` / `credit`       | Either the ID of an existing credit or the JSON object for an existing/new credit.
+`contact_id` / `contact`       | Either the ID of an existing credit or the JSON object for an existing/new credit.
 `items_attributes` | An array of hashes which contains the `description`, `quantity`, `unit_price` and `discount_rate` of each item. If you want to have stock tracking, also pass the item code as the `reference` attribute. You may also add items to a credit by passing the `reference` of a pre-existing item.
 
 <aside class="notice">
-If you pass a `credit` JSON object instead of a `credit_id`, and the first and last name combination does not match any of your existing credits, a new one will be created, otherwise a new credit will be created for the existing credit.<br /><br />
+If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing credits, a new one will be created, otherwise a new credit will be created for the existing credit.<br /><br />
 
 <p>Please note that you can pass <strong>either</strong> credit_id or credit, but if you pass both then results may not be what you expect.</p>
 

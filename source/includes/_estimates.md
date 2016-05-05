@@ -93,11 +93,11 @@ This will return `201 Created` and the current JSON representation of the estima
 
 Key          | Description
 -------------|------------------------------------------------------------------------------------------
-`estimate_id` / `estimate`       | Either the ID of an existing estimate or the JSON object for an existing/new estimate.
+`contact_id` / `contact`       | Either the ID of an existing estimate or the JSON object for an existing/new estimate.
 `items_attributes` | An array of hashes which contains the `description`, `quantity`, `unit_price` and `discount_rate` of each item. If you want to have stock tracking, also pass the item code as the `reference` attribute. You may also add items to an estimate by passing the `reference` of a pre-existing item.
 
 <aside class="notice">
-If you pass a `estimate` JSON object instead of a `estimate_id`, and the first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />
+If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />
 
 <p>Please note that you can pass <strong>either</strong> estimate_id or estimate, but if you pass both then results may not be what you expect.</p>
 

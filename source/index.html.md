@@ -17,6 +17,7 @@ includes:
   - setup
   - contacts
   - invoices
+  - receipts
   - expenses
   - estimates
   - credits

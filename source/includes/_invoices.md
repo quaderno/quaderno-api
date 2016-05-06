@@ -8,7 +8,6 @@ An invoice is a detailed list of goods shipped or services rendered, with an acc
 
 ```shell
 # body.json
-
 {
   "contact_id":"5059bdbf2f412e0901000024",
   "contact_name":"STARK",
@@ -26,7 +25,6 @@ An invoice is a detailed list of goods shipped or services rendered, with an acc
   ],
 }
 
-# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \

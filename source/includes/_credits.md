@@ -8,7 +8,6 @@ A credit note is a reverse invoice; something to cancel out - partially or compl
 
 ```shell
 # body.json
-
 {
   "contact_id":"5059bdbf2f412e0901000024",
   "contact_name":"STARK",
@@ -25,8 +24,6 @@ A credit note is a reverse invoice; something to cancel out - partially or compl
     }
   ],
 }
-
-# curl command
 
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
@@ -371,7 +368,6 @@ client.request(readCredit) { response in
   "region":"Genosha"
 }
 
-# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \

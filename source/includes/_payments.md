@@ -14,7 +14,7 @@ Note that unlike items, payments cannot exist in Quaderno separately to one of t
 
 ## Create an item
 
-> `POST /invoices/INVOICE_ID/payments.json` or `POST /expenses/EXPENSE_ID/payments.json` or `POST /credits/CREDIT_ID/payments.json`
+> `POST /invoices/INVOICE_ID/payments.json` or `POST /expenses/EXPENSE_ID/payments.json`
 
 ```shell
 # body.json
@@ -23,11 +23,12 @@ Note that unlike items, payments cannot exist in Quaderno separately to one of t
   "payment_method":"credit_card"
 }
 
+# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits/1/payments.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID/payments.json'
 ```
 
 ```php?start_inline=1

@@ -8,7 +8,6 @@ An estimate is an offer that you give a client in order to get a specific job. W
 
 ```shell
 # body.json
-
 {
   "number":"0000006",
   "contact_id":"50603e722f412e0435000024",
@@ -33,7 +32,6 @@ An estimate is an offer that you give a client in order to get a specific job. W
   "notes":""
 }
 
-# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
@@ -352,7 +350,6 @@ client.request(readEstimate) { response in
 
 ```shell
 # body.json
-
 {
   "tag_list":"Wacky, racer"
   "contact_id":"505c3b402f412e0248000044",

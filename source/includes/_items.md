@@ -25,7 +25,6 @@ Items are their own object in Quaderno, but they can be referenced, in an array,
   "stock":"1000"
 }
 
-# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \

@@ -259,7 +259,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
+expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
 ```
 
 ```php?start_inline=1

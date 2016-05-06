@@ -13,19 +13,23 @@ Items are their own object in Quaderno, but they can be referenced, in an array,
 > `POST /items.json`
 
 ```shell
+# body.json
+{
+  "code":"BluRay 0003",
+  "name":"Titanic IV: The revenge",
+  "unit_cost":"15.0",
+  "tax_1_name":"AWESOME_TAX",
+  "tax_1_rate":"7.00",
+  "tax_2_name":"ANOTHER_AWESOME_TAX",
+  "tax_2_rate":"10.00",
+  "stock":"1000"
+}
+
+# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{ \
-          "code":"BluRay 0003", \
-          "name":"Titanic IV: The revenge", \
-          "unit_cost":"15.0", \
-          "tax_1_name":"AWESOME_TAX", \
-          "tax_1_rate":"7.00", \
-          "tax_2_name":"ANOTHER_AWESOME_TAX", \
-          "tax_2_rate":"10.00", \
-          "stock":"1000" \
-        }' \
+     --data-binary @body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items.json'
 ```
 

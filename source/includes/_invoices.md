@@ -7,25 +7,30 @@ An invoice is a detailed list of goods shipped or services rendered, with an acc
 > `POST /invoices.json`
 
 ```shell
+# body.json
+
+{
+  "contact_id":"5059bdbf2f412e0901000024",
+  "contact_name":"STARK",
+  "po_number":"",
+  "currency":"USD",
+  "tag_list":"playboy, businessman",
+  "items_attributes":[
+    {
+      "description":"Whiskey",
+      "quantity":"1.0",
+      "unit_price":"20.0",
+      "discount_rate":"0.0",
+      "reference":"item_code_X"
+    }
+  ],
+}
+
+# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{ \
-          "contact_id":"5059bdbf2f412e0901000024", \
-          "contact_name":"STARK", \
-          "po_number":"", \
-          "currency":"USD", \
-          "tag_list":"playboy, businessman", \
-          "items_attributes":[ \
-            { \
-              "description":"Whiskey", \
-              "quantity":"1.0", \
-              "unit_price":"20.0", \
-              "discount_rate":"0.0", \
-              "reference":"item_code_X" \
-            } \
-          ], \
-        }' \
+     --data-binary @body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices.json'
 ```
 
@@ -59,7 +64,7 @@ params = {
      quantity: '1.0',
      unit_price: '20.0',
      discount_rate: '0.0',
-     reference: 'item_code_X'
+     reference: 'ITEM_ID'
    }
  ]
 }

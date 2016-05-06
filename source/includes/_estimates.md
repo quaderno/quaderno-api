@@ -7,32 +7,37 @@ An estimate is an offer that you give a client in order to get a specific job. W
 > `POST /estimates.json`
 
 ```shell
+# body.json
+
+{
+  "number":"0000006",
+  "contact_id":"50603e722f412e0435000024",
+  "contact_name":"Wild E. Coyote",
+  "po_number":"",
+  "currency":"EUR",
+  "items_attributes":[
+    {
+        "description":"ACME Catapult",
+        "quantity":"1.0",
+        "unit_price":"0.0",
+        "discount_rate":"0.0",
+        "tax_1_name":"",
+        "tax_1_rate":"",
+        "tax_2_name":"",
+        "tax_2_rate":"",
+        "reference":"item_code_X"
+      }
+  ],
+  "tag_list":"tnt",
+  "payment_details":"",
+  "notes":""
+}
+
+# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{ \
-          "number":"0000006", \
-          "contact_id":"50603e722f412e0435000024", \
-          "contact_name":"Wild E. Coyote", \
-          "po_number":"", \
-          "currency":"EUR", \
-          "items_attributes":[ \
-            { \
-                "description":"ACME Catapult", \
-                "quantity":"1.0", \
-                "unit_price":"0.0", \
-                "discount_rate":"0.0", \
-                "tax_1_name":"", \
-                "tax_1_rate":"", \
-                "tax_2_name":"", \
-                "tax_2_rate":"", \
-                "reference":"item_code_X" \
-              } \
-          ], \
-          "tag_list":"tnt", \
-          "payment_details":"", \
-          "notes":"" \
-        }' \
+     --data-binary @- body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates.json'
 ```
 
@@ -44,7 +49,7 @@ $estimate = new QuadernoEstimate(array(
 $item = new QuadernoDocumentItem(array(
                                'description' => 'ACME Catapult',
                                'unit_price' => 0.0,
-                               'reference' => 'item_code_X',
+                               'reference' => 'ITEM_ID',
                                'quantity' => 1.0));
 $contact = QuadernoContact::find('5059bdbf2f412e0901000024');
 
@@ -71,7 +76,7 @@ params = {
         tax_1_rate: '',
         tax_2_name: '',
         tax_2_rate: '',
-        reference: 'item_code_X'
+        reference: 'ITEM_ID'
       }
   ],
   tag_list: 'tnt',
@@ -346,13 +351,18 @@ client.request(readEstimate) { response in
 > `PUT /estimates/ESTIMATE_ID.json`
 
 ```shell
+# body.json
+
+{
+  "tag_list":"Wacky, racer"
+  "contact_id":"505c3b402f412e0248000044",
+  "contact_name":"Dick Dastardly",
+}
+
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d '{ \
-            "contact_id":"505c3b402f412e0248000044",
-            "contact_name":"Dick Dastardly" \
-         }' \
+     --data-binary @body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates/ESTIMATE_ID.json'
 ```
 

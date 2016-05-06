@@ -170,7 +170,7 @@ client.request(readContact) { response in
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"} \
+     -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"}
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
 ```
 

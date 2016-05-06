@@ -17,13 +17,16 @@ Note that unlike items, payments cannot exist in Quaderno separately to one of t
 > `POST /invoices/INVOICE_ID/payments.json` or `POST /expenses/EXPENSE_ID/payments.json` or `POST /credits/CREDIT_ID/payments.json`
 
 ```shell
+# body.json
+{
+  "amount":"56.60",
+  "payment_method":"credit_card"
+}
+
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{ \
-          "amount":"56.60", \
-          "payment_method":"credit_card" \
-        }' \
+     --data-binary @body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits/1/payments.json'
 ```
 

@@ -1,31 +1,37 @@
 # Credits
 
-An credit is a detailed list of goods shipped or services rendered, with an account of all costs.
+A credit note is a reverse invoice; something to cancel out - partially or completely - an invoice you have issued in the past. It may be for the full amount of an invoice or it may be for less in the case of a partial refund.
 
 ## Create a credit
 
 > `POST /credits.json`
 
 ```shell
+# body.json
+
+{
+  "contact_id":"5059bdbf2f412e0901000024",
+  "contact_name":"STARK",
+  "po_number":"",
+  "currency":"USD",
+  "tag_list":"playboy, businessman",
+  "items_attributes":[
+    {
+      "description":"Whiskey",
+      "quantity":"1.0",
+      "unit_price":"20.0",
+      "discount_rate":"0.0",
+      "reference":"item_code_X"
+    }
+  ],
+}
+
+# curl command
+
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{ \
-          "contact_id":"5059bdbf2f412e0901000024", \
-          "contact_name":"STARK", \
-          "po_number":"", \
-          "currency":"USD", \
-          "tag_list":"playboy, businessman", \
-          "items_attributes":[ \
-            { \
-              "description":"Whiskey", \
-              "quantity":"1.0", \
-              "unit_price":"20.0", \
-              "discount_rate":"0.0", \
-              "reference":"item_code_X" \
-            } \
-          ], \
-        }' \
+     --data-binary @body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits.json'
 ```
 
@@ -37,7 +43,7 @@ $credit = new QuadernoCredit(array(
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Whiskey',
                                'unit_price' => 20.0,
-                               'reference' => 'item_code_X',
+                               'reference' => 'ITEM_ID',
                                'quantity' => 1.0));
 $contact = QuadernoContact::find('5059bdbf2f412e0901000024');
 
@@ -60,7 +66,7 @@ params = {
       quantity: '1.0',
       unit_price: '20.0',
       discount_rate: '0.0',
-      reference: 'item_code_X'
+      reference: 'ITEM_ID'
     }
   ],
 }
@@ -358,13 +364,18 @@ client.request(readCredit) { response in
 > `PUT /credits/CREDIT_ID.json`
 
 ```shell
+# body.json
+{
+  "tag_list":"whiskey, alcohol",
+  "notes":"You better pay this time, Tony",
+  "region":"Genosha"
+}
+
+# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d '{ \
-            "contact_id":"505c3b402f412e0248000044",
-            "contact_name":"Dick Dastardly" \
-         }' \
+     --data-binary @body.json \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits/CREDIT_ID.json'
 ```
 

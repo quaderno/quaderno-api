@@ -1,29 +1,34 @@
 # Expenses
 
-An expense is a detailed list of goods shipped or services rendered, with an account of all costs.
+Expenses are all the invoices that you receive from your vendors.
 
 ## Create an expense
 
 > `POST /expenses.json`
 
 ```shell
+# body.json
+
+{     
+  "contact_id":"5059bdbf2f412e0901000024",
+  "contact_name":"ACME",
+  "currency":"USD",
+  "items_attributes":[
+    {
+    "description":"Rocket launcher",
+    "quantity":"1.0",
+    "unit_price":"0.0",
+    "discount_rate":"0.0",
+    "reference":"item_code_X"
+    }
+  ],
+}
+
+# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     -d '{ \     
-          "contact_id":"5059bdbf2f412e0901000024", \
-          "contact_name":"ACME", \
-          "currency":"USD", \
-          "items_attributes":[ \
-            { \
-                "description":"Rocket launcher", \
-                "quantity":"1.0", \
-                "unit_price":"0.0", \
-                "discount_rate":"0.0", \
-                "reference":"item_code_X" \
-            } \
-          ], \
-        }' \     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses.json'
+     --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses.json'
 ```
 
 ```php?start_inline=1
@@ -35,7 +40,7 @@ $item = new QuadernoDocumentItem(array(
                                'description' => 'Rocket launcher',
                                'unit_price' => 0.0,
                                'discount_rate' => 0.0,
-                               'reference' => "item_code_X",
+                               'reference' => "ITEM_ID",
                                'quantity' => 1.0));
 $contact = QuadernoContact::find('5059bdbf2f412e0901000024');
 
@@ -56,7 +61,7 @@ params = {
     quantity: '1.0',
     unit_price: '0.0',
     discount_rate: '0.0',
-    reference: 'item_code_X'
+    reference: 'ITEM_ID'
     }
   ],
 }

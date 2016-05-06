@@ -1,6 +1,6 @@
 # Receipts
 
-a receipt is a detailed list of goods shipped or services rendered, with an account of all costs. It differs from invoices in a few key ways (mostly in that it does not require customer information in a legal sense). Read more [here](http://support.quaderno.io/article/37-what-is-a-sales-receipt).
+A receipt is a detailed list of goods shipped or services rendered, with an account of all costs. It differs from invoices in a few key ways (mostly in that it does not require customer information in a legal sense). Read more [here](http://support.quaderno.io/article/37-what-is-a-sales-receipt).
 
 ## Create a receipt
 

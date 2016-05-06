@@ -212,6 +212,34 @@ When sending JSON (in `PUT` or `POST` requests), you must specify `Content-Type:
 All API URLs end in .json to indicate that they accept and return JSON.
 </aside>
 
+## A note on `POST`ing JSON with cURL
+
+> `POST /items.json`
+
+```curl
+# body.json
+{
+  "code":"BluRay 0003",
+  "name":"Titanic IV: The revenge",
+  "unit_cost":"15.0",
+  "tax_1_name":"AWESOME_TAX",
+  "tax_1_rate":"7.00",
+  "tax_2_name":"ANOTHER_AWESOME_TAX",
+  "tax_2_rate":"10.00",
+  "stock":"1000"
+}
+
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     --data-binary @body.json \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items.json'
+```
+
+Multiline cURL with JSON is a little bit tricky. In our experience the cleanest, easiest way to make it work correctly is actually to save the desired JSON payload to a file (we use `body.json` as the filename in our examples) and pass it to the cURL command in the `--data-binary` flag, effectively passing the file in by stdin.
+
+Your mileage may vary, but this is the way that we recommend.
+
 ## Rate Limiting
 
 > To make it easier to determine if your application is being rate-limited, or is approaching that level, we have the following HTTP headers on our successful responses:

@@ -8,9 +8,9 @@ One of the killer features Quaderno provides is efficient and easy tax managemen
 
 ```json
 {
-    "name":"VAT",
-    "rate":21.0,
-    "notes":null
+    "name": "VAT",
+    "rate": 21.0,
+    "notes": null
 }
 ```
 

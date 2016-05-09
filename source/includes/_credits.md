@@ -151,7 +151,7 @@ $credits = QuadernoCredit::find(); // Returns an array of QuadernoCredit
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readCredit = Credit.read(pageNum)
+let readCredit = Credit.list(pageNum)
 client.request(readCredit) { response in
   // response will contain the result of the request.
 }
@@ -297,7 +297,7 @@ $credit = QuadernoCredit::find('CREDIT_ID'); // Returns a QuadernoCredit
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readCredit = Credit.read(pageNum)
+let readCredit = Credit.list(pageNum)
 client.request(readCredit) { response in
   // response will contain the result of the request.
 }

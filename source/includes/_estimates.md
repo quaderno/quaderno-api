@@ -166,7 +166,7 @@ $estimates = QuadernoEstimate::find(); // Returns an array of QuadernoEstimate
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readEstimate = Estimate.read(pageNum)
+let readEstimate = Estimate.list(pageNum)
 client.request(readEstimate) { response in
   // response will contain the result of the request.
 }
@@ -291,7 +291,7 @@ $estimate = QuadernoEstimate::find('ESTIMATE_ID'); // Returns a QuadernoEstimate
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readEstimate = Estimate.read(pageNum)
+let readEstimate = Estimate.list(pageNum)
 client.request(readEstimate) { response in
   // response will contain the result of the request.
 }

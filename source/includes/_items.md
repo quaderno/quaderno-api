@@ -93,7 +93,7 @@ $items = QuadernoItem::find(); // Returns an array of QuadernoItem
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readItem = Item.read(pageNum)
+let readItem = Item.list(pageNum)
 client.request(readItem) { response in
   // response will contain the result of the request.
 }
@@ -159,7 +159,7 @@ $item = QuadernoItem::find('ITEM_ID'); // Returns a QuadernoItem
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readItem = Item.read(pageNum)
+let readItem = Item.list(pageNum)
 client.request(readItem) { response in
   // response will contain the result of the request.
 }

@@ -23,6 +23,7 @@ includes:
   - credits
   - items
   - payments
+  - taxes
   - errors
 
 search: true

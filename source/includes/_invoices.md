@@ -165,7 +165,7 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readInvoice = Invoice.read(pageNum)
+let readInvoice = Invoice.list(pageNum)
 client.request(readInvoice) { response in
   // response will contain the result of the request.
 }
@@ -311,7 +311,7 @@ $invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readInvoice = Invoice.read(pageNum)
+let readInvoice = Invoice.list(pageNum)
 client.request(readInvoice) { response in
   // response will contain the result of the request.
 }

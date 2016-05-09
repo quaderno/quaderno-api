@@ -130,7 +130,7 @@ $receipts = QuadernoReceipt::find(); // Returns an array of QuadernoReceipt
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readReceipt = Receipt.read(pageNum)
+let readReceipt = Receipt.list(pageNum)
 client.request(readReceipt) { response in
   // response will contain the result of the request.
 }
@@ -278,7 +278,7 @@ $receipt = QuadernoReceipt::find('RECEIPT_ID'); // Returns a QuadernoReceipt
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readReceipt = Receipt.read(pageNum)
+let readReceipt = Receipt.list(pageNum)
 client.request(readReceipt) { response in
   // response will contain the result of the request.
 }

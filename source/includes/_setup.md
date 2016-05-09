@@ -158,7 +158,7 @@ Quaderno::Contact.all() #=> Array
 ```swift?start_inline=1
 let client = Quaderno.Client(/* ... */)
 
-let readContact = Contact.read()
+let readContact = Contact.read(pageNum)
 client.request(readContact) { response in
   // response will contain the result of the request.
 }

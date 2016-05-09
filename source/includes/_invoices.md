@@ -70,7 +70,22 @@ invoice.addItem(item)
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+ "contact_id": "5059bdbf2f412e0901000024",
+ "contact_name": "STARK",
+ "po_number": "",
+ "currency": "USD",
+ "tag_list": "playboy, businessman"
+]
+
+// TODO: Items!
+
+let createInvoice = Invoice.create(params)
+client.request(createInvoice) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/invoices.json` will create a new contact from the parameters passed.
@@ -150,7 +165,7 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readInvoice = Invoice.read()
+let readInvoice = Invoice.read(pageNum)
 client.request(readInvoice) { response in
   // response will contain the result of the request.
 }
@@ -296,7 +311,7 @@ $invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readInvoice = Invoice.read()
+let readInvoice = Invoice.read(pageNum)
 client.request(readInvoice) { response in
   // response will contain the result of the request.
 }

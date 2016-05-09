@@ -146,7 +146,7 @@ $expenses = QuadernoExpense::find(); // Returns an array of QuadernoExpense
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readExpense = Expense.read()
+let readExpense = Expense.read(pageNum)
 client.request(readExpense) { response in
   // response will contain the result of the request.
 }
@@ -269,7 +269,7 @@ $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readExpense = Expense.read()
+let readExpense = Expense.read(pageNum)
 client.request(readExpense) { response in
   // response will contain the result of the request.
 }

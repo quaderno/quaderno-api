@@ -55,18 +55,18 @@ params = {
  contact_name: 'STARK',
  po_number: '',
  currency: 'USD',
- tag_list: 'playboy, businessman',
- items_attributes: [
-   {
-     description: 'Whiskey',
-     quantity: '1.0',
-     unit_price: '20.0',
-     discount_rate: '0.0',
-     reference: 'ITEM_ID'
-   }
- ]
+ tag_list: 'playboy, businessman'
 }
-Quaderno::Invoice.create(params) #=> Quaderno::Invoice
+invoice = Quaderno::Invoice.create(params) #=> Quaderno::Invoice
+item_params = {
+  description: 'Whiskey',
+  quantity: '1.0',
+  unit_price: '20.0',
+  discount_rate: '0.0',
+  reference: 'ITEM_ID'
+}
+item = Quaderno::Item.create(item_params) #=> Quaderno::Item
+invoice.addItem(item)
 ```
 
 ```swift?start_inline=1

@@ -225,14 +225,33 @@ In your code that processes receieved webhooks:
 ```shell
 # body.json
 {     
-    "url":"http://anotherapp.com/notifications",
-    "events_types":["invoice.created",      "estimate.updated", "invoice.deleted", "contact.created"]
+    "url": "http://anotherapp.com/notifications",
+    "events_types": [
+        "invoice.created",
+        "estimate.updated",
+        "invoice.deleted",
+        "contact.created"
+    ]
 }
 
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks.json'
+     --data-binary @body.json \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks.json'
+```
+
+```ruby
+params = {     
+    url: "http://anotherapp.com/notifications",
+    events_types: [
+        'invoice.created',
+        'estimate.updated',
+        'invoice.deleted',
+        'contact.created'
+    ]
+}
+Quaderno::Webhook.create(params) #=> Quaderno::Webhook
 ```
 
 `POST`ing to `/webhooks.json` will create a new webhook from the passed parameters.
@@ -257,6 +276,10 @@ This will return `201 Created` with the current JSON representation of the webho
 ```shell
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/ewbhooks.json'
+```
+
+```ruby
+Quaderno::Webhook.all() #=> Array
 ```
 
 ```json
@@ -288,13 +311,17 @@ curl -u YOUR_API_KEY:x \
 
 `GET`ting to `/webhooks.json` will return all your webhooks.
 
-## Retrieve: Get a single webhooks
+## Retrieve: Get a single webhook
 
 > GET /webhooks/WEBHOOK_ID.json
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/ewbhooks/WEBHOOK_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks/WEBHOOK_ID.json'
+```
+
+```ruby
+Quaderno::Webhook.find(WEBHOOK_ID) #=> Quaderno::Webhook
 ```
 
 ```json
@@ -326,6 +353,13 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks/WEBHOOK_ID.json'
 ```
 
+```ruby
+params = {
+    events_types: [ 'contact.updated', 'estimate.deleted' ]
+}
+Quaderno::Webhook.update(WEBHOOK_ID, params) #=> Quaderno::Webhook
+```
+
 `PUT`ting to `/webhooks/WEBHOOK_ID.json` will update a webhook with the passed parameters.
 
 This will return `201 Created` with the current JSON representation of the webhook if the update was a success.
@@ -337,6 +371,10 @@ This will return `201 Created` with the current JSON representation of the webho
 ```shell
 curl -u YOUR_API_KEY:x \
      -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks/WEBHOOK_ID.json'
+```
+
+```ruby
+Quaderno::Webhook.delete(WEBHOOK_ID) #=> Boolean
 ```
 
 `DELETE`ing to `/webhooks/WEBHOOK_ID.json` will delete the specified webhook and return `204 No Content` if the update was successful.

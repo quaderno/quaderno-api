@@ -8,7 +8,6 @@ Expenses are all the invoices that you receive from your vendors.
 
 ```shell
 # body.json
-
 {     
   "contact_id":"5059bdbf2f412e0901000024",
   "contact_name":"ACME",
@@ -24,7 +23,6 @@ Expenses are all the invoices that you receive from your vendors.
   ],
 }
 
-# curl command
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \

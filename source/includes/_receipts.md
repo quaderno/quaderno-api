@@ -54,27 +54,43 @@ $receipt->save(); // Returns true (success) or false (error)
 
 ```ruby
 params = {
- contact_id: '5059bdbf2f412e0901000024',
- contact_name: 'STARK',
- payment_method: 'credit_card',
  po_number: '',
+ payment_method: 'credit_card',
  currency: 'USD',
- tag_list: 'playboy, businessman',
- items_attributes: [
-   {
-     description: 'Whiskey',
-     quantity: '1.0',
-     unit_price: '20.0',
-     discount_rate: '0.0',
-     reference: 'ITEM_ID'
-   }
- ]
+ tag_list: 'playboy, businessman'
 }
-Quaderno::Receipt.create(params) #=> Quaderno::Receipt
+invoice = Quaderno::Invoice.create(params) #=> Quaderno::Invoice
+item_params = {
+  description: 'Whiskey',
+  quantity: '1.0',
+  unit_price: '20.0',
+  discount_rate: '0.0',
+  reference: 'ITEM_ID'
+}
+item = Quaderno::Item.create(item_params) #=> Quaderno::Item
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+invoice.add_item(item)
+invoice.add_contact(contact)
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "payment_method":"credit_card",
+    "contact_id":"5059bdbf2f412e0901000024",
+    "contact_name":"STARK",
+    "po_number":"",
+    "currency":"USD",
+    "tag_list":"playboy, businessman"
+]
+
+// TODO: Items!
+
+let createReceipt = Receipt.create(params)
+client.request(createReceipt) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/receipts.json` will create a new contact from the parameters passed.
@@ -130,8 +146,8 @@ $receipts = QuadernoReceipt::find(); // Returns an array of QuadernoReceipt
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readReceipt = Receipt.list(pageNum)
-client.request(readReceipt) { response in
+let listReceipts = Receipt.list(pageNum)
+client.request(listReceipts) { response in
   // response will contain the result of the request.
 }
 ```
@@ -278,7 +294,7 @@ $receipt = QuadernoReceipt::find('RECEIPT_ID'); // Returns a QuadernoReceipt
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readReceipt = Receipt.list(pageNum)
+let readReceipt = Receipt.read(RECEIPT_ID)
 client.request(readReceipt) { response in
   // response will contain the result of the request.
 }
@@ -365,8 +381,17 @@ $receipt->notes = 'You better pay this time, Tony.';
 $receipt->save();
 ```
 
-```swift?start_inline=1
-// TODO
+````swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "notes": "You better pay this time, Tony."
+]
+
+let updateReceipt = Receipt.update(RECEIPT_ID, params)
+client.request(updateReceipt) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ting to `/receipts/RECEIPT_ID.json` will update the receipt with the passed parameters.
@@ -391,12 +416,41 @@ $receipt->delete();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let deleteReceipt = Receipt.delete(INVOICE_ID)
+client.request(deleteReceipt) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/receipt/RECEIPT_ID.json` will delete the specified receipt and returns `204 No Content` if successful.
 
 ## Deliver (Send) a receipt
+
+```shell
+curl -u YOUR_API_KEY: \
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID/deliver.json'
+```
+
+```ruby
+receipt = Quaderno::Receipt.find(RECEIPT_ID)
+receipt.deliver
+```
+
+```php?start_inline=1
+$receipt->deliver(); // Return true (success) or false (error)
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let deliverReceipt = Receipt.deliver(INVOICE_ID)
+client.request(deliverReceipt) { response in
+  // response will contain the result of the request.
+}
+```
 
 `GET`ting `/receipts/RECEIPT_ID/deliver.json` will send the receipt to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the receipt.
 

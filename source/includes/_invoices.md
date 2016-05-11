@@ -51,8 +51,6 @@ $invoice->save(); // Returns true (success) or false (error)
 
 ```ruby
 params = {
- contact_id: '5059bdbf2f412e0901000024',
- contact_name: 'STARK',
  po_number: '',
  currency: 'USD',
  tag_list: 'playboy, businessman'
@@ -66,7 +64,9 @@ item_params = {
   reference: 'ITEM_ID'
 }
 item = Quaderno::Item.create(item_params) #=> Quaderno::Item
-invoice.addItem(item)
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+invoice.add_item(item)
+invoice.add_contact(contact)
 ```
 
 ```swift?start_inline=1
@@ -450,7 +450,7 @@ curl -u YOUR_API_KEY: \
 ```
 
 ```ruby
-invoice = Quaderno::Invoice.find(invoice_id)
+invoice = Quaderno::Invoice.find(INVOICE_ID)
 invoice.deliver
 ```
 

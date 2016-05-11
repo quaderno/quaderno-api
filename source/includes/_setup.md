@@ -197,9 +197,9 @@ Quaderno::Contact.create(params) #=> Quaderno::Contact
 TODO!
 ```
 
-As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST` and `PUT`.
+As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST`, `PUT` and `DELETE`.
 
-Every request involves JSON (even in error cases), and we only support JSON for serialisation of data.
+Every request involves JSON (even in error cases), and we only support JSON for serialization of data.
 
 Our format is to have:
 

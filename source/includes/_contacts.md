@@ -33,7 +33,18 @@ Quaderno::Contact.create(params) #=> Quaderno::Contact
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "first_name": "Tony",
+    "kind": "person",
+    "contact_name": "Stark"
+]
+
+let createContact = Contact.create(params)
+client.request(createContact) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/contacts.json` will create a new contact from the parameters passed.
@@ -68,8 +79,8 @@ $contacts = QuadernoContact::find(); // Returns an array of QuadernoContact
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readContact = Contact.list(pageNum)
-client.request(readContact) { response in
+let listContacts = Contact.list(pageNum)
+client.request(listContacts) { response in
   // response will contain the result of the request.
 }
 ```
@@ -153,7 +164,7 @@ $contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readContact = Contact.read(1)
+let readContact = Contact.read(CONTACT_ID)
 client.request(readContact) { response in
   // response will contain the result of the request.
 }
@@ -214,8 +225,17 @@ $contact->first_name = 'Anthony';
 $contact->save();
 ```
 
-```swift?start_inline=1
-// TODO
+````swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "first_name": "Anthony"
+]
+
+let updateContact = Contact.update(CONTACT_ID, params)
+client.request(updateContact) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
@@ -239,8 +259,13 @@ Quaderno::Contact.delete(CONTACT_ID) #=> Boolean
 $contact->delete();
 ```
 
-```swift?start_inline=1
-// TODO
+````swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let deleteContact = Contact.delete(CONTACT_ID)
+client.request(deleteContact) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.

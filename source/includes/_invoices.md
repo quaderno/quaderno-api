@@ -165,8 +165,8 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readInvoice = Invoice.list(pageNum)
-client.request(readInvoice) { response in
+let listInvoices = Invoice.list(pageNum)
+client.request(listInvoices) { response in
   // response will contain the result of the request.
 }
 ```
@@ -311,7 +311,7 @@ $invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readInvoice = Invoice.list(pageNum)
+let readInvoice = Invoice.read(INVOICE_ID)
 client.request(readInvoice) { response in
   // response will contain the result of the request.
 }
@@ -396,8 +396,17 @@ $invoice->notes = 'You better pay this time, Tony.';
 $invoice->save();
 ```
 
-```swift?start_inline=1
-// TODO
+````swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "notes": "You better pay this time, Tony."
+]
+
+let updateInvoice = Invoice.update(INVOICE_ID, params)
+client.request(updateInvoice) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ting to `/invoices/INVOICE_ID.json` will update the invoice with the passed parameters.
@@ -422,12 +431,41 @@ $invoice->delete();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let deleteInvoice = Invoice.delete(INVOICE_ID)
+client.request(deleteInvoice) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/invoice/INVOICE_ID.json` will delete the specified invoice and returns `204 No Content` if successful.
 
 ## Deliver (Send) an invoice
+
+```shell
+curl -u YOUR_API_KEY:
+     -X GET
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID/deliver.json'
+```
+
+```ruby
+invoice = Quaderno::Invoice.find(invoice_id)
+invoice.deliver
+```
+
+```php?start_inline=1
+$invoice->deliver(); // Return true (success) or false (error)
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let deliverInvoice = Invoice.deliver(INVOICE_ID)
+client.request(deliverInvoice) { response in
+  // response will contain the result of the request.
+}
+```
 
 `GET`ting `/invoices/INVOICE_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
 

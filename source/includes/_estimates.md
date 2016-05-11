@@ -60,32 +60,44 @@ $estimate->save(); // Returns true (success) or false (error)
 ```ruby
 params = {
   number: '0000006',
-  contact_id: '50603e722f412e0435000024',
-  contact_name: 'Wile E. Coyote',
   po_number: '',
   currency: 'EUR',
-  items_attributes: [
-    {
-        description: 'ACME Catapult',
-        quantity: '1.0',
-        unit_price: '0.0',
-        discount_rate: '0.0',
-        tax_1_name: '',
-        tax_1_rate: '',
-        tax_2_name: '',
-        tax_2_rate: '',
-        reference: 'ITEM_ID'
-      }
-  ],
   tag_list: 'tnt',
   payment_details: '',
   notes: ''
 }
-Quaderno::Estimate.create(params) #=> Quaderno::Estimate
+estimate = Quaderno::Estimate.create(params) #=> Quaderno::Estimate
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+item_params = {
+  description: 'Whiskey',
+  quantity: '1.0',
+  unit_price: '20.0',
+  discount_rate: '0.0',
+  reference: 'ITEM_ID'
+}
+item = Quaderno::Item.create(item_params) #=> Quaderno::Item
+estimate.add_item(item)
+estimate.add_contact(contact)
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+number":"0000006",
+    "contact_id":"50603e722f412e0435000024",
+    "contact_name":"Wild E. Coyote",
+    "po_number":"",
+    "currency":"EUR",
+    "tag_list": "playboy, businessman"
+]
+
+// TODO: Items!
+
+let createEstimate = Estimate.create(params)
+client.request(createEstimate) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/estimates.json` will create a new estimate from the parameters passed.
@@ -166,8 +178,8 @@ $estimates = QuadernoEstimate::find(); // Returns an array of QuadernoEstimate
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readEstimate = Estimate.list(pageNum)
-client.request(readEstimate) { response in
+let listEstimates = Estimate.list(pageNum)
+client.request(listEstimates) { response in
   // response will contain the result of the request.
 }
 ```
@@ -291,7 +303,7 @@ $estimate = QuadernoEstimate::find('ESTIMATE_ID'); // Returns a QuadernoEstimate
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readEstimate = Estimate.list(pageNum)
+let readEstimate = Estimate.read(ESTIMATE_ID)
 client.request(readEstimate) { response in
   // response will contain the result of the request.
 }
@@ -377,8 +389,18 @@ $estimate->contact_name = 'Dick Dastardly';
 $estimate->save();
 ```
 
-```swift?start_inline=1
-// TODO
+````swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "contact_name": "Dick Dastardly",
+    "contact_id": "505c3b402f412e0248000044"
+]
+
+let updateEstimate = Estimate.update(ESTIMATE_ID, params)
+client.request(updateEstimate) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ting to `/estimates/ESTIMATE_ID.json` will update the estimate with the passed parameters.
@@ -403,13 +425,42 @@ $estimate->delete();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let deleteEstimate = Estimate.delete(ESTIMATE_ID)
+client.request(deleteEstimate) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/estimate/ESTIMATE_ID.json` will delete the specified estimate and returns `204 No Content` if successful.
 
 ## Deliver (Send) an estimate
 
-`GET`ting `/estimates/ESTIMATE_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
+```shell
+curl -u YOUR_API_KEY:
+     -X GET
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates/ESTIMATE_ID/deliver.json'
+```
+
+```ruby
+estimate = Quaderno::Estimate.find(ESTIMATE_ID)
+estimate.deliver
+```
+
+```php?start_inline=1
+$estimate->deliver(); // Return true (success) or false (error)
+```
+
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let deliverEstimate = Estimate.deliver(ESTIMATE_ID)
+client.request(deliverEstimate) { response in
+  // response will contain the result of the request.
+}
+```
+
+`GET`ting `/estimates/ESTIMATE_ID/deliver.json` will send the estimate to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the estimate.
 
 If the destination contact does not have an email address you will receive a `422 Unprocessable Entity` error.

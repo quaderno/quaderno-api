@@ -254,6 +254,14 @@ params = {
 Quaderno::Webhook.create(params) #=> Quaderno::Webhook
 ```
 
+```php?start_inline=1
+$webhook = new QuadernoWebhook(array(
+                                 'url' => 'http://myapp.com/notifications',
+                                 'events_types' => array('contact.created'));
+
+$webhook->save(); // Returns true (success) or false (error)
+```
+
 `POST`ing to `/webhooks.json` will create a new webhook from the passed parameters.
 
 Mandatory fields:
@@ -280,6 +288,10 @@ curl -u YOUR_API_KEY:x \
 
 ```ruby
 Quaderno::Webhook.all() #=> Array
+```
+
+```php?start_inline=1
+$webhooks = QuadernoWebhook::find(); // Returns an array of QuadernoWebhook
 ```
 
 ```json
@@ -324,6 +336,10 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Webhook.find(WEBHOOK_ID) #=> Quaderno::Webhook
 ```
 
+```php?start_inline=1
+$webhooks = QuadernoWebhook::find(WEBHOOK_ID); // Returns a QuadernoWebhook
+```
+
 ```json
 
 {
@@ -358,6 +374,19 @@ params = {
     events_types: [ 'contact.updated', 'estimate.deleted' ]
 }
 Quaderno::Webhook.update(WEBHOOK_ID, params) #=> Quaderno::Webhook
+```
+
+```php?start_inline=1
+$webhook->url = "";
+$webhook->save(); // Returns false - url is a required field
+foreach($webhook->errors as $field => $errors) {
+  print "{$field}: ";
+  foreach ($errors as $e) print $e;
+}
+
+$webhook->url = 'http://anotherapp.com/quaderno/notifications';
+$webhook->events_types = array('contact.created', 'contact.updated', 'contact.deleted');
+$webhook->save();
 ```
 
 `PUT`ting to `/webhooks/WEBHOOK_ID.json` will update a webhook with the passed parameters.

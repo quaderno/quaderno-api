@@ -27,7 +27,19 @@ params = {
     postal_code: '08080'
     vat_number: 'ESA58818501'
 }
-Quaderno::Tax.calculate(params) #=> Quaderno::Tax
+tax = Quaderno::Tax.calculate(params) #=> Quaderno::Tax
+```
+
+```php?start_inline=1
+$data = array(
+  'country' => 'ES',
+  'postal_code' => '08080',
+  'tax_id' => 'A58818501'
+);
+
+$tax = QuadernoTax::calculate($data); // Returns a QuadernoTax
+$tax->name; // "VAT"
+$tax->rate; // 21.0
 ```
 
 ```json

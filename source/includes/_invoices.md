@@ -444,8 +444,8 @@ client.request(deleteInvoice) { response in
 ## Deliver (Send) an invoice
 
 ```shell
-curl -u YOUR_API_KEY:
-     -X GET
+curl -u YOUR_API_KEY: \
+     -X GET \
      'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID/deliver.json'
 ```
 

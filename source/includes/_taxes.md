@@ -42,6 +42,21 @@ $tax->name; // "VAT"
 $tax->rate; // 21.0
 ```
 
+```swift?start_inline=1
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "country": "ES",
+    "postal_code": "08080"
+    "vat_number": "ESA58818501"
+]
+
+let taxCalculation = Tax.calculate(params)
+client.request(taxCalculation) { response in
+    // response will contain the result of the request.
+}
+```
+
 ```json
 {
     "name": "VAT",

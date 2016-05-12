@@ -50,7 +50,7 @@ invoice.add_payment(params) #=> Quaderno::Payment
 ```
 
 ```swift?start_inline=1
-TODO!
+// TODO
 ```
 
 `POST`ing to `invoices/INVOICE_ID/payments.json` or `expenses/EXPENSE_ID/payments.json` will create a new payment from the parameters passed. Note that payments can only be created as an attachment to an invoice or expense.
@@ -79,6 +79,10 @@ $payments = $expense->getPayments(); // Returns an array of QuadernoPayment
 ```ruby
 expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
 payments = expense.getPayments #=> an array of Quaderno::Payment
+```
+
+```swift?start_inline=1
+// TODO
 ```
 
 `GET`ting from `/invoices/INVOICE_ID/payments.json` or `/expenses/EXPENSE_ID/payments.json` will return all the payments on the invoice or expense in question.

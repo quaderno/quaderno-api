@@ -36,7 +36,7 @@ curl -u YOUR_API_KEY:x \
 $invoice = new QuadernoInvoice(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => 'playboy, businessman'));
+                                 'tag_list' => array('playboy', 'businessman')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Pizza bagels',
                                'unit_price' => 9.99,
@@ -53,7 +53,7 @@ $invoice->save(); // Returns true (success) or false (error)
 params = {
  po_number: '',
  currency: 'USD',
- tag_list: 'playboy, businessman'
+ tag_list: ['playboy', 'businessman']
 }
 invoice = Quaderno::Invoice.create(params) #=> Quaderno::Invoice
 item_params = {
@@ -77,7 +77,7 @@ let params : [String: Any] = [
  "contact_name": "STARK",
  "po_number": "",
  "currency": "USD",
- "tag_list": "playboy, businessman"
+ "tag_list": ["playboy", "businessman"]
 ]
 
 // TODO: Items!

@@ -43,7 +43,7 @@ curl -u YOUR_API_KEY:x \
 $estimate = new QuadernoEstimate(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => 'playboy, businessman'));
+                                 'tag_list' => array('playboy', 'businessman')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'ACME Catapult',
                                'unit_price' => 0.0,
@@ -89,7 +89,7 @@ number":"0000006",
     "contact_name":"Wild E. Coyote",
     "po_number":"",
     "currency":"EUR",
-    "tag_list": "playboy, businessman"
+    "tag_list": ["playboy", "businessman"]
 ]
 
 // TODO: Items!

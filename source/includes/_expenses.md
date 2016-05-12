@@ -33,7 +33,7 @@ curl -u YOUR_API_KEY:x \
 $expense = new QuadernoExpense(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => 'playboy, businessman'));
+                                 'tag_list' => array('playboy', 'businessman')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Rocket launcher',
                                'unit_price' => 0.0,
@@ -49,25 +49,39 @@ $expense->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
-params = {     
-  contact_id: '5059bdbf2f412e0901000024',
-  contact_name: 'ACME',
-  currency: 'USD',
-  items_attributes: [
-    {
+params = {
+    currency: 'USD',
+    tag_list: ['playboy', 'businessman']
+}
+invoice = Quaderno::Expense.create(params) #=> Quaderno::Expense
+item_params = {
     description: 'Rocket launcher',
     quantity: '1.0',
     unit_price: '0.0',
     discount_rate: '0.0',
     reference: 'ITEM_ID'
-    }
-  ],
 }
-Quaderno::Expense.create(params) #=> Quaderno::Expense
+item = Quaderno::Item.create(item_params) #=> Quaderno::Item
+contact = Quaderno::Contact.find('5059bdbf2f412e0901000024') #=> Quaderno::Contact
+expense.add_item(item)
+expense.add_contact(contact)
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "contact_id":"5059bdbf2f412e0901000024",
+    "contact_name":"ACME",
+    "currency":"USD"
+]
+
+// TODO: Items!
+
+let createExpense = Expense.create(params)
+client.request(createExpense) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/expenses.json` will create a new contact from the parameters passed.
@@ -144,8 +158,8 @@ $expenses = QuadernoExpense::find(); // Returns an array of QuadernoExpense
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readExpense = Expense.list(pageNum)
-client.request(readExpense) { response in
+let listExpenses = Expense.list(pageNum)
+client.request(listExpenses) { response in
   // response will contain the result of the request.
 }
 ```
@@ -267,7 +281,7 @@ $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readExpense = Expense.list(pageNum)
+let readExpense = Expense.read(EXPENSE_ID)
 client.request(readExpense) { response in
   // response will contain the result of the request.
 }
@@ -343,7 +357,16 @@ $expense->save();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "payment_details": "Money in da bank"
+]
+
+let updateExpense = Expense.update(EXPENSE_ID, params)
+client.request(updateExpense) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ting to `/expenses/EXPENSE_ID.json` will update the expense with the passed parameters.
@@ -382,7 +405,12 @@ $expense->delete();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let deleteExpense = Expense.delete(EXPENSE_ID)
+client.request(deleteExpense) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/expense/EXPENSE_ID.json` will delete the specified contact and returns `204 No Content` if successful.

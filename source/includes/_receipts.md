@@ -39,7 +39,7 @@ $receipt = new QuadernoReceipt(array(
                                  'payment_method' => 'credit_card',
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => 'playboy, businessman'));
+                                 'tag_list' => array('playboy', 'businessman')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Pizza bagels',
                                'unit_price' => 9.99,
@@ -57,9 +57,9 @@ params = {
  po_number: '',
  payment_method: 'credit_card',
  currency: 'USD',
- tag_list: 'playboy, businessman'
+ tag_list: ['playboy', 'businessman']
 }
-invoice = Quaderno::Invoice.create(params) #=> Quaderno::Invoice
+receipt = Quaderno::Receipt.create(params) #=> Quaderno::Receipt
 item_params = {
   description: 'Whiskey',
   quantity: '1.0',
@@ -69,8 +69,8 @@ item_params = {
 }
 item = Quaderno::Item.create(item_params) #=> Quaderno::Item
 contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
-invoice.add_item(item)
-invoice.add_contact(contact)
+receipt.add_item(item)
+receipt.add_contact(contact)
 ```
 
 ```swift?start_inline=1

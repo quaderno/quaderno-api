@@ -36,7 +36,7 @@ curl -u YOUR_API_KEY:x \
 $credit = new QuadernoCredit(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => 'playboy, businessman'));
+                                 'tag_list' => array('playboy', 'businessman')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Whiskey',
                                'unit_price' => 20.0,
@@ -56,7 +56,7 @@ params = {
   contact_name: 'STARK',
   po_number: '',
   currency: 'USD',
-  tag_list: 'playboy, businessman',
+  tag_list: ['playboy', 'businessman'],
   items_attributes: [
     {
       description: 'Whiskey',
@@ -70,8 +70,43 @@ params = {
 Quaderno::Credit.create(params) #=> Quaderno::Credit
 ```
 
+```ruby
+params = {
+ po_number: '',
+ currency: 'USD',
+ tag_list: ['playboy', 'businessman']
+}
+credit = Quaderno::Credit.create(params) #=> Quaderno::Credit
+item_params = {
+  description: 'Whiskey',
+  quantity: '1.0',
+  unit_price: '20.0',
+  discount_rate: '0.0',
+  reference: 'ITEM_ID'
+}
+item = Quaderno::Item.create(item_params) #=> Quaderno::Item
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+credit.add_item(item)
+credit.add_contact(contact)
+```
+
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+ "contact_id": "5059bdbf2f412e0901000024",
+ "contact_name": "STARK",
+ "po_number": "",
+ "currency": "USD",
+ "tag_list": ["playboy", "businessman"]
+]
+
+// TODO: Items!
+
+let createCredit = Credit.create(params)
+client.request(createCredit) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/credits.json` will create a new credit from the parameters passed.
@@ -151,8 +186,8 @@ $credits = QuadernoCredit::find(); // Returns an array of QuadernoCredit
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readCredit = Credit.list(pageNum)
-client.request(readCredit) { response in
+let listCredits = Credit.list(pageNum)
+client.request(listCredits) { response in
   // response will contain the result of the request.
 }
 ```
@@ -297,7 +332,7 @@ $credit = QuadernoCredit::find('CREDIT_ID'); // Returns a QuadernoCredit
 ```swift
 let client = Quaderno.Client(/* ... */)
 
-let readCredit = Credit.list(pageNum)
+let readCredit = Credit.read(CREDIT_ID)
 client.request(readCredit) { response in
   // response will contain the result of the request.
 }
@@ -377,20 +412,27 @@ curl -u YOUR_API_KEY:x \
 
 ```ruby
 params = {
-    contact_id: '505c3b402f412e0248000044',
-    contact_name: 'Dick Dastardly'
+    tag_list: ['whiskey', 'alcohol']
 }
 Quaderno::Credit.update(CREDIT_ID, params) #=> Quaderno::Credit
 ```
 
 ```php?start_inline=1
-$credit->contact_id = '505c3b402f412e0248000044';
-$credit->contact_name = 'Dick Dastardly';
+$credit->tag_list = array("whiskey", "alcohol");
 $credit->save();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "tag_list": ["whiskey", "alcohol"]
+]
+
+let updateCredit = Credit.update(CREDIT_ID, params)
+client.request(updateCredit) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ting to `/credits/CREDIT_ID.json` will update the credit with the passed parameters.
@@ -415,7 +457,12 @@ $credit->delete();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let deleteCredit = Credit.delete(CREDIT_ID)
+client.request(deleteCredit) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/credit/CREDIT_ID.json` will delete the specified credit and returns `204 No Content` if successful.

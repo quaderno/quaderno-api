@@ -142,8 +142,6 @@ client.request(listContacts) { response in
 
 You can filter the results by full name, email or tax ID by passing the `q` parameter in the URL as a query string, like `?q=KEYWORD`.
 
-TODO: Example of this with real query
-
 ## Retrieve: Get a single contact
 
 > `GET /contacts/CONTACT_ID.json`

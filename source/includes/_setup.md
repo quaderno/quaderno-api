@@ -306,3 +306,7 @@ When we make breaking changes to our API, we release a new version number which 
 <aside class="notice">
 The current version is <strong>v1</strong>.
 </aside>
+
+## Testing
+
+We recommend testing against our Sandbox environment. You can sign up for a sandbox account (test-ready) [here](http://sandbox-quadernoapp.com).

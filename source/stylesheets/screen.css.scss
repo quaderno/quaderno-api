@@ -489,6 +489,10 @@ html, body {
     @extend %nav-font;
     color: #fff;
 
+    a {
+        color: #fff;
+    }
+
     &.warning {
       background-color: $aside-warning-bg;
       text-shadow: 0 1px 0 darken($aside-warning-bg, 15%);

@@ -67,12 +67,15 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
+
+  @extend %nav-font;
   font-size: 13px;
   font-weight: bold;
 
   // language selector for mobile devices
   .lang-selector {
     display: none;
+    @extend %nav-font;
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
@@ -176,6 +179,7 @@ html, body {
     box-shadow: 0px 1px 0px $nav-active-shadow;
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    text-shadow: 0 1px 0 darken($nav-active-bg, 15%);
   }
 
   // Subheaders are the submenus that slide open
@@ -290,6 +294,7 @@ html, body {
 .lang-selector {
   background-color: $lang-select-bg;
   width: 100%;
+  @extend %nav-font;
   font-weight: bold;
   a {
     display: block;
@@ -366,8 +371,8 @@ html, body {
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
     border-top: 1px solid #ddd;
-    background-image: linear-gradient(to bottom, #fff, #f9f9f9);
-    color: #4c7800;
+    // background-image: linear-gradient(to bottom, #fff, #f9f9f9);
+    background: $header-bg;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -475,20 +480,23 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    text-shadow: 0 1px 0 lighten($aside-notice-bg, 15%);
+    text-shadow: 0 1px 0 darken($aside-notice-bg, 15%);
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
 
+    @extend %nav-font;
+    color: #fff;
+
     &.warning {
       background-color: $aside-warning-bg;
-      text-shadow: 0 1px 0 lighten($aside-warning-bg, 15%);
+      text-shadow: 0 1px 0 darken($aside-warning-bg, 15%);
     }
 
     &.success {
       background-color: $aside-success-bg;
-      text-shadow: 0 1px 0 lighten($aside-success-bg, 15%);
+      text-shadow: 0 1px 0 darken($aside-success-bg, 15%);
     }
   }
 
@@ -563,6 +571,7 @@ html, body {
       color: #ccc;
       border-top: 1px solid #000;
       border-bottom: 1px solid #404040;
+      @extend %nav-font;
     }
   }
 }

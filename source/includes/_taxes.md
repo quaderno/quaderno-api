@@ -4,7 +4,7 @@ One of the killer features Quaderno provides is efficient and easy tax managemen
 
 ## Calculate Taxes
 
-> `GET /taxes/calculate.json?country=ES&postal_code=08080&vat_number=ESA58818501`
+> `GET /taxes/calculate.json`
 
 ```shell
 # body.json
@@ -65,7 +65,7 @@ client.request(taxCalculation) { response in
 }
 ```
 
-`GET`ting to `/taxes/calculate.json` will calculate the applicable taxes given a customer's data,
+`GET`ting to `/taxes/calculate.json` will calculate the applicable taxes given a customer's data.
 
 Parameter          | Mandatory | Description
 -------------------|-----------|------------------------------------------------------------------------------------------------
@@ -75,3 +75,46 @@ Parameter          | Mandatory | Description
 `transaction_type` | No        | Values: `eservice`, `ebook`, `standard`. Default is `eservice`
 
 This will return a `200 OK` if the request was a success, along with the taxes represented as a JSON string.
+
+## Validating VAT Numbers
+
+> GET /taxes/validate.json
+
+```shell
+# body.json
+{     
+    "country": "ES",
+    "vat_number": "ESA58818501"
+}
+
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     --data-binary @body.json \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/taxes.json'
+```
+
+```ruby
+# Coming soon!
+```
+
+```php?start_inline=1
+// Coming soon!
+```
+
+```swift?start_inline=1
+// Coming soon!
+```
+
+```json
+{
+    "valid":true
+}
+```
+
+`GET`ting to `/taxes/validate.json` will validate the given EU VAT number.
+
+Parameter    | Mandatory | Description
+-------------|-----------|------------------------------------------------------------------------------------------------
+`country`    | **Yes**   | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`vat_number` | **Yes**   | Customer's VAT number

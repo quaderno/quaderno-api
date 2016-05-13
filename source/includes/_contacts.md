@@ -246,7 +246,8 @@ This will return `200 OK` and a JSON representation of the contact if successful
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
 ```
 
 ```ruby

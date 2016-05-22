@@ -464,7 +464,7 @@ client.request(deleteInvoice) { response in
 }
 ```
 
-`DELETE`ing to `/invoice/INVOICE_ID.json` will delete the specified invoice and returns `204 No Content` if successful.
+`DELETE`ing to `/invoices/INVOICE_ID.json` will delete the specified invoice and returns `204 No Content` if successful.
 
 ## Deliver (Send) an invoice
 

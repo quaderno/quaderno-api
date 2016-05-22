@@ -19,6 +19,7 @@ includes:
   - invoices
   - receipts
   - expenses
+  - recurring
   - estimates
   - credits
   - items

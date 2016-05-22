@@ -88,7 +88,7 @@ language                | no        | String(2 chars) Should be included in the 
 tax_id                  | no        | String(255 chars)
 vat_number              | no        | String(255 chars) If present, it is validated against VIES
 bank_account            | no        | String(255 chars) format is validated
-bic                     | yes/no        | String(255 chars) **Mandatory if bank_account is present.** Format is validated
+bic                     | **yes**/no        | String(255 chars) **Mandatory if bank_account is present.** Format is validated
 notes                   | no        | Text
 
 ## Retrieve: Get and filter all contacts

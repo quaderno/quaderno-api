@@ -55,7 +55,6 @@ This will return `201 Created` and the current JSON representation of the contac
 
 Key          | Description
 -------------|------------------------------------------------------------------------------------------
-`kind`       | Indicates if the contact is a `person` or a `company`.
 `first_name` | The first name of the contact.
 `bic`        | *If sending a bank_account (in electronic IBAN format)*. Must be 11 characters in length.
 

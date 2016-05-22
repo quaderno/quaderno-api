@@ -255,7 +255,6 @@ You can filter the results in a few ways:
 - By date range, passing the `date` parameter in the url like `?date=DATE1,DATE2`.
 - By state, passing the `state` parameter like `?state=STATE`.
 - By specific vendor, passing the vendor ID in the `contact` parameter, like `?contact=3231`.
-- By `exchange_rate`, if the expense currency differs from your account currency.
 
 ## Retrieve: Get a single expense
 

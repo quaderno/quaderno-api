@@ -93,7 +93,7 @@ client.request(createReceipt) { response in
 }
 ```
 
-`POST`ing to `/receipts.json` will create a new contact from the parameters passed.
+`POST`ing to `/receipts.json` will create a new receipt from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the receipt if the creation was a success, along with the location of the new receipt in the `url` field.
 

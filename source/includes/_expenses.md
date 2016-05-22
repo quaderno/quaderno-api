@@ -84,7 +84,7 @@ client.request(createExpense) { response in
 }
 ```
 
-`POST`ing to `/expenses.json` will create a new contact from the parameters passed.
+`POST`ing to `/expenses.json` will create a new expense from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the expense if the creation was a success, along with the location of the new expense in the `url` field.
 

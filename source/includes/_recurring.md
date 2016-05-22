@@ -97,7 +97,7 @@ client.request(createRecurring) { response in
 }
 ```
 
-`POST`ing to `/recurring.json` will create a new contact from the parameters passed.
+`POST`ing to `/recurring.json` will create a new recurring from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the recurring if the creation was a success, along with the location of the new recurring in the `url` field.
 

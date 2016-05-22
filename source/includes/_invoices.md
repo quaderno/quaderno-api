@@ -88,7 +88,7 @@ client.request(createInvoice) { response in
 }
 ```
 
-`POST`ing to `/invoices.json` will create a new contact from the parameters passed.
+`POST`ing to `/invoices.json` will create a new invoice from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the invoice if the creation was a success, along with the location of the new invoice in the `url` field.
 

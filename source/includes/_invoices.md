@@ -92,12 +92,26 @@ client.request(createInvoice) { response in
 
 This will return `201 Created` and the current JSON representation of the invoice if the creation was a success, along with the location of the new invoice in the `url` field.
 
-### Mandatory Fields
+### Attributes
 
-Key          | Description
--------------|------------------------------------------------------------------------------------------
-`contact_id` / `contact`       | Either the ID of an existing contact or the JSON object for an existing/new contact.
-`items_attributes` | An array of hashes which contains the `description`, `quantity`, `unit_price` and `discount_rate` of each item. If you want to have stock tracking, also pass the item code as the `reference` attribute. You may also add items to an invoice by passing the `reference` of a pre-existing item.
+Attribute       | Mandatory                                  | Type/Description
+----------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+number          | no                                         | String(255 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness
+issue_date      | no                                         | String(255 chars) Available for all except for `recurring`. Defaults to the current date. Format AAAA-MM-DD
+po_number       | no                                         | String(255 chars)
+due_date        | no                                         | String(255 chars) Available for invoices, expenses and credit notes. Format `YYYY-MM-DD`
+currency        | no                                         | String(3 chars) Defaults to the account currency. En formato ISO 4217
+tag_list        | no                                         | String(255 chars). Multiple tags should be separated by commas
+payment_details | no                                         | Text
+notes           | no                                         | Text
+contact_id      | (Mandatory if `contact` is not present)    | ID
+contact         | (Mandatory if `contact_id` is not present) | Hash with a contact data for creation
+street_line_1   | no                                         | String(255 chars). Available for updates
+street_line_2   | no                                         | String(255 chars)
+city            | no                                         | String(255 chars). Available for updates
+region          | no                                         | String(255 chars). Available for updates
+postal_code     | no                                         | String(255 chars). Available for updates
+payment_method  | no                                         | Create a paid document in a single request. One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new invoice will be created for the existing contact.<br /><br />

@@ -57,12 +57,13 @@ invoice.add_payment(params) #=> Quaderno::Payment
 
 This will return `201 Created` and the current JSON representation of the payment if the creation was a success, along with the location of the new item in the `Location` header.
 
-### Mandatory Fields
+### Attributes
 
-Key              | Description
------------------|------------------------------------------------------------------------------------------------------------------------------------
-`amount`         | Amount to be paid.
-`payment_method` | Method of payment (`credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`).
+Attribute      | Mandatory | Type/Description
+---------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------
+amount         | **yes**   | Decimal
+date           | no        | String(255 chars) Format `YYYY-MM-DD`
+payment_method | **yes**   | One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
 
 ## Retrieve: Get all payments on an invoice or expense
 

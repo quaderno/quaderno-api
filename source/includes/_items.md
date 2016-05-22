@@ -61,13 +61,20 @@ TODO!
 
 This will return `201 Created` and the current JSON representation of the item if the creation was a success, along with the location of the new item in the `url` field.
 
-### Mandatory Fields
+### Attributes
 
-Key          | Description
--------------|------------------------------------------------------------------------------------------
-`name`       | Name of the item.
-`unit_cost` | Cost of the item.
-`code` | Mandatory *only* if you want to have stock tracking by defining the value `stock`.
+Attribute     | Mandatory                                                   | Type/Description
+--------------|-------------------------------------------------------------|---------------------------------------------------
+code          | Mandatory if `stock` is present                             | String(255 chars). Validates uniqueness
+name          | yes                                                         | String(255 chars).
+unit_cost     | yes                                                         | Decimal
+tax_1_name    | Mandatory if  `tax_1_rate` and `tax_1_country` are present) |
+tax_1_rate    | Mandatory if  `tax_1_name` and `tax_1_country` are present) | Decimal between -100.00 and 100.00 (not incluided)
+tax_1_country | Mandatory if `tax_1_name` and `tax_1_rate` are present)     | String(2 chars). Format ISO 3166-1 alpha-2
+tax_2_name    | Mandatory if  `tax_2_rate` and `tax_2_country` are present) |
+tax_2_rate    | Mandatory if  `tax_2_name` and `tax_2_country` are present) | Decimal between -100.00 and 100.00 (not incluided)
+tax_2_country | Mandatory if `tax_2_name` and `tax_2_rate` are present)     | String(2 chars). Format ISO 3166-1 alpha-2
+stock         | no                                                          | Decimal
 
 <aside class="notice">
 Note that this kind of item is like a template for items, a shortcut that you can reference in order to speed up document creation. You can also have items that exist only for the relevant document and not as independent entities, and these do not require "unit_cost" (also not being stock-trackable and so on).

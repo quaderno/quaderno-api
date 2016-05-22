@@ -58,6 +58,39 @@ Key          | Description
 `first_name` | The first name of the contact.
 `bic`        | *If sending a bank_account (in electronic IBAN format)*. Must be 11 characters in length.
 
+### Attributes
+
+Attribute               | Mandatory | Type/Description
+------------------------|-----------|----------------------------------------------------------------------------
+kind                    | no        | `company` or `person`. Defaults to `company`.
+first_name              | **yes**       | String(255 chars)
+last_name               | no        | String(255 chars)
+contact_name            | no        | String(255 chars)
+street_line_1           | no        | String(255 chars)
+street_line_2           | no        | String(255 chars)
+city                    | no        | String(255 chars)
+postal_code             | no        | String(255 chars)
+region                  | no        | String(255 chars)
+country                 | no        | String(2 chars) `ISO 3166-1 alpha-2`
+secondary_street_line_1 | no        | String(255 chars)
+secondary_street_line_2 | no        | String(255 chars)
+secondary_postal_code   | no        | String(255 chars)
+secondary_city          | no        | String(255 chars)
+secondary_region        | no        | String(255 chars)
+secondary_country       | no        | String(255 chars)
+phone_1                 | no        | String(255 chars)
+phone_2                 | no        | String(255 chars)
+fax                     | no        | String(255 chars)
+email                   | no        | String(255 chars) Multiple emails should be separated by commas
+web                     | no        | String(255 chars). Validates format
+discount                | no        | Decimal
+language                | no        | String(2 chars) Should be included in the translations list
+tax_id                  | no        | String(255 chars)
+vat_number              | no        | String(255 chars) If present, it is validated against VIES
+bank_account            | no        | String(255 chars) format is validated
+bic                     | yes/no        | String(255 chars) **Mandatory if bank_account is present.** Format is validated
+notes                   | no        | Text
+
 ## Retrieve: Get and filter all contacts
 
 > `GET /contacts.json`

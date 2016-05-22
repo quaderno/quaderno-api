@@ -130,6 +130,23 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the first and
 You can't create a receipt for a contact with a tax ID. If the contact has a tax ID a regular (full) invoice should be created.
 </aside>
 
+### Document Item Attributes
+
+Attribute     | Mandatory                                | Type/Description
+--------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
+description   | **yes**                                  | String(255 chars)
+quantity      | no                                       | Decimal. Defaults to 1.0
+unit_price    | **yes**                                  | Decimal
+total_amount  | Mandatory if `unit_price` is not present | Decimal
+discount_rate | no                                       | Decimal
+tax_1_name    | Mandatory if `tax_1_rate` is present     | String(255 chars)
+tax_1_rate    | Mandatory if `tax_1_name` is present     | Decimal between -100.00 and 100.00 (not included)
+tax_1_country | no                                       | String(2 chars). Defaults to the contact's country
+tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
+tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
+tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
+reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
+
 ### Receipt States
 
 Possible receipt states are:

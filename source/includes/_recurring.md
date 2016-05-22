@@ -1,6 +1,6 @@
 # Recurring
 
-A recurring is a special document that periodically renews itself and generates a recurring recurring or expense.
+A recurring is a special document that periodically renews itself and generates a recurring invoice or expense.
 
 ## Create a recurring
 

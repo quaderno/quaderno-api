@@ -112,10 +112,6 @@ Possible expense states are:
 - `late`
 - `archived`
 
-You can set the expense state by passing the `state` attribute. Bear the following in mind:
-
-- The `paid` state is only reachable by adding a `payment` to the expense and is also final, so **cannot be overwritten unless the payment is removed from the expense**.
-
 ### Create an attachment during expense creation
 
 ```json

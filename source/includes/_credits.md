@@ -139,11 +139,6 @@ Possible credit states are:
 - `late`
 - `archived`
 
-You can set the credit state by passing the `state` attribute, but bear the following considerations in mind:
-
-- The `paid` state is only reachable by adding a `payment` to the invoice and is also final, so **cannot be overwritten unless the payment is removed from the credit**.
-- The `sent` state can only overwrite the state `draft`.
-
 ### Create an attachment during credit creation
 
 ```json

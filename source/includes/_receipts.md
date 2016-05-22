@@ -124,8 +124,6 @@ Possible receipt states are:
 - `paid` (default state)
 - `invoiced` (final state reached when the receipt is invoiced and *cannot be undone*)
 
-You can set the receipt state by passing the `state` attribute.
-
 ## Retrieve: Get and filter all receipts
 
 > `GET /receipts.json`

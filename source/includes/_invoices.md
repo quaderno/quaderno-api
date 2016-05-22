@@ -118,11 +118,6 @@ Possible invoice states are:
 - `late`
 - `archived`
 
-You can set the invoice state by passing the `state` attribute, but bear the following considerations in mind:
-
-- The `paid` state is only reachable by adding a `payment` to the invoice and is also final, so **cannot be overwritten unless the payment is removed from the invoice**.
-- The `sent` state can only overwrite the state `draft`.
-
 ### Create an attachment during invoice creation
 
 ```json

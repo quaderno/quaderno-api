@@ -131,11 +131,6 @@ Possible estimate states are:
 - `reverted`
 - `late`
 
-You can set the estimate state by passing the `state` attribute, but bear the following considerations in mind:
-
-- The `invoiced` state is final and cannot be overwritten.
-- The `sent` state can only overwrite the state `draft`.
-
 ### Create an attachment during estimate creation
 
 ```json

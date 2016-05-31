@@ -212,7 +212,9 @@ When sending JSON (in `PUT` or `POST` requests), you must specify `Content-Type:
 All API URLs end in .json to indicate that they accept and return JSON.
 </aside>
 
-## A note on POSTing JSON with cURL
+## A note on working with JSON in cURL
+
+### POSTing
 
 > `POST /items.json`
 
@@ -239,6 +241,16 @@ curl -u YOUR_API_KEY:x \
 Multiline cURL with JSON is a little bit tricky. In our experience the cleanest, easiest way to make it work correctly is actually to save the desired JSON payload to a file (we use `body.json` as the filename in our examples) and pass it to the cURL command in the `--data-binary` flag, effectively passing the file in by stdin.
 
 Your mileage may vary, but this is the way that we recommend.
+
+### GETting
+
+A fun bit of useful cURLing-with-JSON-related fun is to append `| json_pp` or `| jq .` to your request.
+
+This will cause the JSON to "pretty print", meaning that it will come out nicely formatted like the examples in these docs instead of as one big jumbled mess.
+
+YMMV with the two commands, so check which works on your system. For us, on OS X 10.11, `| json_pp` is the winner.
+
+These will also be useful with other types of commands, but most useful when getting large chunks of data, as in `list`-type calls.
 
 ## Rate Limiting
 

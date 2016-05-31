@@ -22,7 +22,7 @@ An invoice is a detailed list of goods shipped or services rendered, with an acc
       "discount_rate":"0.0",
       "reference":"item_code_X"
     }
-  ],
+  ]
 }
 
 curl -u YOUR_API_KEY:x \

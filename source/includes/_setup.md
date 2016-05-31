@@ -212,7 +212,7 @@ When sending JSON (in `PUT` or `POST` requests), you must specify `Content-Type:
 All API URLs end in .json to indicate that they accept and return JSON.
 </aside>
 
-## Notes on working with JSON in cURL
+## JSON & cURL
 
 ### POSTing large amounts of JSON
 

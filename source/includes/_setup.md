@@ -216,7 +216,7 @@ All API URLs end in .json to indicate that they accept and return JSON.
 
 ### POSTing large amounts of JSON
 
-> `POST /items.json`
+> `POST /items.json` (with a large JSON body to send)
 
 ```curl
 # body.json

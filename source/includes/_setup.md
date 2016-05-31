@@ -244,11 +244,15 @@ Your mileage may vary, but this is the way that we recommend.
 
 ### Pretty printing JSON responses
 
-A fun bit of useful cURLing-with-JSON-related fun is to append `| json_pp`, `| python -mjson.tool > out.json` (on systems with Python installed - this will write to a file) or `| jq .` to your request.
+A fun bit of useful cURLing-with-JSON-related fun is to append one of the following commands to your request:
+
+- `| json_pp`
+- `| python -mjson.tool > out.json` (on systems with Python installed - this will write to a file)
+- `| jq .`
 
 This will cause the JSON to "pretty print", meaning that it will come out nicely formatted like the examples in these docs instead of as one big jumbled mess.
 
-YMMV with the commands, so check which works on your system. For us, on OS X 10.11, `| json_pp` is the winner for quick in-terminal checks, and `| python -mjson.tool > out.json` for writing results to files for later perusal.
+Different commands work better under different circumstances, so check which works best on your system. For us, on OS X 10.11, `| json_pp` is the winner for quick in-terminal checks, and `| python -mjson.tool > out.json` for writing results to files for later perusal.
 
 These will also be useful with other types of HTTP requests, but most useful when getting large chunks of data, as in `list`-type calls.
 

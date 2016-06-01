@@ -114,7 +114,7 @@ postal_code     | no                                         | String(255 chars)
 payment_method  | no                                         | Create a paid document in a single request. One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
 
 <aside class="notice">
-If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new invoice will be created for the existing contact.<br /><br />
+If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new invoice will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
 
 <p>Please note that you can pass <strong>either</strong> contact_id or contact, but if you pass both then results may not be what you expect.</p>
 

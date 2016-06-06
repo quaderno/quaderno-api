@@ -92,8 +92,6 @@ number":"0000006",
     "tag_list": ["playboy", "businessman"]
 ]
 
-// TODO: Items!
-
 let createEstimate = Estimate.create(params)
 client.request(createEstimate) { response in
     // response will contain the result of the request.

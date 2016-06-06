@@ -76,8 +76,6 @@ let params : [String: Any] = [
     "currency":"USD"
 ]
 
-// TODO: Items!
-
 let createExpense = Expense.create(params)
 client.request(createExpense) { response in
     // response will contain the result of the request.

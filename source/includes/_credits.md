@@ -101,8 +101,6 @@ let params : [String: Any] = [
  "tag_list": ["playboy", "businessman"]
 ]
 
-// TODO: Items!
-
 let createCredit = Credit.create(params)
 client.request(createCredit) { response in
     // response will contain the result of the request.

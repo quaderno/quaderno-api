@@ -80,8 +80,6 @@ let params : [String: Any] = [
  "tag_list": ["playboy", "businessman"]
 ]
 
-// TODO: Items!
-
 let createInvoice = Invoice.create(params)
 client.request(createInvoice) { response in
     // response will contain the result of the request.

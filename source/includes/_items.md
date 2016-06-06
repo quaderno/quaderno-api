@@ -54,7 +54,20 @@ Quaderno::Item.create(params) #=> Quaderno::Item
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "name":"Jelly pizza",
+    "code":"Yummy",
+    "unit_cost":"15.00",
+    "tax_1_name":"JUNKTAX",
+    "tax_1_rate":"99.99"
+]
+
+let createItem = Item.create(params)
+client.request(createItem) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `POST`ing to `/items.json` will create a new item from the parameters passed.
@@ -210,7 +223,16 @@ $item->save();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "unit_cost": "10.0"
+]
+
+let updateItem = Item.update(ITEM_ID, params)
+client.request(updateItem) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `PUT`ting to `/items/ITEM_ID.json` will update the item with the passed parameters.
@@ -235,7 +257,12 @@ $item->delete();
 ```
 
 ```swift?start_inline=1
-// TODO
+let client = Quaderno.Client(/* ... */)
+
+let deleteItem = Item.delete(ITEM_ID)
+client.request(deleteItem) { response in
+    // response will contain the result of the request.
+}
 ```
 
 `DELETE`ing to `/item/ITEM_ID.json` will delete the specified item and returns `204 No Content` if successful.

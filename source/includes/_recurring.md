@@ -89,8 +89,6 @@ let params : [String: Any] = [
  "tag_list": ["playboy", "businessman"]
 ]
 
-// TODO: Items!
-
 let createRecurring = Recurring.create(params)
 client.request(createRecurring) { response in
     // response will contain the result of the request.

@@ -107,7 +107,6 @@ client.account { credentials in
 ```
 
 ```php?start_inline=1
-// Erk, TODO!
 ```
 
 > Returns:
@@ -194,7 +193,18 @@ Quaderno::Contact.create(params) #=> Quaderno::Contact
 ```
 
 ```swift?start_inline=1
-TODO!
+let client = Quaderno.Client(/* ... */)
+
+let params : [String: Any] = [
+    "first_name": "Tony",
+    "kind": "person",
+    "contact_name": "Stark"
+]
+
+let createContact = Contact.create(params)
+client.request(createContact) { response in
+    // response will contain the result of the request.
+}
 ```
 
 As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST`, `PUT` and `DELETE`.
@@ -308,7 +318,12 @@ Quaderno::Contact.all(page: 1) #=> Array
 ```
 
 ```swift?start_inline=1
-// TODO!
+let client = Quaderno.Client(/* ... */)
+
+let listContacts = Contact.list(pageNum)
+client.request(listContacts) { response in
+  // response will contain the result of the request.
+}
 ```
 
 Bear in mind that Quaderno paginates `GET` index results, providing **25 results per page**.

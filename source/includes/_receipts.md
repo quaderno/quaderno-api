@@ -85,8 +85,6 @@ let params : [String: Any] = [
     "tag_list":"playboy, businessman"
 ]
 
-// TODO: Items!
-
 let createReceipt = Receipt.create(params)
 client.request(createReceipt) { response in
     // response will contain the result of the request.

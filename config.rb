@@ -28,6 +28,15 @@ end
 activate :relative_assets
 set :relative_links, true
 
+# Active Middleman Deploy
+activate :deploy do |deploy|
+  deploy.method = :rsync
+  deploy.host = '146.185.133.239'
+  deploy.path = '/var/www/quaderno.io/docs/api'
+  deploy.user = 'webuser' # no default
+  deploy.port = 32000 
+end
+
 # Build Configuration
 configure :build do
   activate :minify_css

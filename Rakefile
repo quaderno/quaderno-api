@@ -5,7 +5,7 @@ deployment = define_deployment "basic" do
 
   remote_dir '/var/www/api.quaderno.io'
   local_dir  'build'
-  build_task 'middleman:build' # optional if nothing needs to be built
+  build_task 'middleman build' # optional if nothing needs to be built
   post_deploy_task 'base:post_deploy' # optional if no task should be run after deploy
 
   dir_permissions  755 # optional, the perms set on rsync & setup for directories

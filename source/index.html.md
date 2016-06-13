@@ -1,5 +1,5 @@
 ---
-title: Quaderno API Reference
+title: Quaderno API Docs
 
 language_tabs:
   - shell
@@ -8,20 +8,21 @@ language_tabs:
   - swift
 
 toc_footers:
-  - <a href='http://quaderno.io'>Sign Up for an Account</a>
-  - <a href='http://support.quaderno.io'>Knowledgebase and Support</a><br /><br />
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://quaderno.io'>Quaderno Homepage</a>
+  - <a href='http://support.quaderno.io'>Knowledgebase and Support</a>
+  - <a href="https://github.com/quaderno/api-docs">Contributing to API Docs</a>
+  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a><br /><br />
 
 includes:
   - intro
   - setup
   - contacts
-  - invoices
   - receipts
-  - expenses
-  - recurring
-  - estimates
+  - invoices
   - credits
+  - expenses
+  - estimates
+  - recurring
   - items
   - payments
   - taxes

@@ -49,22 +49,23 @@ $expense->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
-params = {
-    currency: 'USD',
-    tag_list: ['playboy', 'businessman']
-}
-invoice = Quaderno::Expense.create(params) #=> Quaderno::Expense
-item_params = {
-    description: 'Rocket launcher',
-    quantity: '1.0',
-    unit_price: '0.0',
-    discount_rate: '0.0',
-    reference: 'ITEM_ID'
-}
-item = Quaderno::Item.create(item_params) #=> Quaderno::Item
 contact = Quaderno::Contact.find('5059bdbf2f412e0901000024') #=> Quaderno::Contact
-expense.add_item(item)
-expense.add_contact(contact)
+
+params = {
+    contact_id: contact.id
+    currency: 'USD',
+    tag_list: ['playboy', 'businessman'],
+    items_attributes: [
+      {
+        description: 'Rocket launcher',
+        quantity: '1.0',
+        unit_price: '0.0',
+        discount_rate: '0.0'
+      }
+    ]
+}
+
+invoice = Quaderno::Expense.create(params) #=> Quaderno::Expense
 ```
 
 ```swift?start_inline=1
@@ -103,6 +104,8 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below)
+
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new expense will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />

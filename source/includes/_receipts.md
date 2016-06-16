@@ -53,24 +53,24 @@ $receipt->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+
 params = {
+ contact_id: contact.id,
  po_number: '',
  payment_method: 'credit_card',
  currency: 'USD',
- tag_list: ['playboy', 'businessman']
+ tag_list: ['playboy', 'businessman'],
+ items_attributes: [
+  {
+    description: 'Whiskey',
+    quantity: '1.0',
+    unit_price: '20.0',
+    discount_rate: '0.0'
+  }
+ ]
 }
 receipt = Quaderno::Receipt.create(params) #=> Quaderno::Receipt
-item_params = {
-  description: 'Whiskey',
-  quantity: '1.0',
-  unit_price: '20.0',
-  discount_rate: '0.0',
-  reference: 'ITEM_ID'
-}
-item = Quaderno::Item.create(item_params) #=> Quaderno::Item
-contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
-receipt.add_item(item)
-receipt.add_contact(contact)
 ```
 
 ```swift?start_inline=1
@@ -114,7 +114,8 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
-payment_method  | **yes**                                         | One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below)
+payment_method  | **yes**                                    | One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new receipt will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />

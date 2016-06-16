@@ -58,26 +58,27 @@ $estimate->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+
 params = {
+  contact_id: contact.id,
   number: '0000006',
   po_number: '',
   currency: 'EUR',
   tag_list: 'tnt',
   payment_details: '',
-  notes: ''
+  notes: '',
+  items_attributes: [
+    {
+      description: 'Whiskey',
+      quantity: '1.0',
+      unit_price: '20.0',
+      discount_rate: '0.0'
+    }
+
+  ]
 }
 estimate = Quaderno::Estimate.create(params) #=> Quaderno::Estimate
-contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
-item_params = {
-  description: 'Whiskey',
-  quantity: '1.0',
-  unit_price: '20.0',
-  discount_rate: '0.0',
-  reference: 'ITEM_ID'
-}
-item = Quaderno::Item.create(item_params) #=> Quaderno::Item
-estimate.add_item(item)
-estimate.add_contact(contact)
 ```
 
 ```swift?start_inline=1
@@ -121,6 +122,7 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below)
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />

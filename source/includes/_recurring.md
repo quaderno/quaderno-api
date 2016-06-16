@@ -55,25 +55,25 @@ $recurring->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
+contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
+
 params = {
+ contact_id: contact.id,
  po_number: '',
  currency: 'USD',
  tag_list: ['playboy', 'businessman'],
  frequency: 'monthly',
- start_date: Date.parse('2015-08-01')
+ start_date: Date.parse('2015-08-01'),
+ items_attributes: [
+  {
+    description: 'Whiskey',
+    quantity: '1.0',
+    unit_price: '20.0',
+    discount_rate: '0.0'
+  }
+ ]
 }
 recurring = Quaderno::Recurring.create(params) #=> Quaderno::Recurring
-item_params = {
-  description: 'Whiskey',
-  quantity: '1.0',
-  unit_price: '20.0',
-  discount_rate: '0.0',
-  reference: 'ITEM_ID'
-}
-item = Quaderno::Item.create(item_params) #=> Quaderno::Item
-contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
-recurring.add_item(item)
-recurring.add_contact(contact)
 ```
 
 ```swift?start_inline=1
@@ -118,6 +118,7 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below)
 payment_method  | no                                         | Create a paid document in a single request. One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
 recurring_document  |  no  |  `invoice` or `expense`. Defaults to `invoice`
 start_date  |  **yes**  |  Format `YYYY-MM-DD`.

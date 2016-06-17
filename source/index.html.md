@@ -28,6 +28,7 @@ includes:
   - taxes
   - webhooks
   - errors
+  - changelog
 
 search: true
 ---

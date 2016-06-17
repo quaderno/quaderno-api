@@ -8,7 +8,7 @@ Expenses are all the invoices that you receive from your vendors.
 
 ```shell
 # body.json
-{     
+{
   "contact_id":"5059bdbf2f412e0901000024",
   "contact_name":"ACME",
   "currency":"USD",
@@ -26,7 +26,7 @@ Expenses are all the invoices that you receive from your vendors.
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses.json'
+     --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/expenses.json'
 ```
 
 ```php?start_inline=1
@@ -119,6 +119,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the first and
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
+id            | no                                       | ID. Available only for updates
 description   | **yes**                                  | String(255 chars)
 quantity      | no                                       | Decimal. Defaults to 1.0
 unit_price    | **yes**                                  | Decimal
@@ -131,6 +132,7 @@ tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
+_destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
 ### Expense States
 
@@ -169,7 +171,7 @@ Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses.json'
 ```
 
 ```ruby
@@ -211,26 +213,26 @@ client.request(listExpenses) { response in
         "id":"48151623423",
         "description":"Rockets",
         "quantity":"50.0",
-        "unit_price":"125.0",
+        "unit_price_cents":"12500",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
-        "subtotal":"$6,250.00",
-        "discount":"$0.00",
-        "gross_amount":"$6,250.00"
+        "subtotal_cents":"625000",
+        "discount_cents":"0",
+        "gross_amount_cents":"625000"
       }
     ],
-    "subtotal":"$6,250.00",
-    "discount":"$0.00",
+    "subtotal_cents":"625000",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"$6,250.00",
+    "total_cents":"625000",
     "payments":[],
     "tag_list":["rockets", "acme"],
     "notes":"",
     "state":"outstanding",
-    "url":"https://my-account.quadernoapp.com/api/v1/expenses/5076a6b92f412e0e2e00006c"
+    "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00006c"
   },
   {
     "id":"5076a6b92f412e0e2e00016d",
@@ -252,26 +254,26 @@ client.request(listExpenses) { response in
       "id":" 48151623424",
       "description":"TNT",
       "quantity":"100.0",
-      "unit_price":"25.0",
+      "unit_price_cents":"2500",
       "discount_rate":"0.0",
       "tax_1_name":"",
       "tax_1_rate":"",
       "tax_2_name":"",
       "tax_2_rate":"",
-      "subtotal":"$2,500.00",
-      "discount":"$0.00",
-      "gross_amount":"$2,500.00"
+      "subtotal_cents":"250000",
+      "discount_cents":"0",
+      "gross_amount_cents":"250000"
     }
     ],
-    "subtotal":"$2,500.00",
-    "discount":"$0.00",
+    "subtotal_cents":"250000",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"$2,500.00",
+    "total_cents":"250000",
     "payments":[],
     "tag_list":["tnt", "acme"],
     "notes":"",
     "state":"outstanding",
-    "url":"https://my-account.quadernoapp.com/api/v1/expenses/5076a6b92f412e0e2e00016d"
+    "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00016d"
   },
 ]
 ```
@@ -291,7 +293,7 @@ You can filter the results in a few ways:
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses/EXPENSE_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
 ```
 
 ```ruby
@@ -331,26 +333,26 @@ client.request(readExpense) { response in
       "id":"48151623423",
       "description":"Rockets",
       "quantity":"50.0",
-      "unit_price":"125.0",
+      "unit_price_cents":"12500",
       "discount_rate":"0.0",
       "tax_1_name":"",
       "tax_1_rate":"",
       "tax_2_name":"",
       "tax_2_rate":"",
-      "subtotal":"$6,250.00",
-      "discount":"$0.00",
-      "gross_amount":"$6,250.00"
+      "subtotal_cents":"625000",
+      "discount_cents":"0",
+      "gross_amount_cents":"625000"
     }
   ],
-  "subtotal":"$6,250.00",
-  "discount":"$0.00",
+  "subtotal_cents":"625000",
+  "discount_cents":"0",
   "taxes":[],
-  "total":"$6,250.00",
+  "total_cents":"625000",
   "payments":[],
   "tag_list":["rockets", "acme"],
   "notes":"",
   "state":"outstanding",
-  "url":"https://my-account.quadernoapp.com/api/v1/expenses/5076a6b92f412e0e2e00006c"
+  "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00006c"
 }
 ```
 
@@ -365,7 +367,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d '{ "payment_details":"Money in da bank" }'  \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses/EXPENSE_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
 ```
 
 ```ruby
@@ -417,7 +419,7 @@ If the user does not have access to create new expenses, you'll see `401 Unautho
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses/EXPENSE_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
 ```
 
 ```ruby

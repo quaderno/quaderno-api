@@ -36,7 +36,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @- body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/estimates.json'
 ```
 
 ```php?start_inline=1
@@ -136,10 +136,11 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the first and
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
+id            | no                                       | ID. Available only for updates
 description   | **yes**                                  | String(255 chars)
 quantity      | no                                       | Decimal. Defaults to 1.0
 unit_price    | **yes**                                  | Decimal
-total_amount  | Mandatory if `unit_price` is not present | Decimal
+total_amount  | Mandatory if `unit_price` is not present | Decimal. Cents version available as `total_amount_cents`
 discount_rate | no                                       | Decimal
 tax_1_name    | Mandatory if `tax_1_rate` is present     | String(255 chars)
 tax_1_rate    | Mandatory if `tax_1_name` is present     | Decimal between -100.00 and 100.00 (not included)
@@ -148,6 +149,7 @@ tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
+_destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
 ### Estimate States
 
@@ -189,7 +191,7 @@ Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/estimates.json'
 ```
 
 ```ruby
@@ -211,7 +213,7 @@ client.request(listEstimates) { response in
 
 ```json
 [
-  {  
+  {
     "id":"50603e722f412e0435000024",
     "number":"0000003",
     "issue_date":"2012-09-24",
@@ -231,29 +233,29 @@ client.request(listEstimates) { response in
         "id":"4815162342",
         "description":"ACME TNT",
         "quantity":"1.0",
-        "unit_price":"100.0",
+        "unit_price_cents":"10000",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
-        "subtotal":"\u20ac100.00",
-        "discount":"\u20ac0.00",
-        "gross_amount":"\u20ac100.00"
+        "subtotal_cents":"10000",
+        "discount_cents":"0",
+        "gross_amount_cents":"10000"
        }
     ],
-    "subtotal":"\u20ac100.00",
-    "discount":"\u20ac0.00",
+    "subtotal_cents":"10000",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"\u20ac100.00",
+    "total_cents":"10000",
     "payment_details":"",
     "notes":"",
     "state":"draft",
     "tag_list":[],
     "permalink":"https://my-account.quadernoapp.com/estimate/7hef1rs7p3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/estimates/50603e722f412e0435000024.json"
+    "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json"
   },
-  {  
+  {
     "id":"50603e722f412e0435000144",
     "number":"0000005",
     "issue_date":"2012-09-24",
@@ -273,27 +275,27 @@ client.request(listEstimates) { response in
         "id":"48151623421",
         "description":"Cookies",
         "quantity":"5.0",
-        "unit_price":"1.95",
+        "unit_price_cents":"195",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
-        "subtotal":"\u20ac9.75",
-        "discount":"\u20ac0.00",
-        "gross_amount":"\u20ac9.75"
+        "subtotal_cents":"975",
+        "discount_cents":"0",
+        "gross_amount_cents":"975"
        }
     ],
-    "subtotal":"\u20ac9.75",
-    "discount":"\u20ac0.00",
+    "subtotal_cents":"975",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"\u20ac9.75",
+    "total_cents":"975",
     "payment_details":"",
     "notes":"",
     "state":"draft",
     "tag_list":[],
     "permalink":"https://my-account.quadernoapp.com/estimate/7hes3c0ndp3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/v1/estimates/50603e722f412e0435000144.json"
+    "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000144.json"
   }
 ]
 ```
@@ -313,7 +315,7 @@ You can filter the results in a few ways:
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates/ESTIMATE_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/estimates/ESTIMATE_ID.json'
 ```
 
 ```ruby
@@ -334,7 +336,7 @@ client.request(readEstimate) { response in
 ```
 
 ```json
-{  
+{
   "id":"50603e722f412e0435000024",
   "number":"0000003",
   "issue_date":"2012-09-24",
@@ -354,27 +356,27 @@ client.request(readEstimate) { response in
       "id":"4815162342"
       "description":"ACME TNT",
       "quantity":"1.0",
-      "unit_price":"\u20ac100.0",
+      "unit_price_cents":"10000",
       "discount_rate":"0.0",
       "tax_1_name":"",
       "tax_1_rate":"",
       "tax_2_name":"",
       "tax_2_rate":"",
-      "subtotal":"\u20ac100.00",
-      "discount":"\u20ac0.00",
-      "gross_amount":"\u20ac100.00"
+      "subtotal_cents":"10000",
+      "discount_cents":"0",
+      "gross_amount_cents":"10000"
     }
   ],
-  "subtotal":"\u20ac100.00",
-  "discount":"\u20ac0.00",
+  "subtotal_cents":"10000",
+  "discount_cents":"0",
   "taxes":[],
-  "total":"\u20ac100.00",
+  "total":"10000",
   "payment_details":"",
   "notes":"",
   "state":"draft",
   "tag_list":[],
   "permalink":"https://my-account.quadernoapp.com/estimate/7hef1rs7p3rm4l1nk",
-  "url":"https://my-account.quadernoapp.com/api/v1/estimates/50603e722f412e0435000024.json"
+  "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json"
 }
 ```
 
@@ -396,7 +398,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates/ESTIMATE_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/estimates/ESTIMATE_ID.json'
 ```
 
 ```ruby
@@ -437,7 +439,7 @@ This will return `200 OK` along with the current JSON representation of the esti
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates/ESTIMATE_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/estimates/ESTIMATE_ID.json'
 ```
 
 ```ruby
@@ -464,7 +466,7 @@ client.request(deleteEstimate) { response in
 ```shell
 curl -u YOUR_API_KEY:
      -X GET
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/estimates/ESTIMATE_ID/deliver.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/estimates/ESTIMATE_ID/deliver.json'
 ```
 
 ```ruby

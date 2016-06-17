@@ -27,7 +27,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID/payments.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID/payments.json'
 ```
 
 ```php?start_inline=1
@@ -79,7 +79,7 @@ payment_method | **yes**   | One of the following: `credit_card`, `cash`, `wire_
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses/EXPENSE_ID/payments.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID/payments.json'
 ```
 
 ```php?start_inline=1
@@ -101,7 +101,7 @@ payments = expense.getPayments #=> an array of Quaderno::Payment
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses/EXPENSE_ID/payments/PAYMENT_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID/payments/PAYMENT_ID.json'
 ```
 
 ```php?start_inline=1
@@ -122,7 +122,7 @@ payments = expense.getPayments #=> an array of Quaderno::Payment to iterate thro
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/expenses/EXPENSE_ID/payments/PAYMENT_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID/payments/PAYMENT_ID.json'
 ```
 
 ```ruby

@@ -29,7 +29,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/credits.json'
 ```
 
 ```php?start_inline=1
@@ -112,7 +112,7 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
-items_attributes| **yes**                                        | Array of document items (check available attributes for document items below)
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below)
 payment_method  | no                                         | Create a paid document in a single request. One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
 
 <aside class="notice">
@@ -127,10 +127,11 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the first and
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
+id            | no                                       | ID. Available only for updates
 description   | **yes**                                  | String(255 chars)
 quantity      | no                                       | Decimal. Defaults to 1.0
 unit_price    | **yes**                                  | Decimal
-total_amount  | Mandatory if `unit_price` is not present | Decimal
+total_amount  | Mandatory if `unit_price` is not present | Decimal. Cents version available as `total_amount_cents`
 discount_rate | no                                       | Decimal
 tax_1_name    | Mandatory if `tax_1_rate` is present     | String(255 chars)
 tax_1_rate    | Mandatory if `tax_1_name` is present     | Decimal between -100.00 and 100.00 (not included)
@@ -139,6 +140,8 @@ tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
+_destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
+
 
 ### Credit States
 
@@ -179,7 +182,7 @@ Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/credits.json'
 ```
 
 ```ruby
@@ -223,29 +226,29 @@ client.request(listCredits) { response in
         "id":"48151623429",
         "description":"lasagna",
         "quantity":"25.0",
-        "unit_price":"3.75",
+        "unit_price_cents":"375",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
         "reference":"Awesome!",
-        "subtotal":"$93.75",
-        "discount":"$0.00",
-        "gross_amount":"$93.75"
+        "subtotal_cents":"9375",
+        "discount_cents":"0",
+        "gross_amount_cents":"9375"
       }
     ],
-    "subtotal":"$93.75",
-    "discount":"$0.00",
+    "subtotal_cents":"9375",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"$93.75",
+    "total_cents":"9375",
     "payments":[
       {
         "id":"50aca7d92f412eda5200002c",
         "date":"2012-11-21",
         "payment_method":"credit_card",
-        "amount":"\u20ac93.75",
-        "url":"https://my-account.quadernoapp.com/api/v1/credits/507693322f412e0e2e00000f/payments/50aca7d92f412eda5200002c.json"
+        "amount_cents":"9375",
+        "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e00000f/payments/50aca7d92f412eda5200002c.json"
       },
     ],
     "payment_details":"Ask Jon",
@@ -255,7 +258,7 @@ client.request(listCredits) { response in
     "secure_id":"7hef1rs7p3rm4l1nk",
     "permalink":"https://quadernoapp.com/credit/7hef1rs7p3rm4l1nk",
     "pdf":"https://quadernoapp.com/credit/7hef1rs7p3rm4l1nk.pdf",
-    "url":"https://my-account.quadernoapp.com/api/v1/credits/507693322f412e0e2e00000f"
+    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e00000f"
   },
 
   {
@@ -280,22 +283,22 @@ client.request(listCredits) { response in
         "id":"481516234291",
         "description":"pizza",
         "quantity":"15.0",
-        "unit_price":"60.0",
+        "unit_price_cents":"6000",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
         "reference":"Even the bad ones taste good!",
-        "subtotal":"$60.00",
-        "discount":"$0.00",
-        "gross_amount":"$60.00"
+        "subtotal_cents":"6000",
+        "discount_cents":"0",
+        "gross_amount_cents":"6000"
       }
     ],
-    "subtotal":"$60.00",
-    "discount":"$0.00",
+    "subtotal_cents":"6000",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"$60.00",
+    "total_cents":"6000",
     "payments":[],
     "payment_details":"",
     "notes":"",
@@ -304,7 +307,7 @@ client.request(listCredits) { response in
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk",
     "pdf":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk.pdf",
-    "url":"https://my-account.quadernoapp.com/api/v1/credits/507693322f412e0e2e0000da"
+    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da"
   },
 ]
 ```
@@ -323,8 +326,8 @@ You can filter the results in a few ways:
 > `GET /credits/CREDIT_ID.json`
 
 ```shell
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits/CREDIT_ID.json'
+curl -u YOUR_API_KEY:x \_cents
+    -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID.json'
 ```
 
 ```ruby
@@ -367,22 +370,22 @@ client.request(readCredit) { response in
       "id":"48151623429",
       "description":"pizza",
       "quantity":"15.0",
-      "unit_price":"60.0",
+      "unit_price_cents":"6000",
       "discount_rate":"0.0",
       "tax_1_name":"",
       "tax_1_rate":"",
       "tax_2_name":"",
       "tax_2_rate":"",
       "reference":"Even the bad ones taste good!",
-      "subtotal":"$60.00",
-      "discount":"$0.00",
-      "gross_amount":"$60.00"
+      "subtotal_cents":"6000",
+      "discount_cents":"0",
+      "gross_amount_cents":"6000"
     }
   ],
-  "subtotal":"$60.00",
-  "discount":"$0.00",
+  "subtotal_cents":"6000",
+  "discount_cents":"0",
   "taxes":[],
-  "total":"$60.00",
+  "total_cents":"6000",
   "payments":[],
   "payment_details":"",
   "notes":"",
@@ -391,7 +394,7 @@ client.request(readCredit) { response in
   "secure_id":"7hef1rs7p3rm4l1nk",
   "permalink":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk",
   "pdf":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk.pdf",
-  "url":"https://my-account.quadernoapp.com/api/v1/credits/507693322f412e0e2e0000da"
+  "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da"
 }
 ```
 
@@ -413,7 +416,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits/CREDIT_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID.json'
 ```
 
 ```ruby
@@ -451,7 +454,7 @@ This will return `200 OK` along with the current JSON representation of the cred
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/credits/CREDIT_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID.json'
 ```
 
 ```ruby

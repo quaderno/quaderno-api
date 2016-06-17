@@ -32,7 +32,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/recurring.json'
 ```
 
 ```php?start_inline=1
@@ -139,6 +139,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the first and
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
+id            | no                                       | ID. Available only for updates
 description   | **yes**                                  | String(255 chars)
 quantity      | no                                       | Decimal. Defaults to 1.0
 unit_price    | **yes**                                  | Decimal
@@ -151,6 +152,7 @@ tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
+_destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
 ### Recurring States
 
@@ -191,7 +193,7 @@ Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/recurring.json'
 ```
 
 ```ruby
@@ -231,27 +233,27 @@ client.request(listRecurring) { response in
         "id":1589108,
         "description":"Something corporate",
         "quantity":"1.0",
-        "unit_price":"23.0",
+        "unit_price_cents":"2300",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":null,
         "tax_2_name":"",
         "tax_2_rate":null,
         "reference":"",
-        "subtotal":"23.00 €",
-        "discount":"0.00 €",
-        "gross_amount":"23.00 €"
+        "subtotal_cents":"2300",
+        "discount_cents":"0",
+        "gross_amount_cents":"2300"
       }
     ],
-    "subtotal":"23.00 €",
-    "discount":"0.00 €",
+    "subtotal_cents":"2300",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"23.00 €",
+    "total_cents":"2300",
     "payment_details":"",
     "notes":"",
     "state":"archived",
     "tag_list":[],
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring/642069232.json"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/recurring/642069232.json"
   },
   {
     "id":6420739232,
@@ -271,27 +273,27 @@ client.request(listRecurring) { response in
         "id":1589114,
         "description":"Friday stuff",
         "quantity":"1.0",
-        "unit_price":"34.0",
+        "unit_price_cents":"3400",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":null,
         "tax_2_name":"",
         "tax_2_rate":null,
         "reference":"",
-        "subtotal":"34.00 €",
-        "discount":"0.00 €",
-        "gross_amount":"34.00 €"
+        "subtotal_cents":"3400",
+        "discount_cents":"0",
+        "gross_amount_cents":"3400"
       }
     ],
-    "subtotal":"34.00 €",
-    "discount":"0.00 €",
+    "subtotal_cents":"3400",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"34.00 €",
+    "total_cents":"3400",
     "payment_details":"",
     "notes":"",
     "state":"active",
     "tag_list":[],
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring/6420739232.json"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/recurring/6420739232.json"
   }
 ]
 ```
@@ -311,7 +313,7 @@ You can filter the results in a few ways:
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring/RECURRING_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/recurring/RECURRING_ID.json'
 ```
 
 ```ruby
@@ -350,27 +352,27 @@ client.request(readRecurring) { response in
       "id":1589114,
       "description":"Friday stuff",
       "quantity":"1.0",
-      "unit_price":"34.0",
+      "unit_price_cents":"3400",
       "discount_rate":"0.0",
       "tax_1_name":"",
       "tax_1_rate":null,
       "tax_2_name":"",
       "tax_2_rate":null,
       "reference":"",
-      "subtotal":"34.00 €",
-      "discount":"0.00 €",
-      "gross_amount":"34.00 €"
+      "subtotal_cents":"3400",
+      "discount_cents":"0",
+      "gross_amount_cents":"3400"
     }
   ],
-  "subtotal":"34.00 €",
-  "discount":"0.00 €",
+  "subtotal_cents":"3400",
+  "discount_cents":"0",
   "taxes":[],
-  "total":"34.00 €",
+  "total_cents":"3400",
   "payment_details":"",
   "notes":"",
   "state":"active",
   "tag_list":[],
-  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring/6420739232.json"
+  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/recurring/6420739232.json"
 }
 ```
 
@@ -387,7 +389,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d '{"notes":"You better pay this time, Tony."}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring/RECURRING_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/recurring/RECURRING_ID.json'
 ```
 
 ```ruby
@@ -425,7 +427,7 @@ This will return `200 OK` along with the current JSON representation of the recu
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/recurring/RECURRING_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/recurring/RECURRING_ID.json'
 ```
 
 ```ruby

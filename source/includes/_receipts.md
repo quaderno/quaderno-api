@@ -30,7 +30,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/receipts.json'
 ```
 
 ```php?start_inline=1
@@ -133,6 +133,7 @@ You can't create a receipt for a contact with a tax ID. If the contact has a tax
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
+id            | no                                       | ID. Available only for updates
 description   | **yes**                                  | String(255 chars)
 quantity      | no                                       | Decimal. Defaults to 1.0
 unit_price    | **yes**                                  | Decimal
@@ -145,6 +146,7 @@ tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
+_destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
 ### Receipt States
 
@@ -159,7 +161,7 @@ Possible receipt states are:
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/receipts.json'
 ```
 
 ```ruby
@@ -202,28 +204,28 @@ client.request(listReceipts) { response in
         "id":"48151623429",
         "description":"lasagna",
         "quantity":"25.0",
-        "unit_price":"3.75",
+        "unit_price_cents":"375",
         "discount_rate":"0.0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
         "reference":"Awesome!",
-        "subtotal":"$93.75",
-        "discount":"$0.00",
-        "gross_amount":"$93.75"
+        "subtotal_cents":"9375",
+        "discount_cents":"0",
+        "gross_amount_cents":"9375"
       }
     ],
-    "subtotal":"$93.75",
-    "discount":"$0.00",
+    "subtotal_cents":"9375",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"$93.75",
+    "total_cents":"9375",
     "payments":[
       {
         "id":"50aca7d92f412eda5200002c",
         "date":"2012-11-21",
         "payment_method":"credit_card",
-        "amount":"$93.75",
+        "amount_cents":"9375",
       },
     ],
     "notes":"",
@@ -232,7 +234,7 @@ client.request(listReceipts) { response in
     "secure_id":"7hef1rs7p3rm4l1nk",
     "permalink":"https://quadernoapp.com/receipt/7hef1rs7p3rm4l1nk",
     "pdf":"https://quadernoapp.com/receipt/7hef1rs7p3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts/507693322f412e0e2e00000f"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/507693322f412e0e2e00000f.json"
   },
 
   {
@@ -256,28 +258,28 @@ client.request(listReceipts) { response in
         "id":"481516234291",
         "description":"pizza",
         "quantity":"1.0",
-        "unit_price":"60.0",
-        "discount_rate":"0.0",
+        "unit_price_cents":"6000",
+        "discount_rate":"0",
         "tax_1_name":"",
         "tax_1_rate":"",
         "tax_2_name":"",
         "tax_2_rate":"",
         "reference":"Even the bad ones taste good!",
-        "subtotal":"$60.00",
-        "discount":"$0.00",
-        "gross_amount":"$60.00"
+        "subtotal_cents":"6000",
+        "discount_cents":"0",
+        "gross_amount_cents":"6000"
       }
     ],
-    "subtotal":"$60.00",
-    "discount":"$0.00",
+    "subtotal_cents":"6000",
+    "discount_cents":"0",
     "taxes":[],
-    "total":"$60.00",
+    "total_cents":"6000",
     "payments":[
       {
         "id":"50aca7d92f412eda5200002ssdc",
         "date":"2012-11-21",
         "payment_method":"credit_card",
-        "amount":"$60.00",
+        "amount_cents":"6000",
       },
     ],
     "notes":"",
@@ -286,7 +288,7 @@ client.request(listReceipts) { response in
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/receipt/7hes3c0ndp3rm4l1nk",
     "pdf":"https://ACCOUNT_NAME.quadernoapp.com/receipt/7hes3c0ndp3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts/507693322f412e0e2e0000da"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/507693322f412e0e2e0000da.json"
   },
 ]
 ```
@@ -306,7 +308,7 @@ You can filter the results in a few ways:
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts/RECEIPT_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/receipts/RECEIPT_ID.json'
 ```
 
 ```ruby
@@ -354,19 +356,19 @@ client.request(readReceipt) { response in
     "tax_2_name":"",
     "tax_2_rate":null,
     "reference":null,
-    "subtotal":"30.00 €",
-    "discount":"0.00 €",
-    "gross_amount":"30.00 €"
+    "subtotal_cents":"3000",
+    "discount_cents":"0",
+    "gross_amount_cents":"3000"
   }],
-  "subtotal":"30.00 €",
-  "discount":"0.00 €",
+  "subtotal_cents":"3000",
+  "discount_cents":"0",
   "taxes":[],
-  "total":"30.00 €",
+  "total_cents":"3000",
   "payments":[{
     "id":972444,
     "date":"2016-05-05",
     "payment_method":"credit_card",
-    "amount":"30.00 €"
+    "amount_cents":"3000"
   }],
   "notes":null,
   "state":"paid",
@@ -375,7 +377,7 @@ client.request(readReceipt) { response in
   "permalink":
   "http://ACCOUNT_NAME.quadernoapp.com/receipt/f6a78e399aa6369e3b0329da78cc24534bc1934dzzRot",
   "pdf":"https://ACCOUNT_NAME.quadernoapp.com/receipt/f6a78e399aa6369e3b0329da78cc24534bc1934dzzRot.pdf",
-  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts/13638223434.json",
+  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/13638223434.json",
 }
 ```
 
@@ -392,7 +394,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d '{"notes":"You better pay this time, Tony."}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts/RECEIPT_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/receipts/RECEIPT_ID.json'
 ```
 
 ```ruby
@@ -430,7 +432,7 @@ This will return `200 OK` along with the current JSON representation of the rece
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/receipts/RECEIPT_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/receipts/RECEIPT_ID.json'
 ```
 
 ```ruby
@@ -457,7 +459,7 @@ client.request(deleteReceipt) { response in
 ```shell
 curl -u YOUR_API_KEY: \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices/INVOICE_ID/deliver.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID/deliver.json'
 ```
 
 ```ruby

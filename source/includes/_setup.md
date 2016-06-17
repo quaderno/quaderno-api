@@ -310,7 +310,7 @@ curl -u YOUR_API_KEY:x \
 
 ```php?start_inline=1
 // Returns an array of QuadernoContact
-$contacts = QuadernoContact::find(array('page' => 2));  
+$contacts = QuadernoContact::find(array('page' => 2));
 ```
 
 ```ruby
@@ -333,9 +333,20 @@ You can change the page by passing the `page` parameter, defaulting to `1`.
 ## Versioning
 
 When we make breaking changes to our API, we release a new version number which you can change in your calls.
+By default if you don't specify a version, we'll use the one stored in your Quaderno account. To override this value you can pass the version in the `Accept` HTTP header like this: `Accept: application/json; api_version=API_VERSION_NUMBER`
+
+```shell
+# Example of API version override
+
+curl -u YOUR_API_KEY:x \
+     -H 'Accept: application/json; api_version=20160602' \
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json?page=2'
+```
 
 <aside class="notice">
-The current version is <strong>v1</strong>.
+The current version is <strong>20160614</strong>.
+Please refer to the <strong><a href='#changelog'>changelog</a></strong> to get a list of the changes
 </aside>
 
 ## Testing

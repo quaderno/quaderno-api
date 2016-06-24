@@ -29,7 +29,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'
 ```
 
 ```php?start_inline=1
@@ -99,7 +99,7 @@ Note that this kind of item is like a template for items, a shortcut that you ca
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'
 ```
 
 ```ruby
@@ -127,7 +127,7 @@ client.request(readItem) { response in
     "name":"Titanic",
     "unit_cost":"15.0",
     "stock":"100",
-    "url":"https://my-account.quadernoapp.com/api/v1/items/1"
+    "url":"https://my-account.quadernoapp.com/api/items/1"
   },
   {
     "id":2,
@@ -136,7 +136,7 @@ client.request(readItem) { response in
     "unit_cost":"15.0",
     "tax_1_name":"AWESOME_TAX",
     "tax_1_rate":"7.00",
-    "url":"https://my-account.quadernoapp.com/api/v1/items/2"
+    "url":"https://my-account.quadernoapp.com/api/items/2"
   },
   {
     "id":3,
@@ -144,7 +144,7 @@ client.request(readItem) { response in
     "name":"Titanic III: The origin",
     "unit_cost":"15.0",
     "stock":"33",
-    "url":"https://my-account.quadernoapp.com/api/v1/items/3"
+    "url":"https://my-account.quadernoapp.com/api/items/3"
   }
 ]
 ```
@@ -164,7 +164,7 @@ You can filter the results in a few ways:
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items/ITEM_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'
 ```
 
 ```ruby
@@ -192,7 +192,7 @@ client.request(readItem) { response in
   "unit_cost":"15.0",
   "tax_1_name":"AWESOME_TAX",
   "tax_1_rate":"7.00",
-  "url":"https://my-account.quadernoapp.com/api/v1/items/2"
+  "url":"https://my-account.quadernoapp.com/api/items/2"
 }
 ```
 
@@ -207,7 +207,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d '{ "unit_cost":"10.0" }' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items/ITEM_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'
 ```
 
 ```ruby
@@ -245,7 +245,7 @@ This will return `200 OK` along with the current JSON representation of the item
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items/ITEM_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'
 ```
 
 ```ruby

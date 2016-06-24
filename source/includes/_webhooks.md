@@ -238,7 +238,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks.json'
 ```
 
 ```ruby
@@ -283,7 +283,7 @@ This will return `201 Created` with the current JSON representation of the webho
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/ewbhooks.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/ewbhooks.json'
 ```
 
 ```ruby
@@ -329,7 +329,7 @@ $webhooks = QuadernoWebhook::find(); // Returns an array of QuadernoWebhook
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks/WEBHOOK_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
 ```
 
 ```ruby
@@ -366,7 +366,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d '{ "events_types": ["contact.updated","estimate.deleted"] }' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks/WEBHOOK_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
 ```
 
 ```ruby
@@ -399,7 +399,7 @@ This will return `201 Created` with the current JSON representation of the webho
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/webhooks/WEBHOOK_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
 ```
 
 ```ruby

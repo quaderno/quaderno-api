@@ -4,17 +4,17 @@
 > API Endpoint
 
 ```
-https://ACCOUNT_NAME.quadernoapp.com/api/v1/
+https://ACCOUNT_NAME.quadernoapp.com/api/
 ```
 
-All URLs start with the root `https://ACCOUNT_NAME.quadernoapp.com/api/v1/`.
+All URLs start with the root `https://ACCOUNT_NAME.quadernoapp.com/api/`.
 
 - `ACCOUNT_NAME` is different for each user, and is used as the identifier for which user to affect with an API call. You can see this in the URL bar when logging into your Quaderno account.
 - Note that the API version is also included in the root of every call. This ensures that updates to the API will not break older code, but when you are ready to make the switch (and when we have a new version) you can do so by updating this root.
 
 The resource in question will follow, like so:
 
-`https://ACCOUNT_NAME.quadernoapp.com/api/v1/RESOURCE.json`
+`https://ACCOUNT_NAME.quadernoapp.com/api/RESOURCE.json`
 
 ## Authentication
 
@@ -43,7 +43,7 @@ let client = Quaderno.Client(baseURL: "YOUR_API_URL",
 # With curl, you can pass the API key as a header with each request
 curl -u YOUR_API_KEY:x \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/invoices.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/invoices.json'
 ```
 
 > You can `ping` to check if the service is up, your credentials are correct, or to know your remaining requests without doing an actual request:
@@ -55,7 +55,7 @@ Quaderno::Base.ping #=> Boolean
 ```shell
 curl -u YOUR_API_KEY:x \
      -X GET \
-     'https://quadernoapp.com/api/v1/ping.json'
+     'https://quadernoapp.com/api/ping.json'
 ```
 
 ```php?start_inline=1
@@ -89,7 +89,7 @@ Remember that anyone who has your Private Key can see and change everything that
 ```shell
 curl -u YOUR_API_KEY:x \
      -X GET \
-     'https://quadernoapp.com/api/v1/authorization.json'
+     'https://quadernoapp.com/api/authorization.json'
 ```
 
 ```ruby
@@ -116,7 +116,7 @@ client.account { credentials in
     "id": "999",
     "name": "Sheldon Cooper",
     "email": "s.cooperphd@yahoo.com",
-    "href": "http://nippur-999.quadernoapp.com/api/v1/"
+    "href": "http://nippur-999.quadernoapp.com/api/"
 }
 ```
 
@@ -142,7 +142,7 @@ Note that in all cases, if the user does not have permission to do something, yo
 ```shell
 # :x stops cURL from prompting for a password
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json'
 ```
 
 ```php?start_inline=1
@@ -170,7 +170,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      -d {"first_name":"Tony", "kind":"person", "contact_name":"Stark"}
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json'
 ```
 
 ```php?start_inline=1
@@ -245,7 +245,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/items.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'
 ```
 
 Multiline cURL with JSON is a little bit tricky. In our experience the cleanest, easiest way to make it work correctly is actually to save the desired JSON payload to a file (we use `body.json` as the filename in our examples) and pass it to the cURL command in the `--data-binary` flag, effectively passing the file in by stdin.
@@ -305,7 +305,7 @@ X-Pages-TotalPages
 ```shell
 curl -u YOUR_API_KEY:x \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json?page=2'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2'
 ```
 
 ```php?start_inline=1
@@ -341,7 +341,7 @@ By default if you don't specify a version, we'll use the one stored in your Quad
 curl -u YOUR_API_KEY:x \
      -H 'Accept: application/json; api_version=20160602' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json?page=2'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2'
 ```
 
 <aside class="notice">

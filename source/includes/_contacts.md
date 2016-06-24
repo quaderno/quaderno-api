@@ -11,7 +11,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      -d '{"first_name":"Tony", "kind":"person", "contact_name":"Stark"}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json'
 ```
 
 ```php?start_inline=1
@@ -97,7 +97,7 @@ notes                   | no        | Text
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json'
 ```
 
 ```ruby
@@ -142,7 +142,7 @@ client.request(listContacts) { response in
     "notes":"",
     "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/456987213"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
   },
   {
     "id":"456982365",
@@ -165,7 +165,7 @@ client.request(listContacts) { response in
     "notes":"",
     "secure_id":"4n0th3rp3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/4n0th3rp3rm4l1nk",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/456982365"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456982365"
   }
 ]
 ```
@@ -180,7 +180,7 @@ You can filter the results by full name, email or tax ID by passing the `q` para
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
 ```
 
 ```ruby
@@ -224,7 +224,7 @@ client.request(readContact) { response in
     "notes":"",
     "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/456987213"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
 }
 ```
 
@@ -233,6 +233,64 @@ client.request(readContact) { response in
 <aside class="notice">
 If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STRIPE_CUSTOMER_ID.json` to get the Quaderno contact for a Stripe customer.
 </aside>
+
+## Retrieve: Get a single contact by payment gateway ID
+
+> `GET /PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json'
+```
+
+```ruby
+Quaderno::Contact.retrieve_customer(PAYMENT_GATEWAY_CUSTOMER_ID, PAYMENT_GATEWAY) #=> Quaderno::Contact
+```
+
+```php?start_inline=1
+```
+
+```swift
+```
+
+```json
+{
+    "id":"456987213",
+    "kind":"person",
+    "first_name":"Sheldon",
+    "last_name":"Cooper",
+    "full_name":"Sheldon Cooper",
+    "street_line_1":"2311 N. Los Robles Avenue",
+    "street_line_2":"",
+    "postal_code":"91104",
+    "city":"Pasadena",
+    "region":"CA",
+    "country":"US",
+    "phone_1":"",
+    "phone_2":"",
+    "fax":"",
+    "email":"s.cooperphd@yahoo.com",
+    "web":"",
+    "discount":null,
+    "tax_id":"",
+    "language":"EN",
+    "notes":"",
+    "secure_id":"th3p3rm4l1nk",
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
+}
+```
+
+`GET`ting from `/PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json` will get you that specific contact by using their ID with the payment gateway they were created with.
+
+Supported gateways:
+
+- [Stripe](https://stripe.com/)
+- [GoCardless](https://gocardless.com/)
+- [PayPal](https://www.paypal.com)
+- [Braintree](https://www.braintreepayments.com/)
+
+More are added frequently, so check back!
 
 ## Update a contact
 
@@ -243,7 +301,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
      -d '{"first_name":"Anthony"}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
 ```
 
 ```ruby
@@ -279,7 +337,7 @@ This will return `200 OK` and a JSON representation of the contact if successful
 ```shell
 curl -u YOUR_API_KEY:x \
      -X DELETE
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/contacts/CONTACT_ID.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
 ```
 
 ```ruby

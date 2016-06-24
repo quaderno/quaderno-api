@@ -18,7 +18,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/taxes.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json'
 ```
 
 ```ruby
@@ -91,7 +91,7 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/v1/taxes.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json'
 ```
 
 ```ruby

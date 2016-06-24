@@ -122,7 +122,7 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
-items_attributes| **yes**                                    | Array of document items (check available attributes for document items below)
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />

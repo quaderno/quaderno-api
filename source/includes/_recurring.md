@@ -158,11 +158,7 @@ _destroy      | no                                       | Set it to 1 if you wa
 
 Possible recurring states are:
 
-- `draft`
-- `sent`
-- `partial`
-- `paid`
-- `late`
+- `active`
 - `archived`
 
 ### Create an attachment during recurring creation

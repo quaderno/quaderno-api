@@ -283,7 +283,7 @@ client.request(listReceipts) { response in
       },
     ],
     "notes":"",
-    "state":"draft",
+    "state":"outstanding",
     "tag_list":["pizza", "turtles"],
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/receipt/7hes3c0ndp3rm4l1nk",

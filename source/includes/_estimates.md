@@ -155,12 +155,10 @@ _destroy      | no                                       | Set it to 1 if you wa
 
 Possible estimate states are:
 
-- `draft`
-- `sent`
+- `outstanding`
 - `accepted`
 - `declined`
 - `invoiced`
-- `reverted`
 - `late`
 
 ### Create an attachment during estimate creation
@@ -250,7 +248,7 @@ client.request(listEstimates) { response in
     "total_cents":"10000",
     "payment_details":"",
     "notes":"",
-    "state":"draft",
+    "state":"outstanding",
     "tag_list":[],
     "permalink":"https://my-account.quadernoapp.com/estimate/7hef1rs7p3rm4l1nk",
     "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json"
@@ -292,7 +290,7 @@ client.request(listEstimates) { response in
     "total_cents":"975",
     "payment_details":"",
     "notes":"",
-    "state":"draft",
+    "state":"outstanding",
     "tag_list":[],
     "permalink":"https://my-account.quadernoapp.com/estimate/7hes3c0ndp3rm4l1nk",
     "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000144.json"
@@ -373,7 +371,7 @@ client.request(readEstimate) { response in
   "total":"10000",
   "payment_details":"",
   "notes":"",
-  "state":"draft",
+  "state":"outstanding",
   "tag_list":[],
   "permalink":"https://my-account.quadernoapp.com/estimate/7hef1rs7p3rm4l1nk",
   "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json"

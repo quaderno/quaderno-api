@@ -147,9 +147,7 @@ _destroy      | no                                       | Set it to 1 if you wa
 
 Possible credit states are:
 
-- `draft`
-- `sent`
-- `partial`
+- `outstanding`
 - `paid`
 - `late`
 - `archived`
@@ -302,7 +300,7 @@ client.request(listCredits) { response in
     "payments":[],
     "payment_details":"",
     "notes":"",
-    "state":"draft",
+    "state":"outstanding",
     "tag_list":["pizza", "turtles"],
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk",
@@ -389,7 +387,7 @@ client.request(readCredit) { response in
   "payments":[],
   "payment_details":"",
   "notes":"",
-  "state":"draft",
+  "state":"outstanding",
   "tag_list":["lasagna", "cat"],
   "secure_id":"7hef1rs7p3rm4l1nk",
   "permalink":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk",

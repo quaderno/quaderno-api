@@ -24,7 +24,7 @@ Quaderno's webhooks allow your application to receive information about events t
       "po_number":null,
       "payment_details":null,
       "notes":null,
-      "state":"draft",
+      "state":"outstanding",
       "subject":null,
       "street_line_1":null,
       "street_line_2":null,

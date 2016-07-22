@@ -7,18 +7,11 @@ One of the killer features Quaderno provides is efficient and easy tax managemen
 > `GET /taxes/calculate.json`
 
 ```shell
-# body.json
-{     
-    "country": "ES",
-    "postal_code": "08080"
-    "vat_number": "ESA58818501"
-}
 
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
-     -X POST \
-     --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json'
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json?country=ES&postal_code=08080&vat_number=ESA58818501'
 ```
 
 ```ruby
@@ -81,17 +74,10 @@ This will return a `200 OK` if the request was a success, along with the taxes r
 > GET /taxes/validate.json
 
 ```shell
-# body.json
-{     
-    "country": "ES",
-    "vat_number": "ESA58818501"
-}
-
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
-     -X POST \
-     --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json'
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json?country=ES&vat_number=ESA58818501'
 ```
 
 ```ruby

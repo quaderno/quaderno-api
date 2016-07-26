@@ -1,6 +1,31 @@
 # Evidences
 
-Location evidences are proofs of the location of your customer that should be stored in order to be VAT compliant.
+Location evidences are proofs of the customer's location that should be stored in order to be VAT compliant.
+
+## The evidence object
+```json
+{
+  "id":3649491,
+  "document_id":"5059bdbf2f412e0901000024",
+  "billing_country":"ES",
+  "ip_address":"192.168.1.1",
+  "ip_country":"FR",
+  "vat_number":null,
+  "notes":null
+}
+```
+
+
+Attribute          | Description
+-------------------|-----------------------------------------------------------------------------------------------------------
+`id`               | Evidence ID
+`document_id`      | Invoice or Receipt's ID
+`billing_country`  | Customer's billing country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`ip_address`       | Customer's IP address
+`ip_country`       | Customer's country geolocated by IP (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`vat_number`       | Customer's intra-community VAT number (if present)
+`notes`            | Readable information related to the evidence state
+
 
 ## Create an evidence
 
@@ -44,6 +69,12 @@ contact = Quaderno::Evidence.create(
 // Coming soon!
 ```
 
+`POST`ing to `/evidences.json` will create a new evidence from the parameters passed.
+
+This will return 201 Created and the current JSON representation of the evidence if the creation was a success.
+
+
+### Attributes
 Parameter          | Mandatory | Description
 -------------------|-----------|------------------------------------------------------------------------------------------------
 `document_id`      | **Yes**   | Invoice or Receipt's ID

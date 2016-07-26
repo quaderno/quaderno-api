@@ -7,9 +7,11 @@ Location evidences are proofs of the customer's location that should be stored i
 {
   "id":3649491,
   "document_id":"5059bdbf2f412e0901000024",
+  "state":"confirmed",
   "billing_country":"ES",
   "ip_address":"192.168.1.1",
   "ip_country":"FR",
+  "bank_country":"FR",
   "vat_number":null,
   "notes":null
 }
@@ -20,9 +22,11 @@ Attribute          | Description
 -------------------|-----------------------------------------------------------------------------------------------------------
 `id`               | Evidence ID
 `document_id`      | Invoice or Receipt's ID
+`state`            | Customer's location evidence state (confirmed or unconfirmed)
 `billing_country`  | Customer's billing country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `ip_address`       | Customer's IP address
 `ip_country`       | Customer's country geolocated by IP (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`bank_country`     | Customer's bank country
 `vat_number`       | Customer's intra-community VAT number (if present)
 `notes`            | Readable information related to the evidence state
 

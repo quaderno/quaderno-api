@@ -1,6 +1,6 @@
 # Evidences
 
-Location evidences are proofs of the customer's location that should be stored in order to be VAT compliant.
+Location evidences are proofs of the customer's location that should be stored in order to be EU VAT MOSS compliant.
 
 ## The evidence object
 ```json

@@ -77,7 +77,11 @@ This will return a `200 OK` if the request was a success, along with the taxes r
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json?country=ES&vat_number=ESA58818501'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json?country=IE&vat_number=IE6388047V'
+
+{
+    "valid":true
+}
 ```
 
 ```ruby
@@ -95,11 +99,6 @@ Quaderno::Tax.validate_vat_number(country, vat_number) #=> Boolean
 // Coming soon!
 ```
 
-```json
-{
-    "valid":true
-}
-```
 
 `GET`ting to `/taxes/validate.json` will validate the given EU VAT number.
 

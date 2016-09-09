@@ -81,7 +81,10 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-# Coming soon!
+country = 'IE'
+vat_number = 'IE6388047V'
+
+Quaderno::Tax.validate_vat_number(country, vat_number) #=> Boolean
 ```
 
 ```php?start_inline=1

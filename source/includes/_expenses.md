@@ -104,7 +104,7 @@ street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
-items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests
+items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.
 
 
 <aside class="notice">

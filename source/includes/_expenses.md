@@ -99,6 +99,7 @@ payment_details | no                                         | Text
 notes           | no                                         | Text
 contact_id      | (Mandatory if `contact` is not present)    | ID
 contact         | (Mandatory if `contact_id` is not present) | Hash with a contact data for creation
+country         | no                                         | String(2 chars) `ISO 3166-1 alpha-2`. Available for updates
 street_line_1   | no                                         | String(255 chars). Available for updates
 street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
@@ -200,6 +201,7 @@ client.request(listExpenses) { response in
       "id":"5059bdbf2f412e0901000024",
       "full_name":"ACME"
     },
+    "country":"US",
     "street_line_1":"Verizon Center",
     "street_line_2":"",
     "city":"Washington DC",
@@ -241,6 +243,7 @@ client.request(listExpenses) { response in
     "id":"5059bdbf2f412e0901000024",
     "full_name":"ACME"
     },
+    "country":"US",
     "street_line_1":"Verizon Center",
     "street_line_2":"",
     "city":"Washington DC",
@@ -321,6 +324,7 @@ client.request(readExpense) { response in
     "id":"5059bdbf2f412e0901000024",
     "full_name":"ACME"
   },
+  "country":"US",
   "street_line_1":"Verizon Center",
   "street_line_2":"",
   "city":"Washington DC",

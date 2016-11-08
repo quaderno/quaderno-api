@@ -117,6 +117,7 @@ payment_details | no                                         | Text
 notes           | no                                         | Text
 contact_id      | (Mandatory if `contact` is not present)    | ID
 contact         | (Mandatory if `contact_id` is not present) | Hash with a contact data for creation
+country         | no                                         | String(2 chars) `ISO 3166-1 alpha-2`. Available for updates
 street_line_1   | no                                         | String(255 chars). Available for updates
 street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
@@ -219,6 +220,7 @@ client.request(listEstimates) { response in
       "id":"5059bdbf2f412e0901000024",
       "full_name":"Wild E. Coyote"
     },
+    "country":"US",
     "street_line_1":"Desert of New Mexico",
     "street_line_2":"",
     "city":"New Mexico",
@@ -261,6 +263,7 @@ client.request(listEstimates) { response in
       "id":"5059bdbf2f412e0901000044",
       "full_name":"Cookie Monster"
     },
+    "country":"US",
     "street_line_1":"Sesame Street",
     "street_line_2":"",
     "city":"New York",
@@ -342,6 +345,7 @@ client.request(readEstimate) { response in
     "id":"5059bdbf2f412e0901000024",
     "full_name":"Wild E. Coyote"
   },
+  "country":"US",
   "street_line_1":"Desert of New Mexico",
   "street_line_2":"",
   "city":"New Mexico",

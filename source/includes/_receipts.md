@@ -191,6 +191,7 @@ client.request(listReceipts) { response in
       "id":"5073f9c22f412e02d0000032",
       "full_name":"Garfield"
     },
+    "country":"US",
     "street_line_1":"Street 23",
     "street_line_2":"",
     "city":"New York",
@@ -245,6 +246,7 @@ client.request(listReceipts) { response in
       "id":"5073f9c22f412e02d00004cf",
       "full_name":"Teenage Mutant Ninja Turtles"
     },
+    "country":"US",
     "street_line_1":"Melrose Ave, Sewer #3",
     "street_line_2":"",
     "city":"New York",
@@ -338,6 +340,7 @@ client.request(readReceipt) { response in
     "id":424230933,
     "full_name":"Toxic Crusader"
   },
+  "country":"US",
   "street_line_1":null,
   "street_line_2":null,
   "city":null,

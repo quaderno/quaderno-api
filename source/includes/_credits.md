@@ -107,6 +107,7 @@ payment_details | no                                         | Text
 notes           | no                                         | Text
 contact_id      | (Mandatory if `contact` is not present)    | ID
 contact         | (Mandatory if `contact_id` is not present) | Hash with a contact data for creation
+country         | no                                         | String(2 chars) `ISO 3166-1 alpha-2`. Available for updates
 street_line_1   | no                                         | String(255 chars). Available for updates
 street_line_2   | no                                         | String(255 chars)
 city            | no                                         | String(255 chars). Available for updates
@@ -210,6 +211,7 @@ client.request(listCredits) { response in
       "id":"5073f9c22f412e02d0000032",
       "full_name":"Garfield"
     },
+    "country":"US",
     "street_line_1":"Street 23",
     "street_line_2":"",
     "city":"New York",
@@ -267,6 +269,7 @@ client.request(listCredits) { response in
       "id":"5073f9c22f412e02d00004cf",
       "full_name":"Teenage Mutant Ninja Turtles"
     },
+    "country":"US",
     "street_line_1":"Melrose Ave, Sewer #3",
     "street_line_2":"",
     "city":"New York",
@@ -354,6 +357,7 @@ client.request(readCredit) { response in
     "id":"5073f9c22f412e02d00004cf",
     "full_name":"Teenage Mutant Ninja Turtles"
   },
+  "country":"US",
   "street_line_1":"Melrose Ave, Sewer #3",
   "street_line_2":"",
   "city":"New York",

@@ -142,7 +142,7 @@ Event types are a combination of the object you want to be notified about and th
 Available objects at present are:
 
 - `invoice`
-- `receipt
+- `receipt`
 - `credit`
 - `expense`
 - `estimate`

@@ -142,6 +142,8 @@ Event types are a combination of the object you want to be notified about and th
 Available objects at present are:
 
 - `invoice`
+- `receipt
+- `credit`
 - `expense`
 - `estimate`
 - `payment`
@@ -224,7 +226,7 @@ In your code that processes receieved webhooks:
 
 ```shell
 # body.json
-{     
+{
     "url": "http://anotherapp.com/notifications",
     "events_types": [
         "invoice.created",
@@ -242,7 +244,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-params = {     
+params = {
     url: "http://anotherapp.com/notifications",
     events_types: [
         'invoice.created',

@@ -35,6 +35,9 @@ Quaderno's webhooks allow your application to receive information about events t
       "processor_id":null,
       "processor":null,
       "processor_fee_cents":null,
+      "custom_metadata"=> {
+        "my_custom_id" => "123456"
+      },
       "due_date":null,
       "permalink":"5191567e45d6aa419927ce7a8ba2ee870c9f0a45",
       "email":null,

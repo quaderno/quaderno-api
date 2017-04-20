@@ -22,7 +22,10 @@ An invoice is a detailed list of goods shipped or services rendered, with an acc
       "discount_rate":"0.0",
       "reference":"item_code_X"
     }
-  ]
+  ],
+  "custom_metadata":{
+    "a_custom_key":"a custom value"
+  }
 }
 
 curl -u YOUR_API_KEY:x \
@@ -36,7 +39,8 @@ curl -u YOUR_API_KEY:x \
 $invoice = new QuadernoInvoice(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => array('playboy', 'businessman')));
+                                 'tag_list' => array('playboy', 'businessman'),
+                                 'custom_metadata' => array('a_custom_key' => 'a custom value')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Pizza bagels',
                                'unit_price' => 9.99,
@@ -53,18 +57,21 @@ $invoice->save(); // Returns true (success) or false (error)
 contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
 
 params = {
- contact_id: contact.id,
- po_number: 'PO.12234',
- currency: 'USD',
- tag_list: ['playboy', 'businessman'],
- items_attributes: [
-  {
-    description: 'Whiskey',
-    quantity: '1.0',
-    unit_price: '20.0',
-    discount_rate: '0.0'
+  contact_id: contact.id,
+  po_number: 'PO.12234',
+  currency: 'USD',
+  tag_list: ['playboy', 'businessman'],
+  items_attributes: [
+    {
+      description: 'Whiskey',
+      quantity: '1.0',
+      unit_price: '20.0',
+      discount_rate: '0.0'
+    }
+  ],
+  custom_metadata: {
+    a_custom_key: 'a custom value'
   }
- ]
 }
 invoice = Quaderno::Invoice.create(params) #=> Quaderno::Invoice
 
@@ -113,6 +120,7 @@ region          | no                                         | String(255 chars)
 postal_code     | no                                         | String(255 chars). Available for updates
 items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.
 payment_method  | no                                         | Create a paid document in a single request. One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
+custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new invoice will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
@@ -255,7 +263,8 @@ client.request(listInvoices) { response in
     "secure_id":"7hef1rs7p3rm4l1nk",
     "permalink":"https://quadernoapp.com/invoice/7hef1rs7p3rm4l1nk",
     "pdf":"https://quadernoapp.com/invoice/7hef1rs7p3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e00000f.json"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e00000f.json",
+    "custom_metadata":{}
   },
 
   {
@@ -305,8 +314,9 @@ client.request(listInvoices) { response in
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hes3c0ndp3rm4l1nk",
     "pdf":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hes3c0ndp3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e0000da.json"
-  },
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e0000da.json",
+    "custom_metadata":{}
+  }
 ]
 ```
 
@@ -393,7 +403,8 @@ client.request(readInvoice) { response in
   "secure_id":"7hef1rs7p3rm4l1nk",
   "permalink":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hef1rs7p3rm4l1nk",
   "pdf":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hef1rs7p3rm4l1nk.pdf",
-  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e0000da.json"
+  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e0000da.json",
+  "custom_metadata":{}
 }
 ```
 

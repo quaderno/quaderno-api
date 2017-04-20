@@ -23,6 +23,9 @@ A credit note is a reverse invoice; something to cancel out - partially or compl
       "reference":"item_code_X"
     }
   ],
+  "custom_metadata":{
+    "a_custom_key":"a custom value"
+  }
 }
 
 curl -u YOUR_API_KEY:x \
@@ -36,7 +39,8 @@ curl -u YOUR_API_KEY:x \
 $credit = new QuadernoCredit(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => array('playboy', 'businessman')));
+                                 'tag_list' => array('playboy', 'businessman'),
+                                 'custom_metadata' => array('a_custom_key' => 'a custom value')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Whiskey',
                                'unit_price' => 20.0,
@@ -67,6 +71,9 @@ params = {
       discount_rate: '0.0',
     }
   ],
+  custom_metadata: {
+    a_custom_key: 'a custom value'
+  }
 }
 
 Quaderno::Credit.create(params) #=> Quaderno::Credit
@@ -115,6 +122,7 @@ region          | no                                         | String(255 chars)
 postal_code     | no                                         | String(255 chars). Available for updates
 items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.
 payment_method  | no                                         | Create a paid document in a single request. One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
+custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing credits, a new one will be created, otherwise a new credit will be created for the existing credit.<br /><br />
@@ -258,7 +266,8 @@ client.request(listCredits) { response in
     "secure_id":"7hef1rs7p3rm4l1nk",
     "permalink":"https://quadernoapp.com/credit/7hef1rs7p3rm4l1nk",
     "pdf":"https://quadernoapp.com/credit/7hef1rs7p3rm4l1nk.pdf",
-    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e00000f"
+    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e00000f",
+    "custom_metadata":{}
   },
 
   {
@@ -308,8 +317,9 @@ client.request(listCredits) { response in
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk",
     "pdf":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk.pdf",
-    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da"
-  },
+    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da",
+    "custom_metadata":{}
+  }
 ]
 ```
 
@@ -396,7 +406,8 @@ client.request(readCredit) { response in
   "secure_id":"7hef1rs7p3rm4l1nk",
   "permalink":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk",
   "pdf":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk.pdf",
-  "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da"
+  "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da",
+  "custom_metadata":{}
 }
 ```
 
@@ -411,7 +422,8 @@ client.request(readCredit) { response in
 {
   "tag_list":"whiskey, alcohol",
   "notes":"You better pay this time, Tony",
-  "region":"Genosha"
+  "region":"Genosha",
+  "custom_metadata":{"memo":"I think he is not paying again."}
 }
 
 curl -u YOUR_API_KEY:x \
@@ -423,13 +435,22 @@ curl -u YOUR_API_KEY:x \
 
 ```ruby
 params = {
-    tag_list: ['whiskey', 'alcohol']
+  tag_list: ['whiskey', 'alcohol'],
+  notes: 'You better pay this time, Tony',
+  region: 'Genosha',
+  custom_metadata: {
+    memo: 'I think he is not paying again.'
+  }
 }
 Quaderno::Credit.update(CREDIT_ID, params) #=> Quaderno::Credit
 ```
 
 ```php?start_inline=1
 $credit->tag_list = array("whiskey", "alcohol");
+$credit->notes = "You better pay this time, Tony";
+$credit->region = "Genosha";
+$credit->custom_metadata = array("memo" => "I think he is not paying again.");
+
 $credit->save();
 ```
 

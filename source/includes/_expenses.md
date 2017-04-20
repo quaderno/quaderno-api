@@ -21,6 +21,9 @@ Expenses are all the invoices that you receive from your vendors.
     "reference":"item_code_X"
     }
   ],
+  "custom_metadata":{
+    "a_custom_key":"a custom value"
+  }
 }
 
 curl -u YOUR_API_KEY:x \
@@ -33,7 +36,8 @@ curl -u YOUR_API_KEY:x \
 $expense = new QuadernoExpense(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => array('playboy', 'businessman')));
+                                 'tag_list' => array('playboy', 'businessman'),
+                                 'custom_metadata' => array('a_custom_key' => 'a custom value')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Rocket launcher',
                                'unit_price' => 0.0,
@@ -52,17 +56,20 @@ $expense->save(); // Returns true (success) or false (error)
 contact = Quaderno::Contact.find('5059bdbf2f412e0901000024') #=> Quaderno::Contact
 
 params = {
-    contact_id: contact.id
-    currency: 'USD',
-    tag_list: ['playboy', 'businessman'],
-    items_attributes: [
-      {
-        description: 'Rocket launcher',
-        quantity: '1.0',
-        unit_price: '0.0',
-        discount_rate: '0.0'
-      }
-    ]
+  contact_id: contact.id
+  currency: 'USD',
+  tag_list: ['playboy', 'businessman'],
+  items_attributes: [
+    {
+      description: 'Rocket launcher',
+      quantity: '1.0',
+      unit_price: '0.0',
+      discount_rate: '0.0'
+    }
+  ],
+  custom_metadata: {
+    a_custom_key: 'a custom value'
+  }
 }
 
 invoice = Quaderno::Expense.create(params) #=> Quaderno::Expense
@@ -106,7 +113,7 @@ city            | no                                         | String(255 chars)
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
 items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.
-
+custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new expense will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
@@ -234,7 +241,8 @@ client.request(listExpenses) { response in
     "tag_list":["rockets", "acme"],
     "notes":"",
     "state":"outstanding",
-    "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00006c"
+    "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00006c",
+    "custom_metadata":{}
   },
   {
     "id":"5076a6b92f412e0e2e00016d",
@@ -276,8 +284,9 @@ client.request(listExpenses) { response in
     "tag_list":["tnt", "acme"],
     "notes":"",
     "state":"outstanding",
-    "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00016d"
-  },
+    "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00016d",
+    "custom_metadata":{}
+  }
 ]
 ```
 

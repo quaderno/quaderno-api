@@ -24,6 +24,9 @@ A receipt is a detailed list of goods shipped or services rendered, with an acco
       "reference":"item_code_X"
     }
   ],
+  "custom_metadata":{
+    "a_custom_key":"a custom value"
+  }
 }
 
 curl -u YOUR_API_KEY:x \
@@ -39,7 +42,8 @@ $receipt = new QuadernoReceipt(array(
                                  'payment_method' => 'credit_card',
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => array('playboy', 'businessman')));
+                                 'tag_list' => array('playboy', 'businessman'),
+                                 'custom_metadata' => array('a_custom_key' => 'a custom value')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'Pizza bagels',
                                'unit_price' => 9.99,
@@ -56,19 +60,22 @@ $receipt->save(); // Returns true (success) or false (error)
 contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Contact
 
 params = {
- contact_id: contact.id,
- po_number: '',
- payment_method: 'credit_card',
- currency: 'USD',
- tag_list: ['playboy', 'businessman'],
- items_attributes: [
-  {
-    description: 'Whiskey',
-    quantity: '1.0',
-    unit_price: '20.0',
-    discount_rate: '0.0'
+  contact_id: contact.id,
+  po_number: '',
+  payment_method: 'credit_card',
+  currency: 'USD',
+  tag_list: ['playboy', 'businessman'],
+  items_attributes: [
+    {
+      description: 'Whiskey',
+      quantity: '1.0',
+      unit_price: '20.0',
+      discount_rate: '0.0'
+    }
+  ],
+  custom_metadata: {
+    a_custom_key: 'a custom value'
   }
- ]
 }
 receipt = Quaderno::Receipt.create(params) #=> Quaderno::Receipt
 ```
@@ -116,6 +123,7 @@ region          | no                                         | String(255 chars)
 postal_code     | no                                         | String(255 chars). Available for updates
 items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.
 payment_method  | **yes**                                    | One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
+custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new receipt will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
@@ -235,7 +243,8 @@ client.request(listReceipts) { response in
     "secure_id":"7hef1rs7p3rm4l1nk",
     "permalink":"https://quadernoapp.com/receipt/7hef1rs7p3rm4l1nk",
     "pdf":"https://quadernoapp.com/receipt/7hef1rs7p3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/507693322f412e0e2e00000f.json"
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/507693322f412e0e2e00000f.json",
+    "custom_metadata":{}
   },
 
   {
@@ -290,8 +299,9 @@ client.request(listReceipts) { response in
     "secure_id":"7hes3c0ndp3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/receipt/7hes3c0ndp3rm4l1nk",
     "pdf":"https://ACCOUNT_NAME.quadernoapp.com/receipt/7hes3c0ndp3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/507693322f412e0e2e0000da.json"
-  },
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/507693322f412e0e2e0000da.json",
+    "custom_metadata":{}
+  }
 ]
 ```
 
@@ -381,6 +391,7 @@ client.request(readReceipt) { response in
   "http://ACCOUNT_NAME.quadernoapp.com/receipt/f6a78e399aa6369e3b0329da78cc24534bc1934dzzRot",
   "pdf":"https://ACCOUNT_NAME.quadernoapp.com/receipt/f6a78e399aa6369e3b0329da78cc24534bc1934dzzRot.pdf",
   "url":"https://ACCOUNT_NAME.quadernoapp.com/api/receipts/13638223434.json",
+  "custom_metadata":{}
 }
 ```
 
@@ -396,19 +407,23 @@ If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STR
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d '{"notes":"You better pay this time, Tony."}' \
+     -d '{"notes":"You better pay this time, Tony.", "custom_metadata":{"memo":"I think he is not paying again."}}' \
      'https://ACCOUNT_NAME.quadernoapp.com/api/receipts/RECEIPT_ID.json'
 ```
 
 ```ruby
 params = {
-    notes: 'You better pay this time, Tony.'
+    notes: 'You better pay this time, Tony.',
+    custom_metadata: {
+        memo: 'I think he is not paying again.'
+    }
 }
 Quaderno::Receipt.update(RECEIPT_ID, params) #=> Quaderno::Receipt
 ```
 
 ```php?start_inline=1
 $receipt->notes = 'You better pay this time, Tony.';
+$receipt->custom_metadata = array('memo' => 'I think he is not paying again.');
 $receipt->save();
 ```
 

@@ -29,7 +29,10 @@ An estimate is an offer that you give a client in order to get a specific job. W
   ],
   "tag_list":"tnt",
   "payment_details":"",
-  "notes":""
+  "notes":"",
+  "custom_metadata":{
+    "a_custom_key":"a custom value"
+  }
 }
 
 curl -u YOUR_API_KEY:x \
@@ -43,7 +46,8 @@ curl -u YOUR_API_KEY:x \
 $estimate = new QuadernoEstimate(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
-                                 'tag_list' => array('playboy', 'businessman')));
+                                 'tag_list' => array('playboy', 'businessman'),
+                                 'custom_metadata' => array('a_custom_key' => 'a custom value')));
 $item = new QuadernoDocumentItem(array(
                                'description' => 'ACME Catapult',
                                'unit_price' => 0.0,
@@ -76,7 +80,10 @@ params = {
       discount_rate: '0.0'
     }
 
-  ]
+  ],
+  custom_metadata: {
+    a_custom_key: 'a custom value'
+  }
 }
 estimate = Quaderno::Estimate.create(params) #=> Quaderno::Estimate
 ```
@@ -124,6 +131,7 @@ city            | no                                         | String(255 chars)
 region          | no                                         | String(255 chars). Available for updates
 postal_code     | no                                         | String(255 chars). Available for updates
 items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests
+custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
 If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />
@@ -253,7 +261,8 @@ client.request(listEstimates) { response in
     "state":"outstanding",
     "tag_list":[],
     "permalink":"https://my-account.quadernoapp.com/estimate/7hef1rs7p3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json"
+    "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json",
+    "custom_metadata":{}
   },
   {
     "id":"50603e722f412e0435000144",
@@ -296,7 +305,8 @@ client.request(listEstimates) { response in
     "state":"outstanding",
     "tag_list":[],
     "permalink":"https://my-account.quadernoapp.com/estimate/7hes3c0ndp3rm4l1nk",
-    "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000144.json"
+    "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000144.json",
+    "custom_metadata":{}
   }
 ]
 ```
@@ -378,7 +388,8 @@ client.request(readEstimate) { response in
   "state":"outstanding",
   "tag_list":[],
   "permalink":"https://my-account.quadernoapp.com/estimate/7hef1rs7p3rm4l1nk",
-  "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json"
+  "url":"https://my-account.quadernoapp.com/api/estimates/50603e722f412e0435000024.json",
+  "custom_metadata":{}
 }
 ```
 

@@ -289,7 +289,7 @@ There is a limit of **100 API calls per 15 seconds**.
 
 We reserve the right to tune the limitations, but we promise to keep them high enough to allow a well-behaving interactive app to do it's job.
 
-If you exceed the limit you will receive a `HTTP 503 (Service Unavailable)`.
+If you exceed the limit you will receive a `HTTP 429 (Too Many Requests)`.
 
 ## Pagination
 

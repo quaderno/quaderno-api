@@ -2,7 +2,10 @@
 
 ## API versions and changes
 
-### 20170418 (Current version)
+### 20170628 (Current version)
+* Return 429 (`too many requests`) instead of 503 (`service unavailable`) on rate limits.
+
+### 20170418
 * Added `custom_metadata` as an editable field.
 
 ### 20161108

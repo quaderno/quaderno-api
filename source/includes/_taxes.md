@@ -11,7 +11,7 @@ One of the killer features Quaderno provides is efficient and easy tax managemen
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json?country=ES&postal_code=08080&vat_number=ESA58818501'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/calculate.json?country=ES&postal_code=08080&vat_number=ESA58818501'
 ```
 
 ```ruby

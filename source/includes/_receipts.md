@@ -195,6 +195,7 @@ client.request(listReceipts) { response in
     "id":"507693322f412e0e2e00000f",
     "number":"0000047",
     "issue_date":"2012-10-11",
+    "created_at":"1325376000",
     "contact":{
       "id":"5073f9c22f412e02d0000032",
       "full_name":"Garfield"
@@ -251,6 +252,7 @@ client.request(listReceipts) { response in
     "id":"507693322f412e0e2e0000da",
     "number":"0000047",
     "issue_date":"2012-10-11",
+    "created_at":"1325376020",
     "contact":{
       "id":"5073f9c22f412e02d00004cf",
       "full_name":"Teenage Mutant Ninja Turtles"

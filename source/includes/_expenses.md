@@ -204,6 +204,7 @@ client.request(listExpenses) { response in
   {
     "id":"5076a6b92f412e0e2e00006c",
     "issue_date":"2012-10-11",
+    "created_at":"1325376000",
     "contact":{
       "id":"5059bdbf2f412e0901000024",
       "full_name":"ACME"
@@ -247,6 +248,7 @@ client.request(listExpenses) { response in
   {
     "id":"5076a6b92f412e0e2e00016d",
     "issue_date":"2012-10-11",
+    "created_at":"1325376020",
     "contact":{
     "id":"5059bdbf2f412e0901000024",
     "full_name":"ACME"
@@ -329,6 +331,7 @@ client.request(readExpense) { response in
 {
   "id":"5076a6b92f412e0e2e00006c",
   "issue_date":"2012-10-11",
+  "created_at":"1325376000",
   "contact":{
     "id":"5059bdbf2f412e0901000024",
     "full_name":"ACME"

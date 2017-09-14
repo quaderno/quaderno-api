@@ -224,6 +224,7 @@ client.request(listEstimates) { response in
     "id":"50603e722f412e0435000024",
     "number":"0000003",
     "issue_date":"2012-09-24",
+    "created_at":"1325376000",
     "contact":{
       "id":"5059bdbf2f412e0901000024",
       "full_name":"Wild E. Coyote"
@@ -268,6 +269,7 @@ client.request(listEstimates) { response in
     "id":"50603e722f412e0435000144",
     "number":"0000005",
     "issue_date":"2012-09-24",
+    "created_at":"1325376020",
     "contact":{
       "id":"5059bdbf2f412e0901000044",
       "full_name":"Cookie Monster"
@@ -351,6 +353,7 @@ client.request(readEstimate) { response in
   "id":"50603e722f412e0435000024",
   "number":"0000003",
   "issue_date":"2012-09-24",
+  "created_at":"1325376000",
   "contact":{
     "id":"5059bdbf2f412e0901000024",
     "full_name":"Wild E. Coyote"

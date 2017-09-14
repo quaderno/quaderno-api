@@ -216,6 +216,10 @@ client.request(listCredits) { response in
     "number":"0000047",
     "issue_date":"2012-10-11",
     "created_at":"1325376000",
+    "related_document":{
+      "id":977,
+      "type":"Invoice"
+    },
     "contact":{
       "id":"5073f9c22f412e02d0000032",
       "full_name":"Garfield"
@@ -276,6 +280,10 @@ client.request(listCredits) { response in
     "number":"0000047",
     "issue_date":"2012-10-11",
     "created_at":"1325376020",
+    "related_document":{
+      "id":978,
+      "type":"Invoice"
+    },
     "contact":{
       "id":"5073f9c22f412e02d00004cf",
       "full_name":"Teenage Mutant Ninja Turtles"

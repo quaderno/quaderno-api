@@ -77,7 +77,7 @@ This will return a `200 OK` if the request was a success, along with the taxes r
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes.json?country=IE&vat_number=IE6388047V'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/validate.json?country=IE&vat_number=IE6388047V'
 
 {
     "valid":true

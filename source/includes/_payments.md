@@ -89,7 +89,7 @@ $payments = $expense->getPayments(); // Returns an array of QuadernoPayment
 
 ```ruby
 expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
-payments = expense.getPayments #=> an array of Quaderno::Payment
+payments = expense.payments #=> an array of Quaderno::Payment
 ```
 
 ```swift?start_inline=1
@@ -111,7 +111,7 @@ $payments = $expense->getPayments(); // Returns an array of QuadernoPayment to i
 
 ```ruby
 expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
-payments = expense.getPayments #=> an array of Quaderno::Payment to iterate through
+payments = expense.payments #=> an array of Quaderno::Payment to iterate through
 ```
 
 `GET`ting from `/invoices/INVOICE_ID/payments/PAYMENT_ID.json` or `/expenses/EXPENSE_ID/payments/PAYMENT_ID.json` will return that payments on the invoice or expense in question, if it exists.

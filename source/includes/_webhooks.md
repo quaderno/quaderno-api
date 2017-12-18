@@ -129,6 +129,103 @@ Quaderno's webhooks allow your application to receive information about events t
     }
   }
 }
+
+{
+  "event_type":"checkout.succeeded",
+  "data":
+  {
+    "transaction_details":
+    {
+      "gateway":"stripe",
+      "customer":"cus_0123456789",
+      "transaction":"sub_012345679",
+      "type":"subscription",
+      "plan":"awesome",
+      "description":"Awesome"
+      "amount": 99.99,
+      "amount_cents": 9999,
+      "currency":"EUR",
+      "tax_rate":19.0,
+      "tax_name":"MwSt./USt.",
+      "tax_country":"DE"
+    },
+    "contact":
+    {
+      "id":76,
+      "kind":"person",
+      "first_name":"Adella",
+      "last_name":"Schowalter",
+      "full_name":"Adella Schowalter",
+      "contact_name":null,
+      "street_line_1":null,
+      "postal_code":null,
+      "city":null,
+      "country":"DE",
+      "email":"adella@schowalter.com",
+      "language":"EN",
+      "tax_id":null,
+      "vat_number":null,
+      "currency":"USD",
+    }
+  }
+}
+
+{
+  "event_type":"checkout.failed",
+  "data":
+  {
+    "message":
+    {
+      "response_message": "Insufficient funds",
+      "status_code": 422
+    },
+    "transaction_details":
+    {
+      "gateway":"stripe",
+      "type":"subscription",
+      "plan":"awesome"
+    },
+    "contact":
+    {
+      "id":76,
+      "kind":"person",
+      "first_name":"Adella",
+      "last_name":"Schowalter",
+      "full_name":"Adella Schowalter",
+      "contact_name":null,
+      "street_line_1":null,
+      "postal_code":null,
+      "city":null,
+      "country":"DE",
+      "email":"adella@schowalter.com",
+      "language":"EN",
+      "tax_id":null,
+      "vat_number":null,
+      "currency":"USD",
+    }
+  }
+}
+
+
+{
+  "event_type":"checkout.abandoned",
+  "data":
+  {
+    "transaction_details":
+    {
+      "description":"Awesome",
+      "plan":"awesome",
+    },
+    "contact":
+    {
+      "first_name":"Adella",
+      "last_name":"Schowalter",
+      "city":null,
+      "country":"DE",
+      "email":"adella@schowalter.com",
+    }
+  }
+}
 ```
 
 Every webhook uses the same format for its data, regardless of event type. The webhooks take the form of a standard `POST`, with a hash using the following paramaters:
@@ -142,15 +239,16 @@ Parameter    | Description
 
 Event types are a combination of the object you want to be notified about and the object state.
 
-Available objects at present are:
+Available events are:
 
-- `invoice`
-- `receipt`
-- `credit`
-- `expense`
-- `estimate`
-- `payment`
-- `contact`
+- `invoice.created`, `invoice.updated`, `invoice.deleted`
+- `receipt.created`, `receipt.updated`, `receipt.deleted`
+- `credit.created`, `credit.updated`, `credit.deleted`
+- `expense.created`, `expense.updated`, `expense.deleted`
+- `estimate.created`, `estimate.updated`, `estimate.deleted`
+- `payment.created`, `payment.deleted`
+- `contact.created`, `contact.updated`, `contact.deleted`
+- `checkout.succeeded`, `checkout.failed`, `checkout.abandoned`
 
 And the following states are supported:
 

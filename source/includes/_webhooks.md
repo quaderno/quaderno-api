@@ -250,11 +250,6 @@ Available events are:
 - `contact.created`, `contact.updated`, `contact.deleted`
 - `checkout.succeeded`, `checkout.failed`, `checkout.abandoned`
 
-And the following states are supported:
-
-- `created`
-- `updated` (not available for payments)
-- `deleted` (not available for payments)
 
 For example, if you want to be notified whenever an invoice is created or deleted, you should subscribe to the events `invoice.created` and `invoice.deleted`.
 

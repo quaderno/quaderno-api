@@ -165,7 +165,7 @@ Quaderno's webhooks allow your application to receive information about events t
       "language":"EN",
       "tax_id":null,
       "vat_number":null,
-      "currency":"USD",
+      "currency":"USD"
     }
   }
 }
@@ -201,7 +201,7 @@ Quaderno's webhooks allow your application to receive information about events t
       "language":"EN",
       "tax_id":null,
       "vat_number":null,
-      "currency":"USD",
+      "currency":"USD"
     }
   }
 }
@@ -214,7 +214,7 @@ Quaderno's webhooks allow your application to receive information about events t
     "transaction_details":
     {
       "description":"Awesome",
-      "plan":"awesome",
+      "plan":"awesome"
     },
     "contact":
     {
@@ -222,7 +222,7 @@ Quaderno's webhooks allow your application to receive information about events t
       "last_name":"Schowalter",
       "city":null,
       "country":"DE",
-      "email":"adella@schowalter.com",
+      "email":"adella@schowalter.com"
     }
   }
 }

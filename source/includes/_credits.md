@@ -104,6 +104,7 @@ This will return `201 Created` and the current JSON representation of the credit
 
 Attribute       | Mandatory                                  | Type/Description
 ----------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+document_id     | no (highly recommendable)                  | ID. ID of a related Invoice or Receipt.
 number          | no                                         | String(255 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness
 issue_date      | no                                         | String(255 chars) Available for all except for `recurring`. Defaults to the current date. Format YYYY-MM-DD
 po_number       | no                                         | String(255 chars)

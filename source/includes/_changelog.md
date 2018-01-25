@@ -4,6 +4,7 @@
 
 ### 20170628 (Current version)
 * Return 429 (`too many requests`) instead of 503 (`service unavailable`) on rate limits.
+* Added the `related_document` to the credit object.
 
 ### 20170418
 * Added `custom_metadata` as an editable field.

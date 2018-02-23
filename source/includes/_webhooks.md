@@ -141,7 +141,7 @@ Quaderno's webhooks allow your application to receive information about events t
       "transaction":"sub_012345679",
       "type":"subscription",
       "plan":"awesome",
-      "description":"Awesome"
+      "description":"Awesome",
       "amount": 99.99,
       "amount_cents": 9999,
       "currency":"EUR",

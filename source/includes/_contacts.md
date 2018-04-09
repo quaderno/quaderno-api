@@ -81,7 +81,7 @@ secondary_country       | no        | String(255 chars)
 phone_1                 | no        | String(255 chars)
 phone_2                 | no        | String(255 chars)
 fax                     | no        | String(255 chars)
-email                   | no        | String(255 chars) Multiple emails should be separated by commas
+email                   | no        | String(255 chars) Multiple emails should be separated by commas. Maximum number of addresses allowed is 3.
 web                     | no        | String(255 chars). Validates format
 discount                | no        | Decimal
 language                | no        | String(2 chars) Should be included in the translations list

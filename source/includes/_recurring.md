@@ -226,6 +226,8 @@ client.request(listRecurring) { response in
     "start_date":"2015-02-21",
     "end_date":"2015-06-21",
     "frequency":"monthly",
+    "recurring_period":"months",
+    "recurring_frequency":"1",
     "contact":{
       "id":176938,
       "full_name":"Chuck Testa"
@@ -267,6 +269,8 @@ client.request(listRecurring) { response in
     "start_date":"2015-01-02",
     "end_date":null,
     "frequency":"weekly",
+    "recurring_period":"weeks",
+    "recurring_frequency":"1",
     "contact":{
       "id":176939,
       "full_name":"Veronica Black"
@@ -347,6 +351,8 @@ client.request(readRecurring) { response in
   "start_date":"2015-01-02",
   "end_date":null,
   "frequency":"weekly",
+  "recurring_period":"weeks",
+  "recurring_frequency":"1",
   "contact":{
     "id":176939,
     "full_name":"Veronica Black"

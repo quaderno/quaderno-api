@@ -126,7 +126,7 @@ payment_method  | **yes**                                    | One of the follow
 custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
-If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new receipt will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
+If you pass a `contact` JSON object instead of a `contact_id`, and the email or first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new receipt will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
 
 <p>Please note that you can pass <strong>either</strong> contact_id or contact, but if you pass both then results may not be what you expect.</p>
 

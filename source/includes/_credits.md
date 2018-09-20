@@ -159,6 +159,11 @@ reference     | no                                       | String(255 chars) Cod
 _destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
 
+### Create a credit note from an existing invoice or receipt
+
+Alternatively, you can create a credit note for the full amount of the original invoice or receipt by sending the parameter `invoice_id` with the ID of the invoice or receipt you want to refund rather than all the credit note attributes in the body.
+
+
 ### Credit States
 
 Possible credit states are:

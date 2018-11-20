@@ -51,31 +51,17 @@ client.request(taxCalculation) { response in
 ```
 
 ```json
-// B2C transaction
 {
     "name": "VAT",
     "rate": 21.0,
     "extra_name":null,
-    "extra_rate":null
+    "extra_rate":null,
     "notes": null,
     "country":"ES",
     "region":null,
     "county":null,
     "transaction_type":"eservice",
-    "notes":null,
-}
-
-// EU B2B transaction
-{
-    "name":null,
-    "rate":0.0,
-    "extra_name":null,
-    "extra_rate":null
-    "country":"AT",
-    "region":null,
-    "county":null,
-    "transaction_type":"eservice",
-    "notes":"EU VAT reverse charged",
+    "notes":null
 }
 ```
 

@@ -56,7 +56,6 @@ client.request(taxCalculation) { response in
     "rate": 21.0,
     "extra_name":null,
     "extra_rate":null,
-    "notes": null,
     "country":"ES",
     "region":null,
     "county":null,

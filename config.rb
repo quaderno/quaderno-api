@@ -32,7 +32,7 @@ set :relative_links, true
 activate :deploy do |deploy|
   deploy.method = :rsync
   deploy.host = '95.85.63.165'
-  deploy.path = '/var/www/quaderno.io/docs/api'
+  deploy.path = '/var/www/developers/api'
   deploy.user = 'root' # no default
 end
 

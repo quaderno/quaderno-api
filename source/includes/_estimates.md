@@ -134,7 +134,7 @@ items_attributes| **yes**                                    | Array of document
 custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
-If you pass a `contact` JSON object instead of a `contact_id`, and the first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />
+If you pass a `contact` JSON object instead of a `contact_id`, and the email or first and last name combination does not match any of your existing estimates, a new one will be created, otherwise a new estimate will be created for the existing estimate.<br /><br />
 
 <p>Please note that you can pass <strong>either</strong> estimate_id or estimate, but if you pass both then results may not be what you expect.</p>
 
@@ -154,9 +154,15 @@ discount_rate | no                                       | Decimal
 tax_1_name    | Mandatory if `tax_1_rate` is present     | String(255 chars)
 tax_1_rate    | Mandatory if `tax_1_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_1_country | no                                       | String(2 chars). Defaults to the contact's country
+tax_1_region  | no                                       | String(255 chars). Recommendable to set for Canadian or United States taxes.
+tax_1_county  | no                                       | String(2 chars). Recommendable to set for Canadian or United States taxes.
+tax_1_transaction_type | no                              | String. Accepts `eservice`, `ebook` or `standard`. Defaults to your account "default tax type".
 tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
+tax_2_region  | no                                       | String(255 chars). Recommendable to set for Canadian or United States taxes.
+tax_2_county  | no                                       | String(2 chars). Recommendable to set for Canadian or United States taxes.
+tax_2_transaction_type | no                              | String. Accepts `eservice`, `ebook` or `standard`. Defaults to your account "default tax type".
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
 _destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 

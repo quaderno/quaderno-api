@@ -26,7 +26,7 @@ includes:
   - items
   - payments
   - taxes
-  - evidences
+  - evidence
   - webhooks
   - errors
   - changelog

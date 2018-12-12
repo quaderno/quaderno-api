@@ -54,7 +54,13 @@ client.request(taxCalculation) { response in
 {
     "name": "VAT",
     "rate": 21.0,
-    "notes": null
+    "extra_name":null,
+    "extra_rate":null,
+    "country":"ES",
+    "region":null,
+    "county":null,
+    "transaction_type":"eservice",
+    "notes":null
 }
 ```
 
@@ -65,7 +71,7 @@ Parameter          | Mandatory | Description
 `country`          | **Yes**   | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `postal_code`      | No        | Customer's postal code (ZIP)
 `vat_number`       | No        | Customer's VAT number
-`transaction_type` | No        | Values: `eservice`, `ebook`, `standard`. Default is `eservice`
+`transaction_type` | No        | Values: `eservice`, `ebook`, `standard`. Defaults to the "default tax type" configured in your account taxes settings.
 
 This will return a `200 OK` if the request was a success, along with the taxes represented as a JSON string.
 

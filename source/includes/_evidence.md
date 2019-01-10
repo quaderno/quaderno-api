@@ -15,7 +15,7 @@ Location evidence are proofs of the customer's location that should be stored in
   "vat_number":null,
   "vies_reference":null,
   "additional_evidence":null,
-  "additional_evidence_country":null
+  "additional_evidence_country":null,
   "notes":null
 }
 ```

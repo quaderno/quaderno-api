@@ -304,7 +304,7 @@ require 'base64'
 # @param array body the request's POST parameters
 def generateSignature(webhook_key, url, body)
     signed_data = url + body
-    Base64.encode64(OpenSSL::HMAC.hexdigest('sha1', signed_data, webhook_key))
+    Base64.encode64(OpenSSL::HMAC.digest('sha1', webhook_key, signed_data))
 end
 ```
 

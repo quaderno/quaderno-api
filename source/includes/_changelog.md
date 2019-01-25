@@ -2,9 +2,13 @@
 
 ## API versions and changes
 
-### 20170628 (Current version)
-* Return 429 (`too many requests`) instead of 503 (`service unavailable`) on rate limits.
+### 20170914 (Current version)
 * Added the `related_document` to the credit object.
+* Added `tax_1_region`, `tax_1_county`, `tax_1_transaction_type`, `tax_2_region`, `tax_2_county`, and `tax_2_transaction_type` fields to the taxes attributes in the credit object.
+* Added `country`, `region`, `county`, and `transaction_type` fields to the document items attributes in the credit object.
+
+### 20170628
+* Return 429 (`too many requests`) instead of 503 (`service unavailable`) on rate limits.
 
 ### 20170418
 * Added `custom_metadata` as an editable field.

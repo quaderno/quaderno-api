@@ -345,7 +345,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 <aside class="notice">
-The current version is <strong>20170628</strong>.
+The current version is <strong>20170914</strong>.
 Please refer to the <strong><a href='#changelog'>changelog</a></strong> to get a list of the changes
 </aside>
 

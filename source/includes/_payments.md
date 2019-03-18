@@ -19,7 +19,9 @@ Note that unlike items, payments cannot exist in Quaderno separately to an insta
 # body.json
 {
   "amount":"56.60",
-  "payment_method":"credit_card"
+  "payment_method":"credit_card",
+  "payment_processor":"stripe",
+  "payment_processor_id":"ch_19yUdh2eZvKYlo2CkFVBOZG7"
 }
 
 # curl command
@@ -33,8 +35,10 @@ curl -u YOUR_API_KEY:x \
 ```php?start_inline=1
 $payment = new QuadernoPayment(array(
                                 'date' => date('2012-10-10'),
-                                'payment_method' => 'credit_card'),
-                                'amount' => '56.60');
+                                'payment_method' => 'credit_card',
+                                'amount' => '56.60',
+                                'payment_processor' => 'stripe',
+                                'payment_processor_id' => 'ch_19yUdh2eZvKYlo2CkFVBOZG7'));
 
 $invoice->addPayment($payment);               // Return true (success) or false (error)
 $invoice->save();                             // Returns true (success) or false (error)
@@ -44,7 +48,9 @@ $invoice->save();                             // Returns true (success) or false
 invoice = Quaderno::Invoice.find(invoice_id)
 params = {
     payment_method: 'credit_card',
-    amount: '56.60'
+    amount: '56.60',
+    payment_processor: 'stripe',
+    payment_processor_id: 'ch_19yUdh2eZvKYlo2CkFVBOZG7'
 }
 invoice.add_payment(params) #=> Quaderno::Payment
 ```
@@ -54,7 +60,9 @@ let client = Quaderno.Client(/* ... */)
 
 let params : [String: Any] = [
  "payment_method": "credit_card",
- "amount": "56.60"
+ "amount": "56.60",
+ "payment_processor": "stripe",
+ "payment_processor_id": "ch_19yUdh2eZvKYlo2CkFVBOZG7"
 ]
 
 let readInvoice = Invoice.read(INVOICE_ID)
@@ -74,6 +82,9 @@ Attribute      | Mandatory | Type/Description
 amount         | **yes**   | Decimal
 date           | no        | String(255 chars) Format `YYYY-MM-DD`
 payment_method | **yes**   | One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
+payment_processor  | no    | Payment processor that you used to process the payment.
+payment_processor_id  | no | The `id` that the payment processor assigned to the payment.
+
 
 ## Retrieve: Get all payments on an invoice or expense
 

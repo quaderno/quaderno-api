@@ -10,6 +10,8 @@ A receipt is a detailed list of goods shipped or services rendered, with an acco
 # body.json
 {
   "payment_method":"credit_card",
+  "payment_processor":"stripe",
+  "payment_processor_id":"ch_19yUdh2eZvKYlo2CkFVBOZG7",
   "contact_id":"5059bdbf2f412e0901000024",
   "contact_name":"STARK",
   "po_number":"",
@@ -40,6 +42,8 @@ curl -u YOUR_API_KEY:x \
 $receipt = new QuadernoReceipt(array(
                                  'contact_id' => '5059bdbf2f412e0901000024',
                                  'payment_method' => 'credit_card',
+                                 'payment_processor' => 'stripe',
+                                 'payment_processor_id' => 'ch_19yUdh2eZvKYlo2CkFVBOZG7',
                                  'po_number' => '',
                                  'currency' => 'USD',
                                  'tag_list' => array('playboy', 'businessman'),
@@ -63,6 +67,8 @@ params = {
   contact_id: contact.id,
   po_number: '',
   payment_method: 'credit_card',
+  payment_processor: 'stripe',
+  payment_processor_id: 'ch_19yUdh2eZvKYlo2CkFVBOZG7',
   currency: 'USD',
   tag_list: ['playboy', 'businessman'],
   items_attributes: [
@@ -85,6 +91,8 @@ let client = Quaderno.Client(/* ... */)
 
 let params : [String: Any] = [
     "payment_method":"credit_card",
+    "payment_processor": "stripe",
+    "payment_processor_id": "ch_19yUdh2eZvKYlo2CkFVBOZG7",
     "contact_id":"5059bdbf2f412e0901000024",
     "contact_name":"STARK",
     "po_number":"",
@@ -123,6 +131,8 @@ region          | no                                         | String(255 chars)
 postal_code     | no                                         | String(255 chars). Available for updates
 items_attributes| **yes**                                    | Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.
 payment_method  | **yes**                                    | One of the following: `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `promissory_note`, `iou`, `paypal` or `other`
+payment_processor  | no                                      | Payment processor that you used to process the payment.
+payment_processor_id  | no                                   | The `id` that the payment processor assigned to the payment.
 custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
@@ -241,6 +251,8 @@ client.request(listReceipts) { response in
         "id":"50aca7d92f412eda5200002c",
         "date":"2012-11-21",
         "payment_method":"credit_card",
+        "payment_processor":"stripe",
+        "payment_processor_id":"ch_19yUdh2eZvKYlo2CkFVBOZG7",
         "amount_cents":"9375",
       },
     ],
@@ -298,6 +310,8 @@ client.request(listReceipts) { response in
         "id":"50aca7d92f412eda5200002ssdc",
         "date":"2012-11-21",
         "payment_method":"credit_card",
+        "payment_processor":"stripe",
+        "payment_processor_id":"ch_19yUdh2eZvKYlo2CkFVBOZG7",
         "amount_cents":"6000",
       },
     ],
@@ -389,6 +403,8 @@ client.request(readReceipt) { response in
     "id":972444,
     "date":"2016-05-05",
     "payment_method":"credit_card",
+    "payment_processor":"stripe",
+    "payment_processor_id":"ch_19yUdh2eZvKYlo2CkFVBOZG7",
     "amount_cents":"3000"
   }],
   "notes":null,

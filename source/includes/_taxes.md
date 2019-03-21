@@ -75,7 +75,7 @@ Parameter          | Mandatory | Description
 
 This will return a `200 OK` if the request was a success, along with the taxes represented as a JSON string.
 
-## Validating VAT Numbers
+## Validating Business Numbers
 
 > GET /taxes/validate.json
 
@@ -94,7 +94,7 @@ curl -u YOUR_API_KEY:x \
 country = 'IE'
 vat_number = 'IE6388047V'
 
-Quaderno::Tax.validate_vat_number(country, vat_number) #=> Boolean
+Quaderno::Tax.validate_vat_number(country, vat_number) #=> true, false or nil
 ```
 
 ```php?start_inline=1
@@ -102,7 +102,7 @@ Quaderno::Tax.validate_vat_number(country, vat_number) #=> Boolean
 $country = 'IE';
 $vat_number = 'IE6388047V';
 
-QuadernoTax::validate_vat_number($country, $vat_number) // Boolean
+QuadernoTax::validate_vat_number($country, $vat_number) // true, false or null
 ```
 
 ```swift?start_inline=1
@@ -110,9 +110,13 @@ QuadernoTax::validate_vat_number($country, $vat_number) // Boolean
 ```
 
 
-`GET`ting to `/taxes/validate.json` will validate the given EU VAT number.
+`GET`ting to `/taxes/validate.json` will validate the given business number. Currently Quaderno validates EU VAT numbers, ABN, and NZBN.
+
+Please keep in mind that business numbers are not actually validated while using the Sandbox.
 
 Parameter    | Mandatory | Description
 -------------|-----------|------------------------------------------------------------------------------------------------
 `country`    | **Yes**   | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
-`vat_number` | **Yes**   | Customer's VAT number
+`vat_number` | **Yes**   | Customer's business number
+
+This will return a `200 OK` and the result of validating the business number against the official external validation service. The result can be true (valid business number), false (invalid business number) or null (the external service is temporarily unavailable).

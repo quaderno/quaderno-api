@@ -88,6 +88,11 @@ tax_2_name    | Mandatory if  `tax_2_rate` and `tax_2_country` are present) |
 tax_2_rate    | Mandatory if  `tax_2_name` and `tax_2_country` are present) | Decimal between -100.00 and 100.00 (not incluided)
 tax_2_country | Mandatory if `tax_2_name` and `tax_2_rate` are present)     | String(2 chars). Format ISO 3166-1 alpha-2
 stock         | no                                                          | Decimal
+kind          | no                                                          | One of the following: `one_off` or `subscription`. Default value is `one_off`
+stripe_plan_id     | no                                                     | String(255 chars). Only for Stripe `subscription`s. Validates in Stripe that matches a real Stripe Plan Id
+paypal_interval_unit | no                                                   | Only for Paypal `subscription`s. One of the following: `daily`, `weekly`, `monthly`, `yearly`
+paypal_interval_frequency  | no                                             | Decimal. Only for Paypal `subscription`s. Frequency of the units when the charge should recur.
+paypal_interval_duration  | no                                              | Decimal. Only for Paypal `subscription`s. Number of times the charge should recur.
 
 <aside class="notice">
 Note that this kind of item is like a template for items, a shortcut that you can reference in order to speed up document creation. You can also have items that exist only for the relevant document and not as independent entities, and these do not require "unit_cost" (also not being stock-trackable and so on).
@@ -127,7 +132,8 @@ client.request(readItem) { response in
     "name":"Titanic",
     "unit_cost":"15.0",
     "stock":"100",
-    "url":"https://my-account.quadernoapp.com/api/items/1"
+    "url":"https://my-account.quadernoapp.com/api/items/1",
+    "kind":"one_off"
   },
   {
     "id":2,
@@ -136,7 +142,8 @@ client.request(readItem) { response in
     "unit_cost":"15.0",
     "tax_1_name":"AWESOME_TAX",
     "tax_1_rate":"7.00",
-    "url":"https://my-account.quadernoapp.com/api/items/2"
+    "url":"https://my-account.quadernoapp.com/api/items/2",
+    "kind":"one_off"
   },
   {
     "id":3,
@@ -144,7 +151,8 @@ client.request(readItem) { response in
     "name":"Titanic III: The origin",
     "unit_cost":"15.0",
     "stock":"33",
-    "url":"https://my-account.quadernoapp.com/api/items/3"
+    "url":"https://my-account.quadernoapp.com/api/items/3",
+    "kind":"one_off"
   }
 ]
 ```
@@ -192,7 +200,8 @@ client.request(readItem) { response in
   "unit_cost":"15.0",
   "tax_1_name":"AWESOME_TAX",
   "tax_1_rate":"7.00",
-  "url":"https://my-account.quadernoapp.com/api/items/2"
+  "url":"https://my-account.quadernoapp.com/api/items/2",
+  "kind":"one_off"
 }
 ```
 

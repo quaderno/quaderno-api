@@ -6,6 +6,8 @@
 * Added the `related_document` to the credit object.
 * Added `tax_1_region`, `tax_1_county`, `tax_1_transaction_type`, `tax_2_region`, `tax_2_county`, and `tax_2_transaction_type` fields to the taxes attributes in the credit object.
 * Added `country`, `region`, `county`, and `transaction_type` fields to the document items attributes in the credit object.
+* Added `kind`, `stripe_plan_id`, `paypal_interval_unit`, `paypal_interval_frequency` and `paypal_interval_duration` fields in the item object.
+* Changed `number` field limit to 20 characters for `invoices`, `receipts`, `credits` and `estimates`.
 
 ### 20170628
 * Return 429 (`too many requests`) instead of 503 (`service unavailable`) on rate limits.

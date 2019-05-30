@@ -306,7 +306,7 @@ client.request(listExpenses) { response in
 You can filter the results in a few ways:
 
 - By `contact_name` or `po_number` by passing the `q` parameter in the url like `?q=KEYWORD`.
-- By date range, passing the `date` parameter in the url like `?date=DATE1,DATE2`.
+- By date range, passing the `date` parameter in the url like `?date=DATE1,DATE2`. Date range allows these formats: `2019-01-01,2019-12-31` or `2019/01/01,2019/12/31`.
 - By state, passing the `state` parameter like `?state=STATE`.
 - By specific vendor, passing the vendor ID in the `contact` parameter, like `?contact=3231`.
 

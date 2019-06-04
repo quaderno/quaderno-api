@@ -374,7 +374,7 @@ client.request(readEstimate) { response in
   "currency":"EUR",
   "items":[
     {
-      "id":"4815162342"
+      "id":"4815162342",
       "description":"ACME TNT",
       "quantity":"1.0",
       "unit_price_cents":"10000",

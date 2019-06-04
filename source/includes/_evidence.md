@@ -88,6 +88,46 @@ Parameter          | Mandatory | Description
 `billing_country`  | No        | Customer's billing country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `ip_address`       | No        | Customer's IP address
 `bank_country`     | No        | Customer's bank country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`additional_evidence`| No (yes if `additional_evidence_country` is passed) | An explanatory note about the additional evidence. Up to 255 chars.
+`additional_evidence_country`| No (yes if `additional_evidence` is passed) | Additional evidence for the customer location (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+
+## Update an evidence
+
+> `PUT /evidence/EVIDENCE_ID.json`
+
+```shell
+# body.json
+{
+  "billing_country":"FR",
+  "ip_address":"192.168.1.1",
+  "bank_country":"FR"
+}
+
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/evidence/EVIDENCE_ID.json'
+```
+
+```php?start_inline=1
+$evidence = QuadernoEvidence::find(EVIDENCE_ID);
+$evidence->ip_address = "192.168.23.23";
+
+$evidence->save(); // Returns true (success) or false (error)
+```
+
+```ruby
+# Coming soon!
+
+```
+
+```swift?start_inline=1
+// Coming soon!
+```
+
+`PUT`ting to `/evidence/EVIDENCE_ID.json` will update the evidence with the passed parameters.
+
+This will return `200 OK` along with the current JSON representation of the evidence if successful.
 
 ## Retrieve: Get and filter all evidence
 
@@ -100,7 +140,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```php?start_inline=1
-// Coming soon!
+$evidences = QuadernoEvidence::find(array('page'=>1))
 ```
 
 ```ruby
@@ -195,7 +235,7 @@ You can filter the results in a few ways:
 
 ## Retrieve: Get a single evidence
 
-> `GET /estimates/ESTIMATE_ID.json`
+> `GET /evidence/EVIDENCE_ID.json`
 
 
 ```shell
@@ -204,7 +244,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```php?start_inline=1
-// Coming soon!
+$evidence = QuadernoEvidence::find(EVIDENCE_ID);
 ```
 
 ```ruby

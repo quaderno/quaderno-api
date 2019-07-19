@@ -11,37 +11,34 @@ One of the killer features Quaderno provides is efficient and easy tax managemen
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/calculate.json?country=ES&postal_code=08080&vat_number=ESA58818501'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/calculate.json?country=US&postal_code=94010'
 ```
 
 ```ruby
 params = {
-    country: 'ES',
-    postal_code: '08080'
-    vat_number: 'ESA58818501'
+    country: 'US',
+    postal_code: '94010'
 }
 tax = Quaderno::Tax.calculate(params) #=> Quaderno::Tax
 ```
 
 ```php?start_inline=1
 $data = array(
-  'country' => 'ES',
-  'postal_code' => '08080',
-  'tax_id' => 'A58818501'
+  'country' => 'US',
+  'postal_code' => '94010'
 );
 
 $tax = QuadernoTax::calculate($data); // Returns a QuadernoTax
-$tax->name; // "VAT"
-$tax->rate; // 21.0
+$tax->name; // "Sales Tax"
+$tax->rate; // 9.5
 ```
 
 ```swift?start_inline=1
 let client = Quaderno.Client(/* ... */)
 
 let params : [String: Any] = [
-    "country": "ES",
-    "postal_code": "08080"
-    "vat_number": "ESA58818501"
+    "country": "US",
+    "postal_code": "94010"
 ]
 
 let taxCalculation = Tax.calculate(params)
@@ -52,13 +49,16 @@ client.request(taxCalculation) { response in
 
 ```json
 {
-    "name": "VAT",
-    "rate": 21.0,
+    "name": "Sales tax",
+    "rate": 9.5,
     "extra_name":null,
     "extra_rate":null,
-    "country":"ES",
-    "region":null,
-    "county":null,
+    "country":"US",
+    "region":"CA",
+    "county":"SAN MATEO",
+    "city":"BURLINGAME",
+    "county_tax_code":"41",
+    "city_tax_code":"746",
     "transaction_type":"eservice",
     "notes":null
 }

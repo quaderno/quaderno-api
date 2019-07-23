@@ -69,9 +69,10 @@ client.request(taxCalculation) { response in
 Parameter          | Mandatory | Description
 -------------------|-----------|------------------------------------------------------------------------------------------------
 `country`          | **Yes**   | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
-`postal_code`      | No        | Customer's postal code (ZIP)
+`postal_code`      | No        | Customer's postal code / zip
+`city`             | No        | Customer's city (for US sales tax)
 `vat_number`       | No        | Customer's VAT number
-`transaction_type` | No        | Values: `eservice`, `ebook`, `standard`. Defaults to the "default tax type" configured in your account taxes settings.
+`transaction_type` | No        | Values: `eservice`, `ebook`, `standard`, `saas`. Defaults to the "default tax type" configured in your account taxes settings.
 
 This will return a `200 OK` if the request was a success, along with the taxes represented as a JSON string.
 

@@ -133,3 +133,129 @@ curl -u YOUR_API_KEY:x \
 ]
 
 ```
+
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`id`                                 | integer        | Unique identifier for the object.
+`billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
+`custom`                             | object         |
+`customer`                           | object         |
+`items`                              | array          | The list of products purchased by the customer.
+`locale`                             | string         |The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array          | Values are card and paypal.
+`permalink`                          | string         | The URL of this Checkout Link.
+`success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
+`processor`                          | string         | Values are `stripe` and `paypal`.
+`processor_id`                       | string         |
+`status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.
+
+## Create a session
+
+Sessions are created via links, but you can also create them via API if you need to create sessions on the fly.
+
+> `POST /checkout/sessions.json`
+
+This will return `201 Created` and the current JSON representation of the session if the creation was a success.
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
+`custom`                             | object         |
+`customer`                           | object         |
+`items`                              | array          | The list of products purchased by the customer.
+`locale`                             | string         |The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array          | Values are card and paypal.
+`success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
+
+
+## Retrieve a session
+
+Retrieves the details of an existing session. You need only supply the unique session identifier that was returned upon session creation.
+
+> `GET /checkout/session/SESSION_ID.json`
+
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions/SESSION_ID.json'
+```
+
+```ruby
+# Coming soon!
+```
+
+```php?start_inline=1
+// Coming soon!
+
+```
+
+```swift
+// Coming soon!
+```
+
+```json
+{
+      "id":1,
+      "status":"completed",
+      "billing_details_collection":"required",
+      "cancel_url":"http://go.back.com",
+      "coupon_collection":true,
+      "locale":"auto",
+      "payment_methods":["card", "paypal"],
+      "success_url":"http://success.com?prod=1",
+      "custom":{},
+      "items":[
+         {
+            "product":"prod_61ffa845b4a0b8",
+            "amount":999.0,
+            "name":"A test item",
+            "description":"This a test item.",
+            "currency":"EUR",
+            "quantity":1
+         }
+      ],
+      "customer":{
+         "billing_city":"John",
+         "billing_country":"GB",
+         "billing_postal_code":"asd",
+         "billing_street_line_1":"asd",
+         "billing_street_line_2":"asd",
+         "company":"",
+         "email":"john@doe.com",
+         "first_name":"John",
+         "last_name":"Doe",
+         "tax_id":null,
+         "business_number":null
+      },
+      "permalink":"http://quaderno.lvh.me:3000/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
+   }
+```
+
+## Update a session
+
+Updates the specified session by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Only pending sessions can be updated.
+
+This request accepts mostly the same arguments as the session creation call.
+
+> `PUT /checkout/session/SESSION_ID.json`
+
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`id`                                 | integer        | Unique identifier for the object.
+`billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
+`custom`                             | object         |
+`customer`                           | object         |
+`items`                              | array          | The list of products purchased by the customer.
+`locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array          | Values are card and paypal.
+`success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
+
+

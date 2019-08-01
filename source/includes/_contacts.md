@@ -348,7 +348,7 @@ Quaderno::Contact.delete(CONTACT_ID) #=> Boolean
 $contact->delete();
 ```
 
-````swift?start_inline=1
+```swift?start_inline=1
 let client = Quaderno.Client(/* ... */)
 
 let deleteContact = Contact.delete(CONTACT_ID)

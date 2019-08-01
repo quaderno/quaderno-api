@@ -27,7 +27,7 @@ includes:
   - payments
   - taxes
   - evidence
-  - checkout
+  - checkout_sessions
   - webhooks
   - errors
   - changelog

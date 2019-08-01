@@ -1,0 +1,420 @@
+# Checkout Sessions
+
+A Checkout Session represents your customer's session as they pay for one-time purchases or subscriptions through Checkout.
+
+## List all sessions
+
+You can list all sessions, or list the sessions for a specific status. The sessions are returned sorted by creation date, with the most recently created sessions appearing first.
+
+> `GET /checkout/sessions.json`
+
+Returns an array of sessions. Each entry in the array is a separate session object. If no more sessions are available, the resulting array will be empty.
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions.json'
+```
+
+```php?start_inline=1
+// Coming soon!
+```
+
+```ruby
+# Coming soon!
+```
+
+```swift?start_inline=1
+// Coming soon!
+```
+
+```json
+[
+   {
+      "id":1,
+      "status":"completed",
+      "billing_details_collection":"required",
+      "cancel_url":"http://go.back.com",
+      "coupon_collection":true,
+      "locale":"auto",
+      "payment_methods":["card", "paypal"],
+      "success_url":"http://success.com?prod=1",
+      "custom":{},
+      "items":[
+         {
+            "product":"prod_61ffa845b4a0b8",
+            "amount":999.0,
+            "name":"A test item",
+            "description":"This a test item.",
+            "currency":"EUR",
+            "quantity":1
+         }
+      ],
+      "customer":{
+         "billing_city":"John",
+         "billing_country":"GB",
+         "billing_postal_code":"asd",
+         "billing_street_line_1":"asd",
+         "billing_street_line_2":"asd",
+         "company":"",
+         "email":"john@doe.com",
+         "first_name":"John",
+         "last_name":"Doe",
+         "tax_id":null,
+         "business_number":null
+      },
+      "permalink":"http://quaderno.lvh.me:3000/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
+   },
+   {
+      "id":2,
+      "status":"failed",
+      "billing_details_collection":"auto",
+      "cancel_url":"http://go.back.com",
+      "coupon_collection":true,
+      "locale":"es",
+      "payment_methods":["paypal"],
+      "success_url":"http://success.com?prod=2",
+      "custom":{},
+      "items":[
+         {
+            "product":"awesome",
+            "amount":999.0,
+            "name":"Awesome",
+            "description":"",
+            "currency":"EUR",
+            "quantity":1
+         }
+      ],
+      "customer":{
+         "billing_city":null,
+         "billing_country":null,
+         "billing_postal_code":"asd",
+         "billing_street_line_1":"asdas",
+         "billing_street_line_2":"asd",
+         "company":"",
+         "email":null,
+         "first_name":"James",
+         "last_name":null,
+         "tax_id":null
+      },
+      "permalink":"http://quaderno.lvh.me:3000/checkout/session/5c24890be57274275358e7d25ea5200384fc7293"
+   },
+   {
+      "id":3,
+      "status":"abandoned",
+      "billing_details_collection":"required",
+      "success_url":"http://success.com?prod=1",
+      "coupon_collection":false,
+      "locale":"auto",
+      "payment_methods":["card", "paypal"],
+      "success_url":"http://success.com",
+      "custom":{},
+      "items":[
+         {
+            "product":"prod_61ffa845b4a0b8",
+            "amount":999.0,
+            "name":"Something",
+            "description":null,
+            "currency":"EUR",
+            "quantity":1
+         }
+      ],
+      "customer":{
+         "billing_city":"York",
+         "billing_country":"GB",
+         "billing_postal_code":"Y01 6FA",
+         "billing_street_line_1":"Fake Street 1",
+         "billing_street_line_2":"Apt. 1",
+         "company":"",
+         "email":"giles@gorales.co.uk",
+         "first_name":"Giles",
+         "last_name":null,
+         "tax_id":null
+      },
+      "permalink":"http://quaderno.lvh.me:3000/checkout/session/0092e2afbc457a2e3acf1a2c75928743d06c1fe5"
+   }
+]
+
+```
+
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`id`                                 | integer        | Unique identifier for the object.
+`billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
+`custom`                             | object         |
+`customer`                           | object         | The customer's billing information. Check the attributes [here](#customer-object)
+`items`                              | array          | The list of products purchased by the customer. Check the item object [here](#item-object)
+`locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array          | Values are `card` and `paypal`.
+`permalink`                          | string         | The URL of this Checkout Session.
+`success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
+`processor`                          | string         | Values are `stripe` and `paypal`.
+`processor_id`                       | string         |
+`status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.
+
+
+### Customer object:
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`billing_city`                       | string         | City/District/Suburb/Town/Village.
+`billing_country`                    | string         | 2-letter country code.
+`billing_postal_code`                | string         | ZIP or postal code.
+`billing_street_line_1`              | string         | Address line 1 (Street address/PO Box).
+`billing_street_line_2`              | string         | Address line 2 (Apartment/Suite/Unit/Building).
+`company`                            | string         | Customer company.
+`email`                              | string (email) | Customer email.
+`first_name`                         | string         | Customer first name.
+`last_name`                          | string         | Customer last name.
+`tax_id`                             | string         | Customer Tax ID.
+`business_number`                    | string         | Customer Business number
+
+### Item object:
+
+key                                  | type                  | description
+-------------------------------------|-----------------------|-----------------------------------------
+`amount`                             | number(decimal)       | Unit price of the item being purchased.
+`currency`                           | string                | ISO 4217 currency code.
+`description`                        | string                | The description of the item being purchased.
+`name`                               | string                | The name of the item being purchased.
+`product`                            | string                | The SKU of the Quaderno Product.
+`quantity`                           | integer               | Quantity of the item being purchased.
+
+## Create a session
+
+Sessions are created via links, but you can also create them via API if you need to create sessions on the fly.
+
+> `POST /checkout/sessions.json`
+
+This request will return `201 Created` and the current JSON representation of the session if the creation was a success.
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{"billing_details_collection":"auto","cancel_url":"string","coupon_collection":true,"cus...}' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions.json'
+```
+
+```php?start_inline=1
+// Coming soon
+```
+
+```ruby
+# Coming soon!
+```
+
+```swift?start_inline=1
+// Coming soon!
+```
+
+key                                  | type                  | description
+-------------------------------------|-----------------------|-----------------------------------------
+`billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string                | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean               | The value for whether Checkout collected coupons.
+`custom`                             | object                |
+`customer`                           | object                | The customer's billing information. Check the attributes [here](#customer-attributes).
+`items`                              | array / **required**  | The list of products purchased by the customer. Check the attributes [here](#items-attributes).
+`locale`                             | string                | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array                 | Values are card and paypal.
+`success_url`                        | string                | The URL the customer will be directed to after the payment is successful.
+
+
+### Customer attributes:
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`billing_city`                       | string         | City/District/Suburb/Town/Village. Use this parameter to prefill customer data if you already have her city on file.
+`billing_country`                    | string         | 2-letter country code. Use this parameter to prefill customer data if you already have her country on file.
+`billing_postal_code`                | string         | ZIP or postal code. Use this parameter to prefill customer data if you already have her postal code on file.
+`billing_street_line_1`              | string         | Address line 1 (Street address/PO Box). Use this parameter to prefill customer data if you already have her street address on file.
+`billing_street_line_2`              | string         | Address line 2 (Apartment/Suite/Unit/Building). Use this parameter to prefill customer data if you already have her street address on file.
+`contact`                            | integer        | The ID of the Quaderno Contact. A new contact will be created unless an existing contact was provided in when the Checkout was created.
+`company`                            | string         | Customer company. Use this parameter to prefill customer data if you already have her company name on file.
+`email`                              | string (email) | Customer email. Use this parameter to prefill customer data if you already have an email on file.
+`first_name`                         | string         | Customer first name. Use this parameter to prefill customer data if you already have her first name on file.
+`last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
+`tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
+
+### Items attributes:
+
+key                                  | type                  | description
+-------------------------------------|-----------------------|-----------------------------------------
+`amount`                             | number(decimal)       | Unit price of the item being purchased. Default value the product's price is used if amount is not set.
+`currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Default value the product's currency is used if currency is not set.
+`description`                        | string                | The description of the item being purchased. Default value the product's description is used if description is not set.
+`name`                               | string                | The name of the item being purchased. Default value the product's name is used if name is not set.
+`product`                            | string / **required** | The SKU of the Quaderno Product.
+`quantity`                           | integer               | Quantity of the item being purchased. Minimum value is 1.
+
+
+## Retrieve a session
+
+Retrieves the details of an existing session. You need only supply the unique session identifier that was returned upon session creation.
+
+> `GET /checkout/session/SESSION_ID.json`
+
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions/SESSION_ID.json'
+```
+
+```ruby
+# Coming soon!
+```
+
+```php?start_inline=1
+// Coming soon!
+
+```
+
+```swift
+// Coming soon!
+```
+
+```json
+{
+      "id":1,
+      "status":"completed",
+      "billing_details_collection":"required",
+      "cancel_url":"http://go.back.com",
+      "coupon_collection":true,
+      "locale":"auto",
+      "payment_methods":["card", "paypal"],
+      "success_url":"http://success.com?prod=1",
+      "custom":{},
+      "items":[
+         {
+            "product":"prod_61ffa845b4a0b8",
+            "amount":999.0,
+            "name":"A test item",
+            "description":"This a test item.",
+            "currency":"EUR",
+            "quantity":1
+         }
+      ],
+      "customer":{
+         "billing_city":"John",
+         "billing_country":"GB",
+         "billing_postal_code":"asd",
+         "billing_street_line_1":"asd",
+         "billing_street_line_2":"asd",
+         "company":"",
+         "email":"john@doe.com",
+         "first_name":"John",
+         "last_name":"Doe",
+         "tax_id":null,
+         "business_number":null
+      },
+      "permalink":"http://quaderno.lvh.me:3000/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
+   }
+```
+
+## Update a session
+
+Updates the specified session by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Only pending sessions can be updated.
+
+This request accepts mostly the same arguments as the session creation call.
+
+> `PUT /checkout/session/SESSION_ID.json`
+
+This will return `200 OK` and a JSON representation of the contact if successful.
+
+
+```shell
+curl \
+ -X PUT https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions/SESSION_ID \
+ -H "Content-Type: application/json" \
+ -d '{"id":42,"billing_details_collection":"auto","cancel_url":"htttp://cancel.url.com","coupon_collection":true,"loc...}'
+```
+
+```ruby
+# Coming soon!
+```
+
+```php?start_inline=1
+// Coming soon!
+
+```
+
+```swift
+// Coming soon!
+```
+
+key                                  | type                  | description
+-------------------------------------|-----------------------|-----------------------------------------
+`id`                                 | integer               | Unique identifier for the object.
+`billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string                | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean               | The value for whether Checkout collected coupons.
+`custom`                             | object                |
+`customer`                           | object                | The customer's billing information. Check the attributes [here](#customer-attributes).
+`items`                              | array / **required**  | The list of products purchased by the customer. Check the attributes [here](#items-attributes).
+`locale`                             | string                | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array                 | Values are card and paypal.
+`success_url`                        | string                | The URL the customer will be directed to after the payment is successful.
+
+
+### Customer attributes:
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`billing_city`                       | string         | City/District/Suburb/Town/Village. Use this parameter to prefill customer data if you already have her city on file.
+`billing_country`                    | string         | 2-letter country code. Use this parameter to prefill customer data if you already have her country on file.
+`billing_postal_code`                | string         | ZIP or postal code. Use this parameter to prefill customer data if you already have her postal code on file.
+`billing_street_line_1`              | string         | Address line 1 (Street address/PO Box). Use this parameter to prefill customer data if you already have her street address on file.
+`billing_street_line_2`              | string         | Address line 2 (Apartment/Suite/Unit/Building). Use this parameter to prefill customer data if you already have her street address on file.
+`contact`                            | integer        | The ID of the Quaderno Contact. A new contact will be created unless an existing contact was provided in when the Checkout was created.
+`company`                            | string         | Customer company. Use this parameter to prefill customer data if you already have her company name on file.
+`email`                              | string (email) | Customer email. Use this parameter to prefill customer data if you already have an email on file.
+`first_name`                         | string         | Customer first name. Use this parameter to prefill customer data if you already have her first name on file.
+`last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
+`tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
+
+### Items attributes:
+
+key                                  | type                  | description
+-------------------------------------|-----------------------|-----------------------------------------
+`amount`                             | number(decimal)       | Unit price of the item being purchased. Default value the product's price is used if amount is not set.
+`currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Default value the product's currency is used if currency is not set.
+`description`                        | string                | The description of the item being purchased. Default value the product's description is used if description is not set.
+`name`                               | string                | The name of the item being purchased. Default value the product's name is used if name is not set.
+`product`                            | string / **required** | The SKU of the Quaderno Product.
+
+
+## Delete a session
+
+Permanently deletes a session. It cannot be undone. Only `pending` sessions can be deleted.
+
+> `DELETE /checkout/sessions/SESSION_ID.json`
+
+Will delete the specified contact and returns `204 No Content` if successful.
+
+URL parameters:
+
+key                                  | type                   | description
+-------------------------------------|------------------------|-----------------------------------------
+`id`                                 | integer / **required** | The ID of the session to be deleted.
+
+
+```shell
+$ curl \
+ -X DELETE https://quadernoapp.com/api/checkout/sessions/{id} \
+ -H "Content-Type: application/json"
+ ```
+
+ ```ruby
+# Coming soon!
+```
+
+```php?start_inline=1
+// Coming soon!
+```
+
+```swift?start_inline=1
+// Coming soon!
+```

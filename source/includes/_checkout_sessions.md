@@ -2,6 +2,53 @@
 
 A Checkout Session represents your customer's session as they pay for one-time purchases or subscriptions through Checkout.
 
+## Session object
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`id`                                 | integer        | Unique identifier for the object.
+`billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
+`cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
+`custom`                             | object         |
+`customer`                           | object         | The customer's billing information. Check the attributes [here](#customer-object)
+`items`                              | array          | The list of products purchased by the customer. Check the item object [here](#item-object)
+`locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`payment_methods`                    | array          | Values are `card` and `paypal`.
+`permalink`                          | string         | The URL of this Checkout Session.
+`success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
+`processor`                          | string         | Values are `stripe` and `paypal`.
+`processor_id`                       | string         |
+`status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.
+
+
+### Customer object:
+
+key                                  | type           | description
+-------------------------------------|----------------|-----------------------------------------
+`billing_city`                       | string         | City/District/Suburb/Town/Village.
+`billing_country`                    | string         | 2-letter country code.
+`billing_postal_code`                | string         | ZIP or postal code.
+`billing_street_line_1`              | string         | Address line 1 (Street address/PO Box).
+`billing_street_line_2`              | string         | Address line 2 (Apartment/Suite/Unit/Building).
+`company`                            | string         | Customer company.
+`email`                              | string (email) | Customer email.
+`first_name`                         | string         | Customer first name.
+`last_name`                          | string         | Customer last name.
+`tax_id`                             | string         | Customer Tax ID.
+`business_number`                    | string         | Customer Business number
+
+### Item object:
+
+key                                  | type                  | description
+-------------------------------------|-----------------------|-----------------------------------------
+`amount`                             | number(decimal)       | Unit price of the item being purchased.
+`currency`                           | string                | ISO 4217 currency code.
+`description`                        | string                | The description of the item being purchased.
+`name`                               | string                | The name of the item being purchased.
+`product`                            | string                | The SKU of the Quaderno Product.
+`quantity`                           | integer               | Quantity of the item being purchased.
+
 ## List all sessions
 
 You can list all sessions, or list the sessions for a specific status. The sessions are returned sorted by creation date, with the most recently created sessions appearing first.
@@ -136,51 +183,6 @@ curl -u YOUR_API_KEY:x \
 
 ```
 
-
-key                                  | type           | description
--------------------------------------|----------------|-----------------------------------------
-`id`                                 | integer        | Unique identifier for the object.
-`billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
-`cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
-`coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
-`custom`                             | object         |
-`customer`                           | object         | The customer's billing information. Check the attributes [here](#customer-object)
-`items`                              | array          | The list of products purchased by the customer. Check the item object [here](#item-object)
-`locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
-`payment_methods`                    | array          | Values are `card` and `paypal`.
-`permalink`                          | string         | The URL of this Checkout Session.
-`success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
-`processor`                          | string         | Values are `stripe` and `paypal`.
-`processor_id`                       | string         |
-`status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.
-
-
-### Customer object:
-
-key                                  | type           | description
--------------------------------------|----------------|-----------------------------------------
-`billing_city`                       | string         | City/District/Suburb/Town/Village.
-`billing_country`                    | string         | 2-letter country code.
-`billing_postal_code`                | string         | ZIP or postal code.
-`billing_street_line_1`              | string         | Address line 1 (Street address/PO Box).
-`billing_street_line_2`              | string         | Address line 2 (Apartment/Suite/Unit/Building).
-`company`                            | string         | Customer company.
-`email`                              | string (email) | Customer email.
-`first_name`                         | string         | Customer first name.
-`last_name`                          | string         | Customer last name.
-`tax_id`                             | string         | Customer Tax ID.
-`business_number`                    | string         | Customer Business number
-
-### Item object:
-
-key                                  | type                  | description
--------------------------------------|-----------------------|-----------------------------------------
-`amount`                             | number(decimal)       | Unit price of the item being purchased.
-`currency`                           | string                | ISO 4217 currency code.
-`description`                        | string                | The description of the item being purchased.
-`name`                               | string                | The name of the item being purchased.
-`product`                            | string                | The SKU of the Quaderno Product.
-`quantity`                           | integer               | Quantity of the item being purchased.
 
 ## Create a session
 

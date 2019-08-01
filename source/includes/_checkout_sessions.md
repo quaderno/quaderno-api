@@ -10,7 +10,7 @@ key                                  | type           | description
 `billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
 `cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
 `coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
-`custom`                             | object         |
+`custom`                             | object         | Set of key-value pairs that you can attach to an object. All these data will be forwarded to the payment processor.
 `customer`                           | object         | The customer's billing information. Check the attributes [here](#customer-object)
 `items`                              | array          | The list of products purchased by the customer. Check the item object [here](#item-object)
 `locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.

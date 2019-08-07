@@ -215,14 +215,14 @@ curl -u YOUR_API_KEY:x \
 key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------
 `billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
-`cancel_url`                         | string                | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`cancel_url`                         | string / **required** | The URL the customer will be directed to if they decide to cancel payment and return to your website.
 `coupon_collection`                  | boolean               | The value for whether Checkout collected coupons.
 `custom`                             | object                |
 `customer`                           | object                | The customer's billing information. Check the attributes [here](#customer-attributes).
 `items`                              | array / **required**  | The list of products purchased by the customer. Check the attributes [here](#items-attributes).
 `locale`                             | string                | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
 `payment_methods`                    | array                 | Values are card and paypal.
-`success_url`                        | string                | The URL the customer will be directed to after the payment is successful.
+`success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
 
 ### Customer attributes:
@@ -351,14 +351,14 @@ key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------
 `id`                                 | integer               | Unique identifier for the object.
 `billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
-`cancel_url`                         | string                | The URL the customer will be directed to if they decide to cancel payment and return to your website.
+`cancel_url`                         | string / **required** | The URL the customer will be directed to if they decide to cancel payment and return to your website.
 `coupon_collection`                  | boolean               | The value for whether Checkout collected coupons.
 `custom`                             | object                |
 `customer`                           | object                | The customer's billing information. Check the attributes [here](#customer-attributes).
 `items`                              | array / **required**  | The list of products purchased by the customer. Check the attributes [here](#items-attributes).
 `locale`                             | string                | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
 `payment_methods`                    | array                 | Values are card and paypal.
-`success_url`                        | string                | The URL the customer will be directed to after the payment is successful.
+`success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
 
 ### Customer attributes:

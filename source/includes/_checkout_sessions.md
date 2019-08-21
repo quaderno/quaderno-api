@@ -10,10 +10,11 @@ key                                  | type           | description
 `billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
 `cancel_url`                         | string         | The URL the customer will be directed to if they decide to cancel payment and return to your website.
 `coupon_collection`                  | boolean        | The value for whether Checkout collected coupons.
-`custom`                             | object         | Set of key-value pairs that you can attach to an object. All these data will be forwarded to the payment processor.
+`custom`                             | object         | Set of key-value pairs that you want to forward to the payment processor. This can be useful for setting up additional options in the payment processor. If you want to send specific data to one processor, you can create a subhash with the name of that particular processor. E.g.: `stripe: { metadata: { user_id: 999 } }, paypal: { no_shipping: 0 }`
 `customer`                           | object         | The customer's billing information. Check the attributes [here](#customer-object)
 `items`                              | array          | The list of products purchased by the customer. Check the item object [here](#item-object)
-`locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`locale`                             | string         | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `it`, `nb`, `nl`, and `sv`.
+`metadata`                           | object         | Set of key-value pairs that you can attach to the session. This can be useful for storing additional information about the purchase.
 `payment_methods`                    | array          | Values are `card` and `paypal`.
 `permalink`                          | string         | The URL of this Checkout Session.
 `success_url`                        | string         | The URL the customer will be directed to after the payment is successful.

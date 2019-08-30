@@ -132,97 +132,99 @@ Quaderno's webhooks allow your application to receive information about events t
 
 {
   "event_type":"checkout.succeeded",
-  "data":
-  {
-    "transaction_details":
-    {
-      "gateway":"stripe",
-      "customer":"cus_0123456789",
-      "transaction":"sub_012345679",
-      "type":"subscription",
-      "plan":"awesome",
-      "description":"Awesome",
-      "amount": 99.99,
-      "amount_cents": 9999,
-      "currency":"EUR",
-      "tax_rate":19.0,
-      "tax_name":"MwSt./USt.",
-      "tax_country":"DE"
-    },
-    "contact":
-    {
-      "id":76,
-      "kind":"person",
-      "first_name":"Adella",
-      "last_name":"Schowalter",
-      "full_name":"Adella Schowalter",
-      "contact_name":null,
-      "street_line_1":null,
-      "postal_code":null,
-      "city":null,
-      "country":"DE",
-      "email":"adella@schowalter.com",
-      "language":"EN",
-      "tax_id":null,
-      "vat_number":null,
-      "currency":"USD"
+  "data":{
+    "object":{
+      "transaction_details":{
+        "session":43,
+        "session_permalink":"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3",
+        "gateway":"stripe",
+        "type":"charge",
+        "description":"Unicorn",
+        "customer":"cus_FXesSyaK3CG8Oz",
+        "email":"john@doe.com",
+        "transaction":"pi_1F2ZYtEjVHvINKlcq2as8H5V",
+        "product_id":"prod_61ffa845b4a0b8",
+        "tax_name":"VAT",
+        "tax_rate":20.0,
+        "extra_tax_name":null,
+        "extra_tax_rate":null,
+        "iat":1564647784,
+        "amount_cents":1500,
+        "amount":"15.00",
+        "currency":"EUR"
+      },
+      "contact":{
+        "id":547540,
+        "kind":"company",
+        "first_name":"John ",
+        "last_name":"Doe",
+        "full_name":"John  Doe",
+        "contact_name":null,
+        "street_line_1":"Fake Street 1",
+        "postal_code":"SW15 5PU",
+        "city":null,
+        "region":null,
+        "country":"GB",
+        "email":"john@doe.com",
+        "web":null,
+        "language":"EN",
+        "tax_id":null,
+        "vat_number":null
+      }
     }
-  }
+ }
 }
 
 {
   "event_type":"checkout.failed",
-  "data":
-  {
-    "message":
-    {
-      "response_message": "Insufficient funds",
-      "status_code": 422
-    },
-    "transaction_details":
-    {
-      "gateway":"stripe",
-      "type":"subscription",
-      "plan":"awesome"
-    },
-    "contact":
-    {
-      "id":76,
-      "kind":"person",
-      "first_name":"Adella",
-      "last_name":"Schowalter",
-      "full_name":"Adella Schowalter",
-      "contact_name":null,
-      "street_line_1":null,
-      "postal_code":null,
-      "city":null,
-      "country":"DE",
-      "email":"adella@schowalter.com",
-      "language":"EN",
-      "tax_id":null,
-      "vat_number":null,
-      "currency":"USD"
+  "data":{
+    "object":{
+      "message":{
+        "response_message":"Insufficient funds",
+        "status_code":422
+      },
+      "transaction_details":{
+        "gateway":"stripe",
+        "type":"charge",
+        "description":"Unicorn",
+      },
+      "contact":{
+        "id":547540,
+        "kind":"company",
+        "first_name":"John ",
+        "last_name":"Doe",
+        "full_name":"John  Doe",
+        "contact_name":null,
+        "street_line_1":"Fake Street 1",
+        "postal_code":"SW15 5PU",
+        "city":null,
+        "region":null,
+        "country":"GB",
+        "email":"john@doe.com",
+        "web":null,
+        "language":"EN",
+        "tax_id":null,
+        "vat_number":null
+      }
     }
   }
 }
 
-
 {
   "event_type":"checkout.abandoned",
-  "data":
-  {
-    "transaction_details":
-    {
-      "description":"Awesome",
-      "plan":"awesome"
-    },
-    "contact":
-    {
-      "first_name":"Adella",
-      "last_name":"Schowalter",
-      "city":null,
-      "country":"DE",
-      "email":"adella@schowalter.com"
+  "data":{
+    "object":{
+      "transaction_details":{
+        "description":"Unicorn",
+        "plan":"awesome"
+      },
+      "contact":{
+        "first_name":"John ",
+        "last_name":"Doe",
+        "city":null,
+        "country":"GB",
+        "email":"john@doe.com"
+      }
     }
   }
 }

@@ -81,6 +81,7 @@ Attribute     | Mandatory                                                   | Ty
 code          | Mandatory if `stock` is present                             | String(255 chars). Validates uniqueness
 name          | **yes**                                                     | String(255 chars).
 unit_cost     | **yes**                                                     | Decimal
+currency      | no                                                          | String(3 chars) Defaults to the account currency. ISO 4217 format
 tax_1_name    | Mandatory if  `tax_1_rate` and `tax_1_country` are present) |
 tax_1_rate    | Mandatory if  `tax_1_name` and `tax_1_country` are present) | Decimal between -100.00 and 100.00 (not incluided)
 tax_1_country | Mandatory if `tax_1_name` and `tax_1_rate` are present)     | String(2 chars). Format ISO 3166-1 alpha-2

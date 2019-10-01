@@ -2,6 +2,10 @@
 
 One of the killer features Quaderno provides is efficient and easy tax management. As part of this, we offer an API for easy tax calculation.
 
+<aside class="notice">
+Tax rates are based on your account settings. Please check you tax settings in Taxes > Tax rates.
+</aside>
+
 ## Calculate Taxes
 
 > `GET /taxes/calculate.json`

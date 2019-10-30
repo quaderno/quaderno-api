@@ -23,7 +23,7 @@ key                                  | type           | description
 `status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.
 
 
-### Customer object:
+### Customer object
 
 key                                  | type           | description
 -------------------------------------|----------------|-----------------------------------------
@@ -36,10 +36,9 @@ key                                  | type           | description
 `email`                              | string (email) | Customer email.
 `first_name`                         | string         | Customer first name.
 `last_name`                          | string         | Customer last name.
-`tax_id`                             | string         | Customer Tax ID.
-`business_number`                    | string         | Customer Business number
+`tax_id`                             | string         | Customer Tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.
 
-### Item object:
+### Item object
 
 key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------
@@ -107,8 +106,7 @@ curl -u YOUR_API_KEY:x \
          "email":"john@doe.com",
          "first_name":"John",
          "last_name":"Doe",
-         "tax_id":null,
-         "business_number":null
+         "tax_id":null
       },
       "permalink":"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
    },
@@ -310,8 +308,7 @@ curl -u YOUR_API_KEY:x \
          "email":"john@doe.com",
          "first_name":"John",
          "last_name":"Doe",
-         "tax_id":null,
-         "business_number":null
+         "tax_id":null
       },
       "permalink":"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
    }
@@ -362,7 +359,7 @@ key                                  | type                  | description
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
 
-### Customer attributes:
+### Customer attributes
 
 key                                  | type           | description
 -------------------------------------|----------------|-----------------------------------------
@@ -378,7 +375,7 @@ key                                  | type           | description
 `last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
 `tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
 
-### Items attributes:
+### Items attributes
 
 key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------

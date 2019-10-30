@@ -12,14 +12,11 @@ Location evidence are proofs of the customer's location that should be stored in
   "ip_address":"192.168.1.1",
   "ip_country":"FR",
   "bank_country":"FR",
-  "vat_number":null,
-  "vies_reference":null,
   "additional_evidence":null,
   "additional_evidence_country":null,
   "notes":null
 }
 ```
-
 
 Attribute          | Description
 -------------------|-----------------------------------------------------------------------------------------------------------
@@ -30,8 +27,9 @@ Attribute          | Description
 `ip_address`       | Customer's IP address
 `ip_country`       | Customer's country geolocated by IP (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `bank_country`     | Customer's bank country
-`vat_number`       | Customer's intra-community VAT number (if present)
-`notes`            | Readable information related to the evidence state
+`additional_evidence`           | Additional evidence to locate the customer
+`additional_evidence_country`   | Country of the aditional evidence (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`notes`            | Additional notes about the evidence
 
 
 ## Create an evidence
@@ -80,16 +78,16 @@ contact = Quaderno::Evidence.create(
 
 This will return 201 Created and the current JSON representation of the evidence if the creation was a success.
 
-
 ### Attributes
 Parameter          | Mandatory | Description
 -------------------|-----------|------------------------------------------------------------------------------------------------
-`document_id`      | **Yes**   | Invoice or Receipt's ID
-`billing_country`  | No        | Customer's billing country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
-`ip_address`       | No        | Customer's IP address
-`bank_country`     | No        | Customer's bank country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
-`additional_evidence`| No (yes if `additional_evidence_country` is passed) | An explanatory note about the additional evidence. Up to 255 chars.
-`additional_evidence_country`| No (yes if `additional_evidence` is passed) | Additional evidence for the customer location (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`document_id`      | **yes**   | Invoice or Receipt's ID
+`billing_country`  | no        | Customer's billing country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`ip_address`       | no        | Customer's IP address
+`bank_country`     | no        | Customer's bank country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`additional_evidence`          | no (yes if `additional_evidence_country` is passed) | An explanatory note about the additional evidence. Up to 255 chars.
+`additional_evidence_country`  | no (yes if `additional_evidence` is passed)         | Additional evidence for the customer location (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`notes`             | no       | Additional notes about the evidence
 
 ## Update an evidence
 
@@ -162,8 +160,6 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
     "ip_address":null,
     "ip_country":null,
     "bank_country":null,
-    "vat_number":null,
-    "vies_reference":null,
     "additional_evidence":null,
     "additional_evidence_country":null,
     "notes":null
@@ -176,8 +172,6 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
     "ip_address":"92.186.16.30",
     "ip_country":"ES",
     "bank_country":null,
-    "vat_number":null
-    "vies_reference":null,
     "additional_evidence":null,
     "additional_evidence_country":null,
     "notes":null
@@ -189,8 +183,6 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
     "ip_address":"92.186.16.30",
     "ip_country":"ES",
     "bank_country":null,
-    "vat_number":null,
-    "vies_reference":null,
     "additional_evidence":null,
     "additional_evidence_country":null,
     "notes":null
@@ -203,9 +195,7 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
     "ip_address":"80.29.119.132",
     "ip_country":"ES",
     "bank_country":null,
-    "vat_number":null,
-    "vies_reference":null
-    ,"additional_evidence":null,
+    "additional_evidence":null,
     "additional_evidence_country":null,
     "notes":null
   },
@@ -217,8 +207,6 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
     "ip_address":null,
     "ip_country":null,
     "bank_country":"US",
-    "vat_number":null,
-    "vies_reference":null,
     "additional_evidence":null,
     "additional_evidence_country":null,
     "notes":null
@@ -230,7 +218,7 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
 
 You can filter the results in a few ways:
 
-- By state, passing the `state` parameter like `?state=STATE`. You can combine multiple states separated by commas like `?state=confirmed,unsettled`. Valid states are `confirmed`, `unsettled` and `conflicting.
+- By state, passing the `state` parameter like `?state=STATE`. You can combine multiple states separated by commas like `?state=confirmed,unsettled`. Valid states are `confirmed`, `unsettled` and `conflicting`.
 - By document_id, passing the document ID in the `document_id` parameter, like `?document_id=3231`.
 
 ## Retrieve: Get a single evidence
@@ -265,8 +253,6 @@ $evidence = QuadernoEvidence::find(EVIDENCE_ID);
     "ip_address":null,
     "ip_country":null,
     "bank_country":"US",
-    "vat_number":null,
-    "vies_reference":null,
     "additional_evidence":null,
     "additional_evidence_country":null,
     "notes":null

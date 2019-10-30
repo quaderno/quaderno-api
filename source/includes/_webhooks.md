@@ -103,11 +103,8 @@ Quaderno's webhooks allow your application to receive information about events t
       "discount":null,
       "language":"EN",
       "tax_id":null,
-      "bank_account":"ES6600190020961234567890",
-      "notes":null,
-      "bic":"DEUTESBBXXX",
-      "vat_number":null,
       "currency":"USD",
+      "notes":null,
       "processor_id":null,
       "processor":null
     }
@@ -169,7 +166,6 @@ Quaderno's webhooks allow your application to receive information about events t
         "web":null,
         "language":"EN",
         "tax_id":null,
-        "vat_number":null
       }
     }
  }
@@ -204,7 +200,6 @@ Quaderno's webhooks allow your application to receive information about events t
         "web":null,
         "language":"EN",
         "tax_id":null,
-        "vat_number":null
       }
     }
   }

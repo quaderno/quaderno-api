@@ -89,6 +89,7 @@ tax_1_country | Mandatory if `tax_1_name` and `tax_1_rate` are present)     | St
 tax_2_name    | Mandatory if  `tax_2_rate` and `tax_2_country` are present) |
 tax_2_rate    | Mandatory if  `tax_2_name` and `tax_2_country` are present) | Decimal between -100.00 and 100.00 (not incluided)
 tax_2_country | Mandatory if `tax_2_name` and `tax_2_rate` are present)     | String(2 chars). Format ISO 3166-1 alpha-2
+tax_type      | no                                                          | String. One of the following: `included`, `excluded` (`excluded` by default).
 stock         | no                                                          | Decimal
 kind          | no                                                          | One of the following: `one_off` or `subscription`. Default value is `one_off`
 stripe_plan_id     | no                                                     | String(255 chars). Only for Stripe `subscription`s. Validates in Stripe that matches a real Stripe Plan Id
@@ -134,6 +135,7 @@ client.request(readItem) { response in
     "name":"Titanic",
     "unit_cost":"15.0",
     "stock":"100",
+    "tax_type":"included",
     "url":"https://my-account.quadernoapp.com/api/items/1",
     "kind":"one_off"
   },
@@ -144,6 +146,7 @@ client.request(readItem) { response in
     "unit_cost":"15.0",
     "tax_1_name":"AWESOME_TAX",
     "tax_1_rate":"7.00",
+    "tax_type":"excluded",
     "url":"https://my-account.quadernoapp.com/api/items/2",
     "kind":"one_off"
   },
@@ -153,6 +156,7 @@ client.request(readItem) { response in
     "name":"Titanic III: The origin",
     "unit_cost":"15.0",
     "stock":"33",
+    "tax_type":"excluded",
     "url":"https://my-account.quadernoapp.com/api/items/3",
     "kind":"one_off"
   }
@@ -202,6 +206,7 @@ client.request(readItem) { response in
   "unit_cost":"15.0",
   "tax_1_name":"AWESOME_TAX",
   "tax_1_rate":"7.00",
+  "tax_type":"excluded",
   "url":"https://my-account.quadernoapp.com/api/items/2",
   "kind":"one_off"
 }

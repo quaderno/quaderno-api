@@ -256,7 +256,7 @@ key                                  | type                  | description
 
 Retrieves the details of an existing session. You need only supply the unique session identifier that was returned upon session creation.
 
-> `GET /checkout/session/SESSION_ID.json`
+> `GET /checkout/sessions/SESSION_ID.json`
 
 
 ```shell
@@ -320,7 +320,7 @@ Updates the specified session by setting the values of the parameters passed. An
 
 This request accepts mostly the same arguments as the session creation call.
 
-> `PUT /checkout/session/SESSION_ID.json`
+> `PUT /checkout/sessions/SESSION_ID.json`
 
 This will return `200 OK` and a JSON representation of the contact if successful.
 

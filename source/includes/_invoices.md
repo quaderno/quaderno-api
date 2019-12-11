@@ -428,7 +428,7 @@ client.request(readInvoice) { response in
 
 `GET`ting from `/invoices/INVOICE_ID.json` will return that specific invoice.
 
-If you have connected Quaderno and Stripe, you can also `GET /stripe/charges/STRIPE_CHARGE_ID.json` to get the Quaderno invoice for a Stripe charge.
+If you have connected Quaderno with an external payment processor, you can also `GET /PROCESSOR/charges/PROCESSOR_ID.json` to get the Quaderno invoice for a particular charge. The processor part of the URL can be `stripe`, `paypal`, or `braintree`. 
 
 ## Update an invoice
 

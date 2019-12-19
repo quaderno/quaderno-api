@@ -176,8 +176,9 @@ _destroy      | no                                       | Set it to 1 if you wa
 
 Possible receipt states are:
 
-- `paid` (default state)
-- `invoiced` (final state reached when the receipt is invoiced and *cannot be undone*)
+- `paid`: Payment received (default state).
+- `refunded`: Payment refunded and a credit note has been issued. 
+- `invoiced`: The receipt has beend converted into a full invoice (*cannot be undone*).
 
 ## Retrieve: Get and filter all receipts
 

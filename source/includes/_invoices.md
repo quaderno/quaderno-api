@@ -168,7 +168,7 @@ _destroy      | no                                       | Set it to 1 if you wa
 Possible invoice states are:
 
 - `outstanding`: Awaiting payment (unpaid).
-- `late`: The invoice is due and no payment has been received. 
+- `late`: The invoice is due and no payment has yet been received. 
 - `paid`: Payment received. 
 - `refunded`: Payment refunded and a credit note has been issued. 
 - `archived`: The invoice has been voided.

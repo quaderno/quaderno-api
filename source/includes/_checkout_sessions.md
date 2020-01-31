@@ -18,6 +18,7 @@ key                                  | type           | description
 `payment_methods`                    | array          | Values are `card` and `paypal`.
 `permalink`                          | string         | The URL of this Checkout Session.
 `success_url`                        | string         | The URL the customer will be directed to after the payment is successful.
+`updatable_quantity`                 | boolean        | The value for whether customers can update items' quantities.    
 `processor`                          | string         | Values are `stripe` and `paypal`.
 `processor_id`                       | string         |
 `status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.

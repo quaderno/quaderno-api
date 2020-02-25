@@ -326,7 +326,9 @@ client.request(listContacts) { response in
 }
 ```
 
-Bear in mind that Quaderno paginates `GET` index results, providing **25 results per page**.
+Bear in mind that Quaderno paginates `GET` index results.
+
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. 
 
 You can change the page by passing the `page` parameter, defaulting to `1`.
 

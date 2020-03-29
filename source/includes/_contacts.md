@@ -74,7 +74,6 @@ postal_code             | no        | String(255 chars)
 region                  | no        | String(255 chars)
 country                 | no        | String(2 chars) `ISO 3166-1 alpha-2`
 phone_1                 | no        | String(255 chars)
-phone_2                 | no        | String(255 chars)
 email                   | no        | String(255 chars) Multiple emails should be separated by commas. Maximum number of addresses allowed is 3.
 web                     | no        | String(255 chars). Validates format
 discount                | no        | Decimal. Default discount for this contact.
@@ -122,8 +121,6 @@ client.request(listContacts) { response in
     "region":"CA",
     "country":"US",
     "phone_1":"",
-    "phone_2":"",
-    "fax":"",
     "email":"s.cooperphd@yahoo.com",
     "web":"",
     "discount":null,
@@ -145,8 +142,6 @@ client.request(listContacts) { response in
     "region":"CA",
     "country":"US",
     "phone_1":"",
-    "phone_2":"",
-    "fax":"",
     "email":"info@apple.com",
     "web":"http://apple.com",
     "discount":null,
@@ -204,8 +199,6 @@ client.request(readContact) { response in
     "region":"CA",
     "country":"US",
     "phone_1":"",
-    "phone_2":"",
-    "fax":"",
     "email":"s.cooperphd@yahoo.com",
     "web":"",
     "discount":null,
@@ -257,8 +250,6 @@ Quaderno::Contact.retrieve_customer(PAYMENT_GATEWAY_CUSTOMER_ID, PAYMENT_GATEWAY
     "region":"CA",
     "country":"US",
     "phone_1":"",
-    "phone_2":"",
-    "fax":"",
     "email":"s.cooperphd@yahoo.com",
     "web":"",
     "discount":null,

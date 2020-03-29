@@ -97,7 +97,6 @@ Quaderno's webhooks allow your application to receive information about events t
       "region":null,
       "country":"DE",
       "phone_1":null,
-      "fax":null,
       "email":null,
       "web":null,
       "discount":null,

@@ -1,6 +1,6 @@
 # Contacts
 
-A contact is any client, customer or vendor who appears on your invoices or expenses.
+A contact is any customer or vendor who appears on your invoices, credit notes, and expenses.
 
 ## Create a contact
 
@@ -23,13 +23,11 @@ $contact->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
-# Using new hash syntax
-params = {
+Quaderno::Contact.create({
     first_name: 'Tony',
     kind: 'person',
     contact_name: 'Stark'
-}
-Quaderno::Contact.create(params) #=> Quaderno::Contact
+})
 ```
 
 `POST`ing to `/contacts.json` will create a new contact from the parameters passed.
@@ -65,7 +63,160 @@ discount                | no        | Decimal. Default discount for this contact
 language                | no        | String(2 chars) Should be included in the translations list
 notes                   | no        | Text
 
-## Retrieve: Get and filter all contacts
+## Update a contact
+
+> `PUT /contacts/CONTACT_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{"first_name":"Anthony"}' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
+```
+
+```ruby
+Quaderno::Contact.update(
+    CONTACT_ID, 
+    {
+        first_name: 'Mary',
+        last_name: 'Smith'
+    }
+)
+```
+
+```php?start_inline=1
+$contact->first_name = 'Anthony';
+$contact->save();
+```
+
+`PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the contact if successful.
+
+## Delete a contact
+
+> `DELETE /contacts/CONTACT_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
+```
+
+```ruby
+Quaderno::Contact.delete(CONTACT_ID)
+```
+
+```php?start_inline=1
+$contact->delete();
+```
+
+`DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.
+
+## Retrieve a contact
+
+> `GET /contacts/CONTACT_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
+```
+
+```ruby
+Quaderno::Contact.find(CONTACT_ID)
+```
+
+```php?start_inline=1
+$contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
+```
+
+```json
+{
+    "id":"456987213",
+    "kind":"person",
+    "first_name":"Sheldon",
+    "last_name":"Cooper",
+    "full_name":"Sheldon Cooper",
+    "street_line_1":"2311 N. Los Robles Avenue",
+    "street_line_2":"",
+    "postal_code":"91104",
+    "city":"Pasadena",
+    "region":"CA",
+    "country":"US",
+    "phone_1":"",
+    "email":"s.cooperphd@yahoo.com",
+    "web":"",
+    "discount":null,
+    "tax_id":"",
+    "language":"EN",
+    "notes":"",
+    "secure_id":"th3p3rm4l1nk",
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
+}
+```
+
+`GET`ting from `/contacts/CONTACT_ID.json` will get you that specific contact.
+
+<aside class="notice">
+If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STRIPE_CUSTOMER_ID.json` to get the Quaderno contact for a Stripe customer.
+</aside>
+
+## Retrieve a contact by processor ID
+
+> `GET /PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json'
+```
+
+```ruby
+Quaderno::Contact.retrieve_customer(STRIPE_CUSTOMER_ID, 'stripe')
+```
+
+```php?start_inline=1
+```
+
+```json
+{
+    "id":"456987213",
+    "kind":"person",
+    "first_name":"Sheldon",
+    "last_name":"Cooper",
+    "full_name":"Sheldon Cooper",
+    "street_line_1":"2311 N. Los Robles Avenue",
+    "street_line_2":"",
+    "postal_code":"91104",
+    "city":"Pasadena",
+    "region":"CA",
+    "country":"US",
+    "phone_1":"",
+    "email":"s.cooperphd@yahoo.com",
+    "web":"",
+    "discount":null,
+    "tax_id":"",
+    "language":"EN",
+    "notes":"",
+    "secure_id":"th3p3rm4l1nk",
+    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
+}
+```
+
+`GET`ting from `/PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json` will get you that specific contact by using their ID with the payment gateway they were created with.
+
+Supported gateways:
+
+- [Stripe](https://stripe.com/)
+- [GoCardless](https://gocardless.com/)
+- [PayPal](https://www.paypal.com)
+- [Braintree](https://www.braintreepayments.com/)
+
+More are added frequently, so check back!
+
+## List all contacts
 
 > `GET /contacts.json`
 
@@ -75,7 +226,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-Quaderno::Contact.all() #=> Array
+Quaderno::Contact.all()
 ```
 
 ```php?start_inline=1
@@ -134,150 +285,3 @@ $contacts = QuadernoContact::find(); // Returns an array of QuadernoContact
 `GET`ting from `/contacts.json` will return all the user's contacts.
 
 You can filter the results by full name, email or tax ID by passing the `q` parameter in the URL as a query string, like `?q=KEYWORD`.
-
-## Retrieve: Get a single contact
-
-> `GET /contacts/CONTACT_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
-```
-
-```ruby
-Quaderno::Contact.find(CONTACT_ID) #=> Quaderno::Contact
-```
-
-```php?start_inline=1
-$contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
-```
-
-```json
-{
-    "id":"456987213",
-    "kind":"person",
-    "first_name":"Sheldon",
-    "last_name":"Cooper",
-    "full_name":"Sheldon Cooper",
-    "street_line_1":"2311 N. Los Robles Avenue",
-    "street_line_2":"",
-    "postal_code":"91104",
-    "city":"Pasadena",
-    "region":"CA",
-    "country":"US",
-    "phone_1":"",
-    "email":"s.cooperphd@yahoo.com",
-    "web":"",
-    "discount":null,
-    "tax_id":"",
-    "language":"EN",
-    "notes":"",
-    "secure_id":"th3p3rm4l1nk",
-    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
-}
-```
-
-`GET`ting from `/contacts/CONTACT_ID.json` will get you that specific contact.
-
-<aside class="notice">
-If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STRIPE_CUSTOMER_ID.json` to get the Quaderno contact for a Stripe customer.
-</aside>
-
-## Retrieve: Get a single contact by payment gateway ID
-
-> `GET /PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json'
-```
-
-```ruby
-Quaderno::Contact.retrieve_customer(PAYMENT_GATEWAY_CUSTOMER_ID, PAYMENT_GATEWAY) #=> Quaderno::Contact
-```
-
-```php?start_inline=1
-```
-
-```json
-{
-    "id":"456987213",
-    "kind":"person",
-    "first_name":"Sheldon",
-    "last_name":"Cooper",
-    "full_name":"Sheldon Cooper",
-    "street_line_1":"2311 N. Los Robles Avenue",
-    "street_line_2":"",
-    "postal_code":"91104",
-    "city":"Pasadena",
-    "region":"CA",
-    "country":"US",
-    "phone_1":"",
-    "email":"s.cooperphd@yahoo.com",
-    "web":"",
-    "discount":null,
-    "tax_id":"",
-    "language":"EN",
-    "notes":"",
-    "secure_id":"th3p3rm4l1nk",
-    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/contacts/456987213"
-}
-```
-
-`GET`ting from `/PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json` will get you that specific contact by using their ID with the payment gateway they were created with.
-
-Supported gateways:
-
-- [Stripe](https://stripe.com/)
-- [GoCardless](https://gocardless.com/)
-- [PayPal](https://www.paypal.com)
-- [Braintree](https://www.braintreepayments.com/)
-
-More are added frequently, so check back!
-
-## Update a contact
-
-> `PUT /contacts/CONTACT_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -H 'Content-Type: application/json' \
-     -X PUT \
-     -d '{"first_name":"Anthony"}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
-```
-
-```ruby
-Quaderno::Contact.update(CONTACT_ID, params) #=> Quaderno::Contact
-```
-
-```php?start_inline=1
-$contact->first_name = 'Anthony';
-$contact->save();
-```
-
-`PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
-
-This will return `200 OK` and a JSON representation of the contact if successful.
-
-## Delete a contact
-
-> `DELETE /contacts/CONTACT_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -X DELETE
-     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
-```
-
-```ruby
-Quaderno::Contact.delete(CONTACT_ID) #=> Boolean
-```
-
-```php?start_inline=1
-$contact->delete();
-```
-
-`DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.

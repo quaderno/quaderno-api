@@ -75,21 +75,6 @@ params = {
 invoice = Quaderno::Expense.create(params) #=> Quaderno::Expense
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "contact_id":"5059bdbf2f412e0901000024",
-    "contact_name":"ACME",
-    "currency":"USD"
-]
-
-let createExpense = Expense.create(params)
-client.request(createExpense) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/expenses.json` will create a new expense from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the expense if the creation was a success, along with the location of the new expense in the `url` field.
@@ -203,15 +188,6 @@ Quaderno::Expense.all() #=> Array
 
 ```php?start_inline=1
 $expenses = QuadernoExpense::find(); // Returns an array of QuadernoExpense
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let listExpenses = Expense.list(pageNum)
-client.request(listExpenses) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -333,15 +309,6 @@ expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
 $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readExpense = Expense.read(EXPENSE_ID)
-client.request(readExpense) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
   "id":"5076a6b92f412e0e2e00006c",
@@ -413,19 +380,6 @@ $expense->payment_details = 'Money in da bank';
 $expense->save();
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "payment_details": "Money in da bank"
-]
-
-let updateExpense = Expense.update(EXPENSE_ID, params)
-client.request(updateExpense) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ting to `/expenses/EXPENSE_ID.json` will update the expense with the passed parameters.
 
 This will return `200 OK` along with the current JSON representation of the expense if successful.
@@ -459,15 +413,6 @@ Quaderno::Expense.delete(EXPENSE_ID) #=> Boolean
 
 ```php?start_inline=1
 $expense->delete();
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteExpense = Expense.delete(EXPENSE_ID)
-client.request(deleteExpense) { response in
-    // response will contain the result of the request.
-}
 ```
 
 `DELETE`ing to `/expense/EXPENSE_ID.json` will delete the specified contact and returns `204 No Content` if successful.

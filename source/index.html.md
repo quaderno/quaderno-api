@@ -5,7 +5,6 @@ language_tabs:
   - shell
   - ruby
   - php
-  - swift
 
 toc_footers:
   - <a href="https://quaderno.io" target="_blank">Quaderno Homepage</a>

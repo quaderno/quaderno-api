@@ -34,11 +34,6 @@ QuadernoBase::init('YOUR_API_KEY',
                    'YOUR_API_URL');
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(baseURL: "YOUR_API_URL",
-							 authenticationToken: "YOUR_API_KEY")
-```
-
 ```shell
 # With curl, you can pass the API key as a header with each request
 curl -u YOUR_API_KEY:x \
@@ -60,13 +55,6 @@ curl -u YOUR_API_KEY:x \
 
 ```php?start_inline=1
 QuadernoBase::ping();   // Returns true (success) or false (error)
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-client.ping { success in
-  // success will be true if the service is available.
-}
 ```
 
 Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL. For more info on finding your API key, check [here](http://support.quaderno.io/article/101-how-do-i-get-my-api-key).
@@ -97,13 +85,6 @@ Quaderno::Base.authorization 'my_authenticate_token', environment
 # environment is an optional argument. By passing :sandbox,
 # you will retrieve your credentials for the sandbox
 # environment and not for production.
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-client.account { credentials in
-  // credentials will contain the account credentials.
-}
 ```
 
 ```php?start_inline=1
@@ -154,15 +135,6 @@ $contacts = QuadernoContact::find();
 Quaderno::Contact.all() #=> Array
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let readContact = Contact.list(pageNum)
-client.request(readContact) { response in
-  // response will contain the result of the request.
-}
-```
-
 > A POST with a new contact looks like this:
 
 ```shell
@@ -190,21 +162,6 @@ params = {
     contact_name: 'Stark'
 }
 Quaderno::Contact.create(params) #=> Quaderno::Contact
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "first_name": "Tony",
-    "kind": "person",
-    "contact_name": "Stark"
-]
-
-let createContact = Contact.create(params)
-client.request(createContact) { response in
-    // response will contain the result of the request.
-}
 ```
 
 As mentioned, we use standard HTTP verbs for the API requests: `GET`,`POST`, `PUT` and `DELETE`.
@@ -279,12 +236,6 @@ X-RateLimit-Remaining
 Quaderno::Base.rate_limit_info #=>  {:reset=>4, :remaining=>0}
 ```
 
-```swift?start_inline=1
-// You can check the entitlements for using the service (e.g. the rate
-// limit) by inspecting the `entitlements` property of `Client`.
-// See the quaderno/quaderno-swift docs for more.
-```
-
 There is a limit of **100 API calls per 15 seconds**.
 
 We reserve the right to tune the limitations, but we promise to keep them high enough to allow a well-behaving interactive app to do it's job.
@@ -315,15 +266,6 @@ $contacts = QuadernoContact::find(array('page' => 2));
 
 ```ruby
 Quaderno::Contact.all(page: 1) #=> Array
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let listContacts = Contact.list(pageNum)
-client.request(listContacts) { response in
-  // response will contain the result of the request.
-}
 ```
 
 Bear in mind that Quaderno paginates `GET` index results.

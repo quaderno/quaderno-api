@@ -53,23 +53,6 @@ params = {
 Quaderno::Item.create(params) #=> Quaderno::Item
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "name":"Jelly pizza",
-    "code":"Yummy",
-    "unit_cost":"15.00",
-    "tax_1_name":"JUNKTAX",
-    "tax_1_rate":"99.99"
-]
-
-let createItem = Item.create(params)
-client.request(createItem) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/items.json` will create a new item from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the item if the creation was a success, along with the location of the new item in the `url` field.
@@ -116,15 +99,6 @@ Quaderno::Item.all() #=> Array
 
 ```php?start_inline=1
 $items = QuadernoItem::find(); // Returns an array of QuadernoItem
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readItem = Item.list(pageNum)
-client.request(readItem) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -189,15 +163,6 @@ Quaderno::Item.find(ITEM_ID) #=> Quaderno::Item
 $item = QuadernoItem::find('ITEM_ID'); // Returns a QuadernoItem
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readItem = Item.list(pageNum)
-client.request(readItem) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
   "id":2,
@@ -238,19 +203,6 @@ $item->unit_cost = '10.0';
 $item->save();
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "unit_cost": "10.0"
-]
-
-let updateItem = Item.update(ITEM_ID, params)
-client.request(updateItem) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ting to `/items/ITEM_ID.json` will update the item with the passed parameters.
 
 This will return `200 OK` along with the current JSON representation of the item if successful.
@@ -270,15 +222,6 @@ Quaderno::Item.delete(ITEM_ID) #=> Boolean
 
 ```php?start_inline=1
 $item->delete();
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteItem = Item.delete(ITEM_ID)
-client.request(deleteItem) { response in
-    // response will contain the result of the request.
-}
 ```
 
 `DELETE`ing to `/item/ITEM_ID.json` will delete the specified item and returns `204 No Content` if successful.

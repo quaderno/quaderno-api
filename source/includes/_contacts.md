@@ -32,21 +32,6 @@ params = {
 Quaderno::Contact.create(params) #=> Quaderno::Contact
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "first_name": "Tony",
-    "kind": "person",
-    "contact_name": "Stark"
-]
-
-let createContact = Contact.create(params)
-client.request(createContact) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/contacts.json` will create a new contact from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the contact if the creation was a success, along with the location of the new contact in the `url` field.
@@ -95,15 +80,6 @@ Quaderno::Contact.all() #=> Array
 
 ```php?start_inline=1
 $contacts = QuadernoContact::find(); // Returns an array of QuadernoContact
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let listContacts = Contact.list(pageNum)
-client.request(listContacts) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -176,15 +152,6 @@ Quaderno::Contact.find(CONTACT_ID) #=> Quaderno::Contact
 $contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readContact = Contact.read(CONTACT_ID)
-client.request(readContact) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
     "id":"456987213",
@@ -231,9 +198,6 @@ Quaderno::Contact.retrieve_customer(PAYMENT_GATEWAY_CUSTOMER_ID, PAYMENT_GATEWAY
 ```
 
 ```php?start_inline=1
-```
-
-```swift
 ```
 
 ```json
@@ -294,19 +258,6 @@ $contact->first_name = 'Anthony';
 $contact->save();
 ```
 
-````swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "first_name": "Anthony"
-]
-
-let updateContact = Contact.update(CONTACT_ID, params)
-client.request(updateContact) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
 
 This will return `200 OK` and a JSON representation of the contact if successful.
@@ -327,15 +278,6 @@ Quaderno::Contact.delete(CONTACT_ID) #=> Boolean
 
 ```php?start_inline=1
 $contact->delete();
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteContact = Contact.delete(CONTACT_ID)
-client.request(deleteContact) { response in
-    // response will contain the result of the request.
-}
 ```
 
 `DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.

@@ -84,25 +84,6 @@ params = {
 recurring = Quaderno::Recurring.create(params) #=> Quaderno::Recurring
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
- "frequency": "monthly",
- "start_date": "2015-08-01",
- "contact_id": "5059bdbf2f412e0901000024",
- "contact_name": "STARK",
- "po_number": "",
- "currency": "USD",
- "tag_list": ["playboy", "businessman"]
-]
-
-let createRecurring = Recurring.create(params)
-client.request(createRecurring) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/recurring.json` will create a new recurring from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the recurring if the creation was a success, along with the location of the new recurring in the `url` field.
@@ -219,15 +200,6 @@ Quaderno::Recurring.all() #=> Array
 
 ```php?start_inline=1
 $recurrings = QuadernoRecurring::find(); // Returns an array of QuadernoRecurring
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let listRecurring = Recurring.list(pageNum)
-client.request(listRecurring) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -347,15 +319,6 @@ Quaderno::Recurring.find(RECURRING_ID) #=> Quaderno::Recurring
 $recurring = QuadernoRecurring::find('RECURRING_ID'); // Returns a QuadernoRecurring
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readRecurring = Recurring.read(RECURRING_ID)
-client.request(readRecurring) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
   "id":6420739232,
@@ -430,19 +393,6 @@ $recurring->notes = 'You better pay this time, Tony.';
 $recurring->save();
 ```
 
-````swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "notes": "You better pay this time, Tony."
-]
-
-let updateRecurring = Recurring.update(RECURRING_ID, params)
-client.request(updateRecurring) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ting to `/recurring/RECURRING_ID.json` will update the recurring with the passed parameters.
 
 This will return `200 OK` along with the current JSON representation of the recurring if successful.
@@ -462,15 +412,6 @@ Quaderno::Recurring.delete(RECURRING_ID) #=> Boolean
 
 ```php?start_inline=1
 $recurring->delete();
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteRecurring = Recurring.delete(RECURRING_ID)
-client.request(deleteRecurring) { response in
-    // response will contain the result of the request.
-}
 ```
 
 `DELETE`ing to `/recurring/RECURRING_ID.json` will delete the specified recurring and returns `204 No Content` if successful.

@@ -55,22 +55,6 @@ params = {
 invoice.add_payment(params) #=> Quaderno::Payment
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
- "payment_method": "credit_card",
- "amount": "56.60",
- "payment_processor": "stripe",
- "payment_processor_id": "ch_19yUdh2eZvKYlo2CkFVBOZG7"
-]
-
-let readInvoice = Invoice.read(INVOICE_ID)
-client.request(readInvoice) { response in
-  // response will contain the result of the request.
-}
-```
-
 `POST`ing to `invoices/INVOICE_ID/payments.json` or `expenses/EXPENSE_ID/payments.json` will create a new payment from the parameters passed. Note that payments can only be created as an attachment to an invoice or expense.
 
 This will return `201 Created` and the current JSON representation of the payment if the creation was a success, along with the location of the new item in the `Location` header.
@@ -101,9 +85,6 @@ $payments = $expense->getPayments(); // Returns an array of QuadernoPayment
 ```ruby
 expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
 payments = expense.payments #=> an array of Quaderno::Payment
-```
-
-```swift?start_inline=1
 ```
 
 `GET`ting from `/invoices/INVOICE_ID/payments.json` or `/expenses/EXPENSE_ID/payments.json` will return all the payments on the invoice or expense in question.
@@ -143,9 +124,6 @@ invoice.remove_payment(payment_id) #=> Boolean
 
 ```php?start_inline=1
 $expense->removePayment($payments[2]); // Return true (success) or false (error)
-```
-
-```swift?start_inline=1
 ```
 
 `DELETE`ing to `/invoices/INVOICE_ID/payments/PAYMENT_ID.json` or `/expenses/EXPENSE_ID/payments/PAYMENT_ID.json` will delete the specified payment and returns `204 No Content` if successful.

@@ -71,10 +71,6 @@ curl -u YOUR_API_KEY:x \
 # Coming soon!
 ```
 
-```swift?start_inline=1
-// Coming soon!
-```
-
 ```json
 [
    {
@@ -208,10 +204,6 @@ curl -u YOUR_API_KEY:x \
 # Coming soon!
 ```
 
-```swift?start_inline=1
-// Coming soon!
-```
-
 key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------
 `billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
@@ -272,10 +264,6 @@ curl -u YOUR_API_KEY:x \
 ```php?start_inline=1
 // Coming soon!
 
-```
-
-```swift
-// Coming soon!
 ```
 
 ```json
@@ -340,10 +328,6 @@ curl \
 ```php?start_inline=1
 // Coming soon!
 
-```
-
-```swift
-// Coming soon!
 ```
 
 key                                  | type                  | description
@@ -413,9 +397,5 @@ $ curl \
 ```
 
 ```php?start_inline=1
-// Coming soon!
-```
-
-```swift?start_inline=1
 // Coming soon!
 ```

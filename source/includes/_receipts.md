@@ -86,26 +86,6 @@ params = {
 receipt = Quaderno::Receipt.create(params) #=> Quaderno::Receipt
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "payment_method":"credit_card",
-    "payment_processor": "stripe",
-    "payment_processor_id": "ch_19yUdh2eZvKYlo2CkFVBOZG7",
-    "contact_id":"5059bdbf2f412e0901000024",
-    "contact_name":"STARK",
-    "po_number":"",
-    "currency":"USD",
-    "tag_list":"playboy, businessman"
-]
-
-let createReceipt = Receipt.create(params)
-client.request(createReceipt) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/receipts.json` will create a new receipt from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the receipt if the creation was a success, along with the location of the new receipt in the `url` field.
@@ -195,15 +175,6 @@ Quaderno::Receipt.all() #=> Array
 
 ```php?start_inline=1
 $receipts = QuadernoReceipt::find(); // Returns an array of QuadernoReceipt
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let listReceipts = Receipt.list(pageNum)
-client.request(listReceipts) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -354,15 +325,6 @@ Quaderno::Receipt.find(RECEIPT_ID) #=> Quaderno::Receipt
 $receipt = QuadernoReceipt::find('RECEIPT_ID'); // Returns a QuadernoReceipt
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readReceipt = Receipt.read(RECEIPT_ID)
-client.request(readReceipt) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
   "id":13638223434,
@@ -452,19 +414,6 @@ $receipt->custom_metadata = array('memo' => 'I think he is not paying again.');
 $receipt->save();
 ```
 
-````swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "notes": "You better pay this time, Tony."
-]
-
-let updateReceipt = Receipt.update(RECEIPT_ID, params)
-client.request(updateReceipt) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ting to `/receipts/RECEIPT_ID.json` will update the receipt with the passed parameters.
 
 This will return `200 OK` along with the current JSON representation of the receipt if successful.
@@ -486,15 +435,6 @@ Quaderno::Receipt.delete(RECEIPT_ID) #=> Boolean
 $receipt->delete();
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteReceipt = Receipt.delete(INVOICE_ID)
-client.request(deleteReceipt) { response in
-    // response will contain the result of the request.
-}
-```
-
 `DELETE`ing to `/receipt/RECEIPT_ID.json` will delete the specified receipt and returns `204 No Content` if successful.
 
 ## Deliver (Send) a receipt
@@ -512,15 +452,6 @@ receipt.deliver
 
 ```php?start_inline=1
 $receipt->deliver(); // Return true (success) or false (error)
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deliverReceipt = Receipt.deliver(INVOICE_ID)
-client.request(deliverReceipt) { response in
-  // response will contain the result of the request.
-}
 ```
 
 `GET`ting `/receipts/RECEIPT_ID/deliver.json` will send the receipt to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the receipt.

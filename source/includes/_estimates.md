@@ -88,24 +88,6 @@ params = {
 estimate = Quaderno::Estimate.create(params) #=> Quaderno::Estimate
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-number":"0000006",
-    "contact_id":"50603e722f412e0435000024",
-    "contact_name":"Wild E. Coyote",
-    "po_number":"",
-    "currency":"EUR",
-    "tag_list": ["playboy", "businessman"]
-]
-
-let createEstimate = Estimate.create(params)
-client.request(createEstimate) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/estimates.json` will create a new estimate from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the estimate if the creation was a success, along with the location of the new estimate in the `url` field.
@@ -213,15 +195,6 @@ Quaderno::Estimate.all() #=> Array
 
 ```php?start_inline=1
 $estimates = QuadernoEstimate::find(); // Returns an array of QuadernoEstimate
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let listEstimates = Estimate.list(pageNum)
-client.request(listEstimates) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -345,15 +318,6 @@ Quaderno::Estimate.find(ESTIMATE_ID) #=> Quaderno::Estimate
 $estimate = QuadernoEstimate::find('ESTIMATE_ID'); // Returns a QuadernoEstimate
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readEstimate = Estimate.read(ESTIMATE_ID)
-client.request(readEstimate) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
   "id":"50603e722f412e0435000024",
@@ -437,20 +401,6 @@ $estimate->contact_name = 'Dick Dastardly';
 $estimate->save();
 ```
 
-````swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "contact_name": "Dick Dastardly",
-    "contact_id": "505c3b402f412e0248000044"
-]
-
-let updateEstimate = Estimate.update(ESTIMATE_ID, params)
-client.request(updateEstimate) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ting to `/estimates/ESTIMATE_ID.json` will update the estimate with the passed parameters.
 
 This will return `200 OK` along with the current JSON representation of the estimate if successful.
@@ -472,15 +422,6 @@ Quaderno::Estimate.delete(ESTIMATE_ID) #=> Boolean
 $estimate->delete();
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteEstimate = Estimate.delete(ESTIMATE_ID)
-client.request(deleteEstimate) { response in
-    // response will contain the result of the request.
-}
-```
-
 `DELETE`ing to `/estimate/ESTIMATE_ID.json` will delete the specified estimate and returns `204 No Content` if successful.
 
 ## Deliver (Send) an estimate
@@ -498,15 +439,6 @@ estimate.deliver
 
 ```php?start_inline=1
 $estimate->deliver(); // Return true (success) or false (error)
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deliverEstimate = Estimate.deliver(ESTIMATE_ID)
-client.request(deliverEstimate) { response in
-  // response will contain the result of the request.
-}
 ```
 
 `GET`ting `/estimates/ESTIMATE_ID/deliver.json` will send the estimate to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the estimate.

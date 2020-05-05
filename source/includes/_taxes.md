@@ -37,20 +37,6 @@ $tax->name; // "Sales Tax"
 $tax->rate; // 9.5
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "country": "US",
-    "postal_code": "94010"
-]
-
-let taxCalculation = Tax.calculate(params)
-client.request(taxCalculation) { response in
-    // response will contain the result of the request.
-}
-```
-
 ```json
 {
     "name": "Sales tax",
@@ -109,11 +95,6 @@ $tax_id = 'IE6388047V';
 
 QuadernoTax::validate_vat_number($country, $tax_id) // true, false or null
 ```
-
-```swift?start_inline=1
-// Coming soon!
-```
-
 
 `GET`ting to `/taxes/validate.json` will validate the given tax ID. Currently Quaderno validates EU VAT numbers, ABN, and NZBN.
 

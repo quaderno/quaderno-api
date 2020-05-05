@@ -70,10 +70,6 @@ contact = Quaderno::Evidence.create(
 
 ```
 
-```swift?start_inline=1
-// Coming soon!
-```
-
 `POST`ing to `/evidence.json` will create a new evidence from the parameters passed.
 
 This will return 201 Created and the current JSON representation of the evidence if the creation was a success.
@@ -115,12 +111,10 @@ $evidence->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
-# Coming soon!
-
-```
-
-```swift?start_inline=1
-// Coming soon!
+params = {
+    ip_address: '192.168.23.23'
+}
+Quaderno::Evidence.update(EVIDENCE_ID, params) #=> Quaderno::Evidence
 ```
 
 `PUT`ting to `/evidence/EVIDENCE_ID.json` will update the evidence with the passed parameters.
@@ -142,12 +136,7 @@ $evidences = QuadernoEvidence::find(array('page'=>1))
 ```
 
 ```ruby
-# Coming soon!
-
-```
-
-```swift?start_inline=1
-// Coming soon!
+Quaderno::Evidence.all() #=> Array
 ```
 
 ```json
@@ -236,12 +225,7 @@ $evidence = QuadernoEvidence::find(EVIDENCE_ID);
 ```
 
 ```ruby
-# Coming soon!
-
-```
-
-```swift?start_inline=1
-// Coming soon!
+evidence = Quaderno::Evidence.find(EVIDENCE_ID) #=> Quaderno::Evidence
 ```
 
 ```json
@@ -260,5 +244,3 @@ $evidence = QuadernoEvidence::find(EVIDENCE_ID);
 ```
 
 `GET`ting from `/evidence/EVIDENCE_ID.json` will return that specific evidence.
-
-

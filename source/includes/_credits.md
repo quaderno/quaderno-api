@@ -79,23 +79,6 @@ params = {
 Quaderno::Credit.create(params) #=> Quaderno::Credit
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
- "contact_id": "5059bdbf2f412e0901000024",
- "contact_name": "STARK",
- "po_number": "",
- "currency": "USD",
- "tag_list": ["playboy", "businessman"]
-]
-
-let createCredit = Credit.create(params)
-client.request(createCredit) { response in
-    // response will contain the result of the request.
-}
-```
-
 `POST`ing to `/credits.json` will create a new credit from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the credit if the creation was a success, along with the location of the new credit in the `url` field.
@@ -218,15 +201,6 @@ Quaderno::Credit.all() #=> Array
 
 ```php?start_inline=1
 $credits = QuadernoCredit::find(); // Returns an array of QuadernoCredit
-```
-
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let listCredits = Credit.list(pageNum)
-client.request(listCredits) { response in
-  // response will contain the result of the request.
-}
 ```
 
 ```json
@@ -381,15 +355,6 @@ Quaderno::Credit.find(CREDIT_ID) #=> Quaderno::Credit
 $credit = QuadernoCredit::find('CREDIT_ID'); // Returns a QuadernoCredit
 ```
 
-```swift
-let client = Quaderno.Client(/* ... */)
-
-let readCredit = Credit.read(CREDIT_ID)
-client.request(readCredit) { response in
-  // response will contain the result of the request.
-}
-```
-
 ```json
 {
   "id":"507693322f412e0e2e0000da",
@@ -487,19 +452,6 @@ $credit->custom_metadata = array("memo" => "I think he is not paying again.");
 $credit->save();
 ```
 
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let params : [String: Any] = [
-    "tag_list": ["whiskey", "alcohol"]
-]
-
-let updateCredit = Credit.update(CREDIT_ID, params)
-client.request(updateCredit) { response in
-    // response will contain the result of the request.
-}
-```
-
 `PUT`ting to `/credits/CREDIT_ID.json` will update the credit with the passed parameters.
 
 This will return `200 OK` along with the current JSON representation of the credit if successful.
@@ -519,15 +471,6 @@ Quaderno::Credit.delete(CREDIT_ID) #=> Boolean
 
 ```php?start_inline=1
 $credit->delete();
-```
-
-```swift?start_inline=1
-let client = Quaderno.Client(/* ... */)
-
-let deleteCredit = Credit.delete(CREDIT_ID)
-client.request(deleteCredit) { response in
-    // response will contain the result of the request.
-}
 ```
 
 `DELETE`ing to `/credit/CREDIT_ID.json` will delete the specified credit and returns `204 No Content` if successful.

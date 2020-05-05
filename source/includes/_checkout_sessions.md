@@ -68,7 +68,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-# Coming soon!
+Quaderno::CheckoutSession.all() #=> Array
 ```
 
 ```json
@@ -179,7 +179,6 @@ curl -u YOUR_API_KEY:x \
 
 ```
 
-
 ## Create a session
 
 Sessions are created via links, but you can also create them via API if you need to create sessions on the fly.
@@ -201,7 +200,18 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-# Coming soon!
+Quaderno::CheckoutSession.create({
+   items: [
+      { product: 'prod_61ffa845b4a0b8' }
+   ],
+   customer: {
+      first_name: 'John',
+      last_name: 'Doe',
+      email: 'john@doe.com'
+   },
+   success_url: 'https://mydomain.com/thank-you'.
+   cancel_url: 'https://mydomain.com/error'
+})
 ```
 
 key                                  | type                  | description
@@ -258,7 +268,7 @@ curl -u YOUR_API_KEY:x \
 ```
 
 ```ruby
-# Coming soon!
+Quaderno::CheckoutSession.find(SESSION_ID)
 ```
 
 ```php?start_inline=1
@@ -322,7 +332,12 @@ curl \
 ```
 
 ```ruby
-# Coming soon!
+Quaderno::CheckoutSession.update(
+   SESSION_ID,
+   {
+      success_url: 'https://mydomain.com/another-page'
+   }
+)
 ```
 
 ```php?start_inline=1
@@ -390,10 +405,10 @@ key                                  | type                   | description
 $ curl \
  -X DELETE https://quadernoapp.com/api/checkout/sessions/{id} \
  -H "Content-Type: application/json"
- ```
+```
 
- ```ruby
-# Coming soon!
+```ruby
+Quaderno::CheckoutSession.delete(SESSION_ID)
 ```
 
 ```php?start_inline=1

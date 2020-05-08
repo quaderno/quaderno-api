@@ -31,7 +31,7 @@ set :relative_links, true
 # Active Middleman Deploy
 activate :deploy do |deploy|
   deploy.method = :rsync
-  deploy.host = '95.85.63.165'
+  deploy.host = '198.211.118.22'
   deploy.path = '/var/www/developers/api'
   deploy.user = 'root' # no default
 end

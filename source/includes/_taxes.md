@@ -106,3 +106,7 @@ Parameter    | Mandatory | Description
 `tax_id`     | **Yes**   | Customer's tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.
 
 This will return a `200 OK` and the result of validating the tax ID against the official external validation service. The result can be true (valid business number), false (invalid business number) or null (the external service is temporarily unavailable).
+
+In our [Sandbox](http://localhost:4567/#introduction-the-sandbox), you can use the following test numbers: 
+- **DE111111111**: invalid number, returns `false`
+- **IE222222222**: node down, returns `null` 

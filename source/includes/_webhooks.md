@@ -17,6 +17,12 @@ Quaderno's webhooks allow your application to receive information about events t
       "number":"123346",
       "issue_date":"2016-02-12",
       "contact_name":"OrsonFarm",
+      "contact": {
+        "first_name":"OrsonFarm",
+        "last_name":null,
+        "email":"orso@farm.com",
+        "contact_person":"Orson Welles"
+      },
       "currency":"EUR",
       "gross_amount_cents":826,
       "total_cents":1000,

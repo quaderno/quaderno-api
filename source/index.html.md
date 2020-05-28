@@ -15,8 +15,8 @@ toc_footers:
 includes:
   - intro
   - setup
+  - taxes
   - contacts
-  - receipts
   - invoices
   - credits
   - expenses
@@ -24,7 +24,6 @@ includes:
   - recurring
   - items
   - payments
-  - taxes
   - evidence
   - checkout_sessions
   - webhooks

@@ -16,7 +16,7 @@ QuadernoBase::init('YOUR_API_KEY',
                    'YOUR_API_URL');
 ```
 
-```shell
+```cURL
 # With curl, you can pass the API key as a header with each request
 curl -u YOUR_API_KEY:x \
      -X GET \
@@ -29,7 +29,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Base.ping #=> Boolean
 ```
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET \
      'https://quadernoapp.com/api/ping.json'
@@ -56,7 +56,7 @@ Remember that anyone who has your Private Key can see and change everything that
 
 # Authorization
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET \
      'https://quadernoapp.com/api/authorization.json'
@@ -128,7 +128,7 @@ X-Pages-TotalPages
 
 > A call with the `page` parameter set:
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET \
      'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2'
@@ -182,7 +182,7 @@ Note that when API errors occur, it is up to you to retry your request - Quadern
 When we make breaking changes to our API, we release a new version number which you can change in your calls.
 By default if you don't specify a version, we'll use the one stored in your Quaderno account. To override this value you can pass the version in the `Accept` HTTP header like this: `Accept: application/json; api_version=API_VERSION_NUMBER`
 
-```shell
+```cURL
 # Example of API version override
 
 curl -u YOUR_API_KEY:x \

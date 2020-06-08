@@ -8,7 +8,7 @@ Most users configure webhooks from the [dashboard](https://recrea.quadernoapp.co
 
 > POST /webhooks.json
 
-```shell
+```cURL
 # body.json
 {
     "url": "http://anotherapp.com/notifications",
@@ -67,7 +67,7 @@ This will return `201 Created` with the current JSON representation of the webho
 
 > GET /webhooks.json
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/ewbhooks.json'
 ```
@@ -113,7 +113,7 @@ $webhooks = QuadernoWebhook::find(); // Returns an array of QuadernoWebhook
 
 > GET /webhooks/WEBHOOK_ID.json
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
 ```
@@ -147,7 +147,7 @@ $webhooks = QuadernoWebhook::find(WEBHOOK_ID); // Returns a QuadernoWebhook
 
 > PUT /webhooks/WEBHOOK_ID.json
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
@@ -183,7 +183,7 @@ This will return `201 Created` with the current JSON representation of the webho
 
 > `DELETE /webhooks/WEBHOOK_ID.json`
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
 ```

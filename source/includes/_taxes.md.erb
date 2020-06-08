@@ -10,7 +10,7 @@ Tax rates are based on your account settings. Please check you tax settings in t
 
 > `GET /taxes/calculate.json`
 
-```shell
+```cURL
 
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
@@ -70,7 +70,7 @@ This will return a `200 OK` if the request was a success, along with the taxes r
 
 > GET /taxes/validate.json
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \

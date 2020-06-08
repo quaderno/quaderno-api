@@ -3,20 +3,6 @@
 Location evidence are proofs of the customer's location that should be stored in order to be EU VAT MOSS compliant.
 
 ### The evidence object
-```json
-{
-  "id":3649491,
-  "document_id":"5059bdbf2f412e0901000024",
-  "state":"confirmed",
-  "billing_country":"ES",
-  "ip_address":"192.168.1.1",
-  "ip_country":"FR",
-  "bank_country":"FR",
-  "additional_evidence":null,
-  "additional_evidence_country":null,
-  "notes":null
-}
-```
 
 Attribute          | Description
 -------------------|-----------------------------------------------------------------------------------------------------------
@@ -36,7 +22,7 @@ Attribute          | Description
 
 > `POST /evidence.json`
 
-```shell
+```cURL
 # body.json
 {
   "document_id":"5059bdbf2f412e0901000024",
@@ -48,7 +34,8 @@ Attribute          | Description
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
-     --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/evidence.json'
+     --data-binary @body.json \    
+     'https://ACCOUNT_NAME.quadernoapp.com/api/evidence.json'
 ```
 
 ```php
@@ -89,7 +76,7 @@ Parameter          | Mandatory | Description
 
 > `PUT /evidence/EVIDENCE_ID.json`
 
-```shell
+```cURL
 # body.json
 {
   "billing_country":"FR",
@@ -126,7 +113,7 @@ This will return `200 OK` along with the current JSON representation of the evid
 > `GET /evidence/EVIDENCE_ID.json`
 
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/evidence.json'
 ```
@@ -215,7 +202,7 @@ You can filter the results in a few ways:
 > `GET /evidence/EVIDENCE_ID.json`
 
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/evidence/EVIDENCE_ID.json'
 ```

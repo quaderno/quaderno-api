@@ -57,7 +57,7 @@ Sessions are created via links, but you can also create them via API if you need
 
 This request will return `201 Created` and the current JSON representation of the session if the creation was a success.
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
@@ -132,7 +132,7 @@ Retrieves the details of an existing session. You need only supply the unique se
 > `GET /checkout/sessions/SESSION_ID.json`
 
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions/SESSION_ID.json'
 ```
@@ -194,7 +194,7 @@ This request accepts mostly the same arguments as the session creation call.
 This will return `200 OK` and a JSON representation of the contact if successful.
 
 
-```shell
+```cURL
 curl \
  -X PUT https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions/SESSION_ID \
  -H "Content-Type: application/json" \
@@ -266,7 +266,7 @@ Permanently deletes a session. It cannot be undone. Only `pending` sessions can 
 
 Will delete the specified contact and returns `204 No Content` if successful.
 
-```shell
+```cURL
 $ curl \
  -X DELETE https://quadernoapp.com/api/checkout/sessions/{id} \
  -H "Content-Type: application/json"
@@ -288,7 +288,7 @@ You can list all sessions, or list the sessions for a specific status. The sessi
 
 Returns an array of sessions. Each entry in the array is a separate session object. If no more sessions are available, the resulting array will be empty.
 
-```shell
+```cURL
 curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions.json'
 ```

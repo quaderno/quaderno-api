@@ -1,8 +1,8 @@
-# Evidence
+## Evidence
 
 Location evidence are proofs of the customer's location that should be stored in order to be EU VAT MOSS compliant.
 
-## The evidence object
+### The evidence object
 ```json
 {
   "id":3649491,
@@ -32,7 +32,7 @@ Attribute          | Description
 `notes`            | Additional notes about the evidence
 
 
-## Create an evidence
+### Create an evidence
 
 > `POST /evidence.json`
 
@@ -74,7 +74,7 @@ contact = Quaderno::Evidence.create(
 
 This will return 201 Created and the current JSON representation of the evidence if the creation was a success.
 
-### Attributes
+#### Attributes
 Parameter          | Mandatory | Description
 -------------------|-----------|------------------------------------------------------------------------------------------------
 `document_id`      | **yes**   | Invoice or Receipt's ID
@@ -85,7 +85,7 @@ Parameter          | Mandatory | Description
 `additional_evidence_country`  | no (yes if `additional_evidence` is passed)         | Additional evidence for the customer location (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `notes`             | no       | Additional notes about the evidence
 
-## Update an evidence
+### Update an evidence
 
 > `PUT /evidence/EVIDENCE_ID.json`
 
@@ -121,7 +121,7 @@ Quaderno::Evidence.update(EVIDENCE_ID, params) #=> Quaderno::Evidence
 
 This will return `200 OK` along with the current JSON representation of the evidence if successful.
 
-## Retrieve: Get and filter all evidence
+### Retrieve: Get and filter all evidence
 
 > `GET /evidence/EVIDENCE_ID.json`
 
@@ -210,7 +210,7 @@ You can filter the results in a few ways:
 - By state, passing the `state` parameter like `?state=STATE`. You can combine multiple states separated by commas like `?state=confirmed,unsettled`. Valid states are `confirmed`, `unsettled` and `conflicting`.
 - By document_id, passing the document ID in the `document_id` parameter, like `?document_id=3231`.
 
-## Retrieve: Get a single evidence
+### Retrieve: Get a single evidence
 
 > `GET /evidence/EVIDENCE_ID.json`
 

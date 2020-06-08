@@ -12,28 +12,29 @@ toc_footers:
   - <a href="https://github.com/quaderno/quaderno-api" target="_blank">Contributing to API Docs</a>
   - <a href="https://github.com/tripit/slate" target="_blank">Documentation Powered by Slate</a><br /><br />
 
-includes:
-  - intro
-  - setup
-  - taxes
-  - invoices
-  - credits
-  - expenses
-  - estimates
-  - recurring
-  - payments
-  - evidence
-  - checkout_sessions
-  - webhooks
-  - errors
-  - changelog
-
 search: true
 ---
 
+<%= partial "includes/intro.md" %>
+<%= partial "includes/setup.md" %>
 
 # CORE RESOURCES
-
-<%= partial "includes/taxes.md" %>
 <%= partial "includes/contacts.md" %>
+<%= partial "includes/events.md" %>
+<%= partial "includes/evidence.md" %>
 <%= partial "includes/items.md" %>
+<%= partial "includes/taxes.md" %>
+
+# INVOICING
+<%= partial "includes/invoices.md" %>
+<%= partial "includes/credits.md" %>
+<%= partial "includes/expenses.md" %>
+<%= partial "includes/estimates.md" %>
+<%= partial "includes/recurring.md" %>
+<%= partial "includes/payments.md" %>
+
+# CHECKOUT
+<%= partial "includes/checkout_sessions.md" %>
+
+# WEBHOOKS
+<%= partial "includes/webhooks.md" %>

@@ -1,4 +1,4 @@
-# Payments
+## Payments
 
 Payments in Quaderno-lingo represent the recording of a successful payment.
 
@@ -11,7 +11,7 @@ Like [items](#items), payments are a sub-object and can be attached to multiple 
 Note that unlike items, payments cannot exist in Quaderno separately to an instance of one of these classes, and the same payment cannot be referenced by more than one instance.
 </aside>
 
-## Create a payment
+### Create a payment
 
 > `POST /invoices/INVOICE_ID/payments.json` or `POST /expenses/EXPENSE_ID/payments.json`
 
@@ -59,7 +59,7 @@ invoice.add_payment(params) #=> Quaderno::Payment
 
 This will return `201 Created` and the current JSON representation of the payment if the creation was a success, along with the location of the new item in the `Location` header.
 
-### Attributes
+#### Attributes
 
 Attribute      | Mandatory | Type/Description
 ---------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ payment_processor  | no    | Payment processor that you used to process the paym
 payment_processor_id  | no | The `id` that the payment processor assigned to the payment.
 
 
-## Retrieve: Get all payments on an invoice or expense
+### Retrieve: Get all payments on an invoice or expense
 
 ```shell
 curl -u YOUR_API_KEY:x \
@@ -89,7 +89,7 @@ payments = expense.payments #=> an array of Quaderno::Payment
 
 `GET`ting from `/invoices/INVOICE_ID/payments.json` or `/expenses/EXPENSE_ID/payments.json` will return all the payments on the invoice or expense in question.
 
-## Retrieve: Get a single payment on an invoice or expense
+### Retrieve: Get a single payment on an invoice or expense
 
 ```shell
 curl -u YOUR_API_KEY:x \
@@ -108,7 +108,7 @@ payments = expense.payments #=> an array of Quaderno::Payment to iterate through
 
 `GET`ting from `/invoices/INVOICE_ID/payments/PAYMENT_ID.json` or `/expenses/EXPENSE_ID/payments/PAYMENT_ID.json` will return that payments on the invoice or expense in question, if it exists.
 
-## Delete a payment
+### Delete a payment
 
 > `DELETE /invoices/INVOICE_ID/payments/PAYMENT_ID.json` or `DELETE /expenses/EXPENSE_ID/payments/PAYMENT_ID.json`
 

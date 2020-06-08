@@ -1,8 +1,8 @@
-# Checkout Sessions
+## Sessions
 
 A Checkout Session represents your customer's session as they pay for one-time purchases or subscriptions through Checkout.
 
-## The session object
+### The session object
 
 key                                  | type           | description
 -------------------------------------|----------------|-----------------------------------------
@@ -22,7 +22,6 @@ key                                  | type           | description
 `processor`                          | string         | Values are `stripe` and `paypal`.
 `processor_id`                       | string         |
 `status`                             | string         | `pending` sessions are unpaid and awaiting payment. A session is marked as failed when the payment failed or was declined. Note that this status many not show inmediately and instead show as `pending` until verified. completed sessions requires no further action and cannot be edited. A session is marked as abandoned after being cancelled by the customer or 30 minutes without activitiy. Values are `pending`, `processing`, `failed`, `completed`, and `abandoned`.
-
 
 ### The customer object
 
@@ -50,7 +49,7 @@ key                                  | type                  | description
 `product`                            | string                | The SKU of the Quaderno Product.
 `quantity`                           | integer               | Quantity of the item being purchased.
 
-## Create a session
+### Create a session
 
 Sessions are created via links, but you can also create them via API if you need to create sessions on the fly.
 
@@ -98,7 +97,7 @@ key                                  | type                  | description
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
 
-### Customer attributes:
+#### Customer attributes:
 
 key                                  | type           | description
 -------------------------------------|----------------|-----------------------------------------
@@ -114,7 +113,7 @@ key                                  | type           | description
 `last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
 `tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
 
-### Items attributes:
+#### Items attributes:
 
 key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------
@@ -125,8 +124,7 @@ key                                  | type                  | description
 `product`                            | string / **required** | The SKU of the Quaderno Product.
 `quantity`                           | integer               | Quantity of the item being purchased. Minimum value is 1.
 
-
-## Retrieve a session
+### Retrieve a session
 
 Retrieves the details of an existing session. You need only supply the unique session identifier that was returned upon session creation.
 
@@ -184,7 +182,7 @@ Quaderno::CheckoutSession.find(SESSION_ID)
    }
 ```
 
-## Update a session
+### Update a session
 
 Updates the specified session by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Only pending sessions can be updated.
 
@@ -230,7 +228,7 @@ key                                  | type                  | description
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
 
-### Customer attributes
+#### Customer attributes
 
 key                                  | type           | description
 -------------------------------------|----------------|-----------------------------------------
@@ -246,7 +244,7 @@ key                                  | type           | description
 `last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
 `tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
 
-### Items attributes
+#### Items attributes
 
 key                                  | type                  | description
 -------------------------------------|-----------------------|-----------------------------------------
@@ -257,7 +255,7 @@ key                                  | type                  | description
 `product`                            | string / **required** | The SKU of the Quaderno Product.
 
 
-## Delete a session
+### Delete a session
 
 Permanently deletes a session. It cannot be undone. Only `pending` sessions can be deleted.
 
@@ -286,7 +284,7 @@ Quaderno::CheckoutSession.delete(SESSION_ID)
 // Coming soon!
 ```
 
-## List all sessions
+### List all sessions
 
 You can list all sessions, or list the sessions for a specific status. The sessions are returned sorted by creation date, with the most recently created sessions appearing first.
 

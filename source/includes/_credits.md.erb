@@ -1,10 +1,10 @@
-# Invoices
+## Credits
 
-An invoice is a detailed list of goods shipped or services rendered, with an account of all costs.
+A credit note is a reverse invoice; something to cancel out - partially or completely - an invoice you have issued in the past. It may be for the full amount of an invoice or it may be for less in the case of a partial refund.
 
-## Create an invoice
+### Create a credit
 
-> `POST /invoices.json`
+> `POST /credits.json`
 
 ```shell
 # body.json
@@ -32,25 +32,26 @@ curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X POST \
      --data-binary @body.json \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/invoices.json'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/credits.json'
 ```
 
 ```php?start_inline=1
-$invoice = new QuadernoInvoice(array(
+$credit = new QuadernoCredit(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
                                  'tag_list' => array('playboy', 'businessman'),
                                  'custom_metadata' => array('a_custom_key' => 'a custom value')));
 $item = new QuadernoDocumentItem(array(
-                               'description' => 'Pizza bagels',
-                               'unit_price' => 9.99,
-                               'quantity' => 20));
+                               'description' => 'Whiskey',
+                               'unit_price' => 20.0,
+                               'reference' => 'ITEM_ID',
+                               'quantity' => 1.0));
 $contact = QuadernoContact::find('5059bdbf2f412e0901000024');
 
-$invoice->addItem($item);
-$invoice->addContact($contact);
+$credit->addItem($item);
+$credit->addContact($contact);
 
-$invoice->save(); // Returns true (success) or false (error)
+$credit->save(); // Returns true (success) or false (error)
 ```
 
 ```ruby
@@ -58,7 +59,8 @@ contact = Quaderno::Contact.find('50603e722f412e0435000024') #=> Quaderno::Conta
 
 params = {
   contact_id: contact.id,
-  po_number: 'PO.12234',
+  contact_name: 'STARK',
+  po_number: '',
   currency: 'USD',
   tag_list: ['playboy', 'businessman'],
   items_attributes: [
@@ -66,25 +68,26 @@ params = {
       description: 'Whiskey',
       quantity: '1.0',
       unit_price: '20.0',
-      discount_rate: '0.0'
+      discount_rate: '0.0',
     }
   ],
   custom_metadata: {
     a_custom_key: 'a custom value'
   }
 }
-invoice = Quaderno::Invoice.create(params) #=> Quaderno::Invoice
 
+Quaderno::Credit.create(params) #=> Quaderno::Credit
 ```
 
-`POST`ing to `/invoices.json` will create a new invoice from the parameters passed.
+`POST`ing to `/credits.json` will create a new credit from the parameters passed.
 
-This will return `201 Created` and the current JSON representation of the invoice if the creation was a success, along with the location of the new invoice in the `url` field.
+This will return `201 Created` and the current JSON representation of the credit if the creation was a success, along with the location of the new credit in the `url` field.
 
-### Attributes
+#### Attributes
 
 Attribute       | Mandatory                                  | Type/Description
 ----------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+document_id     | no (highly recommendable)                  | ID. ID of a related Invoice or Receipt.
 number          | no                                         | String(20 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness
 issue_date      | no                                         | String(255 chars) Available for all except for `recurring`. Defaults to the current date. Format YYYY-MM-DD
 po_number       | no                                         | String(255 chars)
@@ -108,14 +111,14 @@ payment_processor_id  | no                                   | The `id` that the
 custom_metadata | no                                         | Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
 <aside class="notice">
-If you pass a `contact` JSON object instead of a `contact_id`, and the email or first and last name combination does not match any of your existing contacts, a new one will be created, otherwise a new invoice will be created for the existing contact. Only a `contact` object OR a `contact_id` property should be passed in the same call. Only a `contact` object OR a `contact_id` property should be passed in the same call.<br /><br />
+If you pass a `contact` JSON object instead of a `contact_id`, and the email or first and last name combination does not match any of your existing credits, a new one will be created, otherwise a new credit will be created for the existing credit.<br /><br />
 
-<p>Please note that you can pass <strong>either</strong> contact_id or contact, but if you pass both then results may not be what you expect.</p>
+<p>Please note that you can pass <strong>either</strong> credit_id or credit, but if you pass both then results may not be what you expect.</p>
 
-<p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#contacts">Contacts API</a>.</p>
+<p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#credits">Contacts API</a>.</p>
 </aside>
 
-### Document Item Attributes
+#### Document Item Attributes
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
@@ -123,7 +126,7 @@ id            | no                                       | ID. Available only fo
 description   | **yes**                                  | String(255 chars)
 quantity      | no                                       | Decimal. Defaults to 1.0
 unit_price    | **yes**                                  | Decimal
-total_amount  | Mandatory if `unit_price` is not present | Decimal
+total_amount  | Mandatory if `unit_price` is not present | Decimal. Cents version available as `total_amount_cents`
 discount_rate | no                                       | Decimal
 tax_1_name    | Mandatory if `tax_1_rate` is present     | String(255 chars)
 tax_1_rate    | Mandatory if `tax_1_name` is present     | Decimal between -100.00 and 100.00 (not included)
@@ -138,7 +141,7 @@ tax_2_name    | Mandatory if `tax_2_rate` is present     | String(255 chars)
 tax_2_rate    | Mandatory if `tax_2_name` is present     | Decimal between -100.00 and 100.00 (not included)
 tax_2_country | no                                       | String(2 chars). Defaults to the contact's country
 tax_2_region  | no                                       | String(255 chars). Recommendable to set for Canadian or United States taxes.
-tax_2_county  | no                                       | String(2 chars). Recommendable to set for Canadian or United States taxes.
+tax_2_county  | no                                       | String(255 chars). Recommendable to set for US sales taxes.
 tax_2_city    | no                                       | String(255 chars). Recommendable to set for US sales taxes.
 tax_2_county_code    | no                                       | String(255 chars). Recommendable to set for US sales taxes.
 tax_2_city_code      | no                                       | String(255 chars). Recommendable to set for US sales taxes.
@@ -146,17 +149,22 @@ tax_2_transaction_type | no                              | String. Accepts `eser
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
 _destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
-### Invoice States
 
-Possible invoice states are:
+#### Create a credit note from an existing invoice or receipt
 
-- `outstanding`: Awaiting payment (unpaid).
-- `late`: The invoice is due and no payment has yet been received. 
-- `paid`: Payment received. 
-- `refunded`: Payment refunded and a credit note has been issued. 
-- `archived`: The invoice has been voided.
+Alternatively, you can create a credit note for the full amount of the original invoice or receipt by sending the parameter `invoice_id` with the ID of the invoice or receipt you want to refund rather than all the credit note attributes in the body.
 
-### Create an attachment during invoice creation
+
+#### Credit States
+
+Possible credit states are:
+
+- `outstanding`
+- `paid`
+- `late`
+- `archived`
+
+#### Create an attachment during credit creation
 
 ```json
 {
@@ -176,23 +184,23 @@ Field      | Description
 `data`     | Contains a Base64 encoded string which represents the file.
 `filename` | The attachment file name.
 
-Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop invoice creation and return a `422 Unprocessable Entity` error.
+Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop credit creation and return a `422 Unprocessable Entity` error.
 
-## Retrieve: Get and filter all invoices
+### Retrieve: Get and filter all credits
 
-> `GET /invoices.json`
+> `GET /credits.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/invoices.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/credits.json'
 ```
 
 ```ruby
-Quaderno::Invoice.all() #=> Array
+Quaderno::Credit.all() #=> Array
 ```
 
 ```php?start_inline=1
-$invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
+$credits = QuadernoCredit::find(); // Returns an array of QuadernoCredit
 ```
 
 ```json
@@ -202,6 +210,10 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
     "number":"0000047",
     "issue_date":"2012-10-11",
     "created_at":"1325376000",
+    "related_document":{
+      "id":977,
+      "type":"Invoice"
+    },
     "contact":{
       "id":"5073f9c22f412e02d0000032",
       "full_name":"Garfield"
@@ -211,7 +223,7 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
     "street_line_2":"",
     "city":"New York",
     "region":"New York",
-    "postal_code":"10203",
+    "postal_code":"10203"
     "po_number":null,
     "due_date":null,
     "currency":"USD",
@@ -245,7 +257,7 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
         "payment_processor":"stripe",
         "payment_processor_id":"ch_19yUdh2eZvKYlo2CkFVBOZG7",
         "amount_cents":"9375",
-        "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e00000f/payments/50aca7d92f412eda5200002c.json"
+        "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e00000f/payments/50aca7d92f412eda5200002c.json"
       },
     ],
     "payment_details":"Ask Jon",
@@ -253,9 +265,9 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
     "state":"paid",
     "tag_list":["lasagna", "cat"],
     "secure_id":"7hef1rs7p3rm4l1nk",
-    "permalink":"https://quadernoapp.com/invoice/7hef1rs7p3rm4l1nk",
-    "pdf":"https://quadernoapp.com/invoice/7hef1rs7p3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e00000f.json",
+    "permalink":"https://quadernoapp.com/credit/7hef1rs7p3rm4l1nk",
+    "pdf":"https://quadernoapp.com/credit/7hef1rs7p3rm4l1nk.pdf",
+    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e00000f",
     "custom_metadata":{}
   },
 
@@ -264,6 +276,10 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
     "number":"0000047",
     "issue_date":"2012-10-11",
     "created_at":"1325376020",
+    "related_document":{
+      "id":978,
+      "type":"Invoice"
+    },
     "contact":{
       "id":"5073f9c22f412e02d00004cf",
       "full_name":"Teenage Mutant Ninja Turtles"
@@ -305,15 +321,15 @@ $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
     "state":"outstanding",
     "tag_list":["pizza", "turtles"],
     "secure_id":"7hes3c0ndp3rm4l1nk",
-    "permalink":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hes3c0ndp3rm4l1nk",
-    "pdf":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hes3c0ndp3rm4l1nk.pdf",
-    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e0000da.json",
+    "permalink":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk",
+    "pdf":"https://my-account.quadernoapp.com/credit/7hes3c0ndp3rm4l1nk.pdf",
+    "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da",
     "custom_metadata":{}
   }
 ]
 ```
 
-`GET`ting from `/invoices.json` will return all the user's invoices.
+`GET`ting from `/credits.json` will return all the user's credits.
 
 You can filter the results in a few ways:
 
@@ -322,21 +338,21 @@ You can filter the results in a few ways:
 - By state, passing the `state` parameter like `?state=STATE`.
 - By contact, passing the contact ID in the `contact` parameter, like `?contact=3231`.
 
-## Retrieve: Get a single invoice
+### Retrieve: Get a single credit
 
-> `GET /invoices/INVOICE_ID.json`
+> `GET /credits/CREDIT_ID.json`
 
 ```shell
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID.json'
+curl -u YOUR_API_KEY:x \_cents
+    -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID.json'
 ```
 
 ```ruby
-Quaderno::Invoice.find(INVOICE_ID) #=> Quaderno::Invoice
+Quaderno::Credit.find(CREDIT_ID) #=> Quaderno::Credit
 ```
 
 ```php?start_inline=1
-$invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
+$credit = QuadernoCredit::find('CREDIT_ID'); // Returns a QuadernoCredit
 ```
 
 ```json
@@ -344,6 +360,7 @@ $invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
   "id":"507693322f412e0e2e0000da",
   "number":"0000047",
   "issue_date":"2012-10-11",
+  "created_at":"1325376000",
   "contact":{
     "id":"5073f9c22f412e02d00004cf",
     "full_name":"Teenage Mutant Ninja Turtles"
@@ -385,81 +402,81 @@ $invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
   "state":"outstanding",
   "tag_list":["lasagna", "cat"],
   "secure_id":"7hef1rs7p3rm4l1nk",
-  "permalink":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hef1rs7p3rm4l1nk",
-  "pdf":"https://ACCOUNT_NAME.quadernoapp.com/invoice/7hef1rs7p3rm4l1nk.pdf",
-  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/invoices/507693322f412e0e2e0000da.json",
+  "permalink":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk",
+  "pdf":"https://my-account.quadernoapp.com/credit/7hef1rs7p3rm4l1nk.pdf",
+  "url":"https://my-account.quadernoapp.com/api/credits/507693322f412e0e2e0000da",
   "custom_metadata":{}
 }
 ```
 
-`GET`ting from `/invoices/INVOICE_ID.json` will return that specific invoice.
+`GET`ting from `/credits/CREDIT_ID.json` will return that specific credit.
 
-If you have connected Quaderno with an external payment processor, you can also `GET /PROCESSOR/charges/PROCESSOR_ID.json` to get the Quaderno invoice for a particular charge. The processor part of the URL can be `stripe`, `paypal`, or `braintree`. 
+### Update a credit
 
-## Update an invoice
-
-> `PUT /invoices/INVOICE_ID.json`
+> `PUT /credits/CREDIT_ID.json`
 
 ```shell
+# body.json
+{
+  "tag_list":"whiskey, alcohol",
+  "notes":"You better pay this time, Tony",
+  "region":"Genosha",
+  "custom_metadata":{"memo":"I think he is not paying again."}
+}
+
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X PUT \
-     -d '{"notes":"You better pay this time, Tony."}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID.json'
+     --data-binary @body.json \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID.json'
 ```
 
 ```ruby
 params = {
-    notes: 'You better pay this time, Tony.'
+  tag_list: ['whiskey', 'alcohol'],
+  notes: 'You better pay this time, Tony',
+  region: 'Genosha',
+  custom_metadata: {
+    memo: 'I think he is not paying again.'
+  }
 }
-Quaderno::Invoice.update(INVOICE_ID, params) #=> Quaderno::Invoice
+Quaderno::Credit.update(CREDIT_ID, params) #=> Quaderno::Credit
 ```
 
 ```php?start_inline=1
-$invoice->notes = 'You better pay this time, Tony.';
-$invoice->save();
+$credit->tag_list = array("whiskey", "alcohol");
+$credit->notes = "You better pay this time, Tony";
+$credit->region = "Genosha";
+$credit->custom_metadata = array("memo" => "I think he is not paying again.");
+
+$credit->save();
 ```
 
-`PUT`ting to `/invoices/INVOICE_ID.json` will update the invoice with the passed parameters. No more than 200 items are allowed per request. If you need to update more use subsequent requests.
+`PUT`ting to `/credits/CREDIT_ID.json` will update the credit with the passed parameters.
 
-This will return `200 OK` along with the current JSON representation of the invoice if successful.
+This will return `200 OK` along with the current JSON representation of the credit if successful.
 
-## Delete an invoice
+### Delete a credit
 
-> `DELETE /invoices/INVOICE_ID.json`
+> `DELETE /credits/CREDIT_ID.json`
 
 ```shell
 curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID.json'
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID.json'
 ```
 
 ```ruby
-Quaderno::Invoice.delete(INVOICE_ID) #=> Boolean
+Quaderno::Credit.delete(CREDIT_ID) #=> Boolean
 ```
 
 ```php?start_inline=1
-$invoice->delete();
+$credit->delete();
 ```
 
-`DELETE`ing to `/invoices/INVOICE_ID.json` will delete the specified invoice and returns `204 No Content` if successful.
+`DELETE`ing to `/credit/CREDIT_ID.json` will delete the specified credit and returns `204 No Content` if successful.
 
-## Deliver (Send) an invoice
+### Deliver a credit
 
-```shell
-curl -u YOUR_API_KEY: \
-     -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID/deliver.json'
-```
-
-```ruby
-invoice = Quaderno::Invoice.find(INVOICE_ID)
-invoice.deliver
-```
-
-```php?start_inline=1
-$invoice->deliver(); // Return true (success) or false (error)
-```
-
-`GET`ting `/invoices/INVOICE_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
+`GET`ting `/credits/CREDIT_ID/deliver.json` will send the invoice to the assigned contact email. This will return `200 OK` if successful, along with a JSON representation of the invoice.
 
 If the destination contact does not have an email address you will receive a `422 Unprocessable Entity` error.

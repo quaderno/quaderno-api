@@ -1,4 +1,4 @@
-# Items
+## Items
 
 The items are those products or services that you sell to your customers.
 
@@ -8,7 +8,7 @@ Items are their own object in Quaderno, but they can be referenced, in an array,
 - Expenses
 - Credit notes
 
-## Create an item
+### Create an item
 
 > `POST /items.json`
 
@@ -21,8 +21,7 @@ Items are their own object in Quaderno, but they can be referenced, in an array,
   "tax_1_name":"AWESOME_TAX",
   "tax_1_rate":"7.00",
   "tax_2_name":"ANOTHER_AWESOME_TAX",
-  "tax_2_rate":"10.00",
-  "stock":"1000"
+  "tax_2_rate":"10.00"
 }
 
 curl -u YOUR_API_KEY:x \
@@ -57,11 +56,11 @@ Quaderno::Item.create(params) #=> Quaderno::Item
 
 This will return `201 Created` and the current JSON representation of the item if the creation was a success, along with the location of the new item in the `url` field.
 
-### Attributes
+#### Attributes
 
 Attribute     | Mandatory                                                   | Type/Description
 --------------|-------------------------------------------------------------|---------------------------------------------------
-code          | Mandatory if `stock` is present                             | String(255 chars). Validates uniqueness
+code          | **yes**                                                     | String(255 chars). Validates uniqueness
 name          | **yes**                                                     | String(255 chars).
 unit_cost     | **yes**                                                     | Decimal
 description   | no                                                          | String(255 chars).
@@ -73,7 +72,6 @@ tax_2_name    | Mandatory if  `tax_2_rate` and `tax_2_country` are present) |
 tax_2_rate    | Mandatory if  `tax_2_name` and `tax_2_country` are present) | Decimal between -100.00 and 100.00 (not incluided)
 tax_2_country | Mandatory if `tax_2_name` and `tax_2_rate` are present)     | String(2 chars). Format ISO 3166-1 alpha-2
 tax_type      | no                                                          | String. One of the following: `included`, `excluded` (`excluded` by default).
-stock         | no                                                          | Decimal
 kind          | no                                                          | One of the following: `one_off` or `subscription`. Default value is `one_off`
 stripe_plan_id     | no                                                     | String(255 chars). Only for Stripe `subscription`s. Validates in Stripe that matches a real Stripe Plan Id
 paypal_interval_unit | no                                                   | Only for Paypal `subscription`s. One of the following: `daily`, `weekly`, `monthly`, `yearly`
@@ -84,7 +82,7 @@ paypal_interval_duration  | no                                              | De
 Note that this kind of item is like a template for items, a shortcut that you can reference in order to speed up document creation. You can also have items that exist only for the relevant document and not as independent entities, and these do not require "unit_cost" (also not being stock-trackable and so on).
 </aside>
 
-## Retrieve: Get and filter all items
+### Retrieve: Get and filter all items
 
 > `GET /items.json`
 
@@ -146,7 +144,7 @@ You can filter the results in a few ways:
 - By state, passing the `state` parameter like `?state=STATE`.
 - By contact, passing the contact ID in the `contact` parameter, like `?contact=3231`.
 
-## Retrieve: Get a single item
+### Retrieve: Get a single item
 
 > `GET /items/ITEM_ID.json`
 
@@ -179,7 +177,7 @@ $item = QuadernoItem::find('ITEM_ID'); // Returns a QuadernoItem
 
 `GET`ting from `/items/ITEM_ID.json` will return that specific item.
 
-## Update an item
+### Update an item
 
 > `PUT /items/ITEM_ID.json`
 
@@ -207,7 +205,7 @@ $item->save();
 
 This will return `200 OK` along with the current JSON representation of the item if successful.
 
-## Delete an item
+### Delete an item
 
 > `DELETE /items/ITEM_ID.json`
 
@@ -226,7 +224,7 @@ $item->delete();
 
 `DELETE`ing to `/item/ITEM_ID.json` will delete the specified item and returns `204 No Content` if successful.
 
-## Adding an item to a document by reference
+### Adding an item to a document by reference
 
 > Given this item:
 

@@ -1,0 +1,195 @@
+## Webhooks endpoints
+
+You can configure webhook endpoints via the API to be notified about events that happen in your Quaderno account or connected accounts.
+
+Most users configure webhooks from the [dashboard](https://recrea.quadernoapp.com/developers/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+
+### Create a webhook
+
+> POST /webhooks.json
+
+```shell
+# body.json
+{
+    "url": "http://anotherapp.com/notifications",
+    "events_types": [
+        "invoice.created",
+        "estimate.updated",
+        "invoice.deleted",
+        "contact.created"
+    ]
+}
+
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     --data-binary @body.json \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks.json'
+```
+
+```ruby
+params = {
+    url: "http://anotherapp.com/notifications",
+    events_types: [
+        'invoice.created',
+        'estimate.updated',
+        'invoice.deleted',
+        'contact.created'
+    ]
+}
+Quaderno::Webhook.create(params) #=> Quaderno::Webhook
+```
+
+```php?start_inline=1
+$webhook = new QuadernoWebhook(array(
+                                 'url' => 'http://myapp.com/notifications',
+                                 'events_types' => array('contact.created'));
+
+$webhook->save(); // Returns true (success) or false (error)
+```
+
+`POST`ing to `/webhooks.json` will create a new webhook from the passed parameters.
+
+Mandatory fields:
+
+Field | Description
+---|---
+`url` | Indicates the destination URL of the webhook request.
+`events_types` | An array of strings indicating which events you wish to subscribe to.
+
+Webhook URLs should be set up to accept `HEAD` and `POST` requests. When you provide the URL where you want Quaderno to `POST` the data for events, we'll do a quick check that the URL exists by using a `HEAD` request (not `POST`).
+
+If the URL doesn't exist or returns something other than a `200` HTTP response to the `HEAD` request, Quaderno won't be able to verify that the URL exists and is valid.
+
+This will return `201 Created` with the current JSON representation of the webhook if the creation was a success.
+
+### Retrieve: Get all webhooks
+
+> GET /webhooks.json
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/ewbhooks.json'
+```
+
+```ruby
+Quaderno::Webhook.all() #=> Array
+```
+
+```php?start_inline=1
+$webhooks = QuadernoWebhook::find(); // Returns an array of QuadernoWebhook
+```
+
+```json
+[
+  {
+    "id":2,
+    "url":"https://myawesomeapp.com/notifications",
+    "auth_key":"zXQgArTtQxAMaYppMrDoUQ",
+    "events":["created","updated"],
+    "last_sent_at":"2013-05-18T11:11:11Z",
+    "last_error":null,
+    "events_sent":null,
+    "created_at":"2013-05-17T14:08:05Z",
+    "updated_at":"2013-05-17T14:08:05Z"
+  }
+  {
+    "id":3,
+    "url":"http://anotherapp.com/notifications",
+    "auth_key":"HXQgAgblQxAMaNppMrXoSW",
+    "events:_types":["invoice.created","contact.deleted"],
+    "last_sent_at":null,
+    "last_error":null,
+    "events_sent":null,
+    "created_at":"2013-07-13T14:12:01Z",
+    "updated_at":"2013-07-17T14:09:59Z"
+  }
+]
+```
+
+`GET`ting to `/webhooks.json` will return all your webhooks.
+
+### Retrieve: Get a single webhook
+
+> GET /webhooks/WEBHOOK_ID.json
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
+```
+
+```ruby
+Quaderno::Webhook.find(WEBHOOK_ID) #=> Quaderno::Webhook
+```
+
+```php?start_inline=1
+$webhooks = QuadernoWebhook::find(WEBHOOK_ID); // Returns a QuadernoWebhook
+```
+
+```json
+
+{
+    "id":3,
+    "url":"http://anotherapp.com/notifications",
+    "auth_key":"HXQgAgblQxAMaNppMrXoSW",
+    "events:_types":["invoice.created","contact.deleted"],
+    "last_sent_at":null,
+    "last_error":null,
+    "events_sent":null,
+    "created_at":"2013-07-13T14:12:01Z",
+    "updated_at":"2013-07-17T14:09:59Z"
+}
+```
+
+`GET`ting to `/webhooks/WEBHOOK_ID.json` will return a specific webhook.
+
+### Update a webhook
+
+> PUT /webhooks/WEBHOOK_ID.json
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "events_types": ["contact.updated","estimate.deleted"] }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
+```
+
+```ruby
+params = {
+    events_types: [ 'contact.updated', 'estimate.deleted' ]
+}
+Quaderno::Webhook.update(WEBHOOK_ID, params) #=> Quaderno::Webhook
+```
+
+```php?start_inline=1
+$webhook->url = "";
+$webhook->save(); // Returns false - url is a required field
+foreach($webhook->errors as $field => $errors) {
+  print "{$field}: ";
+  foreach ($errors as $e) print $e;
+}
+
+$webhook->url = 'http://anotherapp.com/quaderno/notifications';
+$webhook->events_types = array('contact.created', 'contact.updated', 'contact.deleted');
+$webhook->save();
+```
+
+`PUT`ting to `/webhooks/WEBHOOK_ID.json` will update a webhook with the passed parameters.
+
+This will return `201 Created` with the current JSON representation of the webhook if the update was a success.
+
+### Delete a webhook
+
+> `DELETE /webhooks/WEBHOOK_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/webhooks/WEBHOOK_ID.json'
+```
+
+```ruby
+Quaderno::Webhook.delete(WEBHOOK_ID) #=> Boolean
+```
+
+`DELETE`ing to `/webhooks/WEBHOOK_ID.json` will delete the specified webhook and return `204 No Content` if the update was successful.

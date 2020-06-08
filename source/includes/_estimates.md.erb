@@ -1,8 +1,8 @@
-# Estimates
+## Estimates
 
 An estimate is an offer that you give a client in order to get a specific job. With time, estimates are usually turned into issued invoices.
 
-## Create an estimate
+### Create an estimate
 
 > `POST /estimates.json`
 
@@ -92,7 +92,7 @@ estimate = Quaderno::Estimate.create(params) #=> Quaderno::Estimate
 
 This will return `201 Created` and the current JSON representation of the estimate if the creation was a success, along with the location of the new estimate in the `url` field.
 
-### Attributes
+#### Attributes
 
 Attribute       | Mandatory                                  | Type/Description
 ----------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------
@@ -123,7 +123,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#estimates">Contacts API</a>.</p>
 </aside>
 
-### Document Item Attributes
+#### Document Item Attributes
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ tax_2_transaction_type | no                              | String. Accepts `eser
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
 _destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
-### Estimate States
+#### Estimate States
 
 Possible estimate states are:
 
@@ -158,7 +158,7 @@ Possible estimate states are:
 - `invoiced`
 - `late`
 
-### Create an attachment during estimate creation
+#### Create an attachment during estimate creation
 
 ```json
 {
@@ -180,7 +180,7 @@ Field      | Description
 
 Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop estimate creation and return a `422 Unprocessable Entity` error.
 
-## Retrieve: Get and filter all estimates
+### Retrieve: Get and filter all estimates
 
 > `GET /estimates.json`
 
@@ -301,7 +301,7 @@ You can filter the results in a few ways:
 - By state, passing the `state` parameter like `?state=STATE`.
 - By contact, passing the contact ID in the `contact` parameter, like `?contact=3231`.
 
-## Retrieve: Get a single estimate
+### Retrieve: Get a single estimate
 
 > `GET /estimates/ESTIMATE_ID.json`
 
@@ -368,7 +368,7 @@ $estimate = QuadernoEstimate::find('ESTIMATE_ID'); // Returns a QuadernoEstimate
 
 `GET`ting from `/estimates/ESTIMATE_ID.json` will return that specific estimate.
 
-## Update an estimate
+### Update an estimate
 
 > `PUT /estimates/ESTIMATE_ID.json`
 
@@ -405,7 +405,7 @@ $estimate->save();
 
 This will return `200 OK` along with the current JSON representation of the estimate if successful.
 
-## Delete an estimate
+### Delete an estimate
 
 > `DELETE /estimates/ESTIMATE_ID.json`
 
@@ -424,7 +424,7 @@ $estimate->delete();
 
 `DELETE`ing to `/estimate/ESTIMATE_ID.json` will delete the specified estimate and returns `204 No Content` if successful.
 
-## Deliver (Send) an estimate
+### Deliver an estimate
 
 ```shell
 curl -u YOUR_API_KEY:

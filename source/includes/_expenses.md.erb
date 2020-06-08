@@ -1,8 +1,8 @@
-# Expenses
+## Expenses
 
 Expenses are all the invoices that you receive from your vendors.
 
-## Create an expense
+### Create an expense
 
 > `POST /expenses.json`
 
@@ -111,7 +111,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#contacts">Contacts API</a>.</p>
 </aside>
 
-### Document Item Attributes
+#### Document Item Attributes
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ tax_2_transaction_type | no                              | String. Accepts `eser
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
 _destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
 
-### Expense States
+#### Expense States
 
 Possible expense states are:
 
@@ -151,7 +151,7 @@ Possible expense states are:
 - `late`
 - `archived`
 
-### Create an attachment during expense creation
+#### Create an attachment during expense creation
 
 ```json
 {
@@ -173,7 +173,7 @@ Field      | Description
 
 Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop expense creation and return a `422 Unprocessable Entity` error.
 
-## Retrieve: Get and filter all expenses
+### Retrieve: Get and filter all expenses
 
 > `GET /expenses.json`
 
@@ -292,7 +292,7 @@ You can filter the results in a few ways:
 - By state, passing the `state` parameter like `?state=STATE`.
 - By specific vendor, passing the vendor ID in the `contact` parameter, like `?contact=3231`.
 
-## Retrieve: Get a single expense
+### Retrieve: Get a single expense
 
 > `GET /expenses/EXPENSE_ID.json`
 
@@ -356,7 +356,7 @@ $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 
 `GET`ting from `/expenses/EXPENSE_ID.json` will return that specific expense.
 
-## Update an expense
+### Update an expense
 
 > `PUT /expenses/EXPENSE_ID.json`
 
@@ -398,7 +398,7 @@ This will return `201 Created`, with the current JSON representation of the expe
 
 If the user does not have access to create new expenses, you'll see `401 Unauthorized` or a `422` if the permalink is invalid or the invoice is not suitable to be saved.
 
-## Delete an expense
+### Delete an expense
 
 > `DELETE /expenses/EXPENSE_ID.json`
 

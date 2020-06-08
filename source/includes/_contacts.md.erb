@@ -1,8 +1,8 @@
-# Contacts
+## Contacts
 
 A contact is any customer or vendor who appears on your invoices, credit notes, and expenses.
 
-## Create a contact
+### Create a contact
 
 > `POST /contacts.json`
 
@@ -14,14 +14,6 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json'
 ```
 
-```php?start_inline=1
-$contact = new QuadernoContact(array(
-                                 'first_name' => 'Tony',
-                                 'kind' => 'person',
-                                 'contact_name' => 'Stark'));
-$contact->save(); // Returns true (success) or false (error)
-```
-
 ```ruby
 Quaderno::Contact.create({
     first_name: 'Tony',
@@ -30,18 +22,19 @@ Quaderno::Contact.create({
 })
 ```
 
+```php
+$contact = new QuadernoContact(array(
+                                 'first_name' => 'Tony',
+                                 'kind' => 'person',
+                                 'contact_name' => 'Stark'));
+$contact->save(); // Returns true (success) or false (error)
+```
+
 `POST`ing to `/contacts.json` will create a new contact from the parameters passed.
 
 This will return `201 Created` and the current JSON representation of the contact if the creation was a success, along with the location of the new contact in the `url` field.
 
-### Mandatory Fields
-
-Key          | Description
--------------|------------------------------------------------------------------------------------------
-`first_name` | The first name of the contact.
-`bic`        | *If sending a bank_account (in electronic IBAN format)*. Must be 11 characters in length.
-
-### Attributes
+#### Attributes
 
 Attribute               | Mandatory | Type/Description
 ------------------------|-----------|----------------------------------------------------------------------------
@@ -63,7 +56,7 @@ discount                | no        | Decimal. Default discount for this contact
 language                | no        | String(2 chars) Should be included in the translations list
 notes                   | no        | Text
 
-## Update a contact
+### Update a contact
 
 > `PUT /contacts/CONTACT_ID.json`
 
@@ -85,7 +78,7 @@ Quaderno::Contact.update(
 )
 ```
 
-```php?start_inline=1
+```php
 $contact->first_name = 'Anthony';
 $contact->save();
 ```
@@ -94,7 +87,7 @@ $contact->save();
 
 This will return `200 OK` and a JSON representation of the contact if successful.
 
-## Delete a contact
+### Delete a contact
 
 > `DELETE /contacts/CONTACT_ID.json`
 
@@ -108,13 +101,13 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Contact.delete(CONTACT_ID)
 ```
 
-```php?start_inline=1
+```php
 $contact->delete();
 ```
 
 `DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.
 
-## Retrieve a contact
+### Retrieve a contact
 
 > `GET /contacts/CONTACT_ID.json`
 
@@ -127,7 +120,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Contact.find(CONTACT_ID)
 ```
 
-```php?start_inline=1
+```php
 $contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
 ```
 
@@ -163,7 +156,7 @@ $contact = QuadernoContact::find(CONTACT_ID); // Returns a QuadernoContact
 If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STRIPE_CUSTOMER_ID.json` to get the Quaderno contact for a Stripe customer.
 </aside>
 
-## Retrieve a contact by processor ID
+### Retrieve a contact by processor ID
 
 > `GET /PAYMENT_GATEWAY/customers/PAYMENT_GATEWAY_CUSTOMER_ID.json`
 
@@ -176,7 +169,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Contact.retrieve_customer(STRIPE_CUSTOMER_ID, 'stripe')
 ```
 
-```php?start_inline=1
+```php
 ```
 
 ```json
@@ -216,7 +209,7 @@ Supported gateways:
 
 More are added frequently, so check back!
 
-## List all contacts
+### List all contacts
 
 > `GET /contacts.json`
 
@@ -229,7 +222,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Contact.all()
 ```
 
-```php?start_inline=1
+```php
 $contacts = QuadernoContact::find(); // Returns an array of QuadernoContact
 ```
 

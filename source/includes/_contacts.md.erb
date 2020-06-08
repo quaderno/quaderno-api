@@ -2,6 +2,29 @@
 
 A contact is any customer or vendor who appears on your invoices, credit notes, and expenses.
 
+### The contact object
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`id`                    | integer   | Unique identifier for the object.
+`kind`                  | string    | The type of contact. Values are ``company` or `person`. Defaults to `company`.
+`first_name`            | string    | The contact's first name.
+`last_name`             | string    | The contact's last name. Empty when the contact is a `company`.
+`tax_id`                | string    | Any tax identification number. Quaderno can validate EU VAT numbers, ABN, and NZBN.
+`contact_person`        | string    | If the contact is a `company`, this is its contact person.
+`street_line_1`         | string    | Address line 1 (Street address/PO Box).
+`street_line_2`         | string    | Address line 2 (Apartment/Suite/Unit/Building).
+`city`                  | string    | City/District/Suburb/Town/Village.
+`postal_code`           | string    | ZIP or postal code.
+`region`                | string    | Region, province or state.
+`country`               | string    | 2-letter country code.
+`phone_1`               | string    | The contact's phone number.
+`email`                 | string    | The contact's email address. Multiple emails should be separated by commas. Maximum number of addresses allowed is 3.
+`web`                   | string    | The contact's website. Validates format
+`discount`              | decimal   | Default discount for this contact.
+`language`              | string    | The contact's preferred language. Should be included in the translations list
+`notes`                 | string    | Internal notes about the contact.
+
 ### Create a contact
 
 > `POST /contacts.json`
@@ -32,29 +55,13 @@ $contact->save(); // Returns true (success) or false (error)
 
 `POST`ing to `/contacts.json` will create a new contact from the parameters passed.
 
-This will return `201 Created` and the current JSON representation of the contact if the creation was a success, along with the location of the new contact in the `url` field.
+Mandatory fields are:
 
-#### Attributes
-
-Attribute               | Mandatory | Type/Description
+Attribute               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
-kind                    | no        | `company` or `person`. Defaults to `company`.
-first_name              | **yes**   | String(255 chars)
-last_name               | no        | String(255 chars)
-tax_id                  | no        | String(255 chars) Any tax identification number. Quaderno can validate EU VAT numbers, ABN, and NZBN.
-contact_name            | no        | String(255 chars)
-street_line_1           | no        | String(255 chars)
-street_line_2           | no        | String(255 chars)
-city                    | no        | String(255 chars)
-postal_code             | no        | String(255 chars)
-region                  | no        | String(255 chars)
-country                 | no        | String(2 chars) `ISO 3166-1 alpha-2`
-phone_1                 | no        | String(255 chars)
-email                   | no        | String(255 chars) Multiple emails should be separated by commas. Maximum number of addresses allowed is 3.
-web                     | no        | String(255 chars). Validates format
-discount                | no        | Decimal. Default discount for this contact.
-language                | no        | String(2 chars) Should be included in the translations list
-notes                   | no        | Text
+`first_name`            | string    | The contact's first name.
+
+This will return `201 Created` and the current JSON representation of the contact if the creation was a success, along with the location of the new contact in the `url` field.
 
 ### Update a contact
 

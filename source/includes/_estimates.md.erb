@@ -42,7 +42,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/estimates.json'
 ```
 
-```php?start_inline=1
+```php
 $estimate = new QuadernoEstimate(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
@@ -193,7 +193,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Estimate.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $estimates = QuadernoEstimate::find(); // Returns an array of QuadernoEstimate
 ```
 
@@ -314,7 +314,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Estimate.find(ESTIMATE_ID) #=> Quaderno::Estimate
 ```
 
-```php?start_inline=1
+```php
 $estimate = QuadernoEstimate::find('ESTIMATE_ID'); // Returns a QuadernoEstimate
 ```
 
@@ -395,7 +395,7 @@ params = {
 Quaderno::Estimate.update(ESTIMATE_ID, params) #=> Quaderno::Estimate
 ```
 
-```php?start_inline=1
+```php
 $estimate->contact_id = '505c3b402f412e0248000044';
 $estimate->contact_name = 'Dick Dastardly';
 $estimate->save();
@@ -418,7 +418,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Estimate.delete(ESTIMATE_ID) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $estimate->delete();
 ```
 
@@ -437,7 +437,7 @@ estimate = Quaderno::Estimate.find(ESTIMATE_ID)
 estimate.deliver
 ```
 
-```php?start_inline=1
+```php
 $estimate->deliver(); // Return true (success) or false (error)
 ```
 

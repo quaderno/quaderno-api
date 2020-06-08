@@ -32,7 +32,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID/payments.json'
 ```
 
-```php?start_inline=1
+```php
 $payment = new QuadernoPayment(array(
                                 'date' => date('2012-10-10'),
                                 'payment_method' => 'credit_card',
@@ -77,7 +77,7 @@ curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID/payments.json'
 ```
 
-```php?start_inline=1
+```php
 $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 $payments = $expense->getPayments(); // Returns an array of QuadernoPayment
 ```
@@ -96,7 +96,7 @@ curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID/payments/PAYMENT_ID.json'
 ```
 
-```php?start_inline=1
+```php
 $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 $payments = $expense->getPayments(); // Returns an array of QuadernoPayment to iterate through
 ```
@@ -122,7 +122,7 @@ invoice = Quaderno::Invoice.find(invoice_id)
 invoice.remove_payment(payment_id) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $expense->removePayment($payments[2]); // Return true (success) or false (error)
 ```
 

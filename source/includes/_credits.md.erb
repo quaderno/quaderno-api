@@ -35,7 +35,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/credits.json'
 ```
 
-```php?start_inline=1
+```php
 $credit = new QuadernoCredit(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
@@ -199,7 +199,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Credit.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $credits = QuadernoCredit::find(); // Returns an array of QuadernoCredit
 ```
 
@@ -351,7 +351,7 @@ curl -u YOUR_API_KEY:x \_cents
 Quaderno::Credit.find(CREDIT_ID) #=> Quaderno::Credit
 ```
 
-```php?start_inline=1
+```php
 $credit = QuadernoCredit::find('CREDIT_ID'); // Returns a QuadernoCredit
 ```
 
@@ -443,7 +443,7 @@ params = {
 Quaderno::Credit.update(CREDIT_ID, params) #=> Quaderno::Credit
 ```
 
-```php?start_inline=1
+```php
 $credit->tag_list = array("whiskey", "alcohol");
 $credit->notes = "You better pay this time, Tony";
 $credit->region = "Genosha";
@@ -469,7 +469,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Credit.delete(CREDIT_ID) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $credit->delete();
 ```
 

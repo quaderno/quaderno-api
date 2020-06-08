@@ -51,7 +51,7 @@ curl -u YOUR_API_KEY:x \
      --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/evidence.json'
 ```
 
-```php?start_inline=1
+```php
 $evidence = new QuadernoEvidence(array(
                                         'document_id' => '5059bdbf2f412e0901000024',
                                         'billing_country' => 'FR',
@@ -103,7 +103,7 @@ curl -u YOUR_API_KEY:x \
      --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/evidence/EVIDENCE_ID.json'
 ```
 
-```php?start_inline=1
+```php
 $evidence = QuadernoEvidence::find(EVIDENCE_ID);
 $evidence->ip_address = "192.168.23.23";
 
@@ -131,7 +131,7 @@ curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/evidence.json'
 ```
 
-```php?start_inline=1
+```php
 $evidences = QuadernoEvidence::find(array('page'=>1))
 ```
 
@@ -220,7 +220,7 @@ curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/evidence/EVIDENCE_ID.json'
 ```
 
-```php?start_inline=1
+```php
 $evidence = QuadernoEvidence::find(EVIDENCE_ID);
 ```
 

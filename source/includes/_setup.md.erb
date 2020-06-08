@@ -9,7 +9,7 @@ Quaderno::Base.configure do |config|
 end
 ```
 
-```php?start_inline=1
+```php
 require_once 'quaderno_load.php';
 
 QuadernoBase::init('YOUR_API_KEY',
@@ -35,7 +35,7 @@ curl -u YOUR_API_KEY:x \
      'https://quadernoapp.com/api/ping.json'
 ```
 
-```php?start_inline=1
+```php
 QuadernoBase::ping();   // Returns true (success) or false (error)
 ```
 
@@ -69,7 +69,7 @@ Quaderno::Base.authorization 'my_authenticate_token', environment
 # environment and not for production.
 ```
 
-```php?start_inline=1
+```php
 ```
 
 > Returns:
@@ -134,7 +134,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2'
 ```
 
-```php?start_inline=1
+```php
 // Returns an array of QuadernoContact
 $contacts = QuadernoContact::find(array('page' => 2));
 ```

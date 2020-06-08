@@ -26,7 +26,7 @@ params = {
 tax = Quaderno::Tax.calculate(params) #=> Quaderno::Tax
 ```
 
-```php?start_inline=1
+```php
 $data = array(
   'country' => 'US',
   'postal_code' => '94010'
@@ -88,7 +88,7 @@ tax_id = 'IE6388047V'
 Quaderno::Tax.validate_vat_number(country, tax_id) #=> true, false or nil
 ```
 
-```php?start_inline=1
+```php
 
 $country = 'IE';
 $tax_id = 'IE6388047V';

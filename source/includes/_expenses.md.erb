@@ -32,7 +32,7 @@ curl -u YOUR_API_KEY:x \
      --data-binary @body.json \     'https://ACCOUNT_NAME.quadernoapp.com/api/expenses.json'
 ```
 
-```php?start_inline=1
+```php
 $expense = new QuadernoExpense(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
@@ -186,7 +186,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Expense.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $expenses = QuadernoExpense::find(); // Returns an array of QuadernoExpense
 ```
 
@@ -305,7 +305,7 @@ curl -u YOUR_API_KEY:x \
 expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
 ```
 
-```php?start_inline=1
+```php
 $expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
 ```
 
@@ -375,7 +375,7 @@ params = {
 Quaderno::Expense.update(EXPENSE_ID, params) #=> Quaderno::Expense
 ```
 
-```php?start_inline=1
+```php
 $expense->payment_details = 'Money in da bank';
 $expense->save();
 ```
@@ -411,7 +411,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Expense.delete(EXPENSE_ID) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $expense->delete();
 ```
 

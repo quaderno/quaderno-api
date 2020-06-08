@@ -35,7 +35,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/invoices.json'
 ```
 
-```php?start_inline=1
+```php
 $invoice = new QuadernoInvoice(array(
                                  'po_number' => '',
                                  'currency' => 'USD',
@@ -191,7 +191,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Invoice.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $invoices = QuadernoInvoice::find(); // Returns an array of QuadernoInvoice
 ```
 
@@ -335,7 +335,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Invoice.find(INVOICE_ID) #=> Quaderno::Invoice
 ```
 
-```php?start_inline=1
+```php
 $invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
 ```
 
@@ -415,7 +415,7 @@ params = {
 Quaderno::Invoice.update(INVOICE_ID, params) #=> Quaderno::Invoice
 ```
 
-```php?start_inline=1
+```php
 $invoice->notes = 'You better pay this time, Tony.';
 $invoice->save();
 ```
@@ -437,7 +437,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Invoice.delete(INVOICE_ID) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $invoice->delete();
 ```
 
@@ -456,7 +456,7 @@ invoice = Quaderno::Invoice.find(INVOICE_ID)
 invoice.deliver
 ```
 
-```php?start_inline=1
+```php
 $invoice->deliver(); // Return true (success) or false (error)
 ```
 

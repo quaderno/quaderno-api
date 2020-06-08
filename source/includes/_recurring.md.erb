@@ -38,7 +38,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/recurring.json'
 ```
 
-```php?start_inline=1
+```php
 $recurring = new QuadernoRecurring(array(
                                  'po_number' => '',
                                  'frequency' => 'monthly',
@@ -198,7 +198,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Recurring.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $recurrings = QuadernoRecurring::find(); // Returns an array of QuadernoRecurring
 ```
 
@@ -315,7 +315,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Recurring.find(RECURRING_ID) #=> Quaderno::Recurring
 ```
 
-```php?start_inline=1
+```php
 $recurring = QuadernoRecurring::find('RECURRING_ID'); // Returns a QuadernoRecurring
 ```
 
@@ -388,7 +388,7 @@ params = {
 Quaderno::Recurring.update(RECURRING_ID, params) #=> Quaderno::Recurring
 ```
 
-```php?start_inline=1
+```php
 $recurring->notes = 'You better pay this time, Tony.';
 $recurring->save();
 ```
@@ -410,7 +410,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Recurring.delete(RECURRING_ID) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $recurring->delete();
 ```
 

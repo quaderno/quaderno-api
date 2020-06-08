@@ -40,7 +40,7 @@ params = {
 Quaderno::Webhook.create(params) #=> Quaderno::Webhook
 ```
 
-```php?start_inline=1
+```php
 $webhook = new QuadernoWebhook(array(
                                  'url' => 'http://myapp.com/notifications',
                                  'events_types' => array('contact.created'));
@@ -76,7 +76,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Webhook.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $webhooks = QuadernoWebhook::find(); // Returns an array of QuadernoWebhook
 ```
 
@@ -122,7 +122,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Webhook.find(WEBHOOK_ID) #=> Quaderno::Webhook
 ```
 
-```php?start_inline=1
+```php
 $webhooks = QuadernoWebhook::find(WEBHOOK_ID); // Returns a QuadernoWebhook
 ```
 
@@ -162,7 +162,7 @@ params = {
 Quaderno::Webhook.update(WEBHOOK_ID, params) #=> Quaderno::Webhook
 ```
 
-```php?start_inline=1
+```php
 $webhook->url = "";
 $webhook->save(); // Returns false - url is a required field
 foreach($webhook->errors as $field => $errors) {

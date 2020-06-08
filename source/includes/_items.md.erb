@@ -31,7 +31,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'
 ```
 
-```php?start_inline=1
+```php
 $item = new QuadernoItem(array(
                                  'name' => 'Jelly pizza',
                                  'code' => 'Yummy',
@@ -95,7 +95,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Item.all() #=> Array
 ```
 
-```php?start_inline=1
+```php
 $items = QuadernoItem::find(); // Returns an array of QuadernoItem
 ```
 
@@ -157,7 +157,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Item.find(ITEM_ID) #=> Quaderno::Item
 ```
 
-```php?start_inline=1
+```php
 $item = QuadernoItem::find('ITEM_ID'); // Returns a QuadernoItem
 ```
 
@@ -196,7 +196,7 @@ params = {
 Quaderno::Item.update(ITEM_ID, params) #=> Quaderno::Item
 ```
 
-```php?start_inline=1
+```php
 $item->unit_cost = '10.0';
 $item->save();
 ```
@@ -218,7 +218,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::Item.delete(ITEM_ID) #=> Boolean
 ```
 
-```php?start_inline=1
+```php
 $item->delete();
 ```
 

@@ -4,7 +4,7 @@ A Checkout Session represents your customer's session as they pay for one-time p
 
 ### The session object
 
-key                                  | type           | description
+Attribute                            | Type           | Description
 -------------------------------------|----------------|-----------------------------------------
 `id`                                 | integer        | Unique identifier for the object.
 `billing_details_collection`         | string         | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
@@ -25,7 +25,7 @@ key                                  | type           | description
 
 ### The customer object
 
-key                                  | type           | description
+Attribute                            | Type           | Description
 -------------------------------------|----------------|-----------------------------------------
 `billing_city`                       | string         | City/District/Suburb/Town/Village.
 `billing_country`                    | string         | 2-letter country code.
@@ -40,7 +40,7 @@ key                                  | type           | description
 
 ### The item object
 
-key                                  | type                  | description
+Attribute                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
 `amount`                             | number(decimal)       | Unit price of the item being purchased.
 `currency`                           | string                | ISO 4217 currency code.
@@ -65,7 +65,7 @@ curl -u YOUR_API_KEY:x \
      'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions.json'
 ```
 
-```php?start_inline=1
+```php
 // Coming soon
 ```
 
@@ -84,7 +84,9 @@ Quaderno::CheckoutSession.create({
 })
 ```
 
-key                                  | type                  | description
+**Session attributes:**
+
+Attribute                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
 `billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
 `cancel_url`                         | string / **required** | The URL the customer will be directed to if they decide to cancel payment and return to your website.
@@ -96,10 +98,9 @@ key                                  | type                  | description
 `payment_methods`                    | array                 | Values are card and paypal.
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
+**Customer attributes:**
 
-#### Customer attributes:
-
-key                                  | type           | description
+Attribute                            | Type           | Description
 -------------------------------------|----------------|-----------------------------------------
 `billing_city`                       | string         | City/District/Suburb/Town/Village. Use this parameter to prefill customer data if you already have her city on file.
 `billing_country`                    | string         | 2-letter country code. Use this parameter to prefill customer data if you already have her country on file.
@@ -113,9 +114,9 @@ key                                  | type           | description
 `last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
 `tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
 
-#### Items attributes:
+**Items attributes:**
 
-key                                  | type                  | description
+Attribute                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
 `amount`                             | number(decimal)       | Unit price of the item being purchased. Default value the product's price is used if amount is not set.
 `currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Default value the product's currency is used if currency is not set.
@@ -140,7 +141,7 @@ curl -u YOUR_API_KEY:x \
 Quaderno::CheckoutSession.find(SESSION_ID)
 ```
 
-```php?start_inline=1
+```php
 // Coming soon!
 
 ```
@@ -209,12 +210,14 @@ Quaderno::CheckoutSession.update(
 )
 ```
 
-```php?start_inline=1
+```php
 // Coming soon!
 
 ```
 
-key                                  | type                  | description
+**Session attributes:**
+
+Attribute                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
 `id`                                 | integer               | Unique identifier for the object.
 `billing_details_collection`         | string                | The value for whether Checkout collected the customer’s billing details. Values are `auto` and `required` (default to `required`).
@@ -228,9 +231,9 @@ key                                  | type                  | description
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
 
-#### Customer attributes
+**Customer attributes:**
 
-key                                  | type           | description
+Attribute                            | Type           | Description
 -------------------------------------|----------------|-----------------------------------------
 `billing_city`                       | string         | City/District/Suburb/Town/Village. Use this parameter to prefill customer data if you already have her city on file.
 `billing_country`                    | string         | 2-letter country code. Use this parameter to prefill customer data if you already have her country on file.
@@ -244,9 +247,9 @@ key                                  | type           | description
 `last_name`                          | string         | Customer last name. Use this parameter to prefill customer data if you already have her last name on file
 `tax_id`                             | string         | Customer Tax ID. Use this parameter to prefill customer data if you already have a tax id on file.
 
-#### Items attributes
+**Items attributes:**
 
-key                                  | type                  | description
+Attribute                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
 `amount`                             | number(decimal)       | Unit price of the item being purchased. Default value the product's price is used if amount is not set.
 `currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Default value the product's currency is used if currency is not set.
@@ -263,13 +266,6 @@ Permanently deletes a session. It cannot be undone. Only `pending` sessions can 
 
 Will delete the specified contact and returns `204 No Content` if successful.
 
-URL parameters:
-
-key                                  | type                   | description
--------------------------------------|------------------------|-----------------------------------------
-`id`                                 | integer / **required** | The ID of the session to be deleted.
-
-
 ```shell
 $ curl \
  -X DELETE https://quadernoapp.com/api/checkout/sessions/{id} \
@@ -280,7 +276,7 @@ $ curl \
 Quaderno::CheckoutSession.delete(SESSION_ID)
 ```
 
-```php?start_inline=1
+```php
 // Coming soon!
 ```
 
@@ -297,12 +293,12 @@ curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/checkout/sessions.json'
 ```
 
-```php?start_inline=1
-// Coming soon!
-```
-
 ```ruby
 Quaderno::CheckoutSession.all() #=> Array
+```
+
+```php
+// Coming soon!
 ```
 
 ```json

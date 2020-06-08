@@ -29,6 +29,7 @@ $code-bg: #292929;
 $code-annotation-bg: #d98b0b;
 $nav-subitem-bg: #262626;
 $nav-active-bg: #008a6e;
+$nav-active-parent-bg: #1E2224 !default; // parent links of the current section
 $lang-select-border: #000;
 $lang-select-bg: #222;
 $lang-select-active-bg: #d98b0b; // feel free to change this to blue or something
@@ -46,6 +47,7 @@ $search-notice-bg: #c97a7e;
 $main-text: #4d4d4d; // main content text color
 $nav-text: #fff;
 $nav-active-text: #fff;
+$nav-active-parent-text: #fff !default; // parent links of the current section
 $lang-select-text: #fff; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
 $lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
@@ -92,12 +94,8 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 
 // OTHER
 ////////////////////
-$nav-active-shadow: #000;
-$nav-footer-border-color: #666;
-$nav-embossed-border-top: #000;
-$nav-embossed-border-bottom: #939393;
-$main-embossed-text-shadow: 0px 1px 0px #fff;
-$search-box-border-color: #666;
+$nav-footer-border-color: #666 !default;
+$search-box-border-color: #666 !default;
 
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -11,3 +11,4 @@ If you have any suggestions, tips, or questions that you feel aren’t answered 
 We'll be happy to review any pull requests you make.
 
 This project is based on the wonderful [Slate](https://github.com/lord/slate) project. Check that out if you need some docs of your own!
+

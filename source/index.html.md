@@ -1,7 +1,7 @@
 ---
 title: Quaderno API Docs
 
-language_tabs:
+language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - ruby
   - php
@@ -16,13 +16,11 @@ includes:
   - intro
   - setup
   - taxes
-  - contacts
   - invoices
   - credits
   - expenses
   - estimates
   - recurring
-  - items
   - payments
   - evidence
   - checkout_sessions
@@ -32,3 +30,10 @@ includes:
 
 search: true
 ---
+
+
+# CORE RESOURCES
+
+<%= partial "includes/taxes.md" %>
+<%= partial "includes/contacts.md" %>
+<%= partial "includes/items.md" %>

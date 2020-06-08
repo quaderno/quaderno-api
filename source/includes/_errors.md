@@ -4,7 +4,6 @@ We don't usually have any trouble on our end, but when we do we'll let you know!
 
 The Quaderno API uses the following error codes:
 
-
 Code  | Text                    | Description
 ------|-------------------------|------------------------------------------------------------------------------------------------------------------------
 `400` | `Bad Request`           | Your request may be malformed

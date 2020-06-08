@@ -23,5 +23,5 @@ _yardoc
 doc/
 .idea/
 
-test-curls.txt
-test.json
+# Vagrant artifacts
+ubuntu-*-console.log

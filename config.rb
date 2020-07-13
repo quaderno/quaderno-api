@@ -39,6 +39,17 @@ end
 activate :relative_assets
 set :relative_links, true
 
+# Active Middleman Deploy
+activate :deploy do |deploy|
+  deploy.deploy_method = :rsync
+  deploy.host = 'root@198.211.118.22'
+  deploy.path = '/var/www/developers/api/'
+  # deploy.user = 'root' # no default
+  # deploy.port = 22
+  # deploy.clean = false # remove orphaned files on remote host, default: false
+  # deploy.flags = '-rltgoDvzO --no-p --del' # add custom flags, default: -avz
+end
+
 # Build Configuration
 configure :build do
   # We do want to hash woff and woff2 as there's a bug where woff2 will use

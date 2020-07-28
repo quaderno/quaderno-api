@@ -96,8 +96,10 @@ Attribute                            | Type                  | Description
 `customer`                           | object                | The customer's billing information. Check the attributes [here](#customer-attributes).
 `items`                              | array / **required**  | The list of products purchased by the customer. Check the attributes [here](#items-attributes).
 `locale`                             | string                | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`metadata`                           | object                | Set of key-value pairs that you can attach to the session. This can be useful for storing additional information about the purchase.
 `payment_methods`                    | array                 | Values are card and paypal.
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
+
 
 **Customer attributes:**
 
@@ -180,6 +182,7 @@ Quaderno::CheckoutSession.find(SESSION_ID)
          "last_name":"Doe",
          "tax_id":null
       },
+      metadata: {},
       "permalink":"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
    }
 ```
@@ -228,6 +231,7 @@ Attribute                            | Type                  | Description
 `customer`                           | object                | The customer's billing information. Check the attributes [here](#customer-attributes).
 `items`                              | array / **required**  | The list of products purchased by the customer. Check the attributes [here](#items-attributes).
 `locale`                             | string                | The 2-letter ISO code of the language the Checkout is displayed in. Values are `auto`, `ca`, `de`, `en`, `es`, `fi`, `fr`, `hu`, `nl`, `sv`, and `no`.
+`metadata`                           | object                | Set of key-value pairs that you can attach to the session. This can be useful for storing additional information about the purchase.
 `payment_methods`                    | array                 | Values are card and paypal.
 `success_url`                        | string / **required** | The URL the customer will be directed to after the payment is successful.
 
@@ -336,6 +340,7 @@ Quaderno::CheckoutSession.all() #=> Array
          "last_name":"Doe",
          "tax_id":null
       },
+      metadata: {},
       "permalink":"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"
    },
    {
@@ -370,6 +375,7 @@ Quaderno::CheckoutSession.all() #=> Array
          "last_name":null,
          "tax_id":null
       },
+      metadata: {},
       "permalink":"https://demo.quadernoapp.com/checkout/session/5c24890be57274275358e7d25ea5200384fc7293"
    },
    {
@@ -404,6 +410,7 @@ Quaderno::CheckoutSession.all() #=> Array
          "last_name":null,
          "tax_id":null
       },
+      metadata: {},
       "permalink":"https://demo.quadernoapp.com/checkout/session/0092e2afbc457a2e3acf1a2c75928743d06c1fe5"
    }
 ]

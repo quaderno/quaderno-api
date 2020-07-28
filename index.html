@@ -5585,6 +5585,11 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <td>The 2-letter ISO code of the language the Checkout is displayed in. Values are <code>auto</code>, <code>ca</code>, <code>de</code>, <code>en</code>, <code>es</code>, <code>fi</code>, <code>fr</code>, <code>hu</code>, <code>nl</code>, <code>sv</code>, and <code>no</code>.</td>
 </tr>
 <tr>
+<td><code>metadata</code></td>
+<td>object</td>
+<td>Set of key-value pairs that you can attach to the session. This can be useful for storing additional information about the purchase.</td>
+</tr>
+<tr>
 <td><code>payment_methods</code></td>
 <td>array</td>
 <td>Values are card and paypal.</td>
@@ -5748,6 +5753,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
          </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="err">metadata:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="nl">"permalink"</span><span class="p">:</span><span class="s2">"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='update-a-session'>Update a session</h3>
@@ -5822,6 +5828,11 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <td><code>locale</code></td>
 <td>string</td>
 <td>The 2-letter ISO code of the language the Checkout is displayed in. Values are <code>auto</code>, <code>ca</code>, <code>de</code>, <code>en</code>, <code>es</code>, <code>fi</code>, <code>fr</code>, <code>hu</code>, <code>nl</code>, <code>sv</code>, and <code>no</code>.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>object</td>
+<td>Set of key-value pairs that you can attach to the session. This can be useful for storing additional information about the purchase.</td>
 </tr>
 <tr>
 <td><code>payment_methods</code></td>
@@ -5997,6 +6008,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
          </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="err">metadata:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="nl">"permalink"</span><span class="p">:</span><span class="s2">"https://demo.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b3"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
@@ -6031,6 +6043,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
          </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="err">metadata:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="nl">"permalink"</span><span class="p">:</span><span class="s2">"https://demo.quadernoapp.com/checkout/session/5c24890be57274275358e7d25ea5200384fc7293"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
@@ -6065,6 +6078,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
          </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="err">metadata:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="nl">"permalink"</span><span class="p">:</span><span class="s2">"https://demo.quadernoapp.com/checkout/session/0092e2afbc457a2e3acf1a2c75928743d06c1fe5"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">

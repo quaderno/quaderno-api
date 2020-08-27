@@ -2107,10 +2107,6 @@ curl -u YOUR_API_KEY:x \
     </span><span class="nl">"extra_rate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"region"</span><span class="p">:</span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"county"</span><span class="p">:</span><span class="s2">"SAN MATEO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city"</span><span class="p">:</span><span class="s2">"BURLINGAME"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"county_tax_code"</span><span class="p">:</span><span class="s2">"41"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city_tax_code"</span><span class="p">:</span><span class="s2">"746"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notes"</span><span class="p">:</span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2473,26 +2469,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
 </tr>
 <tr>
-<td>tax_1_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
 <td>tax_1_transaction_type</td>
 <td>no</td>
 <td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
@@ -2516,26 +2492,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>tax_2_region</td>
 <td>no</td>
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county</td>
-<td>no</td>
-<td>String(2 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
 </tr>
 <tr>
 <td>tax_2_transaction_type</td>
@@ -3093,26 +3049,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
 </tr>
 <tr>
-<td>tax_1_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
 <td>tax_1_transaction_type</td>
 <td>no</td>
 <td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
@@ -3136,26 +3072,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>tax_2_region</td>
 <td>no</td>
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
 </tr>
 <tr>
 <td>tax_2_transaction_type</td>
@@ -3723,26 +3639,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
 </tr>
 <tr>
-<td>tax_2_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
 <td>tax_2_transaction_type</td>
 <td>no</td>
 <td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
@@ -3766,26 +3662,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>tax_2_region</td>
 <td>no</td>
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
 </tr>
 <tr>
 <td>tax_2_transaction_type</td>
@@ -4295,11 +4171,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
 </tr>
 <tr>
-<td>tax_1_county</td>
-<td>no</td>
-<td>String(2 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
 <td>tax_1_transaction_type</td>
 <td>no</td>
 <td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
@@ -4323,11 +4194,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>tax_2_region</td>
 <td>no</td>
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county</td>
-<td>no</td>
-<td>String(2 chars). Recommendable to set for Canadian or United States taxes.</td>
 </tr>
 <tr>
 <td>tax_2_transaction_type</td>
@@ -4879,26 +4745,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
 </tr>
 <tr>
-<td>tax_1_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_1_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
 <td>tax_1_transaction_type</td>
 <td>no</td>
 <td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
@@ -4922,26 +4768,6 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <td>tax_2_region</td>
 <td>no</td>
 <td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_county_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
-</tr>
-<tr>
-<td>tax_2_city_code</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for US sales taxes.</td>
 </tr>
 <tr>
 <td>tax_2_transaction_type</td>

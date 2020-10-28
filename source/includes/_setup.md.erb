@@ -39,7 +39,7 @@ curl -u YOUR_API_KEY:x \
 QuadernoBase::ping();   // Returns true (success) or false (error)
 ```
 
-Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL. For more info on finding your API key, check [here](http://support.quaderno.io/article/101-how-do-i-get-my-api-key).
+Quaderno uses an API key to authorise all requests, allowing access to the API in combination with the account name in the endpoint URL. For more info on finding your API key, check [here](https://support.quaderno.io/how-do-i-get-my-api-key/).
 
 Quaderno expects the API key to be included via HTTP Basic Auth in all API requests to the server, in a header that looks like the following:
 
@@ -145,7 +145,7 @@ Quaderno::Contact.all(page: 1) #=> Array
 
 Bear in mind that Quaderno paginates `GET` index results.
 
-You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. 
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
 
 You can change the page by passing the `page` parameter, defaulting to `1`.
 
@@ -195,4 +195,3 @@ curl -u YOUR_API_KEY:x \
 The current version is <strong>20170914</strong>.
 Please refer to the <strong><a href='#changelog'>changelog</a></strong> to get a list of the changes
 </aside>
-

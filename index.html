@@ -866,7 +866,7 @@ Please refer to the <strong><a href='#changelog'>changelog</a></strong> to get a
 <tr>
 <td><code>tax_id</code></td>
 <td>string</td>
-<td>Any tax identification number. Quaderno can validate EU VAT numbers, ABN, and NZBN.</td>
+<td>Any tax identification number. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.</td>
 </tr>
 <tr>
 <td><code>contact_person</code></td>
@@ -2139,7 +2139,7 @@ curl -u YOUR_API_KEY:x \
 <tr>
 <td><code>tax_id</code></td>
 <td>No</td>
-<td>Customer&#39;s Tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.</td>
+<td>Customer&#39;s Tax ID. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.</td>
 </tr>
 <tr>
 <td><code>transaction_type</code></td>
@@ -2175,7 +2175,7 @@ curl -u YOUR_API_KEY:x \
 <span class="nx">QuadernoTax</span><span class="o">::</span><span class="na">validate_vat_number</span><span class="p">(</span><span class="nv">$country</span><span class="p">,</span> <span class="nv">$tax_id</span><span class="p">)</span> <span class="c1">// true, false or null</span>
 </code></pre></div>
 
-<p><code>GET</code>ting to <code>/taxes/validate.json</code> will validate the given tax ID. Currently Quaderno validates EU VAT numbers, ABN, and NZBN.</p>
+<p><code>GET</code>ting to <code>/taxes/validate.json</code> will validate the given tax ID. Currently Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.</p>
 
 <p>Please keep in mind that tax IDs are not actually validated while using the Sandbox.</p>
 
@@ -2194,7 +2194,7 @@ curl -u YOUR_API_KEY:x \
 <tr>
 <td><code>tax_id</code></td>
 <td><strong>Yes</strong></td>
-<td>Customer&#39;s tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.</td>
+<td>Customer&#39;s tax ID. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.</td>
 </tr>
 </tbody></table>
 
@@ -5291,7 +5291,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <tr>
 <td><code>tax_id</code></td>
 <td>string</td>
-<td>Customer Tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.</td>
+<td>Customer Tax ID. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.</td>
 </tr>
 </tbody></table>
 

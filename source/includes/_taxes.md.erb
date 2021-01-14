@@ -57,7 +57,7 @@ Parameter          | Mandatory | Description
 `country`          | **Yes**   | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `postal_code`      | No        | Customer's postal code / zip
 `city`             | No        | Customer's city (for US sales tax)
-`tax_id`           | No        | Customer's Tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.
+`tax_id`           | No        | Customer's Tax ID. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
 `transaction_type` | No        | Values: `eservice`, `ebook`, `standard`, `reduced`, `saas`. Defaults to the "default tax type" configured in your account taxes settings.
 
 This will return a `200 OK` if the request was a success, along with the taxes represented as a JSON string.
@@ -92,14 +92,14 @@ $tax_id = 'IE6388047V';
 QuadernoTax::validate_vat_number($country, $tax_id) // true, false or null
 ```
 
-`GET`ting to `/taxes/validate.json` will validate the given tax ID. Currently Quaderno validates EU VAT numbers, ABN, and NZBN.
+`GET`ting to `/taxes/validate.json` will validate the given tax ID. Currently Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
 
 Please keep in mind that tax IDs are not actually validated while using the Sandbox.
 
 Parameter    | Mandatory | Description
 -------------|-----------|------------------------------------------------------------------------------------------------
 `country`    | **Yes**   | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
-`tax_id`     | **Yes**   | Customer's tax ID. Quaderno can validate EU VAT numbers, ABN, and NZBN.
+`tax_id`     | **Yes**   | Customer's tax ID. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
 
 This will return a `200 OK` and the result of validating the tax ID against the official external validation service. The result can be true (valid business number), false (invalid business number) or null (the external service is temporarily unavailable).
 

@@ -1,0 +1,117 @@
+## Accounts (beta)
+
+You can retrieve it to see properties on the account like its current e-mail address or if the account is enabled to calculate taxes.
+
+### The account object
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`id`                    | integer   | Unique identifier for the object.
+`type`                  | string    | The type of account. Can be `standard` or `custom`. Defaults to `standard`.
+`business_name`         | string    | The accounts's business name. **Required**
+`country`               | string    | The account's country. 2-letter country code. **Required**
+`postal_code`           | string    | The account's postal code. 
+`currency`              | string    | 3-letter currrency code.
+`email`                 | string    | The account's email address.
+`default_tax_class`     | string    | The account's default tax class. Defaults to the 
+`state`                 | string    | The account's state. Can be `active` or `hibernated`. Defaults to `active`.
+`created_at`            | timestamp | Time at which the object was created. Measured in seconds since the Unix epoch.
+
+### Create an account
+
+> `POST /accounts.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{"business_name":"Big Bang Inc.", "type":"custom", "country":"US", "postal_code":"10001", "email":"s.cooperphd@yahoo.com" }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json' 
+```
+
+`POST`ing to `/accounts.json` will create a new account from the parameters passed.
+
+This will return `201 Created` and the current JSON representation of the account if the creation was a success, along with the location of the new account in the `url` field.
+
+### Update an account
+
+> `PUT /accounts/ACCOUNT_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "business_name":"Another Name Inc."}' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
+```
+
+`PUT`ing to `/accounts/ACCOUNT_ID.json` will update the account from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the account if successful.
+
+### Retrieve an account
+
+> `GET /accounts/ACCOUNT_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
+```
+
+```json
+{
+    "id":"456987213",
+    "type":"custom",
+    "business_name":"Sheldon",
+    "country":"US",
+    "currency":"USD",
+    "default_tax_class":"eservice",
+    "email":"s.cooperphd@yahoo.com",
+    "state":"active",
+    "created_at":"1611167152",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"
+}
+```
+
+`GET`ting from `/accounts/ACCOUNT_ID.json` will get you that specific account.
+
+### List all accounts
+
+> `GET /accounts.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json'
+```
+
+```json
+[
+  {
+    "id":"456987213",
+    "type":"custom",
+    "business_name":"Sheldon",
+    "country":"US",
+    "currency":"USD",
+    "default_tax_class":"eservice",
+    "email":"s.cooperphd@yahoo.com",
+    "state":"active",
+    "created_at":"1611167152",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"
+  },
+  {
+    "id":"456982365",
+    "type":"custom",
+    "business_name":"Apple Inc.",
+    "country":"US",
+    "currency":"USD",
+    "default_tax_class":"eservice",
+    "email":"info@apple.com",
+    "state":"active",
+    "created_at":"1611167152",
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456982365"
+  }
+]
+```
+
+`GET`ting from `/accounts.json` will return all the user's accounts.
+

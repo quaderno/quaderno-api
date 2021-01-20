@@ -3,6 +3,7 @@
 ## API versions and changes
 
 ### 20170914 (Current version)
+* Added the accounts API
 * Added the `related_document` to the credit object.
 * Added `tax_1_transaction_type` and `tax_2_transaction_type` fields to the taxes attributes in the credit object.
 * Added `transaction_type` fields to the document items attributes in the credit object.

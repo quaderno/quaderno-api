@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 2.7.0
+
+*January 20, 2021*
+
+* New Account API
+
 ## Version 2.6.1
 
 *May 30, 2020*

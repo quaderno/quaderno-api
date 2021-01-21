@@ -524,6 +524,28 @@
               </ul>
           </li>
           <li>
+            <a href="#connect" class="toc-h1 toc-link" data-title="CONNECT">CONNECT</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#accounts-beta" class="toc-h2 toc-link" data-title="Accounts (beta)">Accounts (beta)</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-an-account" class="toc-h3 toc-link" data-title="Create an account">Create an account</a>
+                          </li>
+                          <li>
+                            <a href="#update-an-account" class="toc-h3 toc-link" data-title="Update an account">Update an account</a>
+                          </li>
+                          <li>
+                            <a href="#retrieve-an-account" class="toc-h3 toc-link" data-title="Retrieve an account">Retrieve an account</a>
+                          </li>
+                          <li>
+                            <a href="#list-all-accounts" class="toc-h3 toc-link" data-title="List all accounts">List all accounts</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="WEBHOOKS">WEBHOOKS</a>
               <ul class="toc-list-h2">
                   <li>
@@ -543,31 +565,6 @@
                           </li>
                           <li>
                             <a href="#delete-a-webhook" class="toc-h3 toc-link" data-title="Delete a webhook">Delete a webhook</a>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#connect" class="toc-h1 toc-link" data-title="CONNECT">CONNECT</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#accounts-beta" class="toc-h2 toc-link" data-title="Accounts (beta)">Accounts (beta)</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#the-account-object" class="toc-h3 toc-link" data-title="The account object">The account object</a>
-                          </li>
-                          <li>
-                            <a href="#create-an-account" class="toc-h3 toc-link" data-title="Create an account">Create an account</a>
-                          </li>
-                          <li>
-                            <a href="#update-an-account" class="toc-h3 toc-link" data-title="Update an account">Update an account</a>
-                          </li>
-                          <li>
-                            <a href="#retrieve-an-account" class="toc-h3 toc-link" data-title="Retrieve an account">Retrieve an account</a>
-                          </li>
-                          <li>
-                            <a href="#list-all-accounts" class="toc-h3 toc-link" data-title="List all accounts">List all accounts</a>
                           </li>
                       </ul>
                   </li>
@@ -5934,6 +5931,178 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
+<h1 id='connect'>CONNECT</h1>
+<h2 id='accounts-beta'>Accounts (beta)</h2>
+
+<p>When using Quaderno Connect, you need to create an account (known as a connected account) for each user that needs to calculate taxes on your platform. These accounts are generally created when a user signs up for your platform.</p>
+
+<h3 id='create-an-account'>Create an account</h3>
+
+<blockquote>
+<p><code>POST /accounts.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{"business_name":"Big Bang Inc.", "type":"custom", "country":"US", "postal_code":"10001", "email":"s.cooperphd@yahoo.com" }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json' 
+</code></pre></div>
+
+<p><code>POST</code>ing to <code>/accounts.json</code> will create a new account from the parameters passed.</p>
+
+<p>This will return <code>201 Created</code> and the current JSON representation of the account if the creation was a success, along with the location of the new account in the <code>url</code> field.</p>
+
+<p>Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>business_name</code></td>
+<td>string</td>
+<td>The accounts&#39;s business name. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>The account&#39;s email address. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>string</td>
+<td>The account&#39;s country. 2-letter country code. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>postal_code</code></td>
+<td>string</td>
+<td>The account&#39;s postal code. Recommended whether the account is based in the US or Canada to determine the state/province.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>The account&#39;s accounting currency. Defaults to the country&#39;s official currency.</td>
+</tr>
+<tr>
+<td><code>default_tax_class</code></td>
+<td>string</td>
+<td>The account&#39;s default tax class. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>. Defaults to the creator&#39;s default tax class.</td>
+</tr>
+<tr>
+<td><code>local_tax_id</code></td>
+<td>string</td>
+<td>The account&#39;s tax ID. If set, the account will be registered for tax collection in the <code>country</code>&#39;s jurisdiction.</td>
+</tr>
+</tbody></table>
+
+<h3 id='update-an-account'>Update an account</h3>
+
+<blockquote>
+<p><code>PUT /accounts/ACCOUNT_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "business_name":"Another Name Inc." }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
+</code></pre></div>
+
+<p><code>PUT</code>ing to <code>/accounts/ACCOUNT_ID.json</code> will update the account from the passed parameters.</p>
+
+<p>This will return <code>200 OK</code> and a JSON representation of the account if successful.</p>
+
+<p>Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>business_name</code></td>
+<td>string</td>
+<td>The accounts&#39;s business name.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>The account&#39;s email address.</td>
+</tr>
+<tr>
+<td><code>default_tax_class</code></td>
+<td>string</td>
+<td>The account&#39;s default tax class. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>. Default the creator&#39;s default tax class.</td>
+</tr>
+</tbody></table>
+
+<h3 id='retrieve-an-account'>Retrieve an account</h3>
+
+<blockquote>
+<p><code>GET /accounts/ACCOUNT_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456987213"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Sheldon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"default_tax_class"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"s.cooperphd@yahoo.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1611167152"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/accounts/ACCOUNT_ID.json</code> will get you that specific account.</p>
+
+<h3 id='list-all-accounts'>List all accounts</h3>
+
+<blockquote>
+<p><code>GET /accounts.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456987213"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Sheldon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"default_tax_class"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"s.cooperphd@yahoo.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1611167152"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456982365"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"default_tax_class"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"info@apple.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1611167152"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456982365"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/accounts.json</code> will return all the user&#39;s accounts.</p>
 <h1 id='webhooks'>WEBHOOKS</h1>
 <h2 id='webhooks-endpoints'>Webhooks endpoints</h2>
 
@@ -6113,167 +6282,6 @@ curl -u YOUR_API_KEY:x \
 </code></pre></div>
 
 <p><code>DELETE</code>ing to <code>/webhooks/WEBHOOK_ID.json</code> will delete the specified webhook and return <code>204 No Content</code> if the update was successful.</p>
-<h1 id='connect'>CONNECT</h1>
-<h2 id='accounts-beta'>Accounts (beta)</h2>
-
-<p>You can retrieve it to see properties on the account like its current e-mail address or if the account is enabled to calculate taxes.</p>
-
-<h3 id='the-account-object'>The account object</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>integer</td>
-<td>Unique identifier for the object.</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>string</td>
-<td>The type of account. Can be <code>standard</code> or <code>custom</code>. Defaults to <code>standard</code>.</td>
-</tr>
-<tr>
-<td><code>business_name</code></td>
-<td>string</td>
-<td>The accounts&#39;s business name. <strong>Required</strong></td>
-</tr>
-<tr>
-<td><code>country</code></td>
-<td>string</td>
-<td>The account&#39;s country. 2-letter country code. <strong>Required</strong></td>
-</tr>
-<tr>
-<td><code>postal_code</code></td>
-<td>string</td>
-<td>The account&#39;s postal code.</td>
-</tr>
-<tr>
-<td><code>currency</code></td>
-<td>string</td>
-<td>3-letter currrency code.</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>string</td>
-<td>The account&#39;s email address.</td>
-</tr>
-<tr>
-<td><code>default_tax_class</code></td>
-<td>string</td>
-<td>The account&#39;s default tax class. Defaults to the</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>string</td>
-<td>The account&#39;s state. Can be <code>active</code> or <code>hibernated</code>. Defaults to <code>active</code>.</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>timestamp</td>
-<td>Time at which the object was created. Measured in seconds since the Unix epoch.</td>
-</tr>
-</tbody></table>
-
-<h3 id='create-an-account'>Create an account</h3>
-
-<blockquote>
-<p><code>POST /accounts.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
-     -H 'Content-Type: application/json' \
-     -X POST \
-     -d '{"business_name":"Big Bang Inc.", "type":"custom", "country":"US", "postal_code":"10001", "email":"s.cooperphd@yahoo.com" }' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json' 
-</code></pre></div>
-
-<p><code>POST</code>ing to <code>/accounts.json</code> will create a new account from the parameters passed.</p>
-
-<p>This will return <code>201 Created</code> and the current JSON representation of the account if the creation was a success, along with the location of the new account in the <code>url</code> field.</p>
-
-<h3 id='update-an-account'>Update an account</h3>
-
-<blockquote>
-<p><code>PUT /accounts/ACCOUNT_ID.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
-     -H 'Content-Type: application/json' \
-     -X PUT \
-     -d '{ "business_name":"Another Name Inc."}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
-</code></pre></div>
-
-<p><code>PUT</code>ing to <code>/accounts/ACCOUNT_ID.json</code> will update the account from the passed parameters.</p>
-
-<p>This will return <code>200 OK</code> and a JSON representation of the account if successful.</p>
-
-<h3 id='retrieve-an-account'>Retrieve an account</h3>
-
-<blockquote>
-<p><code>GET /accounts/ACCOUNT_ID.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
-</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456987213"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Sheldon"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"default_tax_class"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"s.cooperphd@yahoo.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1611167152"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<p><code>GET</code>ting from <code>/accounts/ACCOUNT_ID.json</code> will get you that specific account.</p>
-
-<h3 id='list-all-accounts'>List all accounts</h3>
-
-<blockquote>
-<p><code>GET /accounts.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json'
-</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456987213"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Sheldon"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"default_tax_class"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"s.cooperphd@yahoo.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1611167152"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456982365"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"default_tax_class"</span><span class="p">:</span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"info@apple.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1611167152"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456982365"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-
-<p><code>GET</code>ting from <code>/accounts.json</code> will return all the user&#39;s accounts.</p>
 
       </div>
       <div class="dark-box">

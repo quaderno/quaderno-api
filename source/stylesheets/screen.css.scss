@@ -2,7 +2,6 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-// @import 'rtl'; // uncomment to switch to RTL format
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -234,7 +233,7 @@ html, body {
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
   }
-  padding: 0 1.5em 5em 0; // increase touch size area
+  padding: 0 1.5em 5em 0;
   display: none;
   position: fixed;
   top: 0;
@@ -329,9 +328,7 @@ html, body {
 // This is all the stuff with the light background in the left half of the page
 
 .content {
-  // fixes webkit rendering bug for some: see #538
   -webkit-transform: translateZ(0);
-  // to place content above the dark box
   position: relative;
   z-index: 30;
 
@@ -372,7 +369,6 @@ html, body {
     margin-top: 2em;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    // background-image: linear-gradient(to bottom, #fff, #f9f9f9);
     background: $header-bg;
   }
 
@@ -482,7 +478,6 @@ html, body {
     background-color: rgba(0,0,0,0.05);
     padding: 3px;
     border-radius: 3px;
-    // @extend %break-words;
     @extend %code-font;
   }
 

@@ -1,0 +1,176 @@
+## Tax Rates
+
+This API will allow you to customize your tax rates and calculate tax rates for a particular transaction. 
+
+Take into account that taxes are calculated based on your [tax IDs](/#tax_ids), but you can override these tax rates for greater control over the taxes you charge. If that's the case, use this API to create your custom tax rates.
+
+### Create a tax rate
+
+> `POST /tax_rates.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{ "jurisdiction_id":1, "name":"VAT", "value":20 }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates.json' 
+```
+
+`POST`ing to `/tax_rates.json` will create a new tax rate from the parameters passed.
+
+This will return `201 Created` and the current JSON representation of the tax rate if the creation was a success, along with the location of the new tax rate in the `url` field.
+
+Attributes:
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`name`                  | string    | The tax rate's name. **Required**
+`value`                 | decimal   | The tax rate's value for the selected `tax_code`. **Required**
+`tax_code`              | string    | The tax rate's tax code. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`.  Defaults to the account's default tax code. 
+`valid_from`            | date      | The tax rate's valid date. Defaults to the beginning of 3 years ago.
+
+### Update a tax rate
+
+> `PUT /tax_rates/TAX_RATE_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "value":25 }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+```
+
+`PUT`ing to `/tax_rates/TAX_RATE_ID.json` will update the tax rate from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the tax rate if successful.
+
+Attributes:
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`name`                  | string    | The tax rate's name. **Required**
+`value`                 | decimal   | The tax rate's value for the selected `tax_code`. **Required**
+`tax_code`              | string    | The tax rate's tax code. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`.  Defaults to the account's default tax code. 
+`valid_from`            | date      | The tax rate's valid date. Defaults to 3 years ago.
+`valid_until`           | date      | The tax rate's expiration date. Use null if the tax rate has no expiration date.
+
+### Delete a tax rate
+
+> `DELETE /tax_rates/TAX_RATE_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+```
+
+`DELETE`ing to `/tax_rates/TAX_RATE_ID.json` will delete the specified tax rate and returns `204 No Content` if successful.
+
+### Retrieve a tax rate
+
+> `GET /tax_rates/TAX_RATE_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+```
+
+```json
+{
+  "id": 456987213,
+  "country": "FR",
+  "name": "TVA",
+  "tax_class": "standard",
+  "valid_from": "2020-01-01",
+  "valid_until": null,
+  "value": 20.0,
+  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456987213"
+  "created_at": 1611330350
+}
+```
+
+`GET`ting from `/tax_rates/TAX_RATE_ID.json` will get you that specific tax rate.
+
+### List all tax rates
+
+> `GET /tax_rates.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates.json'
+```
+
+```json
+[
+  {
+    "id": 456987213,
+    "country": "FR",
+    "name": "TVA",
+    "tax_class": "standard",
+    "valid_from": "2020-01-01",
+    "valid_until": null,
+    "value": 20.0,
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456987213"
+    "created_at": 1611330350    
+  },
+  {
+    "id": 456982365,
+    "country": "ES",
+    "name": "IVA",
+    "tax_class": "reduced",
+    "valid_from": "2020-01-01",
+    "valid_until": null,
+    "value": 10.0,
+    "url":"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456982365"
+    "created_at": 1611330350    
+  }
+]
+```
+
+`GET`ting from `/tax_rates.json` will return all the account's tax rates.
+
+### Calculate a tax rate
+
+<aside class="notice">
+Tax calculations are based on your tax settings. You can collect taxes only in tax jurisdictions where you're registered for tax collection. Please check your <a href="https://quadernoapp.com/settings/jurisdictions" target="_blank">tax jurisdictions</a> in your Quaderno account. If you try to calculate taxes in a jurisdiction you're not registered, Quaderno will return a 0% tax rate. 
+</aside>
+
+> `GET /tax_rates/calculate.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate.json?to_country=US&to_postal_code=94010'
+```
+
+```json
+{
+  "city": "BURLINGAME",
+  "country": "US",
+  "county": "SAN MATEO",
+  "name": "Sales tax",
+  "notes": null,
+  "rate": 9.5,
+  "region": "CA",
+  "tax_code": "standard",
+  "taxable_part": 100.0
+}
+```
+
+Parameters:
+
+Parameter               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`to_country`            | string    | The customer's country. 2-letter [ISO country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes). **Required**
+`to_postal_code`        | string    | The customer's postal code. Required whether the customer is based in the US or Canada.
+`tax_id`                | string    | The customer's tax ID.
+`from_country`          | string    | The country where the order shipped from. 2-letter [ISO country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes). Defaults to the account's country.
+`from_postal_code`      | string    | The postal code where the order shipped from. Defaults to the account's postal code.
+`tax_code`              | string    | The transaction's tax code. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`.  Defaults to the account's default tax code. 
+`date`                  | string    | The transaction's date. Defaults to today.
+`amount`                | decimal   | The transaction's amount. Recommended in overseas sales to the UK.
+`currency`              | string    | The transaction's currency. Three-letter [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), in uppercase. Recommended in overseas sales to the UK.

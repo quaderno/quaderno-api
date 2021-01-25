@@ -1,0 +1,63 @@
+## Tax jurisdictions
+
+A tax jurisdiction is an area subject to its own tax regulations. A tax jurisdiction can be a country, region, group of countries, province, state, city, county, district or any other area with a designated authority for tax purposes.
+
+A businesses cannot collect taxes in a particular jurisdiction without being registered for tax collection with their tax authorities first. 
+
+This API will allow you to get all tax jurisdictions you need to manage your tax IDs and your tax rates in your Quaderno account. 
+
+### Retrieve a jurisdiction
+
+> `GET /jurisdictions/JURISDICTION_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions/JURISDICTION_ID.json'
+```
+
+```json
+{
+  "id": 94,
+  "name": "Canada – British Columbia"
+}
+```
+
+`GET`ting from `/jurisdictions/JURISDICTION_ID.json` will get you that specific tax jurisdiction.
+
+### List all jurisdictions
+
+> `GET /jurisdictions.json?country=CA`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json'
+```
+
+```json
+[
+  {
+    "id": 94,
+    "name": "Canada – British Columbia"
+  },
+  {
+    "id": 95,
+    "name": "Canada – Quebec"
+  },
+  {
+    "id": 96,
+    "name": "Canada – Saskatchewan"
+  },
+  {
+    "id": 100,
+    "name": "Canada – Manitoba"
+  },
+  {
+    "id": 129,
+    "name": "Canada – GST/HST"
+  }
+]
+```
+
+`GET`ting from `/jurisdictions.json` will return all tax jurisdictions.
+
+You can filter the results by country, passing the `country` parameter like `?country=US`.

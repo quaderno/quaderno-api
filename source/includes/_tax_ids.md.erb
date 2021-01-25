@@ -1,0 +1,172 @@
+## Tax IDs
+
+Quaderno calculates taxes based on your tax settings. You need to set all your tax IDs from the jurisdictions where you're registered for tax collection in order to calculate taxes for that jurisdictions. 
+
+This API will allow you to manage your tax IDs and validate any tax IDs.
+
+### Create a tax ID
+
+> `POST /tax_ids.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{ "jurisdiction_id":6, "value":"IE6388047V" }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids.json' 
+```
+
+`POST`ing to `/tax_ids.json` will create a new tax ID from the parameters passed.
+
+This will return `201 Created` and the current JSON representation of the tax ID if the creation was a success, along with the location of the new tax ID in the `url` field.
+
+Attributes:
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`value`                 | decimal   | The tax ID's value for the selected. **Required**
+`valid_from`            | date      | The tax ID's valid date. Defaults to the beginning of the year.
+
+### Update a tax ID
+
+> `PUT /tax_ids/TAX_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "jurisdiction_id":73, "value":"LU21416127" }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+```
+
+`PUT`ing to `/tax_ids/TAX_ID.json` will update the tax ID from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the tax ID if successful.
+
+Attributes:
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`value`                 | decimal   | The tax ID's value for the selected. **Required**
+`valid_from`            | date      | The tax ID's valid date. Defaults to the beginning of the year.
+`valid_until`           | date      | The tax ID's expiration date. Use null if the tax ID has no expiration date.
+
+### Delete a tax ID
+
+> `DELETE /tax_ids/TAX_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+```
+
+`DELETE`ing to `/tax_ids/TAX_ID.json` will delete the specified tax ID and returns `204 No Content` if successful.
+
+### Retrieve a tax ID
+
+> `GET /tax_ids/TAX_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+```
+
+```json
+{
+  "id": 456987213,
+  "jurisdiction": {
+    "id": 6,
+    "name": "Ireland"
+  },
+  "state": "verified",
+  "valid_from": "2015-01-01",
+  "valid_until": null,
+  "value": "IE6388047V",
+  "url": "http://assur-5845.lvh.me:3000/api/tax_ids/456987213",
+  "created_at": 1611322639
+}
+```
+
+`GET`ting from `/tax_ids/TAX_ID.json` will get you that specific tax ID.
+
+### List all tax IDs
+
+> `GET /tax_ids.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids.json'
+```
+
+```json
+[
+  {
+    "id": 456987213,
+    "jurisdiction": {
+      "id": 6,
+      "name": "Ireland"
+    },
+    "state": "verified",
+    "valid_from": "2015-01-01",
+    "valid_until": null,
+    "value": "IE6388047V",
+    "url": "http://assur-5845.lvh.me:3000/api/tax_ids/456987213",
+    "created_at": 1611322639
+  },
+  {
+    "id": 456982365,
+    "jurisdiction": {
+      "id": 73,
+      "name": "Luxembourg"
+    },
+    "state": "verified",
+    "valid_from": "2020-01-01",
+    "valid_until": null,
+    "value": "LU21416127",
+    "url": "http://assur-5845.lvh.me:3000/api/tax_ids/456982365",
+    "created_at": 1611322639
+  }
+]
+```
+
+`GET`ting from `/tax_ids.json` will return all the account's tax IDs.
+
+### Validate a tax ID
+
+<aside class="notice">
+Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
+</aside>
+
+> GET /taxes/validate.json
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/validate.json?country=IE&tax_id=IE6388047V'
+```
+
+```json
+{
+  "valid":true
+}
+```
+
+`GET`ting to `/taxes/validate.json` will validate the given tax ID.
+
+Please keep in mind that tax IDs are not actually validated while using the Sandbox.
+
+Parameter    | Mandatory | Description
+-------------|-----------|------------------------------------------------------------------------------------------------
+`country`    | **Yes**   | The customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
+`tax_id`     | **Yes**   | The customer's tax ID. 
+
+This will return a `200 OK` and the result of validating the tax ID against the official external validation service. The result can be true (valid tax ID), false (invalid tax ID) or null (the external service is temporarily unavailable).
+
+In our [Sandbox](https://developers.quaderno.io/#introduction-the-sandbox), you can use the following test numbers: 
+
+- **DE111111111**: invalid number, returns `false`
+- **IE222222222**: node down, returns `null` 

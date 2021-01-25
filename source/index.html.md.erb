@@ -1,5 +1,5 @@
 ---
-title: Quaderno API Docs
+title: Quaderno API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - cURL
@@ -20,12 +20,17 @@ search: true
 
 # CORE RESOURCES
 <%= partial "includes/contacts.md" %>
-<%= partial "includes/events.md" %>
-<%= partial "includes/evidence.md" %>
 <%= partial "includes/items.md" %>
+<%= partial "includes/events.md" %>
+
+# TAXES
+<%= partial "includes/tax_ids.md" %>
+<%= partial "includes/tax_rates.md" %>
+<%= partial "includes/tax_jurisdictions.md" %>
+<%= partial "includes/evidence.md" %>
 <%= partial "includes/taxes.md" %>
 
-# INVOICING
+# BILLING
 <%= partial "includes/invoices.md" %>
 <%= partial "includes/credits.md" %>
 <%= partial "includes/expenses.md" %>

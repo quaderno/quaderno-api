@@ -22,7 +22,7 @@ Attributes:
 
 Attribute               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
-`business_name`         | string    | The accounts's business name. **Required**
+`business_name`         | string    | The account's business name. **Required**
 `email`                 | string    | The account's email address. **Required**
 `country`               | string    | The account's country. 2-letter country code. **Required**
 `postal_code`           | string    | The account's postal code. Recommended whether the account is based in the US or Canada to determine the state/province.
@@ -65,7 +65,7 @@ curl -u YOUR_API_KEY:x \
 
 ```json
 {
-    "id":"456987213",
+    "id": 456987213,
     "type":"custom",
     "business_name":"Sheldon",
     "country":"US",
@@ -92,7 +92,7 @@ curl -u YOUR_API_KEY:x \
 ```json
 [
   {
-    "id":"456987213",
+    "id": 456987213,
     "type":"custom",
     "business_name":"Sheldon",
     "country":"US",
@@ -104,7 +104,7 @@ curl -u YOUR_API_KEY:x \
     "url":"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"
   },
   {
-    "id":"456982365",
+    "id": 456982365,
     "type":"custom",
     "business_name":"Apple Inc.",
     "country":"US",

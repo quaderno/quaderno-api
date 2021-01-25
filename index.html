@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Quaderno API Docs</title>
+    <title>Quaderno API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -274,6 +274,29 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#items" class="toc-h2 toc-link" data-title="Items">Items</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-an-item" class="toc-h3 toc-link" data-title="Create an item">Create an item</a>
+                          </li>
+                          <li>
+                            <a href="#retrieve-get-and-filter-all-items" class="toc-h3 toc-link" data-title="Retrieve: Get and filter all items">Retrieve: Get and filter all items</a>
+                          </li>
+                          <li>
+                            <a href="#retrieve-get-a-single-item" class="toc-h3 toc-link" data-title="Retrieve: Get a single item">Retrieve: Get a single item</a>
+                          </li>
+                          <li>
+                            <a href="#update-an-item" class="toc-h3 toc-link" data-title="Update an item">Update an item</a>
+                          </li>
+                          <li>
+                            <a href="#delete-an-item" class="toc-h3 toc-link" data-title="Delete an item">Delete an item</a>
+                          </li>
+                          <li>
+                            <a href="#adding-an-item-to-a-document-by-reference" class="toc-h3 toc-link" data-title="Adding an item to a document by reference">Adding an item to a document by reference</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -300,6 +323,63 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#tax-ids" class="toc-h2 toc-link" data-title="Tax IDs">Tax IDs</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-a-tax-id" class="toc-h3 toc-link" data-title="Create a tax ID">Create a tax ID</a>
+                          </li>
+                          <li>
+                            <a href="#update-a-tax-id" class="toc-h3 toc-link" data-title="Update a tax ID">Update a tax ID</a>
+                          </li>
+                          <li>
+                            <a href="#delete-a-tax-id" class="toc-h3 toc-link" data-title="Delete a tax ID">Delete a tax ID</a>
+                          </li>
+                          <li>
+                            <a href="#retrieve-a-tax-id" class="toc-h3 toc-link" data-title="Retrieve a tax ID">Retrieve a tax ID</a>
+                          </li>
+                          <li>
+                            <a href="#list-all-tax-ids" class="toc-h3 toc-link" data-title="List all tax IDs">List all tax IDs</a>
+                          </li>
+                          <li>
+                            <a href="#validate-a-tax-id" class="toc-h3 toc-link" data-title="Validate a tax ID">Validate a tax ID</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#tax-rates" class="toc-h2 toc-link" data-title="Tax Rates">Tax Rates</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-a-tax-rate" class="toc-h3 toc-link" data-title="Create a tax rate">Create a tax rate</a>
+                          </li>
+                          <li>
+                            <a href="#update-a-tax-rate" class="toc-h3 toc-link" data-title="Update a tax rate">Update a tax rate</a>
+                          </li>
+                          <li>
+                            <a href="#delete-a-tax-rate" class="toc-h3 toc-link" data-title="Delete a tax rate">Delete a tax rate</a>
+                          </li>
+                          <li>
+                            <a href="#retrieve-a-tax-rate" class="toc-h3 toc-link" data-title="Retrieve a tax rate">Retrieve a tax rate</a>
+                          </li>
+                          <li>
+                            <a href="#list-all-tax-rates" class="toc-h3 toc-link" data-title="List all tax rates">List all tax rates</a>
+                          </li>
+                          <li>
+                            <a href="#calculate-a-tax-rate" class="toc-h3 toc-link" data-title="Calculate a tax rate">Calculate a tax rate</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#tax-jurisdictions" class="toc-h2 toc-link" data-title="Tax jurisdictions">Tax jurisdictions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#retrieve-a-jurisdiction" class="toc-h3 toc-link" data-title="Retrieve a jurisdiction">Retrieve a jurisdiction</a>
+                          </li>
+                          <li>
+                            <a href="#list-all-jurisdictions" class="toc-h3 toc-link" data-title="List all jurisdictions">List all jurisdictions</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#evidence" class="toc-h2 toc-link" data-title="Evidence">Evidence</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -320,30 +400,7 @@
                       </ul>
                   </li>
                   <li>
-                    <a href="#items" class="toc-h2 toc-link" data-title="Items">Items</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#create-an-item" class="toc-h3 toc-link" data-title="Create an item">Create an item</a>
-                          </li>
-                          <li>
-                            <a href="#retrieve-get-and-filter-all-items" class="toc-h3 toc-link" data-title="Retrieve: Get and filter all items">Retrieve: Get and filter all items</a>
-                          </li>
-                          <li>
-                            <a href="#retrieve-get-a-single-item" class="toc-h3 toc-link" data-title="Retrieve: Get a single item">Retrieve: Get a single item</a>
-                          </li>
-                          <li>
-                            <a href="#update-an-item" class="toc-h3 toc-link" data-title="Update an item">Update an item</a>
-                          </li>
-                          <li>
-                            <a href="#delete-an-item" class="toc-h3 toc-link" data-title="Delete an item">Delete an item</a>
-                          </li>
-                          <li>
-                            <a href="#adding-an-item-to-a-document-by-reference" class="toc-h3 toc-link" data-title="Adding an item to a document by reference">Adding an item to a document by reference</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#taxes" class="toc-h2 toc-link" data-title="Taxes">Taxes</a>
+                    <a href="#taxes-legacy" class="toc-h2 toc-link" data-title="Taxes (legacy)">Taxes (legacy)</a>
                       <ul class="toc-list-h3">
                           <li>
                             <a href="#calculate-taxes" class="toc-h3 toc-link" data-title="Calculate Taxes">Calculate Taxes</a>
@@ -356,7 +413,7 @@
               </ul>
           </li>
           <li>
-            <a href="#invoicing" class="toc-h1 toc-link" data-title="INVOICING">INVOICING</a>
+            <a href="#billing" class="toc-h1 toc-link" data-title="BILLING">BILLING</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#invoices" class="toc-h2 toc-link" data-title="Invoices">Invoices</a>
@@ -1175,6 +1232,324 @@ If you've connected Quaderno and Stripe, you can also `GET /stripe/customers/STR
 
 <p>You can filter the results by full name, email or tax ID by passing the <code>q</code> parameter in the URL as a query string, like <code>?q=KEYWORD</code>.</p>
 
+<h2 id='items'>Items</h2>
+
+<p>The items are those products or services that you sell to your customers.</p>
+
+<p>Items are their own object in Quaderno, but they can be referenced, in an array, by a few types of record:</p>
+
+<ul>
+<li>Invoices and sales receipts</li>
+<li>Expenses</li>
+<li>Credit notes</li>
+</ul>
+
+<h3 id='create-an-item'>Create an item</h3>
+
+<blockquote>
+<p><code>POST /items.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># body.json</span>
+<span class="o">{</span>
+  <span class="s2">"code"</span>:<span class="s2">"BluRay 0003"</span>,
+  <span class="s2">"name"</span>:<span class="s2">"Titanic IV: The revenge"</span>,
+  <span class="s2">"unit_cost"</span>:<span class="s2">"15.0"</span>,
+  <span class="s2">"tax_1_name"</span>:<span class="s2">"AWESOME_TAX"</span>,
+  <span class="s2">"tax_1_rate"</span>:<span class="s2">"7.00"</span>,
+  <span class="s2">"tax_2_name"</span>:<span class="s2">"ANOTHER_AWESOME_TAX"</span>,
+  <span class="s2">"tax_2_rate"</span>:<span class="s2">"10.00"</span>
+<span class="o">}</span>
+
+curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     <span class="nt">-X</span> POST <span class="se">\</span>
+     <span class="nt">--data-binary</span> @body.json <span class="se">\</span>
+     <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuadernoItem</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                                 <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Jelly pizza'</span><span class="p">,</span>
+                                 <span class="s1">'code'</span> <span class="o">=&gt;</span> <span class="s1">'Yummy'</span><span class="p">,</span>
+                                 <span class="s1">'unit_cost'</span> <span class="o">=&gt;</span> <span class="s1">'15.00'</span><span class="p">,</span>
+                                 <span class="s1">'tax_1_name'</span> <span class="o">=&gt;</span> <span class="s1">'JUNKTAX'</span><span class="p">,</span>
+                                 <span class="s1">'tax_1_rate'</span> <span class="o">=&gt;</span> <span class="s1">'99.99'</span><span class="p">));</span>
+<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span> <span class="c1">// Returns true (success) or false (error)</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">name: </span><span class="s1">'Jelly pizza'</span><span class="p">,</span>
+    <span class="ss">code: </span><span class="s1">'Yummy'</span><span class="p">,</span>
+    <span class="ss">unit_cost: </span><span class="s1">'15.00'</span><span class="p">,</span>
+    <span class="ss">tax_1_name: </span><span class="s1">'JUNKTAX'</span><span class="p">,</span>
+    <span class="ss">tax_1_rate: </span><span class="s1">'99.99'</span>
+<span class="p">}</span>
+<span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Item</span>
+</code></pre></div>
+
+<p><code>POST</code>ing to <code>/items.json</code> will create a new item from the parameters passed.</p>
+
+<p>This will return <code>201 Created</code> and the current JSON representation of the item if the creation was a success, along with the location of the new item in the <code>url</code> field.</p>
+
+<h4 id='attributes'>Attributes</h4>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Type/Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td><strong>yes</strong></td>
+<td>String(255 chars). Validates uniqueness</td>
+</tr>
+<tr>
+<td>name</td>
+<td><strong>yes</strong></td>
+<td>String(255 chars).</td>
+</tr>
+<tr>
+<td>unit_cost</td>
+<td><strong>yes</strong></td>
+<td>Decimal</td>
+</tr>
+<tr>
+<td>description</td>
+<td>no</td>
+<td>String(255 chars).</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>no</td>
+<td>String(3 chars) Defaults to the account currency. ISO 4217 format</td>
+</tr>
+<tr>
+<td>tax_1_name</td>
+<td>Mandatory if  <code>tax_1_rate</code> and <code>tax_1_country</code> are present)</td>
+<td></td>
+</tr>
+<tr>
+<td>tax_1_rate</td>
+<td>Mandatory if  <code>tax_1_name</code> and <code>tax_1_country</code> are present)</td>
+<td>Decimal between -100.00 and 100.00 (not incluided)</td>
+</tr>
+<tr>
+<td>tax_1_country</td>
+<td>Mandatory if <code>tax_1_name</code> and <code>tax_1_rate</code> are present)</td>
+<td>String(2 chars). Format ISO 3166-1 alpha-2</td>
+</tr>
+<tr>
+<td>tax_2_name</td>
+<td>Mandatory if  <code>tax_2_rate</code> and <code>tax_2_country</code> are present)</td>
+<td></td>
+</tr>
+<tr>
+<td>tax_2_rate</td>
+<td>Mandatory if  <code>tax_2_name</code> and <code>tax_2_country</code> are present)</td>
+<td>Decimal between -100.00 and 100.00 (not incluided)</td>
+</tr>
+<tr>
+<td>tax_2_country</td>
+<td>Mandatory if <code>tax_2_name</code> and <code>tax_2_rate</code> are present)</td>
+<td>String(2 chars). Format ISO 3166-1 alpha-2</td>
+</tr>
+<tr>
+<td>tax_type</td>
+<td>no</td>
+<td>String. One of the following: <code>included</code>, <code>excluded</code> (<code>excluded</code> by default).</td>
+</tr>
+<tr>
+<td>kind</td>
+<td>no</td>
+<td>One of the following: <code>one_off</code> or <code>subscription</code>. Default value is <code>one_off</code></td>
+</tr>
+<tr>
+<td>stripe_plan_id</td>
+<td>no</td>
+<td>String(255 chars). Only for Stripe <code>subscription</code>s. Validates in Stripe that matches a real Stripe Plan Id</td>
+</tr>
+<tr>
+<td>paypal_interval_unit</td>
+<td>no</td>
+<td>Only for Paypal <code>subscription</code>s. One of the following: <code>daily</code>, <code>weekly</code>, <code>monthly</code>, <code>yearly</code></td>
+</tr>
+<tr>
+<td>paypal_interval_frequency</td>
+<td>no</td>
+<td>Decimal. Only for Paypal <code>subscription</code>s. Frequency of the units when the charge should recur.</td>
+</tr>
+<tr>
+<td>paypal_interval_duration</td>
+<td>no</td>
+<td>Decimal. Only for Paypal <code>subscription</code>s. Number of times the charge should recur.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Note that this kind of item is like a template for items, a shortcut that you can reference in order to speed up document creation. You can also have items that exist only for the relevant document and not as independent entities, and these do not require "unit_cost" (also not being stock-trackable and so on).
+</aside>
+
+<h3 id='retrieve-get-and-filter-all-items'>Retrieve: Get and filter all items</h3>
+
+<blockquote>
+<p><code>GET /items.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
+     <span class="nt">-X</span> GET <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">all</span><span class="p">()</span> <span class="c1">#=&gt; Array</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$items</span> <span class="o">=</span> <span class="nx">QuadernoItem</span><span class="o">::</span><span class="na">find</span><span class="p">();</span> <span class="c1">// Returns an array of QuadernoItem</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"included"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic II: The revenge"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_1_name"</span><span class="p">:</span><span class="s2">"AWESOME_TAX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_1_rate"</span><span class="p">:</span><span class="s2">"7.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"excluded"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic III: The origin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"33"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"excluded"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/items.json</code> will return all the user&#39;s items.</p>
+
+<p>You can filter the results in a few ways:</p>
+
+<ul>
+<li>By <code>number</code>, <code>contact_name</code> or <code>po_number</code> by passing the <code>q</code> parameter in the url like <code>?q=KEYWORD</code>.</li>
+<li>By date range, passing the <code>date</code> parameter in the url like <code>?date=DATE1,DATE2</code>. Date range allows these formats: <code>2019-01-01,2019-12-31</code> or <code>2019/01/01,2019/12/31</code>.</li>
+<li>By state, passing the <code>state</code> parameter like <code>?state=STATE</code>.</li>
+<li>By contact, passing the contact ID in the <code>contact</code> parameter, like <code>?contact=3231</code>.</li>
+</ul>
+
+<h3 id='retrieve-get-a-single-item'>Retrieve: Get a single item</h3>
+
+<blockquote>
+<p><code>GET /items/ITEM_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
+     <span class="nt">-X</span> GET <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="no">ITEM_ID</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Item</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span> <span class="o">=</span> <span class="nx">QuadernoItem</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">'ITEM_ID'</span><span class="p">);</span> <span class="c1">// Returns a QuadernoItem</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic II: The revenge"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_1_name"</span><span class="p">:</span><span class="s2">"AWESOME_TAX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_1_rate"</span><span class="p">:</span><span class="s2">"7.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"excluded"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/items/ITEM_ID.json</code> will return that specific item.</p>
+
+<h3 id='update-an-item'>Update an item</h3>
+
+<blockquote>
+<p><code>PUT /items/ITEM_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     <span class="nt">-X</span> PUT <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s1">'{ "unit_cost":"10.0" }'</span> <span class="se">\</span>
+     <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">unit_cost: </span><span class="s1">'10.0'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="no">ITEM_ID</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Item</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">unit_cost</span> <span class="o">=</span> <span class="s1">'10.0'</span><span class="p">;</span>
+<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</code></pre></div>
+
+<p><code>PUT</code>ting to <code>/items/ITEM_ID.json</code> will update the item with the passed parameters.</p>
+
+<p>This will return <code>200 OK</code> along with the current JSON representation of the item if successful.</p>
+
+<h3 id='delete-an-item'>Delete an item</h3>
+
+<blockquote>
+<p><code>DELETE /items/ITEM_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
+     <span class="nt">-X</span> DELETE <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="no">ITEM_ID</span><span class="p">)</span> <span class="c1">#=&gt; Boolean</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+</code></pre></div>
+
+<p><code>DELETE</code>ing to <code>/item/ITEM_ID.json</code> will delete the specified item and returns <code>204 No Content</code> if successful.</p>
+
+<h3 id='adding-an-item-to-a-document-by-reference'>Adding an item to a document by reference</h3>
+
+<blockquote>
+<p>Given this item:</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0003"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic IV: The revenge"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_1_name"</span><span class="p">:</span><span class="s2">"AWESOME_TAX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_1_rate"</span><span class="p">:</span><span class="s2">"7.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_2_name"</span><span class="p">:</span><span class="s2">"ANOTHER_AWESOME_TAX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_2_rate"</span><span class="p">:</span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"1000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<blockquote>
+<p>You can generate an invoice with this item by passing this data via POST to /invoices.json:</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"contact_id"</span><span class="p">:</span><span class="s2">"5059bdbf2f412e0901000024"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contact_name"</span><span class="p">:</span><span class="s2">"STARK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="s2">"playboy, businessman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"items_attributes"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"reference"</span><span class="p">:</span><span class="s2">"BluRay 0003"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"10.95"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p>You can use an item attributes to create or update a document (invoice, expense or estimate). In order to use this feature, the item must have a <code>code</code> that must be set as a <code>reference</code> in the <code>items_attributes</code> array.</p>
+
+<p>Then you can use the <code>code</code> in the <code>reference</code> field along with per-use attributes such as <code>quantity</code> when setting the <code>item_attributes</code> of another document, such as an invoice or expense.</p>
+
+<aside class="notice">
+You can see this happening in API examples under the relevant document sections.
+</aside>
+
 <h2 id='events'>Events</h2>
 
 <p>Quaderno allows your application to receive information about events that happen on your documents as they occur.</p>
@@ -1497,8 +1872,568 @@ We recommend responding with a status code between 200 and 299 (inclusive) so th
 <li>Compare the binary signature that you generated to the signature provided in the <code>X-Quaderno-Signature</code> HTTP header.</li>
 </ol>
 
+
+# TAXES
+<h2 id='tax-ids'>Tax IDs</h2>
+<p>Quaderno calculates taxes based on your tax settings. You need to set all your tax IDs from the jurisdictions where you&#39;re registered for tax collection in order to calculate taxes for that jurisdictions. </p>
+
+<p>This API will allow you to manage your tax IDs and validate any tax IDs.</p>
+<h3 id='create-a-tax-id'>Create a tax ID</h3>
+
+<blockquote>
+<p><code>POST /tax_ids.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{ "jurisdiction_id":6, "value":"IE6388047V" }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids.json' 
+</code></pre></div>
+
+<p><code>POST</code>ing to <code>/tax_ids.json</code> will create a new tax ID from the parameters passed.</p>
+
+<p>This will return <code>201 Created</code> and the current JSON representation of the tax ID if the creation was a success, along with the location of the new tax ID in the <code>url</code> field.</p>
+
+<p>Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>jurisdiction_id</code></td>
+<td>integer</td>
+<td>The tax jurisdiction. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>decimal</td>
+<td>The tax ID&#39;s value for the selected. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>valid_from</code></td>
+<td>date</td>
+<td>The tax ID&#39;s valid date. Defaults to the beginning of the year.</td>
+</tr>
+</tbody></table>
+
+<h3 id='update-a-tax-id'>Update a tax ID</h3>
+
+<blockquote>
+<p><code>PUT /tax_ids/TAX_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "jurisdiction_id":73, "value":"LU21416127" }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+</code></pre></div>
+
+<p><code>PUT</code>ing to <code>/tax_ids/TAX_ID.json</code> will update the tax ID from the passed parameters.</p>
+
+<p>This will return <code>200 OK</code> and a JSON representation of the tax ID if successful.</p>
+
+<p>Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>jurisdiction_id</code></td>
+<td>integer</td>
+<td>The tax jurisdiction. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>decimal</td>
+<td>The tax ID&#39;s value for the selected. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>valid_from</code></td>
+<td>date</td>
+<td>The tax ID&#39;s valid date. Defaults to the beginning of the year.</td>
+</tr>
+<tr>
+<td><code>valid_until</code></td>
+<td>date</td>
+<td>The tax ID&#39;s expiration date. Use null if the tax ID has no expiration date.</td>
+</tr>
+</tbody></table>
+
+<h3 id='delete-a-tax-id'>Delete a tax ID</h3>
+
+<blockquote>
+<p><code>DELETE /tax_ids/TAX_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+</code></pre></div>
+
+<p><code>DELETE</code>ing to <code>/tax_ids/TAX_ID.json</code> will delete the specified tax ID and returns <code>204 No Content</code> if successful.</p>
+
+<h3 id='retrieve-a-tax-id'>Retrieve a tax ID</h3>
+
+<blockquote>
+<p><code>GET /tax_ids/TAX_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456987213</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ireland"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valid_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IE6388047V"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://assur-5845.lvh.me:3000/api/tax_ids/456987213"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1611322639</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/tax_ids/TAX_ID.json</code> will get you that specific tax ID.</p>
+
+<h3 id='list-all-tax-ids'>List all tax IDs</h3>
+
+<blockquote>
+<p><code>GET /tax_ids.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456987213</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ireland"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IE6388047V"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://assur-5845.lvh.me:3000/api/tax_ids/456987213"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1611322639</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456982365</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luxembourg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LU21416127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://assur-5845.lvh.me:3000/api/tax_ids/456982365"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1611322639</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/tax_ids.json</code> will return all the account&#39;s tax IDs.</p>
+
+<h3 id='validate-a-tax-id'>Validate a tax ID</h3>
+
+<aside class="notice">
+Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
+</aside>
+
+<blockquote>
+<p>GET /taxes/validate.json</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/validate.json?country=IE&amp;tax_id=IE6388047V'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"valid"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting to <code>/taxes/validate.json</code> will validate the given tax ID.</p>
+
+<p>Please keep in mind that tax IDs are not actually validated while using the Sandbox.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>country</code></td>
+<td><strong>Yes</strong></td>
+<td>The customer&#39;s country (2-letter <a href="http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">ISO code</a>)</td>
+</tr>
+<tr>
+<td><code>tax_id</code></td>
+<td><strong>Yes</strong></td>
+<td>The customer&#39;s tax ID.</td>
+</tr>
+</tbody></table>
+
+<p>This will return a <code>200 OK</code> and the result of validating the tax ID against the official external validation service. The result can be true (valid tax ID), false (invalid tax ID) or null (the external service is temporarily unavailable).</p>
+
+<p>In our <a href="https://developers.quaderno.io/#introduction-the-sandbox">Sandbox</a>, you can use the following test numbers: </p>
+
+<ul>
+<li><strong>DE111111111</strong>: invalid number, returns <code>false</code></li>
+<li><strong>IE222222222</strong>: node down, returns <code>null</code> </li>
+</ul>
+
+<h2 id='tax-rates'>Tax Rates</h2>
+
+<p>This API will allow you to customize your tax rates and calculate tax rates for a particular transaction. </p>
+
+<p>Take into account that taxes are calculated based on your <a href="/#tax_ids">tax IDs</a>, but you can override these tax rates for greater control over the taxes you charge. If that&#39;s the case, use this API to create your custom tax rates.</p>
+
+<h3 id='create-a-tax-rate'>Create a tax rate</h3>
+
+<blockquote>
+<p><code>POST /tax_rates.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X POST \
+     -d '{ "jurisdiction_id":1, "name":"VAT", "value":20 }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates.json' 
+</code></pre></div>
+
+<p><code>POST</code>ing to <code>/tax_rates.json</code> will create a new tax rate from the parameters passed.</p>
+
+<p>This will return <code>201 Created</code> and the current JSON representation of the tax rate if the creation was a success, along with the location of the new tax rate in the <code>url</code> field.</p>
+
+<p>Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>jurisdiction_id</code></td>
+<td>integer</td>
+<td>The tax jurisdiction. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>The tax rate&#39;s name. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>decimal</td>
+<td>The tax rate&#39;s value for the selected <code>tax_code</code>. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>tax_code</code></td>
+<td>string</td>
+<td>The tax rate&#39;s tax code. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>.  Defaults to the account&#39;s default tax code.</td>
+</tr>
+<tr>
+<td><code>valid_from</code></td>
+<td>date</td>
+<td>The tax rate&#39;s valid date. Defaults to the beginning of 3 years ago.</td>
+</tr>
+</tbody></table>
+
+<h3 id='update-a-tax-rate'>Update a tax rate</h3>
+
+<blockquote>
+<p><code>PUT /tax_rates/TAX_RATE_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "value":25 }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+</code></pre></div>
+
+<p><code>PUT</code>ing to <code>/tax_rates/TAX_RATE_ID.json</code> will update the tax rate from the passed parameters.</p>
+
+<p>This will return <code>200 OK</code> and a JSON representation of the tax rate if successful.</p>
+
+<p>Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>jurisdiction_id</code></td>
+<td>integer</td>
+<td>The tax jurisdiction. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>The tax rate&#39;s name. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>decimal</td>
+<td>The tax rate&#39;s value for the selected <code>tax_code</code>. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>tax_code</code></td>
+<td>string</td>
+<td>The tax rate&#39;s tax code. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>.  Defaults to the account&#39;s default tax code.</td>
+</tr>
+<tr>
+<td><code>valid_from</code></td>
+<td>date</td>
+<td>The tax rate&#39;s valid date. Defaults to 3 years ago.</td>
+</tr>
+<tr>
+<td><code>valid_until</code></td>
+<td>date</td>
+<td>The tax rate&#39;s expiration date. Use null if the tax rate has no expiration date.</td>
+</tr>
+</tbody></table>
+
+<h3 id='delete-a-tax-rate'>Delete a tax rate</h3>
+
+<blockquote>
+<p><code>DELETE /tax_rates/TAX_RATE_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+</code></pre></div>
+
+<p><code>DELETE</code>ing to <code>/tax_rates/TAX_RATE_ID.json</code> will delete the specified tax rate and returns <code>204 No Content</code> if successful.</p>
+
+<h3 id='retrieve-a-tax-rate'>Retrieve a tax rate</h3>
+
+<blockquote>
+<p><code>GET /tax_rates/TAX_RATE_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456987213</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TVA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valid_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456987213"</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1611330350</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/tax_rates/TAX_RATE_ID.json</code> will get you that specific tax rate.</p>
+
+<h3 id='list-all-tax-rates'>List all tax rates</h3>
+
+<blockquote>
+<p><code>GET /tax_rates.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456987213</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TVA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456987213"</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1611330350</span><span class="w">    
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456982365</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reduced"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valid_until"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456982365"</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1611330350</span><span class="w">    
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/tax_rates.json</code> will return all the account&#39;s tax rates.</p>
+
+<h3 id='calculate-a-tax-rate'>Calculate a tax rate</h3>
+
+<aside class="notice">
+Tax calculations are based on your tax settings. You can collect taxes only in tax jurisdictions where you're registered for tax collection. Please check your <a href="https://quadernoapp.com/settings/jurisdictions" target="_blank">tax jurisdictions</a> in your Quaderno account. If you try to calculate taxes in a jurisdiction you're not registered, Quaderno will return a 0% tax rate. 
+</aside>
+
+<blockquote>
+<p><code>GET /tax_rates/calculate.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X GET \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate.json?to_country=US&amp;to_postal_code=94010'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURLINGAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAN MATEO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales tax"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"taxable_part"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>to_country</code></td>
+<td>string</td>
+<td>The customer&#39;s country. 2-letter <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO country code</a>. <strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>to_postal_code</code></td>
+<td>string</td>
+<td>The customer&#39;s postal code. Required whether the customer is based in the US or Canada.</td>
+</tr>
+<tr>
+<td><code>tax_id</code></td>
+<td>string</td>
+<td>The customer&#39;s tax ID.</td>
+</tr>
+<tr>
+<td><code>from_country</code></td>
+<td>string</td>
+<td>The country where the order shipped from. 2-letter <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO country code</a>. Defaults to the account&#39;s country.</td>
+</tr>
+<tr>
+<td><code>from_postal_code</code></td>
+<td>string</td>
+<td>The postal code where the order shipped from. Defaults to the account&#39;s postal code.</td>
+</tr>
+<tr>
+<td><code>tax_code</code></td>
+<td>string</td>
+<td>The transaction&#39;s tax code. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>.  Defaults to the account&#39;s default tax code.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>string</td>
+<td>The transaction&#39;s date. Defaults to today.</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>The transaction&#39;s amount. Recommended in overseas sales to the UK.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>The transaction&#39;s currency. Three-letter <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO currency code</a>, in uppercase. Recommended in overseas sales to the UK.</td>
+</tr>
+</tbody></table>
+
+<h2 id='tax-jurisdictions'>Tax jurisdictions</h2>
+
+<p>A tax jurisdiction is an area subject to its own tax regulations. A tax jurisdiction can be a country, region, group of countries, province, state, city, county, district or any other area with a designated authority for tax purposes.</p>
+
+<p>A businesses cannot collect taxes in a particular jurisdiction without being registered for tax collection with their tax authorities first. </p>
+
+<p>This API will allow you to get all tax jurisdictions you need to manage your tax IDs and your tax rates in your Quaderno account. </p>
+
+<h3 id='retrieve-a-jurisdiction'>Retrieve a jurisdiction</h3>
+
+<blockquote>
+<p><code>GET /jurisdictions/JURISDICTION_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions/JURISDICTION_ID.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">94</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada – British Columbia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/jurisdictions/JURISDICTION_ID.json</code> will get you that specific tax jurisdiction.</p>
+
+<h3 id='list-all-jurisdictions'>List all jurisdictions</h3>
+
+<blockquote>
+<p><code>GET /jurisdictions.json?country=CA</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">94</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada – British Columbia"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada – Quebec"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">96</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada – Saskatchewan"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada – Manitoba"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada – GST/HST"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/jurisdictions.json</code> will return all tax jurisdictions.</p>
+
+<p>You can filter the results by country, passing the <code>country</code> parameter like <code>?country=US</code>.</p>
+
 <h2 id='evidence'>Evidence</h2>
-<p>Location evidence are proofs of the customer&#39;s location that should be stored in order to be EU VAT MOSS compliant.</p>
+
+<p>Location evidence are proofs of the customer&#39;s location that should be stored in order to be compliant with tax rules in some tax jurisdictions (e.g. EU VAT MOSS).</p>
+
 <h3 id='the-evidence-object'>The evidence object</h3>
 
 <table><thead>
@@ -1698,41 +2633,6 @@ curl -u YOUR_API_KEY:x \
     </span><span class="nl">"additional_evidence"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_evidence_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notes"</span><span class="p">:</span><span class="kc">null</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">485</span><span class="p">,</span><span class="nl">"document_id"</span><span class="p">:</span><span class="mi">9752</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"confirmed"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"billing_country"</span><span class="p">:</span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ip_address"</span><span class="p">:</span><span class="s2">"92.186.16.30"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ip_country"</span><span class="p">:</span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bank_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_evidence"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_evidence_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notes"</span><span class="p">:</span><span class="kc">null</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">484</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"document_id"</span><span class="p">:</span><span class="mi">9749</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"confirmed"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"billing_country"</span><span class="p">:</span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ip_address"</span><span class="p">:</span><span class="s2">"80.29.119.132"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ip_country"</span><span class="p">:</span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bank_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_evidence"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_evidence_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notes"</span><span class="p">:</span><span class="kc">null</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">483</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"document_id"</span><span class="p">:</span><span class="mi">9748</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"conflicting"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"billing_country"</span><span class="p">:</span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ip_address"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ip_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bank_country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_evidence"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_evidence_country"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notes"</span><span class="p">:</span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -1772,331 +2672,13 @@ curl -u YOUR_API_KEY:x \
 
 <p><code>GET</code>ting from <code>/evidence/EVIDENCE_ID.json</code> will return that specific evidence.</p>
 
-<h2 id='items'>Items</h2>
-
-<p>The items are those products or services that you sell to your customers.</p>
-
-<p>Items are their own object in Quaderno, but they can be referenced, in an array, by a few types of record:</p>
-
-<ul>
-<li>Invoices and sales receipts</li>
-<li>Expenses</li>
-<li>Credit notes</li>
-</ul>
-
-<h3 id='create-an-item'>Create an item</h3>
-
-<blockquote>
-<p><code>POST /items.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># body.json</span>
-<span class="o">{</span>
-  <span class="s2">"code"</span>:<span class="s2">"BluRay 0003"</span>,
-  <span class="s2">"name"</span>:<span class="s2">"Titanic IV: The revenge"</span>,
-  <span class="s2">"unit_cost"</span>:<span class="s2">"15.0"</span>,
-  <span class="s2">"tax_1_name"</span>:<span class="s2">"AWESOME_TAX"</span>,
-  <span class="s2">"tax_1_rate"</span>:<span class="s2">"7.00"</span>,
-  <span class="s2">"tax_2_name"</span>:<span class="s2">"ANOTHER_AWESOME_TAX"</span>,
-  <span class="s2">"tax_2_rate"</span>:<span class="s2">"10.00"</span>
-<span class="o">}</span>
-
-curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
-     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-     <span class="nt">-X</span> POST <span class="se">\</span>
-     <span class="nt">--data-binary</span> @body.json <span class="se">\</span>
-     <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuadernoItem</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-                                 <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Jelly pizza'</span><span class="p">,</span>
-                                 <span class="s1">'code'</span> <span class="o">=&gt;</span> <span class="s1">'Yummy'</span><span class="p">,</span>
-                                 <span class="s1">'unit_cost'</span> <span class="o">=&gt;</span> <span class="s1">'15.00'</span><span class="p">,</span>
-                                 <span class="s1">'tax_1_name'</span> <span class="o">=&gt;</span> <span class="s1">'JUNKTAX'</span><span class="p">,</span>
-                                 <span class="s1">'tax_1_rate'</span> <span class="o">=&gt;</span> <span class="s1">'99.99'</span><span class="p">));</span>
-<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span> <span class="c1">// Returns true (success) or false (error)</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">name: </span><span class="s1">'Jelly pizza'</span><span class="p">,</span>
-    <span class="ss">code: </span><span class="s1">'Yummy'</span><span class="p">,</span>
-    <span class="ss">unit_cost: </span><span class="s1">'15.00'</span><span class="p">,</span>
-    <span class="ss">tax_1_name: </span><span class="s1">'JUNKTAX'</span><span class="p">,</span>
-    <span class="ss">tax_1_rate: </span><span class="s1">'99.99'</span>
-<span class="p">}</span>
-<span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Item</span>
-</code></pre></div>
-
-<p><code>POST</code>ing to <code>/items.json</code> will create a new item from the parameters passed.</p>
-
-<p>This will return <code>201 Created</code> and the current JSON representation of the item if the creation was a success, along with the location of the new item in the <code>url</code> field.</p>
-
-<h4 id='attributes'>Attributes</h4>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Mandatory</th>
-<th>Type/Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td><strong>yes</strong></td>
-<td>String(255 chars). Validates uniqueness</td>
-</tr>
-<tr>
-<td>name</td>
-<td><strong>yes</strong></td>
-<td>String(255 chars).</td>
-</tr>
-<tr>
-<td>unit_cost</td>
-<td><strong>yes</strong></td>
-<td>Decimal</td>
-</tr>
-<tr>
-<td>description</td>
-<td>no</td>
-<td>String(255 chars).</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>no</td>
-<td>String(3 chars) Defaults to the account currency. ISO 4217 format</td>
-</tr>
-<tr>
-<td>tax_1_name</td>
-<td>Mandatory if  <code>tax_1_rate</code> and <code>tax_1_country</code> are present)</td>
-<td></td>
-</tr>
-<tr>
-<td>tax_1_rate</td>
-<td>Mandatory if  <code>tax_1_name</code> and <code>tax_1_country</code> are present)</td>
-<td>Decimal between -100.00 and 100.00 (not incluided)</td>
-</tr>
-<tr>
-<td>tax_1_country</td>
-<td>Mandatory if <code>tax_1_name</code> and <code>tax_1_rate</code> are present)</td>
-<td>String(2 chars). Format ISO 3166-1 alpha-2</td>
-</tr>
-<tr>
-<td>tax_2_name</td>
-<td>Mandatory if  <code>tax_2_rate</code> and <code>tax_2_country</code> are present)</td>
-<td></td>
-</tr>
-<tr>
-<td>tax_2_rate</td>
-<td>Mandatory if  <code>tax_2_name</code> and <code>tax_2_country</code> are present)</td>
-<td>Decimal between -100.00 and 100.00 (not incluided)</td>
-</tr>
-<tr>
-<td>tax_2_country</td>
-<td>Mandatory if <code>tax_2_name</code> and <code>tax_2_rate</code> are present)</td>
-<td>String(2 chars). Format ISO 3166-1 alpha-2</td>
-</tr>
-<tr>
-<td>tax_type</td>
-<td>no</td>
-<td>String. One of the following: <code>included</code>, <code>excluded</code> (<code>excluded</code> by default).</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>no</td>
-<td>One of the following: <code>one_off</code> or <code>subscription</code>. Default value is <code>one_off</code></td>
-</tr>
-<tr>
-<td>stripe_plan_id</td>
-<td>no</td>
-<td>String(255 chars). Only for Stripe <code>subscription</code>s. Validates in Stripe that matches a real Stripe Plan Id</td>
-</tr>
-<tr>
-<td>paypal_interval_unit</td>
-<td>no</td>
-<td>Only for Paypal <code>subscription</code>s. One of the following: <code>daily</code>, <code>weekly</code>, <code>monthly</code>, <code>yearly</code></td>
-</tr>
-<tr>
-<td>paypal_interval_frequency</td>
-<td>no</td>
-<td>Decimal. Only for Paypal <code>subscription</code>s. Frequency of the units when the charge should recur.</td>
-</tr>
-<tr>
-<td>paypal_interval_duration</td>
-<td>no</td>
-<td>Decimal. Only for Paypal <code>subscription</code>s. Number of times the charge should recur.</td>
-</tr>
-</tbody></table>
+<h2 id='taxes-legacy'>Taxes (legacy)</h2>
 
 <aside class="notice">
-Note that this kind of item is like a template for items, a shortcut that you can reference in order to speed up document creation. You can also have items that exist only for the relevant document and not as independent entities, and these do not require "unit_cost" (also not being stock-trackable and so on).
+The following endpoints are legacy and will be discontinued on 1st June 2021.
 </aside>
-
-<h3 id='retrieve-get-and-filter-all-items'>Retrieve: Get and filter all items</h3>
-
-<blockquote>
-<p><code>GET /items.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
-     <span class="nt">-X</span> GET <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items.json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">all</span><span class="p">()</span> <span class="c1">#=&gt; Array</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$items</span> <span class="o">=</span> <span class="nx">QuadernoItem</span><span class="o">::</span><span class="na">find</span><span class="p">();</span> <span class="c1">// Returns an array of QuadernoItem</span>
-</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"included"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic II: The revenge"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax_1_name"</span><span class="p">:</span><span class="s2">"AWESOME_TAX"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax_1_rate"</span><span class="p">:</span><span class="s2">"7.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"excluded"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/2"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0002"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic III: The origin"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"33"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"excluded"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/3"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-
-<p><code>GET</code>ting from <code>/items.json</code> will return all the user&#39;s items.</p>
-
-<p>You can filter the results in a few ways:</p>
-
-<ul>
-<li>By <code>number</code>, <code>contact_name</code> or <code>po_number</code> by passing the <code>q</code> parameter in the url like <code>?q=KEYWORD</code>.</li>
-<li>By date range, passing the <code>date</code> parameter in the url like <code>?date=DATE1,DATE2</code>. Date range allows these formats: <code>2019-01-01,2019-12-31</code> or <code>2019/01/01,2019/12/31</code>.</li>
-<li>By state, passing the <code>state</code> parameter like <code>?state=STATE</code>.</li>
-<li>By contact, passing the contact ID in the <code>contact</code> parameter, like <code>?contact=3231</code>.</li>
-</ul>
-
-<h3 id='retrieve-get-a-single-item'>Retrieve: Get a single item</h3>
-
-<blockquote>
-<p><code>GET /items/ITEM_ID.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
-     <span class="nt">-X</span> GET <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="no">ITEM_ID</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Item</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span> <span class="o">=</span> <span class="nx">QuadernoItem</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">'ITEM_ID'</span><span class="p">);</span> <span class="c1">// Returns a QuadernoItem</span>
-</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0001"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic II: The revenge"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_1_name"</span><span class="p">:</span><span class="s2">"AWESOME_TAX"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_1_rate"</span><span class="p">:</span><span class="s2">"7.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_type"</span><span class="p">:</span><span class="s2">"excluded"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://my-account.quadernoapp.com/api/items/2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"kind"</span><span class="p">:</span><span class="s2">"one_off"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<p><code>GET</code>ting from <code>/items/ITEM_ID.json</code> will return that specific item.</p>
-
-<h3 id='update-an-item'>Update an item</h3>
-
-<blockquote>
-<p><code>PUT /items/ITEM_ID.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
-     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-     <span class="nt">-X</span> PUT <span class="se">\</span>
-     <span class="nt">-d</span> <span class="s1">'{ "unit_cost":"10.0" }'</span> <span class="se">\</span>
-     <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">unit_cost: </span><span class="s1">'10.0'</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="no">ITEM_ID</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Item</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">unit_cost</span> <span class="o">=</span> <span class="s1">'10.0'</span><span class="p">;</span>
-<span class="nv">$item</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
-</code></pre></div>
-
-<p><code>PUT</code>ting to <code>/items/ITEM_ID.json</code> will update the item with the passed parameters.</p>
-
-<p>This will return <code>200 OK</code> along with the current JSON representation of the item if successful.</p>
-
-<h3 id='delete-an-item'>Delete an item</h3>
-
-<blockquote>
-<p><code>DELETE /items/ITEM_ID.json</code></p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
-     <span class="nt">-X</span> DELETE <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/items/ITEM_ID.json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="no">Quaderno</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="no">ITEM_ID</span><span class="p">)</span> <span class="c1">#=&gt; Boolean</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$item</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
-</code></pre></div>
-
-<p><code>DELETE</code>ing to <code>/item/ITEM_ID.json</code> will delete the specified item and returns <code>204 No Content</code> if successful.</p>
-
-<h3 id='adding-an-item-to-a-document-by-reference'>Adding an item to a document by reference</h3>
-
-<blockquote>
-<p>Given this item:</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"BluRay 0003"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Titanic IV: The revenge"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_1_name"</span><span class="p">:</span><span class="s2">"AWESOME_TAX"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_1_rate"</span><span class="p">:</span><span class="s2">"7.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_2_name"</span><span class="p">:</span><span class="s2">"ANOTHER_AWESOME_TAX"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_2_rate"</span><span class="p">:</span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"1000"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<blockquote>
-<p>You can generate an invoice with this item by passing this data via POST to /invoices.json:</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"contact_id"</span><span class="p">:</span><span class="s2">"5059bdbf2f412e0901000024"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"contact_name"</span><span class="p">:</span><span class="s2">"STARK"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="s2">"playboy, businessman"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"items_attributes"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"reference"</span><span class="p">:</span><span class="s2">"BluRay 0003"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"unit_cost"</span><span class="p">:</span><span class="s2">"10.95"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<p>You can use an item attributes to create or update a document (invoice, expense or estimate). In order to use this feature, the item must have a <code>code</code> that must be set as a <code>reference</code> in the <code>items_attributes</code> array.</p>
-
-<p>Then you can use the <code>code</code> in the <code>reference</code> field along with per-use attributes such as <code>quantity</code> when setting the <code>item_attributes</code> of another document, such as an invoice or expense.</p>
-
-<aside class="notice">
-You can see this happening in API examples under the relevant document sections.
-</aside>
-
-<h2 id='taxes'>Taxes</h2>
 
 <p>One of the killer features Quaderno provides is efficient and easy tax management. As part of this, we offer an API for easy tax calculation.</p>
-
-<aside class="notice">
-Tax rates are based on your account settings. Please check your <a href="https://quadernoapp.com/settings/jurisdictions" target="_blank">tax jurisdictions page</a> in your Quaderno account.
-</aside>
 
 <h3 id='calculate-taxes'>Calculate Taxes</h3>
 
@@ -2228,7 +2810,7 @@ curl -u YOUR_API_KEY:x \
 <li><strong>DE111111111</strong>: invalid number, returns <code>false</code></li>
 <li><strong>IE222222222</strong>: node down, returns <code>null</code> </li>
 </ul>
-<h1 id='invoicing'>INVOICING</h1>
+<h1 id='billing'>BILLING</h1>
 <h2 id='invoices'>Invoices</h2>
 
 <p>An invoice is a detailed list of goods shipped or services rendered, with an account of all costs.</p>
@@ -5965,7 +6547,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <tr>
 <td><code>business_name</code></td>
 <td>string</td>
-<td>The accounts&#39;s business name. <strong>Required</strong></td>
+<td>The account&#39;s business name. <strong>Required</strong></td>
 </tr>
 <tr>
 <td><code>email</code></td>
@@ -6051,7 +6633,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456987213"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456987213</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Sheldon"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
@@ -6076,7 +6658,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
      -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/accounts.json'
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456987213"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456987213</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Sheldon"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">
@@ -6088,7 +6670,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
     </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://ACCOUNT_NAME.quadernoapp.com/api/accounts/456987213"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"456982365"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456982365</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"business_name"</span><span class="p">:</span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="p">,</span><span class="w">

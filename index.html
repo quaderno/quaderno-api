@@ -1577,7 +1577,7 @@ You can see this happening in API examples under the relevant billing sections.
 <tr>
 <td><code>jurisdiction_id</code></td>
 <td>integer</td>
-<td>The tax jurisdiction. <strong>Required</strong></td>
+<td>The <a href="#tax-jurisdictions">tax jurisdiction</a>. <strong>Required</strong></td>
 </tr>
 <tr>
 <td><code>value</code></td>
@@ -1587,7 +1587,7 @@ You can see this happening in API examples under the relevant billing sections.
 <tr>
 <td><code>valid_from</code></td>
 <td>date</td>
-<td>The tax ID&#39;s valid date. Defaults to the beginning of the year.</td>
+<td>The tax ID&#39;s validity date. Defaults to the beginning of the year.</td>
 </tr>
 </tbody></table>
 
@@ -1650,7 +1650,7 @@ You can see this happening in API examples under the relevant billing sections.
 <tr>
 <td><code>valid_from</code></td>
 <td>date</td>
-<td>The tax ID&#39;s valid date.</td>
+<td>The tax ID&#39;s validity date.</td>
 </tr>
 <tr>
 <td><code>valid_until</code></td>
@@ -1754,7 +1754,9 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 </tr>
 </tbody></table>
 
-<p>This will return a <code>200 OK</code> and the result of validating the tax ID against the official external validation service. The result can be true (valid tax ID), false (invalid tax ID) or null (the external service is temporarily unavailable).</p>
+<p>This will return a <code>200 OK</code> and the result of validating the tax ID against the official external validation service. </p>
+
+<p>The result can be true (valid tax ID), false (invalid tax ID) or null (the external service is temporarily unavailable).</p>
 
 <p>In our <a href="https://developers.quaderno.io/#introduction-the-sandbox">Sandbox</a>, you can use the following test numbers: </p>
 
@@ -1798,7 +1800,7 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 <tr>
 <td><code>jurisdiction_id</code></td>
 <td>integer</td>
-<td>The tax jurisdiction. <strong>Required</strong></td>
+<td>The <a href="#tax-jurisdictions">tax jurisdiction</a>. <strong>Required</strong></td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1818,7 +1820,7 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 <tr>
 <td><code>valid_from</code></td>
 <td>date</td>
-<td>The tax rate&#39;s valid date. Defaults to the beginning of 3 years ago.</td>
+<td>The tax rate&#39;s validity date. Defaults to the beginning of 3 years ago.</td>
 </tr>
 </tbody></table>
 
@@ -1874,7 +1876,7 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 <tr>
 <td><code>jurisdiction_id</code></td>
 <td>integer</td>
-<td>The tax jurisdiction. <strong>Required</strong></td>
+<td>The <a href="#tax-jurisdictions">tax jurisdiction</a>. <strong>Required</strong></td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1894,7 +1896,7 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 <tr>
 <td><code>valid_from</code></td>
 <td>date</td>
-<td>The tax rate&#39;s valid date. Defaults to 3 years ago.</td>
+<td>The tax rate&#39;s validity date. Defaults to 3 years ago.</td>
 </tr>
 <tr>
 <td><code>valid_until</code></td>
@@ -2066,7 +2068,7 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 </blockquote>
 
 <div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json?country=CA'
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">94</span><span class="p">,</span><span class="w">
@@ -2093,9 +2095,12 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 
 <p><code>GET</code>ting from <code>/jurisdictions.json</code> will return all tax jurisdictions.</p>
 
-<p>You can filter the results in a few ways:
-- By country, passing the <code>country</code> parameter like <code>?country=US</code>.
-- By region, passing the <code>region</code> parameter like <code>?region=NY</code>.</p>
+<p>You can filter the results in a few ways:</p>
+
+<ul>
+<li>By country, passing the <code>country</code> parameter like <code>?country=US</code>.</li>
+<li>By region, passing the <code>region</code> parameter like <code>?region=NY</code>.</li>
+</ul>
 
 <h2 id='evidence'>Evidence</h2>
 

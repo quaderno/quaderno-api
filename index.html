@@ -1643,11 +1643,6 @@ You can see this happening in API examples under the relevant billing sections.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>jurisdiction_id</code></td>
-<td>integer</td>
-<td>The tax jurisdiction. <strong>Required</strong></td>
-</tr>
-<tr>
 <td><code>value</code></td>
 <td>decimal</td>
 <td>The tax ID&#39;s value for the selected. <strong>Required</strong></td>
@@ -1655,7 +1650,7 @@ You can see this happening in API examples under the relevant billing sections.
 <tr>
 <td><code>valid_from</code></td>
 <td>date</td>
-<td>The tax ID&#39;s valid date. Defaults to the beginning of the year.</td>
+<td>The tax ID&#39;s valid date.</td>
 </tr>
 <tr>
 <td><code>valid_until</code></td>
@@ -2098,7 +2093,9 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 
 <p><code>GET</code>ting from <code>/jurisdictions.json</code> will return all tax jurisdictions.</p>
 
-<p>You can filter the results by country, passing the <code>country</code> parameter like <code>?country=US</code>.</p>
+<p>You can filter the results in a few ways:
+- By country, passing the <code>country</code> parameter like <code>?country=US</code>.
+- By region, passing the <code>region</code> parameter like <code>?region=NY</code>.</p>
 
 <h2 id='evidence'>Evidence</h2>
 

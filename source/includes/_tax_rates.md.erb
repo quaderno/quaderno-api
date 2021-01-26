@@ -24,11 +24,11 @@ Attributes:
 
 Attribute               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
-`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`jurisdiction_id`       | integer   | The [tax jurisdiction](#tax-jurisdictions). **Required**
 `name`                  | string    | The tax rate's name. **Required**
 `value`                 | decimal   | The tax rate's value for the selected `tax_code`. **Required**
 `tax_code`              | string    | The tax rate's tax code. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`.  Defaults to the account's default tax code. 
-`valid_from`            | date      | The tax rate's valid date. Defaults to the beginning of 3 years ago.
+`valid_from`            | date      | The tax rate's validity date. Defaults to the beginning of 3 years ago.
 
 ### Retrieve a tax rate
 
@@ -75,11 +75,11 @@ Attributes:
 
 Attribute               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
-`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`jurisdiction_id`       | integer   | The [tax jurisdiction](#tax-jurisdictions). **Required**
 `name`                  | string    | The tax rate's name. **Required**
 `value`                 | decimal   | The tax rate's value for the selected `tax_code`. **Required**
 `tax_code`              | string    | The tax rate's tax code. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`.  Defaults to the account's default tax code. 
-`valid_from`            | date      | The tax rate's valid date. Defaults to 3 years ago.
+`valid_from`            | date      | The tax rate's validity date. Defaults to 3 years ago.
 `valid_until`           | date      | The tax rate's expiration date. Use null if the tax rate has no expiration date.
 
 ### Delete a tax rate

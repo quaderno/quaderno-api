@@ -30,7 +30,7 @@ curl -u YOUR_API_KEY:x \
 
 ```cURL
 curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json'
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json?country=CA'
 ```
 
 ```json
@@ -61,5 +61,6 @@ curl -u YOUR_API_KEY:x \
 `GET`ting from `/jurisdictions.json` will return all tax jurisdictions.
 
 You can filter the results in a few ways:
+
 - By country, passing the `country` parameter like `?country=US`.
 - By region, passing the `region` parameter like `?region=NY`.

@@ -24,9 +24,9 @@ Attributes:
 
 Attribute               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
-`jurisdiction_id`       | integer   | The tax jurisdiction. **Required**
+`jurisdiction_id`       | integer   | The [tax jurisdiction](#tax-jurisdictions). **Required**
 `value`                 | decimal   | The tax ID's value for the selected. **Required**
-`valid_from`            | date      | The tax ID's valid date. Defaults to the beginning of the year.
+`valid_from`            | date      | The tax ID's validity date. Defaults to the beginning of the year.
 
 ### Retrieve a tax ID
 
@@ -76,7 +76,7 @@ Attributes:
 Attribute               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
 `value`                 | decimal   | The tax ID's value for the selected. **Required**
-`valid_from`            | date      | The tax ID's valid date.
+`valid_from`            | date      | The tax ID's validity date.
 `valid_until`           | date      | The tax ID's expiration date. Use null if the tax ID has no expiration date.
 
 ### Delete a tax ID
@@ -163,7 +163,9 @@ Parameter    | Mandatory | Description
 `country`    | **Yes**   | The customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `tax_id`     | **Yes**   | The customer's tax ID. 
 
-This will return a `200 OK` and the result of validating the tax ID against the official external validation service. The result can be true (valid tax ID), false (invalid tax ID) or null (the external service is temporarily unavailable).
+This will return a `200 OK` and the result of validating the tax ID against the official external validation service. 
+
+The result can be true (valid tax ID), false (invalid tax ID) or null (the external service is temporarily unavailable).
 
 In our [Sandbox](https://developers.quaderno.io/#introduction-the-sandbox), you can use the following test numbers: 
 

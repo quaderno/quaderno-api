@@ -57,57 +57,6 @@ $contact->save(); // Returns true (success) or false (error)
 
 This will return `201 Created` and the current JSON representation of the contact if the creation was a success, along with the location of the new contact in the `url` field.
 
-### Update a contact
-
-> `PUT /contacts/CONTACT_ID.json`
-
-```cURL
-curl -u YOUR_API_KEY:x \
-     -H 'Content-Type: application/json' \
-     -X PUT \
-     -d '{"first_name":"Anthony"}' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
-```
-
-```ruby
-Quaderno::Contact.update(
-    CONTACT_ID, 
-    {
-        first_name: 'Mary',
-        last_name: 'Smith'
-    }
-)
-```
-
-```php
-$contact->first_name = 'Anthony';
-$contact->save();
-```
-
-`PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
-
-This will return `200 OK` and a JSON representation of the contact if successful.
-
-### Delete a contact
-
-> `DELETE /contacts/CONTACT_ID.json`
-
-```cURL
-curl -u YOUR_API_KEY:x \
-     -X DELETE
-     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
-```
-
-```ruby
-Quaderno::Contact.delete(CONTACT_ID)
-```
-
-```php
-$contact->delete();
-```
-
-`DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.
-
 ### Retrieve a contact
 
 > `GET /contacts/CONTACT_ID.json`
@@ -209,6 +158,57 @@ Supported gateways:
 - [Braintree](https://www.braintreepayments.com/)
 
 More are added frequently, so check back!
+
+### Update a contact
+
+> `PUT /contacts/CONTACT_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{"first_name":"Anthony"}' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
+```
+
+```ruby
+Quaderno::Contact.update(
+    CONTACT_ID, 
+    {
+        first_name: 'Mary',
+        last_name: 'Smith'
+    }
+)
+```
+
+```php
+$contact->first_name = 'Anthony';
+$contact->save();
+```
+
+`PUT`ing to `/contacts/CONTACT_ID.json` will update the contact from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the contact if successful.
+
+### Delete a contact
+
+> `DELETE /contacts/CONTACT_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X DELETE
+     'https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID.json'
+```
+
+```ruby
+Quaderno::Contact.delete(CONTACT_ID)
+```
+
+```php
+$contact->delete();
+```
+
+`DELETE`ing to `/contacts/CONTACT_ID.json` will delete the specified contact and returns `204 No Content` if successful.
 
 ### List all contacts
 

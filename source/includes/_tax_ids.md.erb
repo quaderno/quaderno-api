@@ -28,6 +28,33 @@ Attribute               | Type      | Description
 `value`                 | decimal   | The tax ID's value for the selected. **Required**
 `valid_from`            | date      | The tax ID's valid date. Defaults to the beginning of the year.
 
+### Retrieve a tax ID
+
+> `GET /tax_ids/TAX_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
+```
+
+```json
+{
+  "id": 456987213,
+  "jurisdiction": {
+    "id": 6,
+    "name": "Ireland"
+  },
+  "state": "verified",
+  "valid_from": "2015-01-01",
+  "valid_until": null,
+  "value": "IE6388047V",
+  "url": "http://assur-5845.lvh.me:3000/api/tax_ids/456987213",
+  "created_at": 1611322639
+}
+```
+
+`GET`ting from `/tax_ids/TAX_ID.json` will get you that specific tax ID.
+
 ### Update a tax ID
 
 > `PUT /tax_ids/TAX_ID.json`
@@ -64,33 +91,6 @@ curl -u YOUR_API_KEY:x \
 ```
 
 `DELETE`ing to `/tax_ids/TAX_ID.json` will delete the specified tax ID and returns `204 No Content` if successful.
-
-### Retrieve a tax ID
-
-> `GET /tax_ids/TAX_ID.json`
-
-```cURL
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/TAX_ID.json'
-```
-
-```json
-{
-  "id": 456987213,
-  "jurisdiction": {
-    "id": 6,
-    "name": "Ireland"
-  },
-  "state": "verified",
-  "valid_from": "2015-01-01",
-  "valid_until": null,
-  "value": "IE6388047V",
-  "url": "http://assur-5845.lvh.me:3000/api/tax_ids/456987213",
-  "created_at": 1611322639
-}
-```
-
-`GET`ting from `/tax_ids/TAX_ID.json` will get you that specific tax ID.
 
 ### List all tax IDs
 

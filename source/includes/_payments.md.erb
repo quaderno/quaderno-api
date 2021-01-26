@@ -2,13 +2,10 @@
 
 Payments in Quaderno-lingo represent the recording of a successful payment.
 
-Like [items](#items), payments are a sub-object and can be attached to multiple types of other records:
-
-- Invoices and sales receipts
-- Expenses
+Like [products](#items), payments are a sub-object and can be attached to invoices and expenses.
 
 <aside class="notice">
-Note that unlike items, payments cannot exist in Quaderno separately to an instance of one of these classes, and the same payment cannot be referenced by more than one instance.
+Note that unlike products, payments cannot exist in Quaderno separately to an instance of one of these classes, and the same payment cannot be referenced by more than one instance.
 </aside>
 
 ### Create a payment
@@ -59,7 +56,7 @@ invoice.add_payment(params) #=> Quaderno::Payment
 
 This will return `201 Created` and the current JSON representation of the payment if the creation was a success, along with the location of the new item in the `Location` header.
 
-#### Attributes
+Attributes:
 
 Attribute      | Mandatory | Type/Description
 ---------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------
@@ -69,27 +66,7 @@ payment_method | **yes**   | One of the following: `credit_card`, `cash`, `wire_
 payment_processor  | no    | Payment processor that you used to process the payment.
 payment_processor_id  | no | The `id` that the payment processor assigned to the payment.
 
-
-### Retrieve: Get all payments on an invoice or expense
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID/payments.json'
-```
-
-```php
-$expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
-$payments = $expense->getPayments(); // Returns an array of QuadernoPayment
-```
-
-```ruby
-expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
-payments = expense.payments #=> an array of Quaderno::Payment
-```
-
-`GET`ting from `/invoices/INVOICE_ID/payments.json` or `/expenses/EXPENSE_ID/payments.json` will return all the payments on the invoice or expense in question.
-
-### Retrieve: Get a single payment on an invoice or expense
+### Retrieve a payment
 
 ```shell
 curl -u YOUR_API_KEY:x \
@@ -127,3 +104,24 @@ $expense->removePayment($payments[2]); // Return true (success) or false (error)
 ```
 
 `DELETE`ing to `/invoices/INVOICE_ID/payments/PAYMENT_ID.json` or `/expenses/EXPENSE_ID/payments/PAYMENT_ID.json` will delete the specified payment and returns `204 No Content` if successful.
+
+### List all payments
+
+> `GET /invoices/INVOICE_ID/payments.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID/payments.json'
+```
+
+```ruby
+invoice = Quaderno::Invoice.find(INVOICE_ID) #=> Quaderno::Invoice
+payments = invoice.payments #=> an array of Quaderno::Payment
+```
+
+```php
+$invoice = QuadernoInvoice::find('INVOICE_ID'); // Returns a QuadernoInvoice
+$payments = $invoice->getPayments(); // Returns an array of QuadernoPayment
+```
+
+`GET`ting from `/invoices/INVOICE_ID/payments.json` or `/expenses/EXPENSE_ID/payments.json` will return all the payments on the invoice or expense in question.

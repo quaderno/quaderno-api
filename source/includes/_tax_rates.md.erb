@@ -30,6 +30,31 @@ Attribute               | Type      | Description
 `tax_code`              | string    | The tax rate's tax code. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`.  Defaults to the account's default tax code. 
 `valid_from`            | date      | The tax rate's valid date. Defaults to the beginning of 3 years ago.
 
+### Retrieve a tax rate
+
+> `GET /tax_rates/TAX_RATE_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
+```
+
+```json
+{
+  "id": 456987213,
+  "country": "FR",
+  "name": "TVA",
+  "tax_class": "standard",
+  "valid_from": "2020-01-01",
+  "valid_until": null,
+  "value": 20.0,
+  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456987213"
+  "created_at": 1611330350
+}
+```
+
+`GET`ting from `/tax_rates/TAX_RATE_ID.json` will get you that specific tax rate.
+
 ### Update a tax rate
 
 > `PUT /tax_rates/TAX_RATE_ID.json`
@@ -68,31 +93,6 @@ curl -u YOUR_API_KEY:x \
 ```
 
 `DELETE`ing to `/tax_rates/TAX_RATE_ID.json` will delete the specified tax rate and returns `204 No Content` if successful.
-
-### Retrieve a tax rate
-
-> `GET /tax_rates/TAX_RATE_ID.json`
-
-```cURL
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID.json'
-```
-
-```json
-{
-  "id": 456987213,
-  "country": "FR",
-  "name": "TVA",
-  "tax_class": "standard",
-  "valid_from": "2020-01-01",
-  "valid_until": null,
-  "value": 20.0,
-  "url":"https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/456987213"
-  "created_at": 1611330350
-}
-```
-
-`GET`ting from `/tax_rates/TAX_RATE_ID.json` will get you that specific tax rate.
 
 ### List all tax rates
 

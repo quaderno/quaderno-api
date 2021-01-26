@@ -1,6 +1,6 @@
 ## Expenses
 
-Expenses are all the invoices that you receive from your vendors.
+Expenses are all the invoices that you receive from your providers.
 
 ### Create an expense
 
@@ -79,6 +79,8 @@ invoice = Quaderno::Expense.create(params) #=> Quaderno::Expense
 
 This will return `201 Created` and the current JSON representation of the expense if the creation was a success, along with the location of the new expense in the `url` field.
 
+Attributes:
+
 Attribute       | Mandatory                                  | Type/Description
 ----------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------
 number          | no                                         | String(20 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness
@@ -111,7 +113,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 <p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#contacts">Contacts API</a>.</p>
 </aside>
 
-#### Document Item Attributes
+Document Item Attributes:
 
 Attribute     | Mandatory                                | Type/Description
 --------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------
@@ -133,6 +135,20 @@ tax_2_region  | no                                       | String(255 chars). Re
 tax_2_transaction_type | no                              | String. Accepts `eservice`, `ebook` or `standard`. Defaults to your account "default tax type".
 reference     | no                                       | String(255 chars) Code (`code`) of an existing item. **If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)**
 _destroy      | no                                       | Set it to 1 if you want to remove the document item selected by ID. Available only for updates
+
+#### Create an expense from an invoice
+
+```json
+{
+  "permalink":"c2d480801d0e577c6c3177ce0795c4bdaa480e22"
+}
+```
+
+`GET`ting `/expenses/save.json` will save another account invoice as an expense using the permalink passed as a parameter.
+
+This will return `201 Created`, with the current JSON representation of the expense if the creation was a success, along the location of the new expense in the `url` field.
+
+If the user does not have access to create new expenses, you'll see `401 Unauthorized` or a `422` if the permalink is invalid or the invoice is not suitable to be saved.
 
 #### Expense States
 
@@ -165,7 +181,118 @@ Field      | Description
 
 Valid file extensions are `pdf`, `txt`, `jpeg`, `jpg`, `png`, `xml`, `xls`, `doc`, `rtf` and `html`. Any other format will stop expense creation and return a `422 Unprocessable Entity` error.
 
-### Retrieve: Get and filter all expenses
+### Retrieve an expense
+
+> `GET /expenses/EXPENSE_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
+```
+
+```ruby
+expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
+```
+
+```php
+$expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
+```
+
+```json
+{
+  "id":"5076a6b92f412e0e2e00006c",
+  "issue_date":"2012-10-11",
+  "created_at":"1325376000",
+  "contact":{
+    "id":"5059bdbf2f412e0901000024",
+    "full_name":"ACME"
+  },
+  "country":"US",
+  "street_line_1":"Verizon Center",
+  "street_line_2":"",
+  "city":"Washington DC",
+  "region":"Washington DC",
+  "postal_code":"",
+  "po_number":"",
+  "currency":"USD",
+  "items":[
+    {
+      "id":"48151623423",
+      "description":"Rockets",
+      "quantity":"50.0",
+      "unit_price_cents":"12500",
+      "discount_rate":"0.0",
+      "tax_1_name":"",
+      "tax_1_rate":"",
+      "tax_2_name":"",
+      "tax_2_rate":"",
+      "subtotal_cents":"625000",
+      "discount_cents":"0",
+      "gross_amount_cents":"625000"
+    }
+  ],
+  "subtotal_cents":"625000",
+  "discount_cents":"0",
+  "taxes":[],
+  "total_cents":"625000",
+  "payments":[],
+  "tag_list":["rockets", "acme"],
+  "notes":"",
+  "state":"outstanding",
+  "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00006c"
+}
+```
+
+`GET`ting from `/expenses/EXPENSE_ID.json` will return that specific expense.
+
+### Update an expense
+
+> `PUT /expenses/EXPENSE_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "payment_details":"Money in da bank" }'  \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
+```
+
+```ruby
+params = {
+    payment_details: 'Money in da bank'
+}
+Quaderno::Expense.update(EXPENSE_ID, params) #=> Quaderno::Expense
+```
+
+```php
+$expense->payment_details = 'Money in da bank';
+$expense->save();
+```
+
+`PUT`ting to `/expenses/EXPENSE_ID.json` will update the expense with the passed parameters.
+
+This will return `200 OK` along with the current JSON representation of the expense if successful.
+
+### Delete an expense
+
+> `DELETE /expenses/EXPENSE_ID.json`
+
+```shell
+curl -u YOUR_API_KEY:x \
+     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
+```
+
+```ruby
+Quaderno::Expense.delete(EXPENSE_ID) #=> Boolean
+```
+
+```php
+$expense->delete();
+```
+
+`DELETE`ing to `/expense/EXPENSE_ID.json` will delete the specified contact and returns `204 No Content` if successful.
+
+### List all expenses
 
 > `GET /expenses.json`
 
@@ -284,127 +411,3 @@ You can filter the results in a few ways:
 - By state, passing the `state` parameter like `?state=STATE`.
 - By specific vendor, passing the vendor ID in the `contact` parameter, like `?contact=3231`.
 
-### Retrieve: Get a single expense
-
-> `GET /expenses/EXPENSE_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
-```
-
-```ruby
-expense = Quaderno::Expense.find(EXPENSE_ID) #=> Quaderno::Expense
-```
-
-```php
-$expense = QuadernoExpense::find('EXPENSE_ID'); // Returns a QuadernoExpense
-```
-
-```json
-{
-  "id":"5076a6b92f412e0e2e00006c",
-  "issue_date":"2012-10-11",
-  "created_at":"1325376000",
-  "contact":{
-    "id":"5059bdbf2f412e0901000024",
-    "full_name":"ACME"
-  },
-  "country":"US",
-  "street_line_1":"Verizon Center",
-  "street_line_2":"",
-  "city":"Washington DC",
-  "region":"Washington DC",
-  "postal_code":"",
-  "po_number":"",
-  "currency":"USD",
-  "items":[
-    {
-      "id":"48151623423",
-      "description":"Rockets",
-      "quantity":"50.0",
-      "unit_price_cents":"12500",
-      "discount_rate":"0.0",
-      "tax_1_name":"",
-      "tax_1_rate":"",
-      "tax_2_name":"",
-      "tax_2_rate":"",
-      "subtotal_cents":"625000",
-      "discount_cents":"0",
-      "gross_amount_cents":"625000"
-    }
-  ],
-  "subtotal_cents":"625000",
-  "discount_cents":"0",
-  "taxes":[],
-  "total_cents":"625000",
-  "payments":[],
-  "tag_list":["rockets", "acme"],
-  "notes":"",
-  "state":"outstanding",
-  "url":"https://my-account.quadernoapp.com/api/expenses/5076a6b92f412e0e2e00006c"
-}
-```
-
-`GET`ting from `/expenses/EXPENSE_ID.json` will return that specific expense.
-
-### Update an expense
-
-> `PUT /expenses/EXPENSE_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -H 'Content-Type: application/json' \
-     -X PUT \
-     -d '{ "payment_details":"Money in da bank" }'  \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
-```
-
-```ruby
-params = {
-    payment_details: 'Money in da bank'
-}
-Quaderno::Expense.update(EXPENSE_ID, params) #=> Quaderno::Expense
-```
-
-```php
-$expense->payment_details = 'Money in da bank';
-$expense->save();
-```
-
-`PUT`ting to `/expenses/EXPENSE_ID.json` will update the expense with the passed parameters.
-
-This will return `200 OK` along with the current JSON representation of the expense if successful.
-
-### Save an invoice as an expense
-
-```json
-{
-  "permalink":"c2d480801d0e577c6c3177ce0795c4bdaa480e22"
-}
-```
-
-`GET`ting `/expenses/save.json` will save another account invoice as an expense using the permalink passed as a parameter.
-
-This will return `201 Created`, with the current JSON representation of the expense if the creation was a success, along the location of the new expense in the `url` field.
-
-If the user does not have access to create new expenses, you'll see `401 Unauthorized` or a `422` if the permalink is invalid or the invoice is not suitable to be saved.
-
-### Delete an expense
-
-> `DELETE /expenses/EXPENSE_ID.json`
-
-```shell
-curl -u YOUR_API_KEY:x \
-     -X DELETE 'https://ACCOUNT_NAME.quadernoapp.com/api/expenses/EXPENSE_ID.json'
-```
-
-```ruby
-Quaderno::Expense.delete(EXPENSE_ID) #=> Boolean
-```
-
-```php
-$expense->delete();
-```
-
-`DELETE`ing to `/expense/EXPENSE_ID.json` will delete the specified contact and returns `204 No Content` if successful.

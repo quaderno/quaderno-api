@@ -17,7 +17,6 @@ Attribute          | Description
 `additional_evidence_country`   | Country of the aditional evidence (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `notes`            | Additional notes about the evidence
 
-
 ### Create an evidence
 
 > `POST /evidence.json`
@@ -62,6 +61,7 @@ contact = Quaderno::Evidence.create(
 This will return 201 Created and the current JSON representation of the evidence if the creation was a success.
 
 #### Attributes
+
 Parameter          | Mandatory | Description
 -------------------|-----------|------------------------------------------------------------------------------------------------
 `document_id`      | **yes**   | Invoice or Receipt's ID
@@ -71,6 +71,40 @@ Parameter          | Mandatory | Description
 `additional_evidence`          | no (yes if `additional_evidence_country` is passed) | An explanatory note about the additional evidence. Up to 255 chars.
 `additional_evidence_country`  | no (yes if `additional_evidence` is passed)         | Additional evidence for the customer location (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes))
 `notes`             | no       | Additional notes about the evidence
+
+### Retrieve an evidence
+
+> `GET /evidence/EVIDENCE_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/evidence/EVIDENCE_ID.json'
+```
+
+```php
+$evidence = QuadernoEvidence::find(EVIDENCE_ID);
+```
+
+```ruby
+evidence = Quaderno::Evidence.find(EVIDENCE_ID) #=> Quaderno::Evidence
+```
+
+```json
+  {
+    "id":483,
+    "document_id":9748,
+    "state":"conflicting",
+    "billing_country":"ES",
+    "ip_address":null,
+    "ip_country":null,
+    "bank_country":"US",
+    "additional_evidence":null,
+    "additional_evidence_country":null,
+    "notes":null
+  }
+```
+
+`GET`ting from `/evidence/EVIDENCE_ID.json` will return that specific evidence.
 
 ### Update an evidence
 
@@ -108,10 +142,9 @@ Quaderno::Evidence.update(EVIDENCE_ID, params) #=> Quaderno::Evidence
 
 This will return `200 OK` along with the current JSON representation of the evidence if successful.
 
-### Retrieve: Get and filter all evidence
+### List all evidence
 
 > `GET /evidence/EVIDENCE_ID.json`
-
 
 ```cURL
 curl -u YOUR_API_KEY:x \
@@ -161,38 +194,3 @@ You can filter the results in a few ways:
 
 - By state, passing the `state` parameter like `?state=STATE`. You can combine multiple states separated by commas like `?state=confirmed,unsettled`. Valid states are `confirmed`, `unsettled` and `conflicting`.
 - By document_id, passing the document ID in the `document_id` parameter, like `?document_id=3231`.
-
-### Retrieve: Get a single evidence
-
-> `GET /evidence/EVIDENCE_ID.json`
-
-
-```cURL
-curl -u YOUR_API_KEY:x \
-     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/evidence/EVIDENCE_ID.json'
-```
-
-```php
-$evidence = QuadernoEvidence::find(EVIDENCE_ID);
-```
-
-```ruby
-evidence = Quaderno::Evidence.find(EVIDENCE_ID) #=> Quaderno::Evidence
-```
-
-```json
-  {
-    "id":483,
-    "document_id":9748,
-    "state":"conflicting",
-    "billing_country":"ES",
-    "ip_address":null,
-    "ip_country":null,
-    "bank_country":"US",
-    "additional_evidence":null,
-    "additional_evidence_country":null,
-    "notes":null
-  }
-```
-
-`GET`ting from `/evidence/EVIDENCE_ID.json` will return that specific evidence.

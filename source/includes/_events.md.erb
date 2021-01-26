@@ -1,6 +1,6 @@
 ## Events 
 
-Quaderno allows your application to receive information about events that happen on your documents as they occur.
+Quaderno allows your application to receive information about events that happen in your account as they occur.
 
 ### Data Format
 
@@ -317,3 +317,4 @@ In your code that processes receieved webhooks:
 3. Hash the resulting string with `HMAC-SHA1`, using your webhook's authentication key to generate a binary signature.
 4. Base64 encode the binary signature.
 5. Compare the binary signature that you generated to the signature provided in the `X-Quaderno-Signature` HTTP header.
+

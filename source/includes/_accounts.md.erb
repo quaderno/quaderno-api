@@ -30,30 +30,6 @@ Attribute               | Type      | Description
 `default_tax_class`     | string    | The account's default tax class. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`. Defaults to the creator's default tax class.
 `local_tax_id`          | string    | The account's tax ID. If set, the account will be registered for tax collection in the `country`'s jurisdiction.
 
-### Update an account
-
-> `PUT /accounts/ACCOUNT_ID.json`
-
-```cURL
-curl -u YOUR_API_KEY:x \
-     -H 'Content-Type: application/json' \
-     -X PUT \
-     -d '{ "business_name":"Another Name Inc." }' \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
-```
-
-`PUT`ing to `/accounts/ACCOUNT_ID.json` will update the account from the passed parameters.
-
-This will return `200 OK` and a JSON representation of the account if successful.
-
-Attributes:
-
-Attribute               | Type      | Description
-------------------------|-----------|----------------------------------------------------------------------------
-`business_name`         | string    | The accounts's business name.
-`email`                 | string    | The account's email address.
-`default_tax_class`     | string    | The account's default tax class. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`. Default the creator's default tax class.
-
 ### Retrieve an account
 
 > `GET /accounts/ACCOUNT_ID.json`
@@ -79,6 +55,30 @@ curl -u YOUR_API_KEY:x \
 ```
 
 `GET`ting from `/accounts/ACCOUNT_ID.json` will get you that specific account.
+
+### Update an account
+
+> `PUT /accounts/ACCOUNT_ID.json`
+
+```cURL
+curl -u YOUR_API_KEY:x \
+     -H 'Content-Type: application/json' \
+     -X PUT \
+     -d '{ "business_name":"Another Name Inc." }' \
+     'https://ACCOUNT_NAME.quadernoapp.com/api/accounts/ACCOUNT_ID.json'
+```
+
+`PUT`ing to `/accounts/ACCOUNT_ID.json` will update the account from the passed parameters.
+
+This will return `200 OK` and a JSON representation of the account if successful.
+
+Attributes:
+
+Attribute               | Type      | Description
+------------------------|-----------|----------------------------------------------------------------------------
+`business_name`         | string    | The accounts's business name.
+`email`                 | string    | The account's email address.
+`default_tax_class`     | string    | The account's default tax class. Can be `eservice`, `ebook`, `saas`, `standard`, `reduced`, `exempted`. Default the creator's default tax class.
 
 ### List all accounts
 

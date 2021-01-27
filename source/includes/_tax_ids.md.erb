@@ -139,13 +139,13 @@ curl -u YOUR_API_KEY:x \
 Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
 </aside>
 
-> GET /taxes/validate.json
+> GET /tax_ids/validate.json
 
 ```cURL
 curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/validate.json?country=IE&tax_id=IE6388047V'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/validate.json?country=IE&tax_id=IE6388047V'
 ```
 
 ```json
@@ -154,7 +154,7 @@ curl -u YOUR_API_KEY:x \
 }
 ```
 
-`GET`ting to `/taxes/validate.json` will validate the given tax ID.
+`GET`ting to `/tax_ids/validate.json` will validate the given tax ID.
 
 Please keep in mind that tax IDs are not actually validated while using the Sandbox.
 

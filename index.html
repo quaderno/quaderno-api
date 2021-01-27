@@ -1719,19 +1719,19 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 </aside>
 
 <blockquote>
-<p>GET /taxes/validate.json</p>
+<p>GET /tax_ids/validate.json</p>
 </blockquote>
 
 <div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/taxes/validate.json?country=IE&amp;tax_id=IE6388047V'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_ids/validate.json?country=IE&amp;tax_id=IE6388047V'
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"valid"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
-<p><code>GET</code>ting to <code>/taxes/validate.json</code> will validate the given tax ID.</p>
+<p><code>GET</code>ting to <code>/tax_ids/validate.json</code> will validate the given tax ID.</p>
 
 <p>Please keep in mind that tax IDs are not actually validated while using the Sandbox.</p>
 
@@ -2346,13 +2346,8 @@ curl -u YOUR_API_KEY:x \
 
 <h2 id='taxes-legacy'>Taxes (legacy)</h2>
 
-<aside class="notice">
-The following endpoints are legacy and will be discontinued on 1st May 2021.
-Use the following endpoints instead:
-<ul>
-    <li><strong>/tax_rates/calculate</strong> to <a href="#calculate-a-tax-rate">calculate tax rates</a></li>
-    <li><strong>/tax_ids/validate</strong> to <a href="#validate-a-tax-id">validate tax IDs]</a></li>
-</ul>
+<aside class="warning">
+The following endpoints are legacy and will be discontinued on 1st May 2021. Please use the new endpoints for <a href="#calculate-a-tax-rate">tax calculation</a> and <a href="#validate-a-tax-id">tax ID validation</a>.
 </aside>
 
 <p>One of the killer features Quaderno provides is efficient and easy tax management. As part of this, we offer an API for easy tax calculation.</p>

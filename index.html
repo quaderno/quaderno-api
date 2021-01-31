@@ -359,6 +359,17 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#tax-codes" class="toc-h2 toc-link" data-title="Tax Codes">Tax Codes</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#retrieve-a-tax-code" class="toc-h3 toc-link" data-title="Retrieve a tax code">Retrieve a tax code</a>
+                          </li>
+                          <li>
+                            <a href="#list-all-tax-codes" class="toc-h3 toc-link" data-title="List all tax codes">List all tax codes</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#evidence" class="toc-h2 toc-link" data-title="Evidence">Evidence</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -1815,7 +1826,7 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 <tr>
 <td><code>tax_code</code></td>
 <td>string</td>
-<td>The tax rate&#39;s tax code. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>.  Defaults to the account&#39;s default tax code.</td>
+<td>The <a href="#tax-codes">tax code</a>. Defaults to the account&#39;s default tax code.</td>
 </tr>
 <tr>
 <td><code>valid_from</code></td>
@@ -1891,7 +1902,7 @@ Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec 
 <tr>
 <td><code>tax_code</code></td>
 <td>string</td>
-<td>The tax rate&#39;s tax code. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>.  Defaults to the account&#39;s default tax code.</td>
+<td>The <a href="#tax-codes">tax code</a>. Defaults to the account&#39;s default tax code.</td>
 </tr>
 <tr>
 <td><code>valid_from</code></td>
@@ -1967,17 +1978,21 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 <div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
      -H 'Content-Type: application/json' \
      -X GET \
-     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate.json?to_country=US&amp;to_postal_code=94010'
+     'https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate?to_country=US&amp;to_postal_code=90210&amp;tax_code=standard&amp;amount=100'
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURLINGAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEVERLY HILLS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAN MATEO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOS ANGELES"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales tax"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w">
   </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_behavior"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exclusive"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tax_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"taxable_part"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="w">
+  </span><span class="nl">"taxable_base"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">109.5</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
@@ -2016,9 +2031,24 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 <td>The postal code where the order shipped from. Defaults to the account&#39;s postal code.</td>
 </tr>
 <tr>
+<td><code>amount</code></td>
+<td>decimal</td>
+<td>The transaction&#39;s amount.</td>
+</tr>
+<tr>
 <td><code>tax_code</code></td>
 <td>string</td>
-<td>The transaction&#39;s tax code. Can be <code>eservice</code>, <code>ebook</code>, <code>saas</code>, <code>standard</code>, <code>reduced</code>, <code>exempted</code>.  Defaults to the account&#39;s default tax code.</td>
+<td>The transaction&#39;s <a href="#tax-codes">tax code</a>. Defaults to the account&#39;s default tax code.</td>
+</tr>
+<tr>
+<td><code>tax_behavior</code></td>
+<td>string</td>
+<td>Specifies whether the price is considered inclusive of taxes or exclusive of taxes. Can be <code>inclusive</code> or <code>exclusive</code>. Defaults to <code>exclusive</code>.</td>
+</tr>
+<tr>
+<td><code>product_type</code></td>
+<td>string</td>
+<td>Specifies whether the product is a good or a service. Can be <code>good</code> or <code>service</code>. Defaults to <code>service</code>.</td>
 </tr>
 <tr>
 <td><code>date</code></td>
@@ -2026,14 +2056,9 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 <td>The transaction&#39;s date. Defaults to today.</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
-<td>decimal</td>
-<td>The transaction&#39;s amount. Recommended in overseas sales to the UK.</td>
-</tr>
-<tr>
 <td><code>currency</code></td>
 <td>string</td>
-<td>The transaction&#39;s currency. Three-letter <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO currency code</a>, in uppercase. Recommended in overseas sales to the UK.</td>
+<td>The transaction&#39;s currency. Three-letter <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO currency code</a>, in uppercase. Defauts to the account&#39;s default currency.</td>
 </tr>
 </tbody></table>
 
@@ -2102,6 +2127,52 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 <li>By region, passing the <code>region</code> parameter like <code>?region=NY</code>.</li>
 </ul>
 
+<h2 id='tax-codes'>Tax Codes</h2>
+
+<p>Tax codes classify goods and services for tax purposes.</p>
+
+<h3 id='retrieve-a-tax-code'>Retrieve a tax code</h3>
+
+<blockquote>
+<p><code>GET /tax_codes/TAX_CODE_ID.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_codes/TAX_CODE_ID.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service that is delivered over the internet. It is essentially automated, involves minimal human intervention and in the absence of information technology does not have viability."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electronically supplied services"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/tax_codes/TAX_CODE_ID.json</code> will get you that specific tax code.</p>
+
+<h3 id='list-all-tax-codes'>List all tax codes</h3>
+
+<blockquote>
+<p><code>GET /tax_codes.json</code></p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight plaintext"><code>curl -u YOUR_API_KEY:x \
+     -X GET 'https://ACCOUNT_NAME.quadernoapp.com/api/tax_codes.json'
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An electronic book that is sold with unlimited use."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eBook"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eservice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service that is delivered over the internet. It is essentially automated, involves minimal human intervention and in the absence of information technology does not have viability."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electronically supplied services"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+
+<p><code>GET</code>ting from <code>/tax_codes.json</code> will return all tax tax codes.</p>
+
 <h2 id='evidence'>Evidence</h2>
 
 <p>Location evidence are proofs of the customer&#39;s location that should be stored in order to be compliant with tax rules in some tax jurisdictions (e.g. EU VAT MOSS).</p>
@@ -2120,7 +2191,7 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 </tr>
 <tr>
 <td><code>document_id</code></td>
-<td>Invoice or Receipt&#39;s ID</td>
+<td>Invoice ID</td>
 </tr>
 <tr>
 <td><code>state</code></td>
@@ -2206,7 +2277,7 @@ curl -u YOUR_API_KEY:x \
 <tr>
 <td><code>document_id</code></td>
 <td><strong>yes</strong></td>
-<td>Invoice or Receipt&#39;s ID</td>
+<td>Invoice ID</td>
 </tr>
 <tr>
 <td><code>billing_country</code></td>
@@ -2573,7 +2644,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <tr>
 <td>number</td>
 <td>no</td>
-<td>String(20 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness</td>
+<td>String(20 chars) Available for invoices, credit_notes, and estimates. Automatic numbering is used by default. Validates uniqueness</td>
 </tr>
 <tr>
 <td>issue_date</td>
@@ -3070,23 +3141,7 @@ If you pass a `contact` JSON object instead of a `contact_id`, and the email or 
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># body.json</span>
 <span class="o">{</span>
-  <span class="s2">"contact_id"</span>:<span class="s2">"5059bdbf2f412e0901000024"</span>,
-  <span class="s2">"contact_name"</span>:<span class="s2">"STARK"</span>,
-  <span class="s2">"po_number"</span>:<span class="s2">""</span>,
-  <span class="s2">"currency"</span>:<span class="s2">"USD"</span>,
-  <span class="s2">"tag_list"</span>:<span class="s2">"playboy, businessman"</span>,
-  <span class="s2">"items_attributes"</span>:[
-    <span class="o">{</span>
-      <span class="s2">"description"</span>:<span class="s2">"Whiskey"</span>,
-      <span class="s2">"quantity"</span>:<span class="s2">"1.0"</span>,
-      <span class="s2">"unit_price"</span>:<span class="s2">"20.0"</span>,
-      <span class="s2">"discount_rate"</span>:<span class="s2">"0.0"</span>,
-      <span class="s2">"reference"</span>:<span class="s2">"item_code_X"</span>
-    <span class="o">}</span>
-  <span class="o">]</span>,
-  <span class="s2">"custom_metadata"</span>:<span class="o">{</span>
-    <span class="s2">"a_custom_key"</span>:<span class="s2">"a custom value"</span>
-  <span class="o">}</span>
+  <span class="s2">"invoice_id"</span>:<span class="s2">"5059bdbf2f412e0901000024"</span>,
 <span class="o">}</span>
 
 curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
@@ -3094,41 +3149,11 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
      <span class="nt">-X</span> POST <span class="se">\</span>
      <span class="nt">--data-binary</span> @body.json <span class="se">\</span>
      <span class="s1">'https://ACCOUNT_NAME.quadernoapp.com/api/credits.json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$credit</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuadernoCredit</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-                                 <span class="s1">'po_number'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
-                                 <span class="s1">'currency'</span> <span class="o">=&gt;</span> <span class="s1">'USD'</span><span class="p">,</span>
-                                 <span class="s1">'tag_list'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'playboy'</span><span class="p">,</span> <span class="s1">'businessman'</span><span class="p">),</span>
-                                 <span class="s1">'custom_metadata'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'a_custom_key'</span> <span class="o">=&gt;</span> <span class="s1">'a custom value'</span><span class="p">)));</span>
-<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuadernoDocumentItem</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-                               <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Whiskey'</span><span class="p">,</span>
-                               <span class="s1">'unit_price'</span> <span class="o">=&gt;</span> <span class="mf">20.0</span><span class="p">,</span>
-                               <span class="s1">'reference'</span> <span class="o">=&gt;</span> <span class="s1">'ITEM_ID'</span><span class="p">,</span>
-                               <span class="s1">'quantity'</span> <span class="o">=&gt;</span> <span class="mf">1.0</span><span class="p">));</span>
-<span class="nv">$contact</span> <span class="o">=</span> <span class="nx">QuadernoContact</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">'5059bdbf2f412e0901000024'</span><span class="p">);</span>
-
-<span class="nv">$credit</span><span class="o">-&gt;</span><span class="na">addItem</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span>
-<span class="nv">$credit</span><span class="o">-&gt;</span><span class="na">addContact</span><span class="p">(</span><span class="nv">$contact</span><span class="p">);</span>
-
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$credit</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuadernoCredit</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'invoice_id'</span> <span class="o">=&gt;</span> <span class="s1">'5059bdbf2f412e0901000024'</span><span class="p">));</span>
 <span class="nv">$credit</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span> <span class="c1">// Returns true (success) or false (error)</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">contact</span> <span class="o">=</span> <span class="no">Quaderno</span><span class="o">::</span><span class="no">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'50603e722f412e0435000024'</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Contact</span>
-
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">contact_id: </span><span class="n">contact</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
-  <span class="ss">contact_name: </span><span class="s1">'STARK'</span><span class="p">,</span>
-  <span class="ss">po_number: </span><span class="s1">''</span><span class="p">,</span>
-  <span class="ss">currency: </span><span class="s1">'USD'</span><span class="p">,</span>
-  <span class="ss">tag_list: </span><span class="p">[</span><span class="s1">'playboy'</span><span class="p">,</span> <span class="s1">'businessman'</span><span class="p">],</span>
-  <span class="ss">items_attributes: </span><span class="p">[</span>
-    <span class="p">{</span>
-      <span class="ss">description: </span><span class="s1">'Whiskey'</span><span class="p">,</span>
-      <span class="ss">quantity: </span><span class="s1">'1.0'</span><span class="p">,</span>
-      <span class="ss">unit_price: </span><span class="s1">'20.0'</span><span class="p">,</span>
-      <span class="ss">discount_rate: </span><span class="s1">'0.0'</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="ss">custom_metadata: </span><span class="p">{</span>
-    <span class="ss">a_custom_key: </span><span class="s1">'a custom value'</span>
-  <span class="p">}</span>
+  <span class="ss">invoice_id: </span><span class="s2">"5059bdbf2f412e0901000024"</span>
 <span class="p">}</span>
 
 <span class="no">Quaderno</span><span class="o">::</span><span class="no">Credit</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="c1">#=&gt; Quaderno::Credit</span>
@@ -3142,273 +3167,16 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <table><thead>
 <tr>
 <th>Attribute</th>
-<th>Mandatory</th>
-<th>Type/Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>document_id</td>
-<td>no (highly recommendable)</td>
-<td>ID. ID of a related Invoice or Receipt.</td>
-</tr>
-<tr>
-<td>number</td>
-<td>no</td>
-<td>String(20 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness</td>
-</tr>
-<tr>
-<td>issue_date</td>
-<td>no</td>
-<td>String(255 chars) Available for all except for <code>recurring</code>. Defaults to the current date. Format YYYY-MM-DD</td>
-</tr>
-<tr>
-<td>po_number</td>
-<td>no</td>
-<td>String(255 chars)</td>
-</tr>
-<tr>
-<td>due_date</td>
-<td>no</td>
-<td>String(255 chars) Available for invoices, expenses and credit notes. Format <code>YYYY-MM-DD</code></td>
-</tr>
-<tr>
-<td>currency</td>
-<td>no</td>
-<td>String(3 chars) Defaults to the account currency. En formato ISO 4217</td>
-</tr>
-<tr>
-<td>tag_list</td>
-<td>no</td>
-<td>String(255 chars). Multiple tags should be separated by commas</td>
-</tr>
-<tr>
-<td>payment_details</td>
-<td>no</td>
-<td>Text</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>no</td>
-<td>Text</td>
-</tr>
-<tr>
-<td>contact_id</td>
-<td>(Mandatory if <code>contact</code> is not present)</td>
-<td>ID</td>
-</tr>
-<tr>
-<td>contact</td>
-<td>(Mandatory if <code>contact_id</code> is not present)</td>
-<td>Hash with a contact data for creation</td>
-</tr>
-<tr>
-<td>country</td>
-<td>no</td>
-<td>String(2 chars) <code>ISO 3166-1 alpha-2</code>. Available for updates</td>
-</tr>
-<tr>
-<td>street_line_1</td>
-<td>no</td>
-<td>String(255 chars). Available for updates</td>
-</tr>
-<tr>
-<td>street_line_2</td>
-<td>no</td>
-<td>String(255 chars)</td>
-</tr>
-<tr>
-<td>city</td>
-<td>no</td>
-<td>String(255 chars). Available for updates</td>
-</tr>
-<tr>
-<td>region</td>
-<td>no</td>
-<td>String(255 chars). Available for updates</td>
-</tr>
-<tr>
-<td>postal_code</td>
-<td>no</td>
-<td>String(255 chars). Available for updates</td>
-</tr>
-<tr>
-<td>items_attributes</td>
-<td><strong>yes</strong></td>
-<td>Array of document items (check available attributes for document items below). No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.</td>
-</tr>
-<tr>
-<td>payment_method</td>
-<td>no</td>
-<td>Create a paid document in a single request. One of the following: <code>credit_card</code>, <code>cash</code>, <code>wire_transfer</code>, <code>direct_debit</code>, <code>check</code>, <code>iou</code>, <code>paypal</code> or <code>other</code></td>
-</tr>
-<tr>
-<td>payment_processor</td>
-<td>no</td>
-<td>Payment processor that you used to process the payment.</td>
-</tr>
-<tr>
-<td>payment_processor_id</td>
-<td>no</td>
-<td>The <code>id</code> that the payment processor assigned to the payment.</td>
-</tr>
-<tr>
-<td>custom_metadata</td>
-<td>no</td>
-<td>Key-value data. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-If you pass a `contact` JSON object instead of a `contact_id`, and the email or first and last name combination does not match any of your existing credits, a new one will be created, otherwise a new credit will be created for the existing credit.<br /><br />
-
-<p>Please note that you can pass <strong>either</strong> credit_id or credit, but if you pass both then results may not be what you expect.</p>
-
-<p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="#credits">Contacts API</a>.</p>
-</aside>
-
-<p>Document Item Attributes:</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Mandatory</th>
-<th>Type/Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>no</td>
-<td>ID. Available only for updates</td>
-</tr>
-<tr>
-<td>description</td>
-<td><strong>yes</strong></td>
-<td>String(255 chars)</td>
-</tr>
-<tr>
-<td>quantity</td>
-<td>no</td>
-<td>Decimal. Defaults to 1.0</td>
-</tr>
-<tr>
-<td>unit_price</td>
-<td><strong>yes</strong></td>
-<td>Decimal</td>
-</tr>
-<tr>
-<td>total_amount</td>
-<td>Mandatory if <code>unit_price</code> is not present</td>
-<td>Decimal. Cents version available as <code>total_amount_cents</code></td>
-</tr>
-<tr>
-<td>discount_rate</td>
-<td>no</td>
-<td>Decimal</td>
-</tr>
-<tr>
-<td>tax_1_name</td>
-<td>Mandatory if <code>tax_1_rate</code> is present</td>
-<td>String(255 chars)</td>
-</tr>
-<tr>
-<td>tax_1_rate</td>
-<td>Mandatory if <code>tax_1_name</code> is present</td>
-<td>Decimal between -100.00 and 100.00 (not included)</td>
-</tr>
-<tr>
-<td>tax_1_country</td>
-<td>no</td>
-<td>String(2 chars). Defaults to the contact&#39;s country</td>
-</tr>
-<tr>
-<td>tax_1_region</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_1_transaction_type</td>
-<td>no</td>
-<td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
-</tr>
-<tr>
-<td>tax_2_name</td>
-<td>Mandatory if <code>tax_2_rate</code> is present</td>
-<td>String(255 chars)</td>
-</tr>
-<tr>
-<td>tax_2_rate</td>
-<td>Mandatory if <code>tax_2_name</code> is present</td>
-<td>Decimal between -100.00 and 100.00 (not included)</td>
-</tr>
-<tr>
-<td>tax_2_country</td>
-<td>no</td>
-<td>String(2 chars). Defaults to the contact&#39;s country</td>
-</tr>
-<tr>
-<td>tax_2_region</td>
-<td>no</td>
-<td>String(255 chars). Recommendable to set for Canadian or United States taxes.</td>
-</tr>
-<tr>
-<td>tax_2_transaction_type</td>
-<td>no</td>
-<td>String. Accepts <code>eservice</code>, <code>ebook</code> or <code>standard</code>. Defaults to your account &quot;default tax type&quot;.</td>
-</tr>
-<tr>
-<td>reference</td>
-<td>no</td>
-<td>String(255 chars) Code (<code>code</code>) of an existing item. <strong>If present none of the mandatory attributes are mandatory (as you are referencing an item that already exists)</strong></td>
-</tr>
-<tr>
-<td>_destroy</td>
-<td>no</td>
-<td>Set it to 1 if you want to remove the document item selected by ID. Available only for updates</td>
-</tr>
-</tbody></table>
-<h4 id='create-a-credit-note-from-an-existing-invoice-or-receipt'>Create a credit note from an existing invoice or receipt</h4>
-
-<p>Alternatively, you can create a credit note for the full amount of the original invoice or receipt by sending the parameter <code>invoice_id</code> with the ID of the invoice or receipt you want to refund rather than all the credit note attributes in the body.</p>
-
-<h4 id='credit-states'>Credit States</h4>
-
-<p>Possible credit states are:</p>
-
-<ul>
-<li><code>outstanding</code></li>
-<li><code>paid</code></li>
-<li><code>late</code></li>
-<li><code>archived</code></li>
-</ul>
-
-<h4 id='create-an-attachment-during-credit-creation'>Create an attachment during credit creation</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"attachment"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="s2">"aBaSe64EnCoDeDFiLe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filename"</span><span class="p">:</span><span class="s2">"the_filename.png"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Optionally, you can pass an attachment hash along with the rest of the parameters.</p>
-
-<p>Fields:</p>
-
-<table><thead>
-<tr>
-<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>data</code></td>
-<td>Contains a Base64 encoded string which represents the file.</td>
-</tr>
-<tr>
-<td><code>filename</code></td>
-<td>The attachment file name.</td>
+<td><code>invoice_id</code></td>
+<td>integer</td>
+<td>The ID of the refunded invoice. <strong>Required</strong></td>
 </tr>
 </tbody></table>
-
-<p>Valid file extensions are <code>pdf</code>, <code>txt</code>, <code>jpeg</code>, <code>jpg</code>, <code>png</code>, <code>xml</code>, <code>xls</code>, <code>doc</code>, <code>rtf</code> and <code>html</code>. Any other format will stop credit creation and return a <code>422 Unprocessable Entity</code> error.</p>
 <h3 id='retrieve-a-credit'>Retrieve a credit</h3>
 <blockquote>
 <p><code>GET /credits/CREDIT_ID.json</code></p>
@@ -3746,7 +3514,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <tr>
 <td>number</td>
 <td>no</td>
-<td>String(20 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness</td>
+<td>String(20 chars) Available for invoices, credit_notes, and estimates. Automatic numbering is used by default. Validates uniqueness</td>
 </tr>
 <tr>
 <td>issue_date</td>
@@ -4293,7 +4061,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <tr>
 <td>number</td>
 <td>no</td>
-<td>String(20 chars) Available for invoices, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness</td>
+<td>String(20 chars) Available for invoices, credit_notes, and estimates. Automatic numbering is used by default. Validates uniqueness</td>
 </tr>
 <tr>
 <td>issue_date</td>
@@ -4837,7 +4605,7 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <tr>
 <td>number</td>
 <td>no</td>
-<td>String(255 chars) Available for recurrings, credit_notes, receipts and estimates. Automatic numbering is used by default. Validates uniqueness</td>
+<td>String(255 chars) Available for recurrings, credit_notes, and estimates. Automatic numbering is used by default. Validates uniqueness</td>
 </tr>
 <tr>
 <td>issue_date</td>
@@ -6216,6 +5984,10 @@ curl <span class="nt">-u</span> YOUR_API_KEY:x <span class="se">\</span>
 <h2 id='accounts-beta'>Accounts (beta)</h2>
 
 <p>When using Quaderno Connect, you need to create an account (known as a connected account) for each user that needs to calculate taxes on your platform. These accounts are generally created when a user signs up for your platform.</p>
+
+<aside class="notice">
+Quaderno Connect is only available with the Business plan or higher.
+</aside>
 
 <h3 id='create-an-account'>Create an account</h3>
 

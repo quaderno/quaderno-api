@@ -71,6 +71,10 @@ GEM
       servolux
       tilt (~> 2.0.9)
       uglifier (~> 3.0)
+    middleman-deploy (2.0.0.pre.alpha)
+      middleman-core (>= 3.2)
+      net-sftp
+      ptools
     middleman-sprockets (4.1.1)
       middleman-core (~> 4.0)
       sprockets (>= 3.0)
@@ -79,6 +83,9 @@ GEM
       rouge (~> 3.2)
     mini_portile2 (2.5.0)
     minitest (5.14.2)
+    net-sftp (3.0.0)
+      net-ssh (>= 5.0.0, < 7.0.0)
+    net-ssh (6.1.0)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -89,6 +96,7 @@ GEM
     padrino-support (0.13.3.4)
       activesupport (>= 3.1)
     parallel (1.19.2)
+    ptools (1.4.2)
     public_suffix (4.0.6)
     racc (1.5.2)
     rack (2.2.3)
@@ -124,6 +132,7 @@ PLATFORMS
 DEPENDENCIES
   middleman (~> 4.3)
   middleman-autoprefixer (~> 2.7)
+  middleman-deploy (~> 2.0.0.pre.alpha)
   middleman-sprockets (~> 4.1)
   middleman-syntax (~> 3.2)
   nokogiri (~> 1.11.0)

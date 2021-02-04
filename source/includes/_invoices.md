@@ -94,11 +94,6 @@ Parameter               | Type              | Description
 `notes`                 | string            | Extra notes about the invoice.
 `custom_metadata`       | hash        | Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 
-<aside class="notice">
-  <p>Allowed contact fields are the same as when creating a contact via the dedicated <a href="/#contacts">Contacts API</a>.</p>
-  <p>No more than 200 items are allowed in a request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.</p>
-</aside>
-
 
 
 

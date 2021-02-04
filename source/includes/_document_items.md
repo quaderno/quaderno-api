@@ -24,5 +24,5 @@ Parameter                 | Type      | Description
 `_destroy`                | integer   | Set it to 1 if you want to remove the document item selected by ID. Available only for updates.
 
 <aside class="notice">
-  <p>No more than 200 items are allowed in a API request. To add more use subsequent update requests. Maximum items per document are limited up to 1000 items.</p>
+  No more than 200 document items are allowed in a API request. To add more use subsequent update requests. Maximum items per document are limited up to 1000.
 </aside>

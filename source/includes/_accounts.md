@@ -5,7 +5,7 @@
 When using Quaderno Connect, you need to create an account (known as a connected account) for each user that needs to calculate taxes on your platform. These accounts are generally created when a user signs up for your platform.
 
 <aside class="notice">
-Quaderno Connect is only available with the Business plan or higher.
+  Quaderno Connect is only available with the Business plan or higher.
 </aside>
 
 ### Create an account

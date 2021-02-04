@@ -1,54 +1,10 @@
 # Changelog
 
-## Version 2.9.0
-
-*January 19, 2021*
-
-* __Drop support for Ruby 2.3 and 2.4__
-* __[Security]__ Bump nokogiri from 1.10.10 to 1.11.1
-* __[Security]__ Bump redcarpet from 3.5.0 to 3.5.1
-* Specify slate is not supported on Ruby 3.x
-* Bump rouge from 3.24.0 to 3.26.0
-
-## Version 2.8.0
-
-*October 27, 2020*
-
-* Remove last trailing newline when using the copy code button
-* Rework docker image and make available at slatedocs/slate
-* Improve Dockerfile layout to improve caching (thanks @micvbang)
-* Bump rouge from 3.20 to 3.24
-* Bump nokogiri from 1.10.9 to 1.10.10
-* Bump middleman from 4.3.8 to 4.3.11
-* Bump lunr.js from 2.3.8 to 2.3.9
-
-## Version 2.7.1
-
-*August 13, 2020*
-
-* __[security]__ Bumped middleman from 4.3.7 to 4.3.8
-
-_Note_: Slate uses redcarpet, not kramdown, for rendering markdown to HTML, and so was unaffected by the security vulnerability in middleman.
-If you have changed slate to use kramdown, and with GFM, you may need to install the `kramdown-parser-gfm` gem.
-
 ## Version 2.7.0
 
-*June 21, 2020*
+*January 20, 2021*
 
-* __[security]__ Bumped rack in Gemfile.lock from 2.2.2 to 2.2.3
-* Bumped bundled jQuery from 3.2.1 to 3.5.1
-* Bumped bundled lunr from 0.5.7 to 2.3.8
-* Bumped imagesloaded from 3.1.8 to 4.1.4
-* Bumped rouge from 3.17.0 to 3.20.0
-* Bumped redcarpet from 3.4.0 to 3.5.0
-* Fix color of highlighted code being unreadable when printing page
-* Add clipboard icon for "Copy to Clipboard" functionality to code boxes (see note below)
-* Fix handling of ToC selectors that contain punctutation (thanks @gruis)
-* Fix language bar truncating languages that overflow screen width
-* Strip HTML tags from ToC title before displaying it in title bar in JS (backup to stripping done in Ruby code) (thanks @atic)
-
-To enable the new clipboard icon, you need to add `code_clipboard: true` to the frontmatter of source/index.html.md.
-See [this line](https://github.com/slatedocs/slate/blame/main/source/index.html.md#L19) for an example of usage.
+* New Account API
 
 ## Version 2.6.1
 
@@ -95,12 +51,12 @@ __Note__: 2.5.0 was "pulled" due to a breaking bug discovered after release. It 
 - Move repository from lord/slate to slatedocs/slate
 - Fix documentation to point at new repo link, thanks to [Arun](https://github.com/slash-arun), [Gustavo Gawryszewski](https://github.com/gawry), and [Daniel Korbit](https://github.com/danielkorbit)
 - Update `nokogiri` to 1.10.4
-- Update `ffi` in `Gemfile.lock` to fix security warnings, thanks to [Grey Baker](https://github.com/greysteil) and [jakemack](https://github.com/jakemack)
-- Update `rack` to 2.0.7 in `Gemfile.lock` to fix security warnings, thanks to [Grey Baker](https://github.com/greysteil) and [jakemack](https://github.com/jakemack)
-- Update middleman to `4.3` and relax constraints on middleman related gems, thanks to [jakemack](https://github.com/jakemack)
-- Add sass gem, thanks to [jakemack](https://github.com/jakemack)
+- Update `ffi` in `Gemfile.lock` to fix security warnings, thanks to [Grey Baker](https://github.com/greysteil) and [jackmack](https://github.com/jakemack)
+- Update `rack` to 2.0.7 in `Gemfile.lock` to fix security warnings, thanks to [Grey Baker](https://github.com/greysteil) and [jackmack](https://github.com/jakemack)
+- Update middleman to `4.3` and relax constraints on middleman related gems, thanks to [jackmack](https://github.com/jakemack)
+- Add sass gem, thanks to [jackmack](https://github.com/jackmack)
 - Activate `asset_cache` in middleman to improve cacheability of static files, thanks to [Sam Gilman](https://github.com/thenengah)
-- Update to using bundler 2 for `Gemfile.lock`, thanks to [jakemack](https://github.com/jakemack)
+- Update to using bundler 2 for `Gemfile.lock`, thanks to [jackmack](https://github.com/jakemack)
 
 ## Version 2.3.1
 

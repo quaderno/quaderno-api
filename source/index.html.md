@@ -12,6 +12,7 @@ toc_footers:
 
 includes:
   - setup
+  - changelog
   - contacts
   - products
   - events
@@ -51,12 +52,17 @@ The Quaderno API is based on the [REST](https://en.wikipedia.org/wiki/Representa
 
 If you have any suggestions, tips, or questions that you feel aren't answered here or in our [developer site](http://developers.quaderno.io), please [get in touch](mailto:support@quaderno.io) and let us know!
 
+
+
+
 # The Sandbox
 
 The Quaderno Sandbox mirrors the features found on the Quaderno Production servers and lets you test our API.
 
 The Sandbox has parity with the Quaderno main feature set supported by the live environment. This means you can test your Quaderno processes and know they will behave the same on the production servers as they do in the Sandbox environment.
 
-**Your credentials for the Production environment does not work on the Sandbox.** You need to [create a new account](https://sandbox-quadernoapp.com/signup).
+<aside class="notice">
+  <strong>Your credentials for the Production environment does not work on the Sandbox.</strong> You need to <a href="https://sandbox-quadernoapp.com/signup" target="_blank">create a new account</a>.
+</aside>
 
 By using your Sandbox account, you can test and debug your application without referencing any real Quaderno users or their live Quaderno accounts. The Sandbox lets you operate your application in a safe environment and provides you a way to fine tune your Quaderno routines before moving your product into production.

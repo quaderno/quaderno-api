@@ -62,7 +62,7 @@ The Quaderno Sandbox mirrors the features found on the Quaderno Production serve
 The Sandbox has parity with the Quaderno main feature set supported by the live environment. This means you can test your Quaderno processes and know they will behave the same on the production servers as they do in the Sandbox environment.
 
 <aside class="notice">
-  <strong>Your credentials for the Production environment does not work on the Sandbox.</strong> You need to <a href="https://sandbox-quadernoapp.com/signup" target="_blank">create a new account</a>.
+  <strong>Your credentials for the Production environment don't work on the Sandbox.</strong> You need to <a href="https://sandbox-quadernoapp.com/signup" target="_blank">create a new account</a>.
 </aside>
 
 By using your Sandbox account, you can test and debug your application without referencing any real Quaderno users or their live Quaderno accounts. The Sandbox lets you operate your application in a safe environment and provides you a way to fine tune your Quaderno routines before moving your product into production.

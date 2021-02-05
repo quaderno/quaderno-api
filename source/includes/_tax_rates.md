@@ -229,6 +229,7 @@ Parameter               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
 `to_country`            | string    | The customer's country. 2-letter [ISO country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes). **Required**
 `to_postal_code`        | string    | The customer's postal code. Required whether the customer is based in the US or Canada.
+`to_city`               | string    | The customer's city. It provides more accurate calculations in the US.
 `tax_id`                | string    | The customer's tax ID.
 `from_country`          | string    | The country where the order shipped from. 2-letter [ISO country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes). Defaults to the account's country.
 `from_postal_code`      | string    | The postal code where the order shipped from. Defaults to the account's postal code.

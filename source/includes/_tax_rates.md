@@ -195,7 +195,7 @@ Tax calculations are based on your tax settings. You can collect taxes only in t
 </aside>
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate?to_country=US&to_postal_code=90210&tax_code=standard&amount=100 \
+curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate?to_country=US&to_postal_code=90210&tax_code=standard&amount=10 \
   -u YOUR_API_KEY:x
 ```
 > The above command returns JSON structured like this:
@@ -205,16 +205,17 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate?to_country=US&
   "city": "BEVERLY HILLS",
   "country": "US",
   "county": "LOS ANGELES",
-  "currency": "USD",
+  "currency": "EUR",
   "name": "Sales tax",
   "notes": null,
   "rate": 9.5,
   "region": "CA",
   "tax_behavior": "exclusive",
   "tax_code": "standard",
-  "taxable_base": 100.0,
-  "tax_amount": 9.5,
-  "total_amount": 109.5
+  "taxable_part": 100.0,
+  "taxable_base": 10.0,
+  "tax_amount": 0.95,
+  "total_amount": 10.95
 }
 ```
 

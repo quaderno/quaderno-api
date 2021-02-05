@@ -63,8 +63,7 @@ Parameter               | Type      | Description
 `phone_1`               | string    | The contact's phone number.
 `email`                 | string    | The contact's email address. Multiple emails should be separated by commas. Maximum number of addresses allowed is 3.
 `web`                   | string    | The contact's website. Validates format
-`discount`              | decimal   | Default discount for this contact.
-`language`              | string    | The contact's preferred language. Should be included in the translations list
+`language`              | string    | The contact's preferred language. Should be included in the account's translations list
 `notes`                 | string    | Internal notes about the contact.
 
 
@@ -228,7 +227,6 @@ Parameter               | Type      | Description
 `phone_1`               | string    | The contact's phone number.
 `email`                 | string    | The contact's email address. Multiple emails should be separated by commas. Maximum number of addresses allowed is 3.
 `web`                   | string    | The contact's website. Validates format
-`discount`              | decimal   | Default discount for this contact.
 `language`              | string    | The contact's preferred language. Should be included in the translations list
 `notes`                 | string    | Internal notes about the contact.
 

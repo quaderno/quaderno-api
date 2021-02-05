@@ -9,7 +9,7 @@ Products are their own object in Quaderno, but they can be referenced, in an arr
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/items \
   -u YOUR_API_KEY:x \
-  -d code="9999" \
+  -d code="PRODUCT_SKU" \
   -d name="Titanic II: The revenge" \
   -d unit_cost=99.0
   -d tax_class="eservice"
@@ -20,7 +20,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/items \
 ```json
 {
   "id": 186698,
-  "code": "9999",
+  "code": "PRODUCT_SKU",
   "description": null,
   "name": "Titanic II: The revenge",
   "product_type": "service",
@@ -65,7 +65,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/items/PRODUCT_ID \
 ```json
 {
   "id": 186698,
-  "code": "9999",
+  "code": "PRODUCT_SKU",
   "description": null,
   "name": "Titanic II: The revenge",
   "product_type": "service",
@@ -101,11 +101,11 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/items/PRODUCT_ID \
 ```json
 {
   "id": 186698,
-  "code": "9999",
+  "code": "PRODUCT_SKU",
   "description": null,
   "name": "Titanic II: The revenge",
   "product_type": "service",
-  "unit_cost": "99.0",
+  "unit_cost": "10.0",
   "tax_class": "eservice",
   "kind": "one_off",
   "tax_type": "excluded",
@@ -169,7 +169,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/items \
 [
   {
     "id": 186695,
-    "code": "8888",
+    "code": "ANOTHER_PRODUCT_SKU",
     "description": null,
     "name": "Titanic I",
     "product_type": "service",
@@ -181,7 +181,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/items \
   },
   {
     "id": 186698,
-    "code": "9999",
+    "code": "PRODUCT_SKU",
     "description": null,
     "name": "Titanic II: The revenge",
     "product_type": "service",

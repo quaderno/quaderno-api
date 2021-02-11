@@ -29,6 +29,7 @@ includes:
   - document_items
   - payments
   - checkout_sessions
+  - coupons
   - accounts
   - reporting_requests
   - webhooks

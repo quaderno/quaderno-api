@@ -125,8 +125,6 @@ Parameter               | Type      | Description
 
 ### Delete a tax rate
 
-> `DELETE /tax_rates/TAX_RATE_ID.json`
-
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/TAX_RATE_ID \
   -u YOUR_API_KEY:x \

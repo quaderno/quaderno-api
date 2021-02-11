@@ -7,9 +7,10 @@ A coupon contains information about a percent-off or amount-off discount you mig
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/checkout/coupons \
   -u YOUR_API_KEY:x \
-  -d jurisdiction_id=1 \
-  -d name="VAT" \
-  -d value=20
+  -d code="awesome" \
+  -d name="Awesome discount" \
+  -d percent_off=50 \
+  -d processor_id="awesome01"
 ```
 > The above command returns JSON structured like this:
 

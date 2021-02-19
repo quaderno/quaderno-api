@@ -81,7 +81,7 @@ Parameter               | Type              | Description
 `delivery`              | string            | Can be `send`, `create`, `nothing`. Defaults to `send`.
 `currency`              | string            | Three-letter [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), in uppercase. Defaults to the account's default currency.
 `contact`               | object            | The data of the [customer or the provider](/#contacts).
-`items_attributes`      | array             | Array of [document items](/#document_items). **Required**
+`items_attributes`      | array             | Array of [document items](/#document-items). **Required**
 `po_number`             | string            | The number of the related order. 
 `tag_list`              | string            | Multiple tags should be separated by commas
 `payment_details`       | string            | Detailed information about the accepted payment methods.
@@ -232,7 +232,7 @@ Parameter               | Type              | Description
 `delivery`              | string            | Can be `send`, `create`, `nothing`. Defaults to `send`.
 `currency`              | string            | Three-letter [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), in uppercase. Defaults to the account's default currency.
 `contact`               | object            | The data of the [customer or the provider](/#contacts).
-`items_attributes`      | array             | Array of [document items](/#document_items). **Required**
+`items_attributes`      | array             | Array of [document items](/#document-items). **Required**
 `po_number`             | string            | The number of the related order. 
 `tag_list`              | string            | Multiple tags should be separated by commas
 `payment_details`       | string            | Detailed information about the accepted payment methods.

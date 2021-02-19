@@ -254,7 +254,7 @@ Parameter               | Type              | Description
 `region`                | string            | The customer's billing state/province/region.
 `postal_code`           | string            | The customer's billing ZIP or postal code. Available for updates.
 `country`               | string            | The customer's billing country. 2-letter [ISO country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
-`items_attributes`      | array             | Array of [document items](/#document_items). **Required**
+`items_attributes`      | array             | Array of [document items](/#document-items). **Required**
 `payment_processor`     | string            | The name of the payment processor used to refund the payment.
 `payment_processor_id`  | string            | The ID of the transaction in the `payment_processor`.
 `po_number`             | string            | The number of the related order. 

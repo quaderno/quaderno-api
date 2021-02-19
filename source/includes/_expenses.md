@@ -74,7 +74,7 @@ Parameter               | Type              | Description
 `issue_date`            | date              | The date of the expense's issue – not necessarily the date the products or services were provided.
 `currency`              | string            | Three-letter [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), in uppercase. Defaults to the account's default currency.
 `contact`               | object            | The data of the [provider](/#contacts).
-`items_attributes`      | array             | Array of [document items](/#document_items). **Required**
+`items_attributes`      | array             | Array of [document items](/#document-items). **Required**
 `payment_method`        | string            | Use this parameter to mark this document as paid in a single request. Can be `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `iou`, `paypal` or `other`
 `payment_processor`     | string            | The name of the payment processor used to take the payment.
 `payment_processor_id`  | string            | The ID of the transaction in the `payment_processor`.

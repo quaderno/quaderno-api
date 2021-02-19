@@ -6,7 +6,7 @@ Parameter                 | Type      | Description
 --------------------------|-----------|--------------------------------------------------------------------------------
 `id`                      | integer   | Unique identifier for the object. Available only for updates
 `description`             | string    | An arbitrary string attached to the object. Often useful for displaying to users. **Required**
-`quantity`                | decimal   | Defaults to 1.
+`quantity`                | decimal   | Quantity of units for the document item. Defaults to 1.
 `unit_price`              | decimal   | The unit price of the item before any discount or tax is applied. Required if `total_amount` is not passed.
 `total_amount`            | decimal   | The total amount to be charged after discounts and taxes. Required if `unit_price` is not passed.
 `discount_rate`           | decimal   | This represents the discount percent out of 100, if applicable.

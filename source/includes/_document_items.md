@@ -14,12 +14,12 @@ Parameter                 | Type      | Description
 `tax_1_rate`              | decimal   | The rate of the tax, if applicable. Required if `tax_1_name` is present
 `tax_1_country`           | string    | Tax country, if applicable. Defaults to the contact's country
 `tax_1_region`            | string    | Tax region, if applicable. Only for US sales tax and Canada GST.
-`tax_1_transaction_type`  | string    | Type of transaction. Can be any [`tax_code`](/#list-all-tax-codes). Defaults to the account's default tax class.
+`tax_1_transaction_type`  | string    | Type of transaction. Can be any [`tax_code`](#list-all-tax-codes). Defaults to the account's default tax class.
 `tax_2_name`              | string    | The name of the additional tax, if applicable. Required if `tax_2_rate` is present
 `tax_2_rate`              | decimal   | The rate of the additional tax, if applicable. Required if `tax_2_name` is present
 `tax_2_country`           | string    | Tax country, if applicable. Defaults to the contact's country
 `tax_2_region`            | string    | Tax region, if applicable. Only for US sales tax and Canada GST.
-`tax_2_transaction_type`  | string    | Type of transaction. Can be any [`tax_code`](/#list-all-tax-codes). Defaults to the account's default tax class.
+`tax_2_transaction_type`  | string    | Type of transaction. Can be any [`tax_code`](#list-all-tax-codes). Defaults to the account's default tax class.
 `reference`               | string    | Code of an existing product. **If present none of the mandatory attributes are required (as you are referencing an item that already exists)**
 `_destroy`                | integer   | Set it to 1 if you want to remove the document item selected by ID. Available only for updates.
 

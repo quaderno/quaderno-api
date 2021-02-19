@@ -6,7 +6,7 @@ Webhooks refers to a combination of elements that collectively create a notifica
 
 Metaphorically, webhooks are like a phone number that Quaderno calls to notify you of activity in your Quaderno account. The activity could be the creation of a new customer or the payment of an invoice. The webhook endpoint is the person answering that call who takes actions based upon the specific information it receives.
 
-Non-metaphorically, the webhook endpoint is just more code on your server, which could be written in Ruby, PHP, Node.js, or whatever. The webhook endpoint has an associated URL (e.g., https://example.com/webhooks). The Quaderno notifications are [`Event`](\#events) objects. This `Event` object contains all the relevant information about what just happened, including the type of event and the data associated with that event. The webhook endpoint uses the event details to take any required actions, such as indicating that an order should be fulfilled.
+Non-metaphorically, the webhook endpoint is just more code on your server, which could be written in Ruby, PHP, Node.js, or whatever. The webhook endpoint has an associated URL (e.g., https://example.com/webhooks). The Quaderno notifications are [`Event`](#events) objects. This `Event` object contains all the relevant information about what just happened, including the type of event and the data associated with that event. The webhook endpoint uses the event details to take any required actions, such as indicating that an order should be fulfilled.
 
 ### Create a webhook
 

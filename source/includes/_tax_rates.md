@@ -2,7 +2,7 @@
 
 This API will allow you to customize your tax rates and calculate tax rates for a particular transaction. 
 
-Take into account that taxes are calculated based on your [tax IDs](/#tax_ids), but you can override these tax rates for greater control over the taxes you charge. If that's the case, use this API to create your custom tax rates.
+Take into account that taxes are calculated based on your [tax IDs](#tax_ids), but you can override these tax rates for greater control over the taxes you charge. If that's the case, use this API to create your custom tax rates.
 
 ### Create a tax rate
 

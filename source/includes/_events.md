@@ -304,7 +304,7 @@ If you fail to respond a second time then your subscription to that event will b
 
 Quaderno signs all webhook events it sends to your endpoints by including a signature in each event’s `X-Quaderno-Signature` header. This allows you to verify that requests were sent by Quaderno and not by a third-party impersonating us.
 
-The key is returned when you [create a webhook](/#create-a-webhook) or when you [list all your webhooks](/#list-all-webhooks). 
+The key is returned when you [create a webhook](#create-a-webhook) or when you [list all your webhooks](#list-all-webhooks). 
 
 To verify a request, you must generate a signature using the same secret key used by Quaderno and comparing the result to the value of the `X-Quaderno-Signature` header.
 

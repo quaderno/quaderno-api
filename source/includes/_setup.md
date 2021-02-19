@@ -162,5 +162,5 @@ By default if you don't specify a version, we'll use the one stored in your Quad
 
 
 <aside class="notice">
-  The current version is <strong>20170914</strong>. Please refer to the <strong><a href='/#changelog'>changelog</a></strong> to get a list of the changes.
+  The current version is <strong>20170914</strong>. Please refer to the <strong><a href='#changelog'>changelog</a></strong> to get a list of the changes.
 </aside>

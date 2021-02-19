@@ -83,8 +83,8 @@ Parameter               | Type              | Description
 `number`                | string            | A unique, sequential code that identifies the invoice. Legally, an invoice number sequence should never contain repeats or gaps. Automatic numbering is used by default.
 `issue_date`            | date              | The date of the invoice's issue – not necessarily the date the products or services were provided.
 `currency`              | string            | Three-letter [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), in uppercase. Defaults to the account's default currency.
-`contact`               | object            | The data of the [customer](/#contacts) who will be billed.
-`items_attributes`      | array             | Array of [document items](/#document-items). **Required**
+`contact`               | object            | The data of the [customer](#contacts) who will be billed.
+`items_attributes`      | array             | Array of [document items](#document-items). **Required**
 `payment_method`        | string            | Use this parameter to mark this document as paid in a single request. Can be `credit_card`, `cash`, `wire_transfer`, `direct_debit`, `check`, `iou`, `paypal` or `other`
 `payment_processor`     | string            | The name of the payment processor used to take the payment.
 `payment_processor_id`  | string            | The ID of the transaction in the `payment_processor`.
@@ -247,14 +247,14 @@ Parameter               | Type              | Description
 `INVOICE_ID`            | integer           | The ID of the invoice to update. **Required**
 `number`                | string            | A unique, sequential code that identifies the invoice. Legally, an invoice number sequence should never contain repeats or gaps. Automatic numbering is used by default.
 `issue_date`            | date              | The date of the invoice's issue - not necessarily the date the products or services were provided.
-`contact`               | object            | The data of the [customer](/#contacts) who will be billed.
+`contact`               | object            | The data of the [customer](#contacts) who will be billed.
 `street_line_1`         | string            | The customer's billing address line 1 (Street address/PO Box).
 `street_line_2`         | string            | The customer's billing address line 2 (Apartment/Suite/Unit/Building).
 `city`                  | string            | The customer's billing city.
 `region`                | string            | The customer's billing state/province/region.
 `postal_code`           | string            | The customer's billing ZIP or postal code. Available for updates.
 `country`               | string            | The customer's billing country. 2-letter [ISO country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
-`items_attributes`      | array             | Array of [document items](/#document-items). **Required**
+`items_attributes`      | array             | Array of [document items](#document-items). **Required**
 `payment_processor`     | string            | The name of the payment processor used to take the payment.
 `payment_processor_id`  | string            | The ID of the transaction in the `payment_processor`.
 `po_number`             | string            | The number of the related order. 

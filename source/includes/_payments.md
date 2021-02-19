@@ -2,7 +2,7 @@
 
 Payments in Quaderno-lingo represent the recording of a successful payment.
 
-Like [products](/#products), payments are a sub-object and can be attached to invoices and expenses. However, payments cannot exist in Quaderno separately to an instance of one of these classes, and the same payment cannot be referenced by more than one instance.
+Like [products](#products), payments are a sub-object and can be attached to invoices and expenses. However, payments cannot exist in Quaderno separately to an instance of one of these classes, and the same payment cannot be referenced by more than one instance.
 
 ### Create a payment
 

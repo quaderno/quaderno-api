@@ -19,7 +19,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json \
 
 ```json
 {
-    "id":"456987213",
+    "id":456987213,
     "kind":"person",
     "first_name":"Sheldon",
     "last_name":"Cooper",
@@ -82,7 +82,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID \
 
 ```json
 {
-    "id":"456987213",
+    "id":456987213,
     "kind":"person",
     "first_name":"Sheldon",
     "last_name":"Cooper",
@@ -130,7 +130,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/PAYMENT_PROCESSOR/customers/CUSTOM
 
 ```json
 {
-    "id":"456987213",
+    "id":456987213,
     "kind":"person",
     "first_name":"Sheldon",
     "last_name":"Cooper",
@@ -181,7 +181,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID \
 
 ```json
 {
-    "id":"456987213",
+    "id":456987213,
     "kind":"person",
     "first_name":"Anthony",
     "last_name":"Cooper",
@@ -269,7 +269,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts \
 ```json
 [
   {
-    "id":"456987213",
+    "id":456987213,
     "kind":"person",
     "first_name":"Sheldon",
     "last_name":"Cooper",
@@ -291,7 +291,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts \
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
   },
   {
-    "id":"456982365",
+    "id":456982365,
     "kind":"company",
     "full_name":"Apple Inc.",
     "street_line_1":"1 Infinite Loop",

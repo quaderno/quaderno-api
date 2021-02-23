@@ -31,6 +31,7 @@ includes:
   - checkout_sessions
   - coupons
   - accounts
+  - transactions
   - reporting_requests
   - webhooks
 

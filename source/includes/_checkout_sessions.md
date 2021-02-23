@@ -98,10 +98,10 @@ Parameter                            | Type           | Description
 
 Parameter                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
-`amount`                             | number(decimal)       | Unit price of the item being purchased. Default value the product's price is used if amount is not set.
-`currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Default value the product's currency is used if currency is not set.
-`description`                        | string                | The description of the item being purchased. Default value the product's description is used if description is not set.
-`name`                               | string                | The name of the item being purchased. Default value the product's name is used if name is not set.
+`amount`                             | number(decimal)       | Unit price of the item being purchased. Defaults to the product's price is used if amount is not set.
+`currency`                           | string                | Three-letter [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), in uppercase. Must be a supported currency by the payment processor. Defaults to the product's currency is used if currency is not set.
+`description`                        | string                | The description of the item being purchased. Defaults to the product's description is used if description is not set.
+`name`                               | string                | The name of the item being purchased. Defaults to the product's name is used if name is not set.
 `product`                            | string                | The SKU of the Quaderno Product. **Required**
 `quantity`                           | integer               | Quantity of the item being purchased. Minimum value is 1.
 
@@ -267,10 +267,10 @@ Parameter                            | Type           | Description
 
 Parameter                            | Type                  | Description
 -------------------------------------|-----------------------|-----------------------------------------
-`amount`                             | number(decimal)       | Unit price of the item being purchased. Default value the product's price is used if amount is not set.
-`currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Default value the product's currency is used if currency is not set.
-`description`                        | string                | The description of the item being purchased. Default value the product's description is used if description is not set.
-`name`                               | string                | The name of the item being purchased. Default value the product's name is used if name is not set.
+`amount`                             | number(decimal)       | Unit price of the item being purchased. Defaults to the product's price is used if amount is not set.
+`currency`                           | string                | ISO 4217 currency code. Must be a supported currency by the payment processor. Defaults to the product's currency is used if currency is not set.
+`description`                        | string                | The description of the item being purchased. Defaults to the product's description is used if description is not set.
+`name`                               | string                | The name of the item being purchased. Defaults to the product's name is used if name is not set.
 `product`                            | string                | The SKU of the Quaderno Product. **Required**
 `quantity`                           | integer               | Quantity of the item being purchased. Minimum value is 1.
 

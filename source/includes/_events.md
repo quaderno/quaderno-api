@@ -259,6 +259,7 @@ Event types are a combination of the object you want to be notified about and th
 
 Available events are:
 
+- `account.updated` – Occurs whenever an account status or property has changed.
 - `account.application.deauthorized` – Occurs whenever a user deauthorizes an application. Sent to the related application only.
 - `checkout.succeeded` – Occurs when a checkout session has been successfully completed.
 - `checkout.failed` – Occurs when a checkout session fails.

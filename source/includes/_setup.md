@@ -90,25 +90,40 @@ If you exceed the limit you will receive a `HTTP 429 (Too Many Requests)`.
 
 # Pagination
 
-> A call with the `page` parameter set:
+> A call with the `max_id` parameter set:
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \ 
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?max_id=42 \
   -u YOUR_API_KEY:x
 ```
+
+> DEPRECATED: A call with the `page` parameter set:
+
+```shell
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
+  -u YOUR_API_KEY:x
+```
+
+As of API version `20210316`, pagination is performed with a `max_id` parameter.
+
+The HTTP header `X-Pages-HasMore` indicates whether more records can be fetched by using the same query with a lower `max_id`.
+
+Bear in mind that Quaderno paginates `GET` index results.
+
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
+
+## Deprecated - page parameter
+
+The following information applies to API version `20170914` and below.
 
 These HTTP headers inform you about the page context:
 
 - `X-Pages-CurrentPage`
 - `X-Pages-TotalPages`
 
-Bear in mind that Quaderno paginates `GET` index results.
-
-You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
-
 You can change the page by passing the `page` parameter, defaulting to `1`.
 
-
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
 
 
 

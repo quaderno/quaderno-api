@@ -11,9 +11,9 @@ A contact is any customer or vendor who appears on your invoices, credit notes, 
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json \
   -u YOUR_API_KEY:x \
-  -d first_name="Tony" \
-  -d kind="person" \
-  -d contact_name="Stark"
+  -d first_name="Sheldon" \
+  -d last_name="Cooper" \
+  …
 ```
 > The above command returns JSON structured like this:
 
@@ -50,7 +50,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json \
 Parameter               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
 `kind`                  | string    | The type of contact. Values are `company` or `person`. Defaults to `company`.
-`first_name`            | string    | The contact's first name. **Required**
+`first_name`            | string    | The contact's first name / business name. **Required**
 `last_name`             | string    | The contact's last name. Empty when the contact is a `company`.
 `tax_id`                | string    | Any tax identification number. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand.
 `contact_person`        | string    | If the contact is a `company`, this is its contact person.

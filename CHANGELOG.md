@@ -5,6 +5,7 @@
 *January 20, 2021*
 
 * New Account API
+* New Transactions API
 
 ## Version 2.6.1
 

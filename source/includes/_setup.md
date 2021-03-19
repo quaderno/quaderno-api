@@ -104,6 +104,8 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
   -u YOUR_API_KEY:x
 ```
 
+## Cursor based pagination
+
 As of API version `20210316`, pagination is performed with a `starting_after` parameter. This parameter takes an existing object ID value and returns objects listed after the named object, in reverse chronological order.
 
 The HTTP header `X-Pages-HasMore` indicates whether more records can be fetched by using the same query with a lower `starting_after`.

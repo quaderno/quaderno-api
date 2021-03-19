@@ -112,7 +112,7 @@ The HTTP header `X-Pages-HasMore` indicates whether more records can be fetched 
 
 Bear in mind that Quaderno paginates `GET` index results.
 
-You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. This value is capped at 100 objects.
 
 ## Deprecated - page parameter
 
@@ -125,7 +125,7 @@ These HTTP headers inform you about the page context:
 
 You can change the page by passing the `page` parameter, defaulting to `1`.
 
-You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. This value is capped at 100 objects.
 
 
 

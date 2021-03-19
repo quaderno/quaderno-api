@@ -90,21 +90,14 @@ If you exceed the limit you will receive a `HTTP 429 (Too Many Requests)`.
 
 # Pagination
 
+## Cursor based pagination
+
 > A call with the `starting_after` parameter set:
 
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?starting_after=42 \
   -u YOUR_API_KEY:x
 ```
-
-> DEPRECATED: A call with the `page` parameter set:
-
-```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
-  -u YOUR_API_KEY:x
-```
-
-## Cursor based pagination
 
 As of API version `20210316`, pagination is performed with a `starting_after` parameter. This parameter takes an existing object ID value and returns objects listed after the named object, in reverse chronological order.
 
@@ -114,9 +107,18 @@ Bear in mind that Quaderno paginates `GET` index results.
 
 You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. This value is capped at 100 objects.
 
-## Deprecated - page parameter
+## Page parameter (legacy)
 
-The following information applies to API version `20170914` and below.
+> **Legacy**: A call with the `page` parameter set:
+
+```shell
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
+  -u YOUR_API_KEY:x
+```
+
+<aside class="warning">
+The following use case is legacy and will be discontinued on 2nd August 2021. You can keep using it requesting to <a href="#versioning">use the API version `20170914`</a>. Please update your code to use the new <a href="#cursor-based-pagination">cursor based pagination</a>.
+</aside>
 
 These HTTP headers inform you about the page context:
 

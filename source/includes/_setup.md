@@ -169,7 +169,7 @@ If an error occurs on a call where the service is not down, we will return a JSO
 > Example of API version override
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?starting_after=2048 \
   -u YOUR_API_KEY:x \
   -H 'Accept: application/json; api_version=20160602'
 ```

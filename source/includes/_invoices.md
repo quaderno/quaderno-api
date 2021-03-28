@@ -92,7 +92,11 @@ Parameter               | Type              | Description
 `tag_list`              | string            | Multiple tags should be separated by commas
 `payment_details`       | string            | Detailed information about the accepted payment methods.
 `notes`                 | string            | Extra notes about the invoice.
-`custom_metadata`       | hash        | Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
+`attachment`            | object            | The data of the [file to be attached](#attachments).
+`custom_metadata`       | hash              | Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
+
+
+
 
 
 
@@ -260,6 +264,7 @@ Parameter               | Type              | Description
 `po_number`             | string            | The number of the related order. 
 `tag_list`              | string            | Multiple tags should be separated by commas
 `payment_details`       | string            | Detailed information about the accepted payment methods.
+`attachment`            | object            | The data of the [file to be attached](#attachments).
 `notes`                 | string            | Extra notes about the invoice.
 `custom_metadata`       | hash        | Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. You can have up to 20 keys, with key names up to 40 characters long and values up to 500 characters long.
 

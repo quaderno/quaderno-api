@@ -27,6 +27,7 @@ includes:
   - expenses
   - recurring
   - document_items
+  - attachments
   - payments
   - checkout_sessions
   - coupons

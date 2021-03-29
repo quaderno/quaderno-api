@@ -1,7 +1,7 @@
 ## Taxes (legacy)
 
 <aside class="warning">
-The following endpoints are legacy and will be discontinued on 1st May 2021. Please use the new endpoints for <a href="#calculate-a-tax-rate">tax calculation</a> and <a href="#validate-a-tax-id">tax ID validation</a>.
+The following endpoints are legacy and will be discontinued on 1st July 2021. Please use the new endpoints for <a href="#calculate-a-tax-rate">tax calculation</a> and <a href="#validate-a-tax-id">tax ID validation</a>.
 </aside>
 
 One of the killer features Quaderno provides is efficient and easy tax management. As part of this, we offer an API for easy tax calculation.
@@ -71,7 +71,7 @@ Parameter    | Type      | Description
 `country`    | string    | Customer's country (2-letter [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes)). **Required**
 `tax_id`     | stirng    | Customer's tax ID. Quaderno can validate tax IDs from the EU, United Kingdom, Switzerland, Québec (Canada), Australia, and New Zealand. **Required**
 
-Please keep in mind that tax IDs are not actually validated while using the [Sandbox](https://developers.quaderno.io/#introduction-the-sandbox). For testing purposes you can use the following IDs: 
+Please keep in mind that tax IDs are not actually validated while using the [Sandbox](https://developers.quaderno.io/#introduction-the-sandbox). For testing purposes you can use the following IDs:
 
 - **DE111111111**: invalid number, returns `false`
-- **IE222222222**: node down, returns `null` 
+- **IE222222222**: node down, returns `null`

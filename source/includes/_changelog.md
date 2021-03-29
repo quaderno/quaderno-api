@@ -2,7 +2,11 @@
 
 ## API versions and changes
 
-### 20170914 (Current version)
+### 20210316 (Current version)
+* Breaking change: record pagination is no longer performed with a `page` parameter, but with a `created_before` parameter. See the [pagination documentation](https://developers.quaderno.io/api/#pagination) for more details.
+* Breaking change: the existing [/taxes/calculate](https://developers.quaderno.io/api/#calculate-taxes) endpoint is deprecated in favour of the [/tax_rates/calculate](https://developers.quaderno.io/api/#calculate-a-tax-rate) endpoint.
+
+### 20170914
 * Added the accounts API
 * Added the `related_document` to the credit object.
 * Added `tax_1_transaction_type` and `tax_2_transaction_type` fields to the taxes attributes in the credit object.

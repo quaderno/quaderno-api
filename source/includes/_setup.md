@@ -90,25 +90,46 @@ If you exceed the limit you will receive a `HTTP 429 (Too Many Requests)`.
 
 # Pagination
 
-> A call with the `page` parameter set:
+## Cursor based pagination
+
+> A call with the `created_before` parameter set:
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \ 
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?created_before=42 \
   -u YOUR_API_KEY:x
 ```
+
+As of API version `20210316`, pagination is performed with a `created_before` parameter. This parameter takes an existing object ID value and returns objects listed after the named object, in reverse chronological order.
+
+The HTTP header `X-Pages-HasMore` indicates whether more records can be fetched by using the same query with a lower `created_before`.
+
+The HTTP header `X-Pages-NextPage` contains the URL that should be used to fetch the next page of records. It is only present if more records exist.
+
+Bear in mind that Quaderno paginates `GET` index results.
+
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. This value is capped at 100 objects.
+
+## Page parameter (legacy)
+
+> **Legacy**: A call with the `page` parameter set:
+
+```shell
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
+  -u YOUR_API_KEY:x
+```
+
+<aside class="warning">
+The following use case is legacy and will be discontinued on 1st July 2021. You can keep using it requesting to <a href="#versioning">use the API version `20170914`</a>. Please update your code to use the new <a href="#cursor-based-pagination">cursor based pagination</a>.
+</aside>
 
 These HTTP headers inform you about the page context:
 
 - `X-Pages-CurrentPage`
 - `X-Pages-TotalPages`
 
-Bear in mind that Quaderno paginates `GET` index results.
-
-You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`.
-
 You can change the page by passing the `page` parameter, defaulting to `1`.
 
-
+You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. This value is capped at 100 objects.
 
 
 
@@ -152,7 +173,7 @@ If an error occurs on a call where the service is not down, we will return a JSO
 > Example of API version override
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?created_before=2048 \
   -u YOUR_API_KEY:x \
   -H 'Accept: application/json; api_version=20160602'
 ```

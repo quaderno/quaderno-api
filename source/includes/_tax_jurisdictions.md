@@ -18,7 +18,9 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions/JURISDICTION_ID \
 ```json
 {
   "id": 94,
-  "name": "Canada – British Columbia"
+  "name": "Canada – British Columbia",
+  "country": "CA",
+  "region": "BC"
 }
 ```
 #### HTTP Request
@@ -51,23 +53,32 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/jurisdictions.json?country=CA \
 [
   {
     "id": 94,
-    "name": "Canada – British Columbia"
+    "name": "Canada – British Columbia",
+    "country": "CA",
+    "region": "BC"
   },
   {
     "id": 95,
-    "name": "Canada – Quebec"
+    "name": "Canada – Quebec",
+    "country": "CA",
+    "region": "QC"
   },
   {
     "id": 96,
-    "name": "Canada – Saskatchewan"
+    "name": "Canada – Saskatchewan",
+    "country": "CA",
+    "region": "SK"
   },
   {
     "id": 100,
-    "name": "Canada – Manitoba"
+    "name": "Canada – Manitoba",
+    "country": "CA",
+    "region": "MB"
   },
   {
     "id": 129,
-    "name": "Canada – GST/HST"
+    "name": "Canada – GST/HST",
+    "country": "CA"
   }
 ]
 ```

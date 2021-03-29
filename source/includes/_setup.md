@@ -92,16 +92,16 @@ If you exceed the limit you will receive a `HTTP 429 (Too Many Requests)`.
 
 ## Cursor based pagination
 
-> A call with the `since_id` parameter set:
+> A call with the `created_before` parameter set:
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?since_id=42 \
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?created_before=42 \
   -u YOUR_API_KEY:x
 ```
 
-As of API version `20210316`, pagination is performed with a `since_id` parameter. This parameter takes an existing object ID value and returns objects listed after the named object, in reverse chronological order.
+As of API version `20210316`, pagination is performed with a `created_before` parameter. This parameter takes an existing object ID value and returns objects listed after the named object, in reverse chronological order.
 
-The HTTP header `X-Pages-HasMore` indicates whether more records can be fetched by using the same query with a lower `since_id`.
+The HTTP header `X-Pages-HasMore` indicates whether more records can be fetched by using the same query with a lower `created_before`.
 
 The HTTP header `X-Pages-NextPage` contains the URL that should be used to fetch the next page of records. It is only present if more records exist.
 
@@ -173,7 +173,7 @@ If an error occurs on a call where the service is not down, we will return a JSO
 > Example of API version override
 
 ```shell
-curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?since_id=2048 \
+curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?created_before=2048 \
   -u YOUR_API_KEY:x \
   -H 'Accept: application/json; api_version=20160602'
 ```

@@ -4,6 +4,7 @@
 
 ### 20210316 (Current version)
 * Breaking change: record pagination is no longer performed with a `page` parameter, but with a `max_id` parameter. See the [pagination documentation](https://developers.quaderno.io/api/#pagination) for more details.
+* Breaking change: the existing [/taxes/calculate](https://developers.quaderno.io/api/#calculate-taxes) endpoint is deprecated in favour of the [/tax_rates/calculate](https://developers.quaderno.io/api/#calculate-a-tax-rate) endpoint.
 
 ### 20170914
 * Added the accounts API

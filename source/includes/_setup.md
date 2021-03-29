@@ -119,7 +119,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?page=2 \
 ```
 
 <aside class="warning">
-The following use case is legacy and will be discontinued on 2nd August 2021. You can keep using it requesting to <a href="#versioning">use the API version `20170914`</a>. Please update your code to use the new <a href="#cursor-based-pagination">cursor based pagination</a>.
+The following use case is legacy and will be discontinued on 1st July 2021. You can keep using it requesting to <a href="#versioning">use the API version `20170914`</a>. Please update your code to use the new <a href="#cursor-based-pagination">cursor based pagination</a>.
 </aside>
 
 These HTTP headers inform you about the page context:

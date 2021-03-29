@@ -1,7 +1,7 @@
 ## Taxes (legacy)
 
 <aside class="warning">
-The following endpoints are legacy and will be discontinued on 3rd May 2021. Please use the new endpoints for <a href="#calculate-a-tax-rate">tax calculation</a> and <a href="#validate-a-tax-id">tax ID validation</a>.
+The following endpoints are legacy and will be discontinued on 1st July 2021. Please use the new endpoints for <a href="#calculate-a-tax-rate">tax calculation</a> and <a href="#validate-a-tax-id">tax ID validation</a>.
 </aside>
 
 One of the killer features Quaderno provides is efficient and easy tax management. As part of this, we offer an API for easy tax calculation.

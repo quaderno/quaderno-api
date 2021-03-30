@@ -5,6 +5,7 @@
 ### 20210316 (Current version)
 * **Breaking change**: record pagination is no longer performed with a `page` parameter, but with a `created_before` parameter. See the [pagination documentation](#pagination) for more details.
 * **Breaking change**: the existing [/taxes/calculate](#calculate-taxes) endpoint is deprecated in favour of the [/tax_rates/calculate](#calculate-a-tax-rate) endpoint.
+* Adds a `Deprecation: true` header (as per <a href='https://tools.ietf.org/html/draft-ietf-httpapi-deprecation-header-01#section-2.1'>draft-ietf-httpapi-deprecation-header-01</a>) to responses using deprecated pagination, with a `Link` header linking to the updated documentation. After the deprecation dates, those endpoints will return a `410 Gone`.
 
 ### 20170914
 * Added the accounts API

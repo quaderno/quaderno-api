@@ -178,10 +178,59 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json?created_before=2048 
   -H 'Accept: application/json; api_version=20160602'
 ```
 
-When we make breaking changes to our API, we release a new version number which you can change in your calls.
-By default if you don't specify a version, we'll use the one stored in your Quaderno account. To override this value you can pass the version in the `Accept` HTTP header like this: `Accept: application/json; api_version=API_VERSION_NUMBER`
+When we add functionality to our API, we release a new version number which you can change in your calls.
+By default if you don't specify a version, we'll use the one stored in your Quaderno account, under Profile → API Keys.
+
+To override this value you can pass the version in the `Accept` HTTP header like this: `Accept: application/json; api_version=API_VERSION_NUMBER`
+
+Exceptionally, we release versions that break backwards compatibility, to take full advantage of new features or to make the API faster for you. In these rare cases, we give a transition period in which you will be able to select which API version to use. After the deprecation date, the old API versions will not be available. This is the case for version <strong>20210316</strong>.
 
 
-<aside class="notice">
-  The current version is <strong>20170914</strong>. Please refer to the <strong><a href='#changelog'>changelog</a></strong> to get a list of the changes.
+<aside class="info">
+  The current version is <strong>20210316</strong>, which contains breaking changes. Please refer to our <a href='#safely-upgrading-your-api-version'>guide on safely upgrading</a> and the <a href='#changelog'>changelog</a> for details.
 </aside>
+
+## Safely upgrading to API version 20210316
+
+Most changes simply add functionality, thus maintaining backwards compatibility. Occasionally, we release a version with breaking changes, such as the current 20210316.
+
+<aside class="info">
+We are providing a transition time in which you will be able to use both 20170914 and 20210316. After <strong>July 1st</strong> the legacy endpoints for <a href='#taxes-legacy'>taxes</a> and <a href='#page-parameter-legacy'>pagination</a> will respond a <code>410 Gone</code>.
+</aside>
+
+> Example of the new Tax Rates endpoint
+
+```shell
+curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate?to_country=US&to_postal_code=90210&tax_code=standard&amount=10 \
+  -u YOUR_API_KEY:x
+```
+
+> Example of using the deprecated Taxes API endpoint after upgrading the API Version globally on your Quaderno Account
+
+```shell
+curl "https://ACCOUNT_NAME.quadernoapp.com/api/taxes/calculate?country=US&postal_code=94010" \
+  -u YOUR_API_KEY: \
+  -H 'Accept: application/json; api_version=20170914'
+```
+
+> Note you'll get a 0.0 `rate` along with this `notice` in the response for **both cases**, unless you are registered on the tax jurisdiction:
+
+```json
+"notice": "You haven't registered this tax jurisdiction in your Quaderno account. If you have to collect taxes here, please set it up in https://ACCOUNT_NAME.quadernoapp.com/settings/jurisdictions ."
+```
+
+Do not fret, the transition to 20210316 is as easy as pie 🥧.
+
+For **calculating tax rates**, altough the [new endpoint](#calculate-a-tax-rate) accepts many more parameters, just changing the URL from `/taxes/calculate` to `/tax_rates/calculate` will do. Well, not so fast. It may seem it worked quickly, but you're probably getting a 0% tax rate. That's because now you can only collect taxes on Tax Jurisdictions where you're registered. So don't be tempted to [create a new custom Tax Rate](#create-a-tax-rate), just head to your Quaderno Account and update the [tax jurisdictions](https://quadernoapp.com/settings/jurisdictions) where your business is registered in. Now we're talking! Quaderno will always provide updated worldwide tax rates seamlessly for you.
+
+Alternatively, you can **register jurisdictions programatically**, first [listing all jurisdictions](#list-all-jurisdictions) and then [registering your Tax IDs](#create-a-tax-id) on the jurisdictions. You can read more about Tax Jurisdictions [here](https://support.quaderno.io/tax-jurisdictions/).
+
+For **paginating objects**, we switched to a faster cursor based pagination approach and you'll need to change the `page` parameter for `created_before`, which references the ID of the object instead of the page number. You'll get a maximum of 100 objects in reverse chronological order (lower IDs means older objects). Note the response headers changed from `X-Pages-CurrentPage` and `X-Pages-TotalPages` to `X-Pages-HasMore` and `X-Pages-NextPage`.
+
+
+You can test all this changes in our [sandbox](#the-sandbox). There are two approaches:
+
+- Simply change the API version globally in Profile → API Keys. Note once you change it you cannot change it back, but you can override a concrete call sending the `Accept` HTTP header with: `Accept: application/json; api_version=20170914`
+- Sending the `Accept` HTTP header with: `Accept: application/json; api_version=20210316` on every call.
+
+And that's basically it 🎉! Now you can go focus on your business while we deal with your taxes.

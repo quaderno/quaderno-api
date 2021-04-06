@@ -37,7 +37,6 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts.json \
     "tax_id":"",
     "language":"EN",
     "notes":"",
-    "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
 }
 ```
@@ -100,7 +99,6 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID \
     "tax_id":"",
     "language":"EN",
     "notes":"",
-    "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
 }
 ```
@@ -148,7 +146,6 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/PAYMENT_PROCESSOR/customers/CUSTOM
     "tax_id":"",
     "language":"EN",
     "notes":"",
-    "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
 }
 ```
@@ -199,7 +196,6 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts/CONTACT_ID \
     "tax_id":"",
     "language":"EN",
     "notes":"",
-    "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
 }
 ```
@@ -287,7 +283,6 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts \
     "tax_id":"",
     "language":"EN",
     "notes":"",
-    "secure_id":"th3p3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/th3p3rm4l1nk",
   },
   {
@@ -307,7 +302,6 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/contacts \
     "tax_id":"",
     "language":"EN",
     "notes":"",
-    "secure_id":"4n0th3rp3rm4l1nk",
     "permalink":"https://ACCOUNT_NAME.quadernoapp.com/billing/4n0th3rp3rm4l1nk",
   }
 ]

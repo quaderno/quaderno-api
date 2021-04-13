@@ -37,15 +37,17 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/reporting/requests \
 
 Parameter               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
-`report_type`           | string    | The type of report. Can be `tax_summary`. **Required**
+`report_type`           | string    | The type of report. Can be `tax_summary`, `invoices_list` or `credits_list`. **Required**
 `parameters`            | string    | Parameters specifying how the report should be run. Different report types have different required and optional parameters.
 
-**Tax summary parameters:**
+**Parameters for tax summary, invoices list, and credits list:**
 
 Parameter               | Type      | Description
 ------------------------|-----------|----------------------------------------------------------------------------
 `from_date`             | date      | Starting date of data to be included in the report. **Required**
 `to_date`               | date      | Ending date of data to be included in the report. **Required**
+
+
 
 
 

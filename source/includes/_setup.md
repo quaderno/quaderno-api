@@ -41,10 +41,13 @@ curl https://quadernoapp.com/api/authorization \
 
 ```json
 {
+  "identity": {
     "id": "999",
     "name": "Sheldon Cooper",
     "email": "s.cooperphd@yahoo.com",
+    "publishable_key":"pk_1111111111111111",
     "href": "http://nippur-999.quadernoapp.com/api/"
+  }
 }
 ```
 
@@ -54,10 +57,11 @@ This returns the following as a JSON payload:
 
 Parameter     | Description
 --------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-`id`          | An identity, which is *not* used for determining who this user is within Quaderno. The `id` field should therefore *not* be used for submitting data within Quaderno's API.
-`name`        | The user's full name.
-`email`       | The user's email address.
-`href`        | The custom API endpoint URL for the user, providing the sought-after `ACCOUNT_NAME` between `http://` and `.quadernoapp...`.
+`id`              | An identity, which is *not* used for determining who this user is within Quaderno. The `id` field should therefore *not* be used for submitting data within Quaderno's API.
+`name`            | The user's full name.
+`email`           | The user's email address.
+`publishable_key` | The users's publishable key.
+`href`            | The custom API endpoint URL for the user, providing the sought-after `ACCOUNT_NAME` between `http://` and `.quadernoapp...`.
 
 
 <aside class="notice">

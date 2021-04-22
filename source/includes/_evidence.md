@@ -33,7 +33,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/evidence \
 
 #### HTTP Request
 
-`POST /contacts`
+`POST /evidence`
 
 #### Parameters
 

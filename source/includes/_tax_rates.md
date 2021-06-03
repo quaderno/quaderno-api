@@ -186,7 +186,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates \
 
 
 
-### Calculate a tax rate
+## Calculating a tax rate
 
 <aside class="notice">
 Tax calculations are based on your tax settings. You can collect taxes only in tax jurisdictions where you're registered for tax collection. Please check your <a href="https://quadernoapp.com/settings/jurisdictions" target="_blank">tax jurisdictions</a> in your Quaderno account. If you try to calculate taxes in a jurisdiction you're not registered, Quaderno will return a 0% tax rate. 

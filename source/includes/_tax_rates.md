@@ -186,7 +186,7 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates \
 
 
 
-### Calculate a tax rate
+## Calculating a tax rate
 
 <aside class="notice">
 Tax calculations are based on your tax settings. You can collect taxes only in tax jurisdictions where you're registered for tax collection. Please check your <a href="https://quadernoapp.com/settings/jurisdictions" target="_blank">tax jurisdictions</a> in your Quaderno account. If you try to calculate taxes in a jurisdiction you're not registered, Quaderno will return a 0% tax rate. 
@@ -216,6 +216,20 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/calculate?to_country=US&
   "total_amount": 10.95
 }
 ```
+
+The new tax calculation endpoint allows you to send the transaction's amount before taxes. Quaderno will use that amount to calculate the final tax-included amount you should charge to your customer. This is completely optional.
+
+> To understand the endpoint response, the formulae are:
+
+```
+taxable_base = amount * taxable_part
+tax_amount   = taxable_base * rate/100
+total_amount = amount + tax_amount
+```
+
+> Taxable base is the amount you must use to calculate the tax amount. It's usually 100% (taxable_part) of the amount of your product before taxes but there are a few exceptions. For example, in Texas the taxable base is 80% for SaaS products.
+
+> Note that an `extra_rate` field may appear in the response, for those jurisdictions that need to apply two tax rates (e.g. some Canadian provinces).
 
 #### HTTP Request
 

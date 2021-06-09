@@ -279,6 +279,7 @@ We don't recommend deleting an invoice to avoid issues with tax authorities. If 
 
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/invoices/INVOICE_ID \
+  -X DELETE \
   -u YOUR_API_KEY:x
 ```
 #### HTTP Request

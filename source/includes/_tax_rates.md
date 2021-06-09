@@ -4,7 +4,7 @@ This API will allow you to customize your tax rates and calculate tax rates for 
 
 Take into account that taxes are calculated based on your [tax IDs](#tax-ids), but you can override these tax rates for greater control over the taxes you charge. If that's the case, use this API to create your custom tax rates.
 
-### Create a tax rate
+### Create a custom tax rate
 
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates \
@@ -31,6 +31,10 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates \
 #### HTTP Request
 
 `POST /tax_rates`
+
+<aside class="warning">
+Use this endpoint only when the default Quaderno tax rates for the tax jurisdictions where you're registered for tax collection does not fit your use case and you need to create a custom tax rate. When in doubt, always opt for registering your <a href="#tax-ids">Tax ID</a> and using default tax rates first.
+</aside>
 
 #### Parameters
 

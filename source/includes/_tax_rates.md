@@ -147,8 +147,6 @@ Parameter               | Type      | Description
 
 ### List all tax rates
 
-> `GET /tax_rates.json`
-
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates \
   -u YOUR_API_KEY:x
@@ -159,32 +157,40 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates \
 ```json
 [
   {
-    "id": 456987213,
-    "country": "FR",
-    "name": "TVA",
-    "tax_class": "standard",
-    "valid_from": "2020-01-01",
+    "id": 88,
+    "type": "default",
+    "jurisdiction": {
+      "id": 50,
+      "country": "US",
+      "name": "United States – Texas",
+      "region": "TX"
+    },
+    "name": "Sales tax",
+    "tax_code": "eservice",
+    "valid_from": "2016-01-01",
     "valid_until": null,
-    "value": 20.0,
-    "created_at": 1611330350    
+    "value": 6.25,
+    "created_at": 1622640370
   },
-  {
-    "id": 456982365,
-    "country": "ES",
-    "name": "IVA",
-    "tax_class": "reduced",
-    "valid_from": "2020-01-01",
-    "valid_until": null,
-    "value": 10.0,
-    "created_at": 1611330350    
-  }
+  ...
 ]
 ```
 
-`GET`ting from `/tax_rates.json` will return all the account's tax rates.
+#### HTTP Request
+`GET /tax_rates`
 
+This will return all the account's tax rates.
 
+#### Filtering by tax jurisdiction
 
+Filtering is available using the query parameter `jurisdiction_id`. Learn more about jurisdictions [here](https://developers.quaderno.io/api/#tax-jurisdictions).
+
+> Filtering by tax jurisdiction:
+
+```shell
+curl https://ACCOUNT_NAME.quadernoapp.com/api/tax_rates/?jurisdiction_id=50 \
+  -u YOUR_API_KEY:x
+```
 
 ## Calculating a tax rate
 

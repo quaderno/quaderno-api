@@ -2,6 +2,11 @@
 
 ## API versions and changes
 
+### 20210701 (to be released on 1 July)
+
+- **Breaking change**: `DELETE /invoices/INVOICE_ID` will cease to exist and return a `410 Gone`.
+- **Breaking change**: `PUT /invoices/INVOICE_ID` will only allow modification of the parameters `notes`, `tag_list`, `custom_metadata` and all those related to the customer's address: `street_line_1`,`street_line_2`,`city`,`region`,`postal_code` and `country`.
+
 ### 20210316 (Current version)
 * **Breaking change**: record pagination is no longer performed with a `page` parameter, but with a `created_before` parameter. See the [pagination documentation](#pagination) for more details.
 * **Breaking change**: the existing [/taxes/calculate](#calculate-taxes) endpoint is deprecated in favour of the [/tax_rates/calculate](#calculate-a-tax-rate) endpoint.

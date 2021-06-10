@@ -244,6 +244,16 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/invoices \
 
 `PUT /invoices/INVOICE_ID`
 
+<aside class="warning">
+In our goal to make Quaderno compliant with tax rules worldwide, we're going to block the edition of invoices and credit notes via API as of 1 July.
+
+Only modifiable parameters will be: `notes`, `tag_list`, `custom_metadata` and all those related to the customer's address: `street_line_1`,`street_line_2`,`city`,`region`,`postal_code` and `country`.
+
+If you need to make any changes to invoice items, date or customer's tax ID, you'll need to  issue a credit note and create a new invoice.
+
+You can read more about this breaking change in our guide <a href='#safely-upgrading-to-api-version-20210701'>Safely upgrading to API version 20210701</a>.
+</aside>
+
 #### Parameters
 
 Parameter               | Type              | Description
@@ -274,6 +284,12 @@ Parameter               | Type              | Description
 
 
 ### Delete an invoice
+
+<aside class="warning">
+In our goal to make Quaderno compliant with tax rules worldwide, we're going to remove the <strong>DELETE</strong> endpoint on 1 July.
+
+You can read more about this breaking change in our guide <a href='#safely-upgrading-to-api-version-20210701'>Safely upgrading to API version 20210701</a>.
+</aside>
 
 We don't recommend deleting an invoice to avoid issues with tax authorities. If you want to cancel an invoice, you can convert it into a credit note.
 

@@ -1,4 +1,4 @@
-# Authentication
+## Authentication
 
 > To authorize, use this code:
 
@@ -30,7 +30,7 @@ Quaderno expects the API key to be included via HTTP Basic Auth in all API reque
 
 
 
-# Authorization
+## Authorization
 
 ```shell
 curl https://quadernoapp.com/api/authorization \
@@ -75,7 +75,7 @@ Parameter     | Description
 
 
 
-# Rate Limiting
+## Rate Limiting
 
 To make it easier to determine if your application is being rate-limited, or is approaching that level, we have the following HTTP headers on our successful responses:
 
@@ -92,9 +92,9 @@ If you exceed the limit you will receive a `HTTP 429 (Too Many Requests)`.
 
 
 
-# Pagination
+## Pagination
 
-## Cursor based pagination
+### Cursor based pagination
 
 > A call with the `created_before` parameter set:
 
@@ -113,7 +113,7 @@ Bear in mind that Quaderno paginates `GET` index results.
 
 You can change the number of objects to be returned with the `limit` parameter, defaulting to `25`. This value is capped at 100 objects.
 
-## Page parameter (legacy)
+### Page parameter (legacy)
 
 > **Legacy**: A call with the `page` parameter set:
 
@@ -141,7 +141,7 @@ You can change the number of objects to be returned with the `limit` parameter, 
 
 
 
-# Errors
+## Errors
 
 We don't usually have any trouble on our end, but when we do we'll let you know!
 
@@ -172,7 +172,7 @@ If an error occurs on a call where the service is not down, we will return a JSO
 
 
 
-# Versioning
+## Versioning
 
 > Example of API version override
 
@@ -196,7 +196,7 @@ Exceptionally, we release versions that break backwards compatibility, to take f
   Also on 1 July version <strong>20210701</strong> will be released, which contains breaking changes to the Invoice API. Please refer to the following guides on safely upgrading API versions </a> and the <a href='#changelog'>changelog</a> for details.
 </aside>
 
-## Safely upgrading to API version 20210701
+### Safely upgrading to API version 20210701
 
 In our goal to make Quaderno compliant with tax rules worldwide, we're going to block the edition of invoices and credit notes via API as of 1 July.
 
@@ -223,7 +223,7 @@ However, given your use case is one that automatically issues paid invoices (for
 
 Why? Because you can create the contact (if doesn't exists yet), create the invoice, and insert the payment information, all in only one performant API call 🎉!
 
-## Safely upgrading to API version 20210316
+### Safely upgrading to API version 20210316
 
 Most changes simply add functionality, thus maintaining backwards compatibility. Occasionally, we release a version with breaking changes, such as the current 20210316.
 

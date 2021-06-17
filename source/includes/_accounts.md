@@ -1,5 +1,7 @@
 # CONNECT 
 
+<strong>Are you a marketplace platform?</strong> <a href="https://support.quaderno.io/quaderno-connect" target="_blank">Quaderno Connect</a> provides tax management and invoicing capabilities to your business model! Go check this <a href="https://support.quaderno.io/integrating-connect-with-standard-accounts" target="_blank">step-by-step guide</a> for details on using Quaderno Apps with Quaderno Connect Standard accounts.
+
 ## Accounts (beta)
 
 When using Quaderno Connect, you need to create an account (known as a connected account) for each user that needs to calculate taxes on your platform. These accounts are generally created when a user signs up for your platform.

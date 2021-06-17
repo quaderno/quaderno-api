@@ -60,4 +60,8 @@ The Quaderno API is based on the [REST](https://en.wikipedia.org/wiki/Representa
 https://{{ACCOUNT_NAME}}.sandbox-quadernoapp.com/api
 ```
 
+<aside class="info">
+Use <a href="https://developers.quaderno.io/#quaderno-sandbox">Quaderno Sandbox</a> to experiment with our set of APIs and products, test new features or fine tune your Quaderno workflows and integrations, without the worries of breaking things while learning.
+</aside>
+
 If you have any suggestions, tips, or questions that you feel aren't answered here or in our [developer site](http://developers.quaderno.io), please [get in touch](mailto:support@quaderno.io) and let us know!

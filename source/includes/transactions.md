@@ -1,10 +1,10 @@
-## Transactions
+# TRANSACTIONS
 
 Create a `Transaction` object to easily send sales & refunds from your platform to Quaderno. We'll use them to issue invoices & credit notes, as well as update tax reports automatically.
 
 The Transactions API is perfect for use cases where your customers pay you at the moment and for using along Quaderno Connect. With Transactions API, you'll be able to issue the invoice with the payment information and create the contact or reference the existing contact in just one performant API call.
 
-### Create a transaction
+## Create a transaction
 
 ```shell
 curl https://ACCOUNT_NAME.quadernoapp.com/api/transactions \

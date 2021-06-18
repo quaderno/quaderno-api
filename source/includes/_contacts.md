@@ -1,5 +1,6 @@
 # CORE RESOURCES
 
+Core resources are those shared across several API endpoints, like `contacts`, `products` or `events`.
 ## Contacts
 
 A contact is any customer or vendor who appears on your invoices, credit notes, and expenses.

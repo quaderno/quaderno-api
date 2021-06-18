@@ -14,6 +14,7 @@ toc_footers:
 includes:
   - setup
   - changelog
+  - dev_tools
   - contacts
   - products
   - events

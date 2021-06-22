@@ -217,7 +217,7 @@ What this breaking change implies:
 
 Note that on 1 July the transition period for *20210316* ends as well, and the legacy endpoints for [taxes](#taxes-legacy) and [pagination](#page-parameter-legacy) will also respond `410 Gone`.
 
-If you're using these endpoints, you'll have to include extra logic in your code to issue a credit note and create a new invoide.
+If you're using these endpoints, you'll have to include extra logic in your code to issue a credit note and create a new invoice.
 
 However, given your use case is one that automatically issues paid invoices (for instance, your customer's pays and then your system issues the invoice, not the other way around) and you're up for a challenge, our recommendation to face this change is to migrate to the new [Transactions API](#transactions).
 
@@ -229,6 +229,8 @@ Most changes simply add functionality, thus maintaining backwards compatibility.
 
 <aside class="info">
 We are providing a transition time in which you will be able to use both 20170914 and 20210316. After <strong>July 1st</strong> the legacy endpoints for <a href='#taxes-legacy'>taxes</a> and <a href='#page-parameter-legacy'>pagination</a> will respond a <code>410 Gone</code>.
+<br><br>
+Note that <a href="https://developers.quaderno.io/#quaderno-js">Quaderno.js</a> is not affected by this change. If you're only using Quaderno.js to calculate taxes from your frontend, you don't have to do anything.
 </aside>
 
 > Example of the new Tax Rates endpoint

@@ -376,7 +376,8 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/expenses \
 
 Parameter      | Type      | Description
 ---------------|-----------|----------------------------------------------------------------------------
-`q`            | string    | A case-sensitive filter on the list based on the provide's name or the PO number.
+`q`            | string    | A case-sensitive filter on the list based on the provider's name or the PO number.
 `date`         | string    | A case-sensitive filter on the list based on the invoice's issue date. Pass the date range in the url like `?date=DATE1,DATE2`. Date range allows these formats: `2019-01-01,2019-12-31` or `2019/01/01,2019/12/31`.
 `state`        | string    | A case-sensitive filter on the list based on the invoice's state. Can be `outstanding`, `late`, `paid`, and `archived`. 
+`contact`      | integer    | A case-sensitive filter on the list based on the provider's ID.
 

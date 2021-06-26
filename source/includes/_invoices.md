@@ -469,4 +469,5 @@ Parameter      | Type      | Description
 ---------------|-----------|----------------------------------------------------------------------------
 `q`            | string    | A case-sensitive filter on the list based on the invoice's number or customer name.
 `date`         | string    | A case-sensitive filter on the list based on the invoice's issue date. Pass the date range in the url like `?date=DATE1,DATE2`. Date range allows these formats: `2019-01-01,2019-12-31` or `2019/01/01,2019/12/31`.
-`state`        | string    | A case-sensitive filter on the list based on the invoice's state. Can be `outstanding`, `late`, `paid`, `refunded` and `archived`. 
+`state`        | string    | A case-sensitive filter on the list based on the invoice's state. Can be `outstanding`, `late`, `paid`, `refunded` and `archived`.
+`contact`      | integer    | A case-sensitive filter on the list based on the customer's ID.

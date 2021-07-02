@@ -23,7 +23,6 @@ includes:
   - tax_jurisdictions
   - tax_codes
   - evidence
-  - taxes
   - invoices
   - credits
   - expenses

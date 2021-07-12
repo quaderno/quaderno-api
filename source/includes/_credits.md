@@ -240,6 +240,14 @@ curl https://ACCOUNT_NAME.quadernoapp.com/api/credits/CREDIT_ID \
 
 `PUT /credits/CREDIT_ID`
 
+<aside class="warning">
+In our goal to make Quaderno compliant with tax rules worldwide, we're going to limit the edition of credit notes via API as of 1 July.
+
+Only modifiable parameters will be: `po_number`, `tag_list`, `payment_details`, `notes`, `custom_metadata` and all those related to the billing address: `street_line_1`,`street_line_2`,`city`,`region`,and `postal_code`.
+
+You can read more about this breaking change in our guide <a href='#safely-upgrading-to-api-version-20210701'>Safely upgrading to API version 20210701</a>.
+</aside>
+
 #### Parameters
 
 Parameter               | Type              | Description
